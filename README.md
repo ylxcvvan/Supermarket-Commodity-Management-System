@@ -1,0 +1,2 @@
+# Supermarket-Commodity-Management-System
+成都大学22级软件工程课程实践项目大作业，该项目是基于Qt5开发的超市商品管理系统
