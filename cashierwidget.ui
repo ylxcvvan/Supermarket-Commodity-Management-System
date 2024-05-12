@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QCalendarWidget" name="calendarWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>60</y>
+     <width>296</width>
+     <height>152</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
