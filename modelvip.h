@@ -7,7 +7,7 @@ class ModelVip
 private:
     QString Name;
     QString PhoneNumber;
-    QString Number;
+    QString Id;
     double Point;
     int Level;
     QDate RegisterDate;
@@ -17,7 +17,7 @@ public:
 
     const QString& getName();
     const QString& getPhoneNumber();
-    const QString& GetNumber();
+    const QString& GetId();
     double getPoint();
     int getLevel();
     const QDate& getRegisterDate();

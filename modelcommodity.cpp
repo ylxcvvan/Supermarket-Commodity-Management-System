@@ -17,9 +17,9 @@ const double &ModelCommodity::getcostPrice()
     return this->CostPrice;
 }
 
-const QString &ModelCommodity::getNumber()
+const QString &ModelCommodity::getId()
 {
-    return this->Number;
+    return this->Id;
 }
 
 const QDate &ModelCommodity::getSellByTime()
@@ -30,11 +30,6 @@ const QDate &ModelCommodity::getSellByTime()
 const QString &ModelCommodity::getDetails()
 {
     return this->Details;
-}
-
-int ModelCommodity::getQuantity()
-{
-    return this->Quantity;
 }
 
 bool ModelCommodity::setName(const QString &newName)
@@ -55,10 +50,6 @@ bool ModelCommodity::setDetails(const QString &newDetails)
     return Details==newDetails;
 }
 
-void ModelCommodity::setQuantity(const int &newQuantity)
-{
-    this->Quantity=newQuantity;
-}
 
 
 

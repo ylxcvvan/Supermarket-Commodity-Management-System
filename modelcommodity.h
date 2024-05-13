@@ -8,12 +8,10 @@ private:
     QString Name;
     double Price;
     double CostPrice;
-    QString Number;
+    QString Id;
     QDate sellByTime;
     QString Details;
 
-    //总商品数量大小，非订单类用不到。
-    int Quantity=1;
 public:
     ModelCommodity();
 
@@ -21,7 +19,7 @@ public:
     const QString& getName();
     const double& getPrice();
     const double& getcostPrice();
-    const QString& getNumber();
+    const QString& getId();
     const QDate& getSellByTime();
     const QString& getDetails();
 
@@ -31,7 +29,6 @@ public:
     bool setPrice(const double& newPrice);
     bool setDetails(const QString& newDetails);
 
-    void setQuantity(const int& newQuantity);
 
 };
 

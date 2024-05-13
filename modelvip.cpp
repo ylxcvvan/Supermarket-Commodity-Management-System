@@ -12,9 +12,9 @@ const QString &ModelVip::getPhoneNumber()
     return this->PhoneNumber;
 }
 
-const QString &ModelVip::GetNumber()
+const QString &ModelVip::GetId()
 {
-    return this->Number;
+    return this->Id;
 }
 
 double ModelVip::getPoint()

@@ -2,12 +2,12 @@
 
 ModelOrder::ModelOrder() {}
 
-const QString &ModelOrder::getNumber()
+const QString &ModelOrder::getOrderId()
 {
-    return this->Number;
+    return this->OrderId;
 }
 
-QVector<ModelCommodity> ModelOrder::getGoodsList()
+const QVector<QPair<ModelCommodity,double>>& ModelOrder::getGoodsList()
 {
     return GoodsList;
 }
@@ -23,9 +23,9 @@ double ModelOrder::getTotalPrice()
     return TotalPrice;
 }
 
-const QString &ModelOrder::getPhoneNumber()
+const QString &ModelOrder::getUserId()
 {
-    return PhoneNumber;
+    return UserId;
 }
 
 const QDateTime &ModelOrder::getOrderTime()
