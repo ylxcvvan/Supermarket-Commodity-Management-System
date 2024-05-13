@@ -18,7 +18,7 @@ public:
     ModelOrder();
 
     const QString& getNumber();
-    const QVector<ModelOrder>& getGoodsList();
+    QVector<ModelCommodity> getGoodsList();
     state getOrderStage();
     double getTotalPrice();
     const QString& getPhoneNumber();

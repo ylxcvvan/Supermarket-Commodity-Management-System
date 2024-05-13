@@ -7,10 +7,11 @@ const QString &ModelOrder::getNumber()
     return this->Number;
 }
 
-const QVector<ModelOrder> &ModelOrder::getGoodsList()
+QVector<ModelCommodity> ModelOrder::getGoodsList()
 {
-    return this->GoodsList;
+    return GoodsList;
 }
+
 
 ModelOrder::state ModelOrder::getOrderStage()
 {
