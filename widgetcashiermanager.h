@@ -2,7 +2,10 @@
 #define WIDGETCASHIERMANAGER_H
 
 #include <QWidget>
-
+#include<QStandardItem>
+#include<QTableView>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 namespace Ui {
 class WidgetCashierManager;
 }
@@ -17,6 +20,8 @@ public:
 
 private:
     Ui::WidgetCashierManager *ui;
+    QStandardItemModel* cashier_standard_model;
+    QTableView* cashier_table_view;
 };
 
 #endif // WIDGETCASHIERMANAGER_H
