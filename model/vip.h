@@ -1,8 +1,8 @@
-#ifndef MODELVIP_H
-#define MODELVIP_H
+#ifndef VIP_H
+#define VIP_H
 #include<QString>
 #include<QDate>
-class ModelVip
+class Vip
 {
 private:
     QString Name;
@@ -13,7 +13,7 @@ private:
     QDate RegisterDate;
 
 public:
-    ModelVip();
+    Vip();
 
     const QString& getName();
     const QString& getPhoneNumber();
@@ -27,4 +27,4 @@ public:
     void setPhoneNumber(const QString& newPhoneNumber);
 };
 
-#endif // MODELVIP_H
+#endif // VIP_H

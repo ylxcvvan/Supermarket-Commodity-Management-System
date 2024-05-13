@@ -8,13 +8,17 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+include($$PWD/main/main.pri)
+include($$PWD/model/model.pri)
+include($$PWD/view/manager/manager.pri)
+include($$PWD/view/page/page.pri)
+include($$PWD/view/table/table.pri)
+include($$PWD/controller/database/database.pri)
+include($$PWD/controller/services/services.pri)
+
 SOURCES += \
     main.cpp \
     mainwidget.cpp \
-    modelcommodity.cpp \
-    modelorder.cpp \
-    modeluser.cpp \
-    modelvip.cpp \
     pageconfig.cpp \
     pagehelp.cpp \
     pagemain.cpp \
@@ -23,12 +27,8 @@ SOURCES += \
     widgetordermanager.cpp \
     widgetvipmanager.cpp
 
-HEADERS += \
+HEADERS += \\
     mainwidget.h \
-    modelcommodity.h \
-    modelorder.h \
-    modeluser.h \
-    modelvip.h \
     pageconfig.h \
     pagehelp.h \
     pagemain.h \

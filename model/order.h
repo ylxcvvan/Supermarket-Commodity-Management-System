@@ -1,31 +1,31 @@
-#ifndef MODELORDER_H
-#define MODELORDER_H
+#ifndef ORDER_H
+#define ORDER_H
 #include<QString>
 #include<QDateTime>
 #include<QVector>
-#include"modelcommodity.h"
-class ModelOrder
+#include"commodity.h"
+class Order
 {
 private:
     enum state{Pending=0,cancelled=1,Completed=2};
     QString OrderId;
-    QVector<QPair<ModelCommodity,double>>GoodsList;
+    QVector<QPair<Commodity,double>>GoodsList;
     state OrderStage;
     double TotalPrice;
     QString UserId;
     QDateTime OrderTime;
 
 public:
-    ModelOrder();
+    Order();
 
     const QString& getOrderId();
-    const QVector<QPair<ModelCommodity,double>>& getGoodsList();
+    const QVector<QPair<Commodity,double>>& getGoodsList();
     state getOrderStage();
     double getTotalPrice();
     const QString& getUserId();
     const QDateTime& getOrderTime();
 
-    void setOrderStage(ModelOrder::state newOrderStage);
+    void setOrderStage(Order::state newOrderStage);
 };
 
-#endif // MODELORDER_H
+#endif // ORDER_H

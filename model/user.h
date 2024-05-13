@@ -1,17 +1,17 @@
-#ifndef MODELUSER_H
-#define MODELUSER_H
+#ifndef USER_H
+#define USER_H
 #include<QString>
-class ModelUser
+class User
 {
 private:
     QString Name;
     QString Password;
 
 public:
-    ModelUser(QString n,QString pwd="123456");
+    User(QString n,QString pwd="123456");
 
     const QString& getName();
     const QString& getPassword();
 };
 
-#endif // MODELUSER_H
+#endif // USER_H

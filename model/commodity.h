@@ -1,8 +1,8 @@
-#ifndef MODELCOMMODITY_H
-#define MODELCOMMODITY_H
+#ifndef COMMODITY_H
+#define COMMODITY_H
 #include<QDate>
 #include<QString>
-class ModelCommodity
+class Commodity
 {
 private:
     QString Name;
@@ -13,7 +13,7 @@ private:
     QString Details;
 
 public:
-    ModelCommodity();
+    Commodity();
 
     //获取商品属性
     const QString& getName();
@@ -31,5 +31,4 @@ public:
 
 
 };
-
-#endif // MODELCOMMODITY_H
+#endif // COMMODITY_H
