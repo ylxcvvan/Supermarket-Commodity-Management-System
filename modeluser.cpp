@@ -1,13 +1,14 @@
 #include "modeluser.h"
 
-ModelUser::ModelUser() {}
+ModelUser::ModelUser(QString n, QString pwd):
+    Name(n),Password(pwd){}
 
 const QString &ModelUser::getName()
 {
-    return this->name;
+    return this->Name;
 }
 
 const QString &ModelUser::getPassword()
 {
-    return this->password;
+    return this->Password;
 }

@@ -4,17 +4,17 @@ ModelCommodity::ModelCommodity() {}
 
 const QString &ModelCommodity::getName()
 {
-    return this->name;
+    return this->Name;
 }
 
 const double &ModelCommodity::getPrice()
 {
-    return this->price;
+    return this->Price;
 }
 
 const double &ModelCommodity::getcostPrice()
 {
-    return this->costPrice;
+    return this->CostPrice;
 }
 
 const QString &ModelCommodity::getNumber()
@@ -32,22 +32,32 @@ const QString &ModelCommodity::getDetails()
     return this->Details;
 }
 
+int ModelCommodity::getQuantity()
+{
+    return this->Quantity;
+}
+
 bool ModelCommodity::setName(const QString &newName)
 {
-    this->name=newName;
-    return name==newName;
+    this->Name=newName;
+    return Name==newName;
 }
 
 bool ModelCommodity::setPrice(const double &newPrice)
 {
-    this->price=newPrice;
-    return price==newPrice;
+    this->Price=newPrice;
+    return Price==newPrice;
 }
 
 bool ModelCommodity::setDetails(const QString &newDetails)
 {
     this->Details=newDetails;
     return Details==newDetails;
+}
+
+void ModelCommodity::setQuantity(const int &newQuantity)
+{
+    this->Quantity=newQuantity;
 }
 
 

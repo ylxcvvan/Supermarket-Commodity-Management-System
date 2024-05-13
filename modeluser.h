@@ -4,11 +4,11 @@
 class ModelUser
 {
 private:
-    QString name;
-    QString password;
+    QString Name;
+    QString Password;
 
 public:
-    ModelUser();
+    ModelUser(QString n,QString pwd="123456");
 
     const QString& getName();
     const QString& getPassword();
