@@ -14,7 +14,6 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     cashier_standard_model->setHorizontalHeaderLabels({"商品名称","价格","数量","总价"});
 
     // 创建 QTableView
-    cashier_table_view = ui->tableView;
     ui->tableView->setModel(cashier_standard_model);
 
 

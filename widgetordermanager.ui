@@ -6,27 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1032</width>
+    <height>743</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>70</y>
-     <width>211</width>
-     <height>131</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>订单管理界面：ordermanager.ui
-该标签label可删去</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>
