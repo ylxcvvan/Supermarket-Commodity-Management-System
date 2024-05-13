@@ -5,11 +5,18 @@
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
-    ,pcashiwidget(new CashierWidget(this))
+    ,p_pagemain(new PageMain(this))
+    ,p_pageconfig(new PageConfig(this))
+    ,p_pagehelp(new PageHelp(this))
 {
     ui->setupUi(this);
-    ui->stackedWidget->addWidget(pcashiwidget); 
+    //设定是否是管理员
+    isAdmin=isadmin;
 
+    //添加page页到stackedWidget中
+    ui->stackedWidget->addWidget(p_pagemain);
+    ui->stackedWidget->addWidget(p_pageconfig);
+    ui->stackedWidget->addWidget(p_pagehelp);
 }
 
 MainWidget::~MainWidget()
@@ -20,5 +27,19 @@ MainWidget::~MainWidget()
 void MainWidget::on_toolButtonMain_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+
+
+void MainWidget::on_toolButtontConfig_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWidget::on_toolButtonHelp_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
 }
 

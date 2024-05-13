@@ -9,17 +9,35 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cashierwidget.cpp \
     main.cpp \
-    mainwidget.cpp
+    mainwidget.cpp \
+    pageconfig.cpp \
+    pagehelp.cpp \
+    pagemain.cpp \
+    widgetcashiermanager.cpp \
+    widgetinventorymanager.cpp \
+    widgetordermanager.cpp \
+    widgetvipmanager.cpp
 
 HEADERS += \
-    cashierwidget.h \
-    mainwidget.h
+    mainwidget.h \
+    pageconfig.h \
+    pagehelp.h \
+    pagemain.h \
+    widgetcashiermanager.h \
+    widgetinventorymanager.h \
+    widgetordermanager.h \
+    widgetvipmanager.h
 
 FORMS += \
-    cashierwidget.ui \
-    mainwidget.ui
+    mainwidget.ui \
+    pageconfig.ui \
+    pagehelp.ui \
+    pagemain.ui \
+    widgetcashiermanager.ui \
+    widgetinventorymanager.ui \
+    widgetordermanager.ui \
+    widgetvipmanager.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

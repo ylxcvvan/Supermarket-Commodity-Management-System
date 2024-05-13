@@ -135,7 +135,7 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>用户退出</string>
+         <string>用户退出//TODO</string>
         </property>
         <property name="toolButtonStyle">
          <enum>Qt::ToolButtonTextUnderIcon</enum>
