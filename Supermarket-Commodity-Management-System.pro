@@ -11,6 +11,10 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwidget.cpp \
+    modelcommodity.cpp \
+    modelorder.cpp \
+    modeluser.cpp \
+    modelvip.cpp \
     pageconfig.cpp \
     pagehelp.cpp \
     pagemain.cpp \
@@ -21,6 +25,10 @@ SOURCES += \
 
 HEADERS += \
     mainwidget.h \
+    modelcommodity.h \
+    modelorder.h \
+    modeluser.h \
+    modelvip.h \
     pageconfig.h \
     pagehelp.h \
     pagemain.h \

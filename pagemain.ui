@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
@@ -58,6 +58,13 @@
       </spacer>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QStackedWidget" name="stackedWidget"/>
