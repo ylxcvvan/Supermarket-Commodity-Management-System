@@ -1,17 +1,15 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
-#include "cashierwidget.h"
+
 #include<QDebug>
-MainWidget::MainWidget(QWidget *parent)
+MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
+    ,pcashiwidget(new CashierWidget(this))
 {
     ui->setupUi(this);
+    ui->stackedWidget->addWidget(pcashiwidget); 
 
-    CashierWidget *pcashiwidget=new CashierWidget(ui->stackedWidget);
-    ui->stackedWidget->addWidget(pcashiwidget);
-    ui->stackedWidget->setCurrentWidget(pcashiwidget);
-    ui->stackedWidget->show();
 }
 
 MainWidget::~MainWidget()
@@ -21,6 +19,6 @@ MainWidget::~MainWidget()
 
 void MainWidget::on_toolButtonMain_clicked()
 {
-
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
