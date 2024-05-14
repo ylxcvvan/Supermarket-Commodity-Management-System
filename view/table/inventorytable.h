@@ -9,8 +9,8 @@ class InventoryTable : public QAbstractTableModel
 private:
 
     QVector<QString>titles;
-    //ilist[0]=库存单号id,1=物品id,2=物品名称，3=物品数量,4=物品进价,5=物品描述,6=物品过期时间,
-    QVector<QVector<QVariant>>ilist;
+    //itable[0]=库存单号id,1=物品id,2=物品名称，3=物品数量,4=物品进价,5=物品描述,6=物品过期时间,
+    QVector<QVector<QVariant>>itable;
 
 public:
     explicit InventoryTable(QObject *parent = nullptr);

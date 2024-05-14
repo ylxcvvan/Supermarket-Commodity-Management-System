@@ -13,6 +13,7 @@ private:
     GoodsList *glist;
 
 public slots:
+    //提交订单
     bool CommitGoodlist();
 
 };

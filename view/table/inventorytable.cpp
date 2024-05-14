@@ -8,31 +8,33 @@ InventoryTable::InventoryTable(QObject *parent)
 
 QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    if (role != Qt::DisplayRole)
+        return QVariant();
+
+    if (orientation == Qt::Horizontal) {
+        return titles[section];
+    }
     return QVariant();
-    // FIXME: Implement me!
 }
 
 int InventoryTable::rowCount(const QModelIndex &parent) const
 {
-
-        return 0;
-
-    // FIXME: Implement me!
+    return itable.size();
 }
 
 int InventoryTable::columnCount(const QModelIndex &parent) const
 {
-
-    return 0;
-    // FIXME: Implement me!
+    return titles.size();
 }
 
 QVariant InventoryTable::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
-
-    // FIXME: Implement me!
+    if(role==Qt::DisplayRole)
+    {
+        return itable[index.row()][index.column()];
+    }
     return QVariant();
 }
 
@@ -50,14 +52,13 @@ Qt::ItemFlags InventoryTable::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return Qt::NoItemFlags;
-
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable; // FIXME: Implement me!
 }
 
 bool InventoryTable::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
+    //TODO
     endInsertRows();
     return true;
 }
@@ -65,7 +66,7 @@ bool InventoryTable::insertRows(int row, int count, const QModelIndex &parent)
 bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
+    //TODO
     endRemoveRows();
     return true;
 }

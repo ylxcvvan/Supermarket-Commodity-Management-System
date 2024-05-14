@@ -16,5 +16,6 @@ GoodsList* GoodsListService::getGlist()
 
 bool GoodsListService::CommitGoodlist()
 {
-
+    //TODO
+    return true;
 }
