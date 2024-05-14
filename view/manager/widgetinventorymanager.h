@@ -6,7 +6,6 @@
 #include<QTableView>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include "controller/services/inventorytableservice.h".h"
 namespace Ui {
 class WidgetInventoryManager;
 }
