@@ -3,10 +3,10 @@
 #include<QString>
 #include<QDateTime>
 #include<QVector>
-#include"commodity.h"
+#include"orderitem.h"
 class Order
 {
-    using Glist=QVector<QPair<Commodity,double>>;
+    using Glist=QVector<OrderItem>;
 private:
     enum state{Pending=0,cancelled=1,Completed=2};
     int OrderId;

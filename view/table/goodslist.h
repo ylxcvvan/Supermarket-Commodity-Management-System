@@ -40,6 +40,8 @@ public:
 
     int getSize();
 
+
+
 private:
     bool CanConvert(const QVariant& value,int col);
     QVariant TypeConvert(const QVariant& value,int col);

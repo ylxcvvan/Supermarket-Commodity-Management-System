@@ -9,8 +9,11 @@ class MySqlOperate
 public:
 
     MySqlOperate();
-    bool update(const QString& sql);
+    bool modify(const QString& sql);
     QSqlQuery query(const QString& sql);
+    bool insert(const QString& sql);
+    bool del(const QString& sql);
+
 
 private:
 

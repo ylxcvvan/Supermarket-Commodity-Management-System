@@ -5,7 +5,7 @@ MySqlOperate::MySqlOperate()
     :db(&MySql::getInstance().getDatabase()){}
 
 
-bool MySqlOperate::update(const QString &sql)
+bool MySqlOperate::modify(const QString &sql)
 {
     QSqlQuery query(*db);
     query.prepare(sql);

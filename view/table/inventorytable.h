@@ -2,7 +2,7 @@
 #define INVENTORYTABLE_H
 
 #include <QAbstractTableModel>
-
+#include"model/commodity.h"
 class InventoryTable : public QAbstractTableModel
 {
     Q_OBJECT
@@ -37,6 +37,9 @@ public:
 
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+
+    //传入新的itable参数构造新的itable
+    void setITable(QVector<int>id,QVector<Commodity>goods,QVector<double>amount);
 
 };
 

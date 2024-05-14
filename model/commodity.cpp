@@ -1,34 +1,37 @@
 #include "commodity.h"
 
+Commodity::Commodity(CommodityItem cim, double p, double cp, QDate sbt)
+    :Name(cim.getName()),Price(p),CostPrice(cp),sellByTime(sbt),Details(cim.getDetails()){}
+
 Commodity::Commodity(QString na,double p,double cp,QDate sbt,QString de)
     :Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de){}
 
-const QString &Commodity::getName()
+const QString &Commodity::getName() const
 {
     return this->Name;
 }
 
-const double &Commodity::getPrice()
+const double &Commodity::getPrice() const
 {
     return this->Price;
 }
 
-const double &Commodity::getcostPrice()
+const double &Commodity::getcostPrice() const
 {
     return this->CostPrice;
 }
 
-const QString &Commodity::getId()
+const QString &Commodity::getId() const
 {
     return this->Id;
 }
 
-const QDate &Commodity::getSellByTime()
+const QDate &Commodity::getSellByTime() const
 {
     return this->sellByTime;
 }
 
-const QString &Commodity::getDetails()
+const QString &Commodity::getDetails() const
 {
     return this->Details;
 }
