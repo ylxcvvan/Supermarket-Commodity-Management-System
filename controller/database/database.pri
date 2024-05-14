@@ -1,5 +1,7 @@
 HEADERS += \
-    $$PWD/mysql.h
+    $$PWD/mysql.h \
+    $$PWD/mysqloperate.h
 
 SOURCES += \
-    $$PWD/mysql.cpp
+    $$PWD/mysql.cpp \
+    $$PWD/mysqloperate.cpp

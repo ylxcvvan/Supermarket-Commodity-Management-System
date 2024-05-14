@@ -1,6 +1,5 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
-
 #include<QDebug>
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
@@ -12,6 +11,9 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->setupUi(this);
     //设定是否是管理员
     isAdmin=isadmin;
+
+    //连接数据库
+    auto db =MySql::getInstance().getDatabase();
 
     //添加page页到stackedWidget中
     ui->stackedWidget->addWidget(p_pagemain);
