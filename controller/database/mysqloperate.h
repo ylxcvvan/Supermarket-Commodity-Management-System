@@ -1,20 +1,22 @@
 #ifndef MYSQLOPERATE_H
 #define MYSQLOPERATE_H
-#include"mysql.cpp"
 #include<QSqlQuery>
 #include<QSqlError>
+#include <QtSql/QSqlDatabase>
+#include"mysql.h"
 class MySqlOperate
 {
 public:
 
     MySqlOperate();
+    bool update(const QString& sql);
+    QSqlQuery query(const QString& sql);
 
 private:
 
     QSqlDatabase *db;
 
-    bool update(const QString& sql);
-    QSqlQuery query(const QString& sql);
+
 };
 
 #endif // MYSQLOPERATE_H

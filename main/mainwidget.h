@@ -5,7 +5,7 @@
 #include "pagemain.h"
 #include "pageconfig.h"
 #include "pagehelp.h"
-
+#include"../controller/database/mysqloperate.h"
 #include<QDebug>
 QT_BEGIN_NAMESPACE
 namespace Ui {

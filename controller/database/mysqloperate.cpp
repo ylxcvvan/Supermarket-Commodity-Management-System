@@ -1,5 +1,6 @@
 #include "mysqloperate.h"
-
+#include"mysql.h"
+#include"mysql.cpp"
 MySqlOperate::MySqlOperate()
     :db(&MySql::getInstance().getDatabase()){}
 
