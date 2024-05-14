@@ -16,7 +16,7 @@ QSqlDatabase& MySql::getDatabase()
 MySql::MySql()
     :db(QSqlDatabase::addDatabase("QMYSQL"))
 {
-    db.setHostName("127.0.0.1");
+    db.setHostName("localhost");
     db.setPort(3306);
     db.setDatabaseName("scmsdb");
     db.setUserName("scms");
