@@ -4,17 +4,14 @@
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetCashierManager)
+    ,m_GoodsListService(new GoodsListService)
+    ,m_ModelGoodsList(m_GoodsListService->getGlist())
 {
     ui->setupUi(this);
 
-
-    // 创建 QStandardItemModel
-    cashier_standard_model = new QStandardItemModel();
-    cashier_standard_model->setColumnCount(4);
-    cashier_standard_model->setHorizontalHeaderLabels({"商品名称","价格","数量","总价"});
-
     // 创建 QTableView
-    ui->tableView->setModel(cashier_standard_model);
+    ui->tableView->setModel(m_ModelGoodsList);
+
 
 
 }

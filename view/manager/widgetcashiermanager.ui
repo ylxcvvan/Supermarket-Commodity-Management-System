@@ -149,7 +149,7 @@
            <property name="font">
             <font>
              <family>Microsoft PhagsPa</family>
-             <pointsize>25</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="lineWidth">
@@ -164,10 +164,10 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="labelTotalPrice">
            <property name="font">
             <font>
-             <pointsize>25</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="text">
@@ -179,7 +179,7 @@
           <widget class="QLabel" name="label_7">
            <property name="font">
             <font>
-             <pointsize>25</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="text">
@@ -201,14 +201,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_8">
+          <widget class="QPushButton" name="pushButtonVipPay">
            <property name="text">
             <string>会员</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_7">
+          <widget class="QPushButton" name="pushButtonPay">
            <property name="text">
             <string>结账</string>
            </property>

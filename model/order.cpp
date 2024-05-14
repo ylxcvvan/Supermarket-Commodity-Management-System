@@ -1,13 +1,20 @@
 #include "order.h"
 
-Order::Order() {}
+Order::Order(int oid, Glist gl, double tp, int uid, state st, QDateTime ti):
+    OrderId(oid),
+    GoodsList(gl),
+    OrderStage(st),
+    TotalPrice(tp),
+    UserId(uid),
+    OrderTime(ti)
+{}
 
-const QString &Order::getOrderId()
+const int &Order::getOrderId()
 {
     return this->OrderId;
 }
 
-const QVector<QPair<Commodity,double>>& Order::getGoodsList()
+const Order::Glist &Order::getGoodsList()
 {
     return GoodsList;
 }
@@ -23,7 +30,7 @@ double Order::getTotalPrice()
     return TotalPrice;
 }
 
-const QString &Order::getUserId()
+const int &Order::getUserId()
 {
     return UserId;
 }

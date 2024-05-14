@@ -6,23 +6,25 @@
 #include"commodity.h"
 class Order
 {
+    using Glist=QVector<QPair<Commodity,double>>;
 private:
     enum state{Pending=0,cancelled=1,Completed=2};
-    QString OrderId;
-    QVector<QPair<Commodity,double>>GoodsList;
+    int OrderId;
+    //商品，商品数量，总价格计算可得
+    Glist GoodsList;
     state OrderStage;
     double TotalPrice;
-    QString UserId;
+    int UserId;
     QDateTime OrderTime;
 
 public:
-    Order();
+    Order(int oid,Glist gl,double tp,int uid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
 
-    const QString& getOrderId();
-    const QVector<QPair<Commodity,double>>& getGoodsList();
+    const int& getOrderId();
+    const Glist& getGoodsList();
     state getOrderStage();
     double getTotalPrice();
-    const QString& getUserId();
+    const int& getUserId();
     const QDateTime& getOrderTime();
 
     void setOrderStage(Order::state newOrderStage);

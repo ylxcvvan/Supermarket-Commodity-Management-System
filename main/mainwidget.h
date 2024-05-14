@@ -2,9 +2,9 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
-#include "pagemain.h"
-#include "pageconfig.h"
-#include "pagehelp.h"
+#include "view/page/pagemain.h"
+#include "view/page/pageconfig.h"
+#include "view/page/pagehelp.h"
 #include <QtSql/QSqlDatabase>
 #include<QDebug>
 QT_BEGIN_NAMESPACE

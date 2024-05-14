@@ -1,6 +1,7 @@
 #include "commodity.h"
 
-Commodity::Commodity() {}
+Commodity::Commodity(QString na,double p,double cp,QDate sbt,QString de)
+    :Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de){}
 
 const QString &Commodity::getName()
 {

@@ -17,35 +17,14 @@ include($$PWD/controller/database/database.pri)
 include($$PWD/controller/services/services.pri)
 
 SOURCES += \
-    main.cpp \
-    mainwidget.cpp \
-    pageconfig.cpp \
-    pagehelp.cpp \
-    pagemain.cpp \
-    widgetcashiermanager.cpp \
-    widgetinventorymanager.cpp \
-    widgetordermanager.cpp \
-    widgetvipmanager.cpp
 
-HEADERS += \\
-    mainwidget.h \
-    pageconfig.h \
-    pagehelp.h \
-    pagemain.h \
-    widgetcashiermanager.h \
-    widgetinventorymanager.h \
-    widgetordermanager.h \
-    widgetvipmanager.h
+
+
+HEADERS += \
+
 
 FORMS += \
-    mainwidget.ui \
-    pageconfig.ui \
-    pagehelp.ui \
-    pagemain.ui \
-    widgetcashiermanager.ui \
-    widgetinventorymanager.ui \
-    widgetordermanager.ui \
-    widgetvipmanager.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

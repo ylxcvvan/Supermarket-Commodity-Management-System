@@ -5,16 +5,15 @@
 class Commodity
 {
 private:
+    QString Id;
     QString Name;
     double Price;
     double CostPrice;
-    QString Id;
     QDate sellByTime;
     QString Details;
 
 public:
-    Commodity();
-
+    Commodity(QString na="未命名",double p=0,double cp=0,QDate sbt=QDate(),QString Details="该商品没有描述");
     //获取商品属性
     const QString& getName();
     const double& getPrice();

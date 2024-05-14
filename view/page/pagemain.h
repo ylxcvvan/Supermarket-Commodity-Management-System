@@ -2,10 +2,10 @@
 #define PAGEMAIN_H
 
 #include <QWidget>
-#include"widgetcashiermanager.h"
-#include"widgetinventorymanager.h"
-#include"widgetordermanager.h"
-#include"widgetvipmanager.h"
+#include"view/manager/widgetcashiermanager.h"
+#include"view/manager/widgetinventorymanager.h"
+#include"view/manager/widgetordermanager.h"
+#include"view/manager/widgetvipmanager.h"
 namespace Ui {
 class PageMain;
 }

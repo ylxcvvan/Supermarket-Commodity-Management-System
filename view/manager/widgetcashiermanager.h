@@ -6,6 +6,7 @@
 #include<QTableView>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include "controller/services/goodslistservice.h"
 namespace Ui {
 class WidgetCashierManager;
 }
@@ -20,8 +21,8 @@ public:
 
 private:
     Ui::WidgetCashierManager *ui;
-    QStandardItemModel* cashier_standard_model;
-    QTableView* cashier_table_view;
+    GoodsListService *m_GoodsListService;
+    GoodsList *m_ModelGoodsList;
 };
 
 #endif // WIDGETCASHIERMANAGER_H

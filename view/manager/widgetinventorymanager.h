@@ -2,7 +2,11 @@
 #define WIDGETINVENTORYMANAGER_H
 
 #include <QWidget>
-
+#include<QStandardItem>
+#include<QTableView>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include "controller/services/inventorytableservice.h".h"
 namespace Ui {
 class WidgetInventoryManager;
 }
