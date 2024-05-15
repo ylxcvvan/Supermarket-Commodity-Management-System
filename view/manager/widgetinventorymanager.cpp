@@ -7,7 +7,14 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     ,p_InventoryTableService(new InventoryTableService)
 {
     ui->setupUi(this);
+
     p_InventoryTableService->setITableArray(SqlInventory::QueryInventory());
+    //设置表样式
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    //设置当前模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
 }
 
@@ -22,6 +29,5 @@ WidgetInventoryManager::~WidgetInventoryManager()
 void WidgetInventoryManager::on_pushButtonSelect_clicked()
 {
 
-    ui->tableView->update();
 }
 
