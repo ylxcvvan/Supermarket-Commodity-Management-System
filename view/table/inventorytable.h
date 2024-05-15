@@ -3,6 +3,8 @@
 
 #include <QAbstractTableModel>
 #include"model/commodity.h"
+#include "qcombobox.h"
+#include <QStyledItemDelegate>
 class InventoryTable : public QAbstractTableModel
 {
     Q_OBJECT
@@ -38,10 +40,39 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    //传入新的itable参数构造新的itablei
 
+
+
+    //传入新的itable参数构造新的itablei
     void setITable(QVector<QVector<QVariant>>&& newtable);
+private:
+    //setdata时，检查输入是否合理
+    bool CanConvert(const QVariant& value,int col);
+    //给出更改后的结果
+    QVariant TypeConvert(const QVariant& value,int col);
+
 
 };
+
+
+
+class ComboBoxDelegate : public QStyledItemDelegate
+{
+private:
+    QVector<QString>ComBoBoxCategory;
+public:
+    ComboBoxDelegate(QObject *parent = nullptr);
+
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+
+    void setEditorData(QWidget *editor, const QModelIndex &index) const override;
+
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
+
+    void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+
+    QVector<QString> getComBoBoxCategory();
+};
+
 
 #endif // INVENTORYTABLE_H

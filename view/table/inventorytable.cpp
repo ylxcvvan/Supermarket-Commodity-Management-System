@@ -4,7 +4,7 @@
 InventoryTable::InventoryTable(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    titles={"库存单号","商品编号","商品名称","商品类别","商品描述","商品数量","商品售价","商品进价","商品保质期"};
+    titles={"库存单号","商品编号","商品名称","   商品类别   ","商品描述","商品数量","商品售价","商品进价","商品保质期"};
 }
 
 QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, int role) const
@@ -43,13 +43,28 @@ QVariant InventoryTable::data(const QModelIndex &index, int role) const
 
 bool InventoryTable::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (data(index, role) != value) {
-        // FIXME: Implement me!
+    if (!index.isValid())
+        return false;
+
+    if (role == Qt::EditRole) {
+        // 判断新值与旧值是否相同
+        if (CanConvert(value,index.column()))
+            return false;
+
+        // 修改底层数组中的数据
+        itable[index.row()][index.column()] = value;
+
+        // 发出数据变化信号，通知视图更新
         emit dataChanged(index, index, {role});
+
+        // TODO: 更新数据库中的数据
+        // 在这里调用更新数据库的函数，将新值写入数据库中
+        // updateDatabase(row, col, newValue);
         return true;
     }
     return false;
 }
+
 
 Qt::ItemFlags InventoryTable::flags(const QModelIndex &index) const
 {
@@ -76,7 +91,66 @@ bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
 
 void InventoryTable::setITable(QVector<QVector<QVariant>> &&newtable)
 {
+    beginResetModel(); // 开始重置模型，通知视图整体更新
     itable=std::move(newtable);
+    endResetModel();
 
 }
 
+bool InventoryTable::CanConvert(const QVariant &value, int col)
+{
+    if(col==0||col==1)
+        return false;
+    return true;
+}
+
+
+ComboBoxDelegate::ComboBoxDelegate(QObject *parent) : QStyledItemDelegate(parent)
+{
+    ComBoBoxCategory={"食品类","日用品类","服装类","家电类","数码产品类","家具类","办公用具类","运动健身类","图书音像类","礼品类","其他类","未分类"};
+}
+
+QWidget *ComboBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (!index.isValid())
+        return QStyledItemDelegate::createEditor(parent, option, index);
+
+    QComboBox *editor = new QComboBox(parent);
+    // 在此处设置下拉框的选项
+    for(auto&s:ComBoBoxCategory)
+    {
+        editor->addItem(s);
+    }
+    editor->setMaxVisibleItems(1e9);
+    return editor;
+}
+
+void ComboBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
+{
+    if (!index.isValid())
+        return;
+
+    QString value = index.model()->data(index, Qt::EditRole).toString();
+    QComboBox *comboBox = static_cast<QComboBox *>(editor);
+    comboBox->setCurrentText(value);
+}
+
+void ComboBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
+{
+    if (!index.isValid())
+        return;
+
+    QComboBox *comboBox = static_cast<QComboBox *>(editor);
+    QString value = comboBox->currentText();
+    model->setData(index, value, Qt::EditRole);
+}
+
+void ComboBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+     editor->setGeometry(option.rect);
+}
+
+QVector<QString> ComboBoxDelegate::getComBoBoxCategory()
+{
+    return ComBoBoxCategory;
+}
