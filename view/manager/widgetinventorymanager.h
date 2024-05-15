@@ -18,10 +18,11 @@ class WidgetInventoryManager : public QWidget
 public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
+    void loadModel();
 
 private slots:
 
-
+    void sortByColumn(int column);
     void on_pushButtonSelect_clicked();
 
 private:
