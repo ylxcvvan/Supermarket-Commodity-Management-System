@@ -4,7 +4,7 @@
 InventoryTable::InventoryTable(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    titles={"库存单号","商品编号","商品名称","商品数量","商品进价","商品描述","商品保质期"};
+    titles={"库存单号","商品编号","商品名称","商品类别","商品描述","商品数量","商品进价","商品保质期"};
 }
 
 QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, int role) const

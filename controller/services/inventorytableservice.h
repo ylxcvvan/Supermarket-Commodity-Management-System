@@ -9,6 +9,7 @@ public:
     ~InventoryTableService();
     InventoryTable* getITable();
     void setITableArray(QVector<QVector<QVariant>>&& newitable);
+    void sortByColumn(int column,Qt::SortOrder order);
 
 private:
     InventoryTable *itable;

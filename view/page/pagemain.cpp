@@ -33,6 +33,7 @@ void PageMain::on_toolButtonCashier_clicked()
 void PageMain::on_toolButtonInventory_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    p_widgetInventory->loadModel();
 }
 
 

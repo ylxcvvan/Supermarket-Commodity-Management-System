@@ -1,10 +1,10 @@
 #include "commodity.h"
 
 Commodity::Commodity(int id,CommodityItem cim, double p, double cp, QDate sbt)
-    :Id(id),Name(cim.getName()),Price(p),CostPrice(cp),sellByTime(sbt),Details(cim.getDetails()){}
+    :Id(id),Name(cim.getName()),Price(p),CostPrice(cp),sellByTime(sbt),Details(cim.getDetails()),Category(cim.getCategory()){}
 
-Commodity::Commodity(int id,QString na,double p,double cp,QDate sbt,QString de)
-    :Id(id),Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de){}
+Commodity::Commodity(int id,QString na,double p,double cp,QDate sbt,QString de,QString ca)
+    :Id(id),Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de),Category(ca){}
 
 const QString &Commodity::getName() const
 {
@@ -36,6 +36,11 @@ const QString &Commodity::getDetails() const
     return this->Details;
 }
 
+QString Commodity::getCategory() const
+{
+    return Category;
+}
+
 bool Commodity::setName(const QString &newName)
 {
     this->Name=newName;
@@ -52,6 +57,11 @@ bool Commodity::setDetails(const QString &newDetails)
 {
     this->Details=newDetails;
     return Details==newDetails;
+}
+
+void Commodity::setCategory(const QString &newcategory)
+{
+    Category=newcategory;
 }
 
 

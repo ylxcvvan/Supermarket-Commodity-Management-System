@@ -1,7 +1,7 @@
 #include "sqlinventory.h"
 #include "controller/database/sqlcommondity.h"
 
-//库存单号","商品编号","商品名称","商品数量","商品进价","商品描述","商品保质期",
+//库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品进价","商品保质期",
 QVector<QVector<QVariant>> SqlInventory::QueryInventory(int id, int cid, double caomunt)
 {
     QString sql="SELECT * FROM inventory_table;";
@@ -15,7 +15,7 @@ QVector<QVector<QVariant>> SqlInventory::QueryInventory(int id, int cid, double 
         //TODO
         Commodity com=SqlCommondity::QueryCommondity(query.value(1).toInt()).front();
 
-        QVector<QVariant> result{query.value(0),com.getId(),com.getName(),query.value(2),com.getcostPrice(),com.getDetails(),com.getSellByTime()};
+        QVector<QVariant> result{query.value(0),com.getId(),com.getName(),com.getCategory(),com.getDetails(),query.value(2),com.getcostPrice(),com.getSellByTime()};
         QueryResult.push_back(result);
     }
     qDebug()<<sql;

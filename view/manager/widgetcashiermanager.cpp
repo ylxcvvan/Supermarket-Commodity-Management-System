@@ -12,6 +12,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     ui->tableView->setModel(p_GoodsListService->getGlist());
 
 
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 }
 
