@@ -1,6 +1,6 @@
 #include "pagemain.h"
 #include "ui_pagemain.h"
-
+#include "controller/database/sqlcommondityitem.h"
 PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TODO
     : QWidget(parent)
     , ui(new Ui::PageMain)
@@ -39,6 +39,9 @@ void PageMain::on_toolButtonInventory_clicked()
 void PageMain::on_toolButtonOrder_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+
+
+    SqlCommondityItem::QueryCommondityItem();
 }
 
 

@@ -1,9 +1,10 @@
 #include "inventorytable.h"
+#include "qdebug.h"
 
 InventoryTable::InventoryTable(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    titles={"库存单号","商品编号","名称名称","商品数量","商品进价","商品描述","商品保质期"};
+    titles={"库存单号","商品编号","商品名称","商品数量","商品进价","商品描述","商品保质期"};
 }
 
 QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, int role) const
@@ -29,12 +30,14 @@ int InventoryTable::columnCount(const QModelIndex &parent) const
 
 QVariant InventoryTable::data(const QModelIndex &index, int role) const
 {
+
     if (!index.isValid())
         return QVariant();
     if(role==Qt::DisplayRole)
     {
         return itable[index.row()][index.column()];
     }
+
     return QVariant();
 }
 
@@ -69,5 +72,11 @@ bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
     //TODO
     endRemoveRows();
     return true;
+}
+
+void InventoryTable::setITable(QVector<QVector<QVariant>> &&newtable)
+{
+    itable=std::move(newtable);
+
 }
 

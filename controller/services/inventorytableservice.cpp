@@ -13,3 +13,8 @@ InventoryTable *InventoryTableService::getITable()
 {
     return itable;
 }
+
+void InventoryTableService::setITableArray(QVector<QVector<QVariant>>&& newitable)
+{
+    this->itable->setITable(std::forward<QVector<QVector<QVariant>>&&>(newitable));
+}

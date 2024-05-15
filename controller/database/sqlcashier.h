@@ -1,10 +1,10 @@
 #ifndef SQLCASHIER_H
 #define SQLCASHIER_H
-
-class SqlCashier
+#include <QSqlQuery>
+#include <QVariant>
+namespace SqlCashier
 {
-public:
-    SqlCashier();
+
 };
 
 #endif // SQLCASHIER_H

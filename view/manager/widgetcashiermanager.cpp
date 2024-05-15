@@ -4,13 +4,12 @@
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetCashierManager)
-    ,m_GoodsListService(new GoodsListService)
-    ,m_ModelGoodsList(m_GoodsListService->getGlist())
+    ,p_GoodsListService(new GoodsListService)
 {
     ui->setupUi(this);
 
     // 创建 QTableView
-    ui->tableView->setModel(m_ModelGoodsList);
+    ui->tableView->setModel(p_GoodsListService->getGlist());
 
 
 

@@ -1,10 +1,10 @@
 #include "commodity.h"
 
-Commodity::Commodity(CommodityItem cim, double p, double cp, QDate sbt)
-    :Name(cim.getName()),Price(p),CostPrice(cp),sellByTime(sbt),Details(cim.getDetails()){}
+Commodity::Commodity(int id,CommodityItem cim, double p, double cp, QDate sbt)
+    :Id(id),Name(cim.getName()),Price(p),CostPrice(cp),sellByTime(sbt),Details(cim.getDetails()){}
 
-Commodity::Commodity(QString na,double p,double cp,QDate sbt,QString de)
-    :Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de){}
+Commodity::Commodity(int id,QString na,double p,double cp,QDate sbt,QString de)
+    :Id(id),Name(na),Price(p),CostPrice(cp),sellByTime(sbt),Details(de){}
 
 const QString &Commodity::getName() const
 {
@@ -21,7 +21,7 @@ const double &Commodity::getcostPrice() const
     return this->CostPrice;
 }
 
-const QString &Commodity::getId() const
+int Commodity::getId() const
 {
     return this->Id;
 }

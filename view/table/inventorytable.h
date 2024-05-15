@@ -9,7 +9,7 @@ class InventoryTable : public QAbstractTableModel
 private:
 
     QVector<QString>titles;
-    //itable[0]=库存单号id,1=物品id,2=物品名称，3=物品数量,4=物品进价,5=物品描述,6=物品过期时间,
+    //库存单号","商品编号","商品名称","商品数量","商品进价","商品描述","商品保质期",
     QVector<QVector<QVariant>>itable;
 
 public:
@@ -38,8 +38,9 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    //传入新的itable参数构造新的itable
-    void setITable(QVector<int>id,QVector<Commodity>goods,QVector<double>amount);
+    //传入新的itable参数构造新的itablei
+
+    void setITable(QVector<QVector<QVariant>>&& newtable);
 
 };
 

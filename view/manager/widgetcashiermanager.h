@@ -21,8 +21,8 @@ public:
 
 private:
     Ui::WidgetCashierManager *ui;
-    GoodsListService *m_GoodsListService;
-    GoodsList *m_ModelGoodsList;
+    GoodsListService *p_GoodsListService;
+
 };
 
 #endif // WIDGETCASHIERMANAGER_H

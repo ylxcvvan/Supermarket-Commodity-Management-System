@@ -6,6 +6,7 @@
 #include<QTableView>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include"controller/services/inventorytableservice.h"
 namespace Ui {
 class WidgetInventoryManager;
 }
@@ -18,8 +19,15 @@ public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
 
+private slots:
+
+
+    void on_pushButtonSelect_clicked();
+
 private:
     Ui::WidgetInventoryManager *ui;
+
+    InventoryTableService *p_InventoryTableService;
 };
 
 #endif // WIDGETINVENTORYMANAGER_H

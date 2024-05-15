@@ -1,10 +1,10 @@
 #ifndef SQLORDERITEM_H
 #define SQLORDERITEM_H
-
-class SqlOrderItem
+#include <QSqlQuery>
+#include <QVariant>
+namespace SqlOrderItem
 {
-public:
-    SqlOrderItem();
+
 };
 
 #endif // SQLORDERITEM_H

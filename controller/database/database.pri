@@ -1,6 +1,5 @@
 HEADERS += \
     $$PWD/mysql.h \
-    $$PWD/mysqloperate.h \
     $$PWD/sqladmin.h \
     $$PWD/sqlcashier.h \
     $$PWD/sqlcommondity.h \
@@ -12,7 +11,6 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/mysql.cpp \
-    $$PWD/mysqloperate.cpp \
     $$PWD/sqladmin.cpp \
     $$PWD/sqlcashier.cpp \
     $$PWD/sqlcommondity.cpp \

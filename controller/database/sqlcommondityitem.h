@@ -1,14 +1,16 @@
 #ifndef SQLCOMMONDITYITEM_H
 #define SQLCOMMONDITYITEM_H
-#include"mysqloperate.h"
+#include"mysql.h"
 #include"model/commodityitem.h"
+#include <QSqlQuery>
+#include <QVariant>
 
-class SqlCommondityItem
-{
-public:
-    SqlCommondityItem();
-    //查询商品的itemid,
-    QVector<CommodityItem>& QueryCommondityItem();
+namespace SqlCommondityItem{
+
+    QVector<CommodityItem> QueryCommondityItem(int id=-1,QString name="",QString details="");
+
 };
+
+
 
 #endif // SQLCOMMONDITYITEM_H

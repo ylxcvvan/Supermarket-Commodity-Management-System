@@ -25,28 +25,28 @@
            <item row="0" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="pushButtonCommodityName">
                <property name="text">
                 <string>商品名称：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="CommodityName"/>
+              <widget class="QLineEdit" name="LineEditCommodityName"/>
              </item>
             </layout>
            </item>
            <item row="0" column="1">
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="pushButtonSellByTime">
                <property name="text">
                 <string>过期时间：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_7">
+              <widget class="QLineEdit" name="lineEditSellByTime">
                <property name="statusTip">
                 <string/>
                </property>
@@ -62,7 +62,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="pushButtonInPutExcel">
                <property name="text">
                 <string>导入</string>
                </property>
@@ -73,28 +73,28 @@
            <item row="1" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="pushButtonCommodityId">
                <property name="text">
                 <string>商品编号：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="CommodityId"/>
+              <widget class="QLineEdit" name="LineEditCommodityId"/>
              </item>
             </layout>
            </item>
            <item row="1" column="1">
             <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="pushButtonDetails">
                <property name="text">
-                <string>商品描述</string>
+                <string>商品描述：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_8">
+              <widget class="QLineEdit" name="lineEditDetails">
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
@@ -104,9 +104,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="pushButtonSelect">
                <property name="text">
-                <string>过期查询</string>
+                <string>查询</string>
                </property>
               </widget>
              </item>
@@ -115,14 +115,14 @@
            <item row="2" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QPushButton" name="pushButton_7">
+              <widget class="QPushButton" name="pushButtonCostPrice">
                <property name="text">
                 <string>商品进价：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_5"/>
+              <widget class="QLineEdit" name="lineEditMinCostPrice"/>
              </item>
              <item>
               <widget class="QLabel" name="label_6">
@@ -132,21 +132,21 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_6"/>
+              <widget class="QLineEdit" name="lineEditMaxCostPrice"/>
              </item>
             </layout>
            </item>
            <item row="2" column="1">
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QPushButton" name="pushButton_8">
+              <widget class="QPushButton" name="pushButtonPrice">
                <property name="text">
                 <string>商品售价：</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_3"/>
+              <widget class="QLineEdit" name="lineEditMinPrice"/>
              </item>
              <item>
               <widget class="QLabel" name="label_4">
@@ -156,10 +156,10 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_4"/>
+              <widget class="QLineEdit" name="lineEditMaxPrice"/>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="pushButtonOutPutExcel">
                <property name="text">
                 <string>导出为excel</string>
                </property>
@@ -175,7 +175,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QListView" name="listView"/>
+        <widget class="QTableView" name="tableView"/>
        </item>
       </layout>
      </item>

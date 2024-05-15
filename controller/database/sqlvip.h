@@ -1,10 +1,10 @@
 #ifndef SQLVIP_H
 #define SQLVIP_H
-
-class SqlVip
+#include <QSqlQuery>
+#include <QVariant>
+namespace SqlVip
 {
-public:
-    SqlVip();
+
 };
 
 #endif // SQLVIP_H

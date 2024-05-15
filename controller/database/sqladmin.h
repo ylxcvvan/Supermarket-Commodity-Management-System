@@ -1,10 +1,11 @@
 #ifndef SQLADMIN_H
 #define SQLADMIN_H
-
-class SqlAdmin
+#include <QSqlQuery>
+#include <QVariant>
+namespace SqlAdmin
 {
-public:
-    SqlAdmin();
+
+
 };
 
 #endif // SQLADMIN_H
