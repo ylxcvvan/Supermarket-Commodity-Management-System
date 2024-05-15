@@ -8,22 +8,25 @@ QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname
                                                , double minprice, double maxprice, double mincostprice, double maxcostprice
                                                , double minamount,double maxamount)
 {
-    QString sql="SELECT * FROM inventory_table WHERE";
+
+
+    QString sql = "SELECT * FROM inventory_table WHERE";
     if(id != -1){
-        sql+=QString(" Id = %1 AND ").arg(id);
+        sql += QString(" Id = %1 AND").arg(id);
     }
-
-
-    sql = sql.left(sql.length() - 5)+";";
-
+    if(cid != -1){
+        sql += QString(" CommodityId = %1 AND ").arg(cid);
+    }
+    if(minamount < maxamount){
+        sql += QString(" CommodityAmount BETWEEN %1 AND %2 AND ").arg(minamount).arg(maxamount);
+    }
     QSqlQuery query=MySql::getInstance().query(sql);
+
     QVector<QVector<QVariant>> QueryResult;
 
     while (query.next())
     {
-        //TODO
-
-        Commodity com=SqlCommondity::Query(query.value(1).toInt()).front();
+        QVector<Commodity> commodities  =SqlCommondity::Query(cid,-1,sellbytime,minprice,maxprice,mincostprice,maxcostprice,cname,Details,category);
 
         QVector<QVariant> result{query.value(0),com.getId(),com.getName(),com.getCategory(),com.getDetails(),query.value(2),com.getPrice(),com.getcostPrice(),com.getSellByTime()};
         QueryResult.push_back(result);

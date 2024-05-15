@@ -1,7 +1,7 @@
 #include "sqlcommondity.h"
 
-QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name, QString details, QString category,
-                                        double minprice, double maxprice, double mincostprice, double maxcostprice)
+QVector<Commodity> SqlCommondity::Query(int id,int iid,QDate sbt,double minprice,double maxprice,double mincostprice,double maxcostprice,
+                                         QString name,QString details,QString category)
 {
     QString sql="SELECT * FROM commodity_table WHERE ";
     if(id!=-1){
@@ -19,9 +19,6 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     if(!sbt.isNull()){
         sql+=QString(" SellByTime <'%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
-    if(details.size()){
-
-    }
 
     sql = sql.left(sql.length() - 5)+";";
 
@@ -30,7 +27,7 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
 
     while (query.next())
     {
-         QVector<CommodityItem> res=SqlCommondityItem::Query(query.value(1).toInt(),name,details,category);
+        QVector<CommodityItem> res = SqlCommondityItem::Query(query.value(1).toInt(),name,details,category);
         Commodity com(query.value(0).toInt(),res.front(),query.value(2).toDouble(),query.value(3).toDouble(),query.value(4).toDate());
         QueryResult.push_back(com);
     }
