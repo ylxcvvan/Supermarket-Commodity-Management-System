@@ -57,6 +57,7 @@ void WidgetInventoryManager::on_pushButtonSelect_clicked()
 {
     //进行查询并更新model
     //TODO
+    p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,camount,cname,details,sellbytime,minprice,maxprice,mincostprice,maxcostprice));
 
 
 }
