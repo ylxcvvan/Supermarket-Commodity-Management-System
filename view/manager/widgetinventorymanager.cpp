@@ -57,6 +57,9 @@ void WidgetInventoryManager::on_pushButtonSelect_clicked()
 {
     //进行查询并更新model
     //TODO
+    int id=-1;
+    int cid=SearchCommodityId?ui->LineEditCommodityId->text().toInt():-1;
+    int camount=-1;
     p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,camount,cname,details,sellbytime,minprice,maxprice,mincostprice,maxcostprice));
 
 
