@@ -2,6 +2,7 @@
 #include<QDebug>
 
 
+
 QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString details,QString category)
 {
     QString sql = "SELECT * FROM commodityItem_table WHERE";

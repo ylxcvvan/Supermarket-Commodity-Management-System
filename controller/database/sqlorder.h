@@ -4,8 +4,10 @@
 #include <QVariant>
 namespace SqlOrder
 {
-
-
+    bool Query();
+    bool insert();
+    bool modify();
+    bool del();
 };
 
 #endif // SQLORDER_H
