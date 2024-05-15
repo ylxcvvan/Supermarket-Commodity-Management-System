@@ -25,10 +25,30 @@ private slots:
     void sortByColumn(int column);
     void on_pushButtonSelect_clicked();
 
+    void on_pushButtonCommodityName_clicked(bool checked);
+
+    void on_pushButtonCommodityId_clicked(bool checked);
+
+    void on_pushButtonSellByTime_clicked(bool checked);
+
+    void on_pushButtonDetails_clicked(bool checked);
+
+    void on_pushButtonCostPrice_clicked(bool checked);
+
+    void on_pushButtonPrice_clicked(bool checked);
+
 private:
     Ui::WidgetInventoryManager *ui;
 
     InventoryTableService *p_InventoryTableService;
+
+    //搜索时的勾选项
+    bool SearchName;
+    bool SearchSellByTime;
+    bool SearchCommodityId;
+    bool SearchDetails;
+    bool SearchPrice;
+    bool SearchCostPrice;
 };
 
 #endif // WIDGETINVENTORYMANAGER_H

@@ -1,8 +1,10 @@
 #include "sqlinventory.h"
 #include "controller/database/sqlcommondity.h"
 
-//库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品进价","商品保质期",
-QVector<QVector<QVariant>> SqlInventory::QueryInventory(int id, int cid, double caomunt)
+//库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
+QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, double camount, QString cname
+                                               , QString category, QString Details, QDate sellbytime
+                                               , double minprice, double maxprice, double mincostprice, double maxcostprice)
 {
     QString sql="SELECT * FROM inventory_table;";
     //TODO
@@ -13,9 +15,9 @@ QVector<QVector<QVariant>> SqlInventory::QueryInventory(int id, int cid, double 
     while (query.next())
     {
         //TODO
-        Commodity com=SqlCommondity::QueryCommondity(query.value(1).toInt()).front();
+        Commodity com=SqlCommondity::Query(query.value(1).toInt()).front();
 
-        QVector<QVariant> result{query.value(0),com.getId(),com.getName(),com.getCategory(),com.getDetails(),query.value(2),com.getcostPrice(),com.getSellByTime()};
+        QVector<QVariant> result{query.value(0),com.getId(),com.getName(),com.getCategory(),com.getDetails(),query.value(2),com.getPrice(),com.getcostPrice(),com.getSellByTime()};
         QueryResult.push_back(result);
     }
     qDebug()<<sql;

@@ -2,7 +2,7 @@
 #include<QDebug>
 
 
-QVector<CommodityItem> SqlCommondityItem::QueryCommondityItem(int id, QString name, QString details,QString category)
+QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString details,QString category)
 {
     QString sql = "SELECT * FROM commodityItem_table WHERE";
     if (id != -1) {
@@ -15,7 +15,7 @@ QVector<CommodityItem> SqlCommondityItem::QueryCommondityItem(int id, QString na
         sql += "Details LIKE "+details+" AND ";
     }
     if(!category.isEmpty()){
-        sql+="details LIKE "+details+" AND ";
+        sql+="Category LIKE "+details+" AND ";
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
