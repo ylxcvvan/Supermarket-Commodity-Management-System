@@ -3,20 +3,16 @@
 
 
 //库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
-QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, double camount, QString cname
+QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname
                                                , QString category, QString Details, QDate sellbytime
-                                               , double minprice, double maxprice, double mincostprice, double maxcostprice)
+                                               , double minprice, double maxprice, double mincostprice, double maxcostprice
+                                               , double minamount,double maxamount)
 {
     QString sql="SELECT * FROM inventory_table WHERE";
     if(id != -1){
         sql+=QString(" Id = %1 AND ").arg(id);
     }
-    if(cid!=-1){
-        sql+=QString("CommodityId = %1 AND ").arg(cid);
-    }
-    if(camount != -1){
-         sql+=QString("CommodityAmount = %1 AND ").arg(camount);
-    }
+
 
     sql = sql.left(sql.length() - 5)+";";
 

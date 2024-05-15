@@ -19,7 +19,9 @@ public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
     void loadModel();
-
+private:
+    void InitLineEditInputMode();
+    void InitBoolSearchState();
 private slots:
 
     void sortByColumn(int column);
@@ -37,6 +39,14 @@ private slots:
 
     void on_pushButtonPrice_clicked(bool checked);
 
+    void on_pushButtonAmount_clicked(bool checked);
+
+
+
+    void on_pushButtonInventoryId_clicked(bool checked);
+
+    void on_pushButtonCategory_clicked(bool checked);
+
 private:
     Ui::WidgetInventoryManager *ui;
 
@@ -49,6 +59,9 @@ private:
     bool SearchDetails;
     bool SearchPrice;
     bool SearchCostPrice;
+    bool SearchInventoryId;
+    bool SearchAmount;
+    bool SearchCategory;
 };
 
 #endif // WIDGETINVENTORYMANAGER_H

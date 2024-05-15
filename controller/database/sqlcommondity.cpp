@@ -9,12 +9,7 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     if(iid !=-1){
         sql+=QString(" ItemId = %1 AND ").arg(iid);
     }
-    if(p != -1){
-        sql+=QString(" Price = %1 AND ").arg(p);
-    }
-    if(cp != -1 ){
-        sql+=QString(" CostPrice = %1 AND ").arg(cp);
-    }
+
     if(!sbt.isNull()){
         sql+=QString(" SellByTime = '%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
