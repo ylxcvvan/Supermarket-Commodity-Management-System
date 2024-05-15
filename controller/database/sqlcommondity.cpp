@@ -1,6 +1,6 @@
 #include "sqlcommondity.h"
 
-
+QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name, QString details, QString category, double minprice, double maxprice, double mincostprice, double maxcostprice)
 {
     QString sql="SELECT * FROM commodity_table WHERE ";
     if(id!=-1){

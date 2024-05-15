@@ -42,7 +42,7 @@ WidgetInventoryManager::~WidgetInventoryManager()
 void WidgetInventoryManager::loadModel()
 {
     //进行查询
-    int id=-1;
+    int id=SearchInventoryId?ui->lineEditInventoryId->text().toInt():-1;
     int cid=SearchCommodityId?ui->LineEditCommodityId->text().toInt():-1;
     QString cname=SearchName?ui->LineEditCommodityName->text():"";
     QString category=SearchCategory?ui->comboBoxCategory->currentText():"";
@@ -126,12 +126,12 @@ void WidgetInventoryManager::on_pushButtonDetails_clicked(bool checked)
 
 void WidgetInventoryManager::on_pushButtonCostPrice_clicked(bool checked)
 {
-    SearchPrice=checked;
+    SearchCostPrice=checked;
 }
 
 void WidgetInventoryManager::on_pushButtonPrice_clicked(bool checked)
 {
-    SearchCostPrice=checked;
+    SearchPrice=checked;
 }
 
 void WidgetInventoryManager::on_pushButtonAmount_clicked(bool checked)

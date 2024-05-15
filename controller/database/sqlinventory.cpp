@@ -3,12 +3,11 @@
 
 
 //库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
-QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname
-
+QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname ,QString category,QString details,QDate sellbytime
                                                , double minprice, double maxprice, double mincostprice, double maxcostprice
                                                , double minamount,double maxamount)
 {
-
+    QString sql = "SELECT * FROM inventory_table WHERE ";
     if(id != -1){
         sql+=QString(" Id = %1 AND ").arg(id);
     }
@@ -18,7 +17,6 @@ QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname
     if(minamount < maxamount){
         sql += QString(" CommodityAmount BETWEEN %1 AND %2 AND ").arg(minamount).arg(maxamount);
     }
-    QSqlQuery query=MySql::getInstance().query(sql);
 
 
     sql = sql.left(sql.length() - 5)+";";
