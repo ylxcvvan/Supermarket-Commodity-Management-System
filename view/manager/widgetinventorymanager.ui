@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>802</width>
     <height>497</height>
    </rect>
   </property>
@@ -74,61 +74,6 @@
            <property name="maxVisibleItems">
             <number>999</number>
            </property>
-           <item>
-            <property name="text">
-             <string>食品类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>日用品类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>服装类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>家电类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>数码产品类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>家具类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>办公用品类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>运动健身类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>图书音像类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>礼品类</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>其他类</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>

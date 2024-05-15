@@ -13,7 +13,23 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
+    //设置“商品类别”下拉框
+    for(auto &s:p_InventoryTableService->getComboBoxDelegate()->getComBoBoxCategory())
+    {
+        ui->comboBoxCategory->addItem(s);
+    }
+
+    //设置单击表头排序
     connect(ui->tableView->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
+
+    //设置商品类型的comboBox
+    ui->tableView->setItemDelegateForColumn(3,p_InventoryTableService->getComboBoxDelegate());
+
+    //设置可以编辑
+    ui->tableView->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+
     InitBoolSearchState();
     InitLineEditInputMode();
 
@@ -42,7 +58,6 @@ void WidgetInventoryManager::loadModel()
         ui->lineEditSellByTime->setText("2099-12-31"); // 设置为当前日期
         return;
     }
-
     double minprice=SearchPrice?ui->lineEditMinPrice->text().toDouble():-1;
     double maxprice=SearchPrice?ui->lineEditMaxPrice->text().toDouble():1e10;
     double mincostprice=SearchCostPrice?ui->lineEditMinCostPrice->text().toDouble():-1;
@@ -55,6 +70,7 @@ void WidgetInventoryManager::loadModel()
 
     //设置当前模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
+    ui->tableView->update();
     for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
         ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }

@@ -41,8 +41,6 @@ private slots:
 
     void on_pushButtonAmount_clicked(bool checked);
 
-
-
     void on_pushButtonInventoryId_clicked(bool checked);
 
     void on_pushButtonCategory_clicked(bool checked);

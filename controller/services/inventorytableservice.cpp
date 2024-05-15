@@ -1,17 +1,25 @@
 #include "inventorytableservice.h"
 
 InventoryTableService::InventoryTableService()
-    :itable(new InventoryTable)
-{}
+    :itable(new InventoryTable),combodelegate(new ComboBoxDelegate)
+{
+
+}
 
 InventoryTableService::~InventoryTableService()
 {
     delete itable;
+    delete combodelegate;
 }
 
 InventoryTable *InventoryTableService::getITable()
 {
     return itable;
+}
+
+ComboBoxDelegate *InventoryTableService::getComboBoxDelegate()
+{
+    return combodelegate;
 }
 
 void InventoryTableService::setITableArray(QVector<QVector<QVariant>>&& newitable)
