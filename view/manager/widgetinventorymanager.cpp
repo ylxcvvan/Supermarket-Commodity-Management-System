@@ -1,6 +1,6 @@
 #include "widgetinventorymanager.h"
 #include "ui_widgetinventorymanager.h"
-
+#include<QMessageBox>
 WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetInventoryManager)
@@ -12,9 +12,10 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     ui->tableView->setCornerButtonEnabled(false);
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    // 设置表头为可变长度，并且拉伸填满表格
 
     connect(ui->tableView->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
+    InitBoolSearchState();
+    InitLineEditInputMode();
 
 }
 WidgetInventoryManager::~WidgetInventoryManager()
@@ -24,8 +25,35 @@ WidgetInventoryManager::~WidgetInventoryManager()
 
 void WidgetInventoryManager::loadModel()
 {
+    //进行查询
+    int id=-1;
+    int cid=SearchCommodityId?ui->LineEditCommodityId->text().toInt():-1;
+    QString cname=SearchName?ui->LineEditCommodityName->text():"";
+    QString category=SearchCategory?ui->comboBoxCategory->currentText():"";
+    QString details=SearchDetails?ui->lineEditDetails->text():"";
+    QDate sellbytime=SearchSellByTime?QDate::fromString(ui->lineEditSellByTime->text(),"yyyy-MM-dd"):QDate();
+    if (!sellbytime.isValid()&&SearchSellByTime) {
+        // 处理有效的日期
+        // 提示用户输入的日期无效
+        QMessageBox::warning(this, "Invalid Date", "Please enter a valid date in the format yyyy-MM-dd.");
+        // 清空文本框或者设置默认日期
+        ui->lineEditSellByTime->clear(); // 清空文本框
+        // 或者设置默认日期
+        ui->lineEditSellByTime->setText("2099-12-31"); // 设置为当前日期
+        return;
+    }
+
+    double minprice=SearchPrice?ui->lineEditMinPrice->text().toDouble():-1;
+    double maxprice=SearchPrice?ui->lineEditMaxPrice->text().toDouble():1e10;
+    double mincostprice=SearchCostPrice?ui->lineEditMinCostPrice->text().toDouble():-1;
+    double maxcostprice=SearchCostPrice?ui->lineEditMaxCostPrice->text().toDouble():1e10;
+    double minamount=SearchAmount?ui->lineEditMinAmount->text().toDouble():-1;
+    double maxamount=SearchAmount?ui->lineEditMaxAmount->text().toDouble():1e10;
+    p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,cname,category,details,sellbytime
+                                                                ,minprice,maxprice,mincostprice,maxcostprice
+                                                                ,minamount,maxamount));
+
     //设置当前模型
-    p_InventoryTableService->setITableArray(SqlInventory::Query());
     ui->tableView->setModel(p_InventoryTableService->getITable());
     for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
         ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
@@ -34,6 +62,8 @@ void WidgetInventoryManager::loadModel()
     // 设置商品描述的表头为自适应内容长度，确保内容完全展现
     ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
 }
+
+
 
 void WidgetInventoryManager::sortByColumn(int column)
 {
@@ -55,10 +85,7 @@ void WidgetInventoryManager::sortByColumn(int column)
 
 void WidgetInventoryManager::on_pushButtonSelect_clicked()
 {
-    //进行查询并更新model
-    //TODO
-
-
+    loadModel();
 }
 
 void WidgetInventoryManager::on_pushButtonCommodityName_clicked(bool checked)
@@ -89,5 +116,69 @@ void WidgetInventoryManager::on_pushButtonCostPrice_clicked(bool checked)
 void WidgetInventoryManager::on_pushButtonPrice_clicked(bool checked)
 {
     SearchCostPrice=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonAmount_clicked(bool checked)
+{
+    SearchAmount=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonInventoryId_clicked(bool checked)
+{
+    SearchInventoryId=checked;
+}
+
+
+void WidgetInventoryManager::on_pushButtonCategory_clicked(bool checked)
+{
+    SearchCategory=checked;
+}
+
+void WidgetInventoryManager::InitLineEditInputMode()
+{
+    // 设置商品ID的正则表达式
+    QRegExp rxId("[0-9]{1,10}"); // 1到10位数字
+    QRegExpValidator *validatorId = new QRegExpValidator(rxId, this);
+    ui->LineEditCommodityId->setValidator(validatorId);
+    ui->lineEditInventoryId->setValidator(validatorId);
+    // 设置商品名称的最大长度
+    ui->LineEditCommodityName->setMaxLength(255); // 最大长度为255
+
+    // 设置商品详情的最大长度
+    ui->lineEditDetails->setMaxLength(35565); // 最大长度
+
+    // 设置销售时间的格式
+    ui->lineEditSellByTime->setInputMask("9999-99-99"); // YYYY-MM-DD
+
+    // 设置价格和成本价的浮点数范围
+    QDoubleValidator *validatorPrice = new QDoubleValidator(this);
+    validatorPrice->setRange(0, 1e10, 2); // 价格范围
+    ui->lineEditMinPrice->setValidator(validatorPrice);
+    ui->lineEditMaxPrice->setValidator(validatorPrice);
+
+    QDoubleValidator *validatorCostPrice = new QDoubleValidator(this);
+    validatorCostPrice->setRange(0, 1e10, 2); // 成本价范围
+    ui->lineEditMinCostPrice->setValidator(validatorCostPrice);
+    ui->lineEditMaxCostPrice->setValidator(validatorCostPrice);
+
+    // 设置数量的整数范围
+    QIntValidator *validatorAmount = new QIntValidator(this);
+    validatorAmount->setRange(0, 1e9); // 数量范围
+    ui->lineEditMinAmount->setValidator(validatorAmount);
+    ui->lineEditMaxAmount->setValidator(validatorAmount);
+}
+
+void WidgetInventoryManager::InitBoolSearchState()
+{
+    bool checked=false;
+    SearchName=checked;
+    SearchCommodityId=checked;
+    SearchSellByTime=checked;
+    SearchDetails=checked;
+    SearchPrice=checked;
+    SearchCostPrice=checked;
+    SearchAmount=checked;
+    SearchInventoryId=checked;
+    SearchCategory=checked;
 }
 
