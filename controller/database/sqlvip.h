@@ -4,7 +4,10 @@
 #include <QVariant>
 namespace SqlVip
 {
-
+    bool Query();
+    bool insert();
+    bool modify();
+    bool del();
 };
 
 #endif // SQLVIP_H

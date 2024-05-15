@@ -3,21 +3,20 @@
 QVector<Commodity> SqlCommondity::QueryCommondity(int id, int iid, double p, double cp, QDate sbt)
 {
     QString sql="SELECT * FROM commodity_table WHERE";
-    //TODO
     if(id!=-1){
-        sql+=QObject::tr("Id = %1 AND ").arg(id);
+        sql += QString(" Id = %1 AND ").arg(id);
     }
     if(iid !=-1){
-        sql+=QObject::tr("ItemId = %1 AND ").arg(iid);
+        sql+=QString(" ItemId = %1 AND ").arg(iid);
     }
     if(p != -1){
-        sql+=QObject::tr("Price = %1 AND ").arg(p);
+        sql+=QString(" Price = %1 AND ").arg(p);
     }
     if(cp != -1 ){
-        sql+=QObject::tr("CostPrice = %1 AND ").arg(cp);
+        sql+=QString(" CostPrice = %1 AND ").arg(cp);
     }
-    if(sbt.isNull()){
-        sql+=QObject::tr("SellByTime = %1 AND ").arg(sbt.toString("yyyy-MM-dd"));
+    if(!sbt.isNull()){
+        sql+=QString(" SellByTime = '%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
     sql = sql.left(sql.length() - 5)+";";
 
