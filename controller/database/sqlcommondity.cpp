@@ -1,6 +1,7 @@
 #include "sqlcommondity.h"
 
-QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name, QString details, QString category, double minprice, double maxprice, double mincostprice, double maxcostprice)
+QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name, QString details, QString category,
+                                        double minprice, double maxprice, double mincostprice, double maxcostprice)
 {
     QString sql="SELECT * FROM commodity_table WHERE ";
     if(id!=-1){
@@ -9,15 +10,19 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     if(iid !=-1){
         sql+=QString(" ItemId = %1 AND ").arg(iid);
     }
-    if(p != -1){
-        sql+=QString(" Price = %1 AND ").arg(p);
+    if(minprice <= maxprice){
+        sql+=QString(" Price between %1 AND %2 AND ").arg(minprice).arg(maxprice);
     }
-    if(cp != -1 ){
-        sql+=QString(" CostPrice = %1 AND ").arg(cp);
+    if(mincostprice <= maxcostprice){
+        sql+=QString(" CostPrice between %1 AND %2 AND ").arg(mincostprice).arg(maxcostprice);
     }
     if(!sbt.isNull()){
-        sql+=QString(" SellByTime = '%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
+        sql+=QString(" SellByTime <'%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
+    if(details.size()){
+
+    }
+
     sql = sql.left(sql.length() - 5)+";";
 
     QSqlQuery query=MySql::getInstance().query(sql);
