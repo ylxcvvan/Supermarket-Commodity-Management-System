@@ -1,8 +1,8 @@
 #include "sqlcommondity.h"
 
-QVector<Commodity> SqlCommondity::QueryCommondity(int id, int iid, double p, double cp, QDate sbt)
+QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name, QString details, QString category, double minprice, double maxprice, double mincostprice, double maxcostprice)
 {
-    QString sql="SELECT * FROM commodity_table WHERE";
+    QString sql="SELECT * FROM commodity_table WHERE ";
     if(id!=-1){
         sql += QString(" Id = %1 AND ").arg(id);
     }
@@ -25,7 +25,7 @@ QVector<Commodity> SqlCommondity::QueryCommondity(int id, int iid, double p, dou
 
     while (query.next())
     {
-        QVector<CommodityItem> res = SqlCommondityItem::QueryCommondityItem(query.value(1).toInt());
+         QVector<CommodityItem> res=SqlCommondityItem::Query(query.value(1).toInt(),name,details,category);
         Commodity com(query.value(0).toInt(),res.front(),query.value(2).toDouble(),query.value(3).toDouble(),query.value(4).toDate());
         QueryResult.push_back(com);
     }

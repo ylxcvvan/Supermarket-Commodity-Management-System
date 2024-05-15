@@ -25,7 +25,7 @@ WidgetInventoryManager::~WidgetInventoryManager()
 void WidgetInventoryManager::loadModel()
 {
     //设置当前模型
-    p_InventoryTableService->setITableArray(SqlInventory::QueryInventory());
+    p_InventoryTableService->setITableArray(SqlInventory::Query());
     ui->tableView->setModel(p_InventoryTableService->getITable());
     for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
         ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
@@ -53,11 +53,41 @@ void WidgetInventoryManager::sortByColumn(int column)
 
 }
 
-
-
-
 void WidgetInventoryManager::on_pushButtonSelect_clicked()
 {
+    //进行查询并更新model
+    //TODO
 
+
+}
+
+void WidgetInventoryManager::on_pushButtonCommodityName_clicked(bool checked)
+{
+    SearchName=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonCommodityId_clicked(bool checked)
+{
+    SearchCommodityId=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonSellByTime_clicked(bool checked)
+{
+    SearchSellByTime=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonDetails_clicked(bool checked)
+{
+    SearchDetails=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonCostPrice_clicked(bool checked)
+{
+    SearchPrice=checked;
+}
+
+void WidgetInventoryManager::on_pushButtonPrice_clicked(bool checked)
+{
+    SearchCostPrice=checked;
 }
 

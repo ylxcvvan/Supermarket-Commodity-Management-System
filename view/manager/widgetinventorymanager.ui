@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1002</width>
-    <height>831</height>
+    <width>529</width>
+    <height>353</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,6 +29,12 @@
                <property name="text">
                 <string>商品名称：</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -42,6 +48,9 @@
               <widget class="QPushButton" name="pushButtonSellByTime">
                <property name="text">
                 <string>过期时间：</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -77,6 +86,9 @@
                <property name="text">
                 <string>商品编号：</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -90,6 +102,9 @@
               <widget class="QPushButton" name="pushButtonDetails">
                <property name="text">
                 <string>商品描述：</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -119,6 +134,9 @@
                <property name="text">
                 <string>商品进价：</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -142,6 +160,9 @@
               <widget class="QPushButton" name="pushButtonPrice">
                <property name="text">
                 <string>商品售价：</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>

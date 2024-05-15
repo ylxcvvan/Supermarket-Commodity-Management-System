@@ -42,7 +42,7 @@ void PageMain::on_toolButtonOrder_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 
 
-    SqlCommondityItem::QueryCommondityItem();
+    SqlCommondityItem::Query();
 }
 
 

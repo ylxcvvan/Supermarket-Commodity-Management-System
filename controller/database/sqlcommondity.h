@@ -10,12 +10,14 @@
 namespace SqlCommondity
 {
 
-    QVector<Commodity> QueryCommondity(int id=-1,int iid=-1,double p=-1,double cp=-1,QDate sbt= QDate());
+    QVector<Commodity> Query(int id=-1,int iid=-1,QDate sbt=QDate(),QString name="",
+                         QString details="",QString category="",
+                         double minprice=0,double maxprice=1e10,double mincostprice=0,double maxcostprice=1e10);
 
     //TODO
-    bool DelCommodity();
-    bool ModifyCommondity();
-    bool InsertCommondity();
+    bool Del();
+    bool Modify();
+    bool Insert();
 };
 
 #endif // SQLCOMMONDITY_H

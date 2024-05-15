@@ -7,7 +7,7 @@
 
 namespace SqlCommondityItem{
 
-    QVector<CommodityItem> QueryCommondityItem(int id=-1,QString name="",QString details="",QString category="");
+    QVector<CommodityItem> Query(int id=-1,QString name="",QString details="",QString category="");
 
     //TODO
     bool Del();

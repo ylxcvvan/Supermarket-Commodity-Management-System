@@ -2,10 +2,22 @@
 #include<QDebug>
 
 
-QVector<CommodityItem> SqlCommondityItem::QueryCommondityItem(int id, QString name, QString details,QString category)
+
+QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString details,QString category)
 {
     QString sql = "SELECT * FROM commodityItem_table WHERE";
-
+    if (id != -1) {
+        sql += QObject::tr(" Id = %1 AND ").arg(id);
+    }
+    if (!name.isEmpty()) {
+        sql += " Name LIKE "+name+" AND ";
+    }
+    if (!details.isEmpty()) {
+        sql += "Details LIKE "+details+" AND ";
+    }
+    if(!category.isEmpty()){
+        sql+="Category LIKE "+details+" AND ";
+    }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
 
