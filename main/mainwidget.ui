@@ -64,6 +64,9 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
             <string>管理界面</string>
            </property>
@@ -80,6 +83,9 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
             <string>系统设置</string>
            </property>
@@ -95,6 +101,9 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true"/>
@@ -124,22 +133,153 @@
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="toolButtonExit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>OCR A Extended</family>
+         </font>
         </property>
         <property name="text">
-         <string>用户退出//TODO</string>
+         <string>Welcome,</string>
         </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonLogout">
+        <property name="font">
+         <font>
+          <family>OCR A Extended</family>
+         </font>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:none;
+backgrond:none;
+</string>
+        </property>
+        <property name="text">
+         <string>User</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../images.qrc">
+          <normaloff>:/Images/icons/logout.png</normaloff>:/Images/icons/logout.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonMinmize">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:none;
+backgrond:none;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/minmize.png</normaloff>:/Images/icons/minmize.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonMaxmize">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:none;
+backgrond:none;
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/maxmize_false.png</normaloff>
+             <normalon>:/Images/icons/maxmize_true.png</normalon>:/Images/icons/maxmize_false.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonExit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:none;
+backgrond:none;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/close.png</normaloff>:/Images/icons/close.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -157,6 +297,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>
