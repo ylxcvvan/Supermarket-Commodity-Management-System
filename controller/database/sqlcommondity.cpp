@@ -9,8 +9,14 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     if(iid !=-1){
         sql+=QString(" ItemId = %1 AND ").arg(iid);
     }
+    if(minprice <= maxprice){
+        sql+=QString(" Price between %1 AND %2 AND ").arg(minprice).arg(maxprice);
+    }
+    if(mincostprice <= maxcostprice){
+        sql+=QString(" CostPrice between %1 AND %2 AND ").arg(mincostprice).arg(maxcostprice);
+    }
     if(!sbt.isNull()){
-        sql+=QString(" SellByTime = '%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
+        sql+=QString(" SellByTime <'%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
     //在这里增加double minprice, double maxprice, double mincostprice, double maxcostprice的范围查询
     //TODO

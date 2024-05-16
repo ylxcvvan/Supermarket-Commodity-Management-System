@@ -10,9 +10,9 @@
 namespace SqlCommondity
 {
 
-    QVector<Commodity> Query(int id=-1,int iid=-1,QDate sbt=QDate(),QString name="",
-                         QString details="",QString category="",
-                         double minprice=0,double maxprice=1e10,double mincostprice=0,double maxcostprice=1e10);
+    QVector<Commodity> Query(int id=-1,int iid=-1,QDate sbt=QDate(),
+                        QString name="",QString details="",QString category="",
+                         double minprice=-1,double maxprice=1e10,double mincostprice=-1,double maxcostprice=1e10);
 
     //TODO
     bool Del();

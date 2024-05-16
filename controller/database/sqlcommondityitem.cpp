@@ -7,16 +7,20 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
 {
     QString sql = "SELECT * FROM commodityItem_table WHERE";
     if (id != -1) {
-        sql += QObject::tr(" Id = %1 AND ").arg(id);
+
+        sql += QString(" Id = %1 AND ").arg(id);
     }
     if (!name.isEmpty()) {
-        sql += " Name LIKE '%"+name+"%' AND ";
+
+        sql += QString(" Name LIKE '%%1%' AND ").arg(name);
     }
     if (!details.isEmpty()) {
-        sql += "Details LIKE "+details+" AND ";
+
+        sql += QString("Details LIKE '%%1%' AND ").arg(details);
     }
     if(!category.isEmpty()){
-        sql+="Category LIKE "+details+" AND ";
+
+        sql+=QString("Category LIKE '%%1%' AND ").arg(category);
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
@@ -26,17 +30,14 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
 
     while (query.next())
     {
-        qDebug()<<"a";
+
         CommodityItem result(query.value(0).toInt()
                              ,query.value(1).toString()
                              ,query.value(2).toString()
                              ,query.value(3).toString());
         QueryResult.push_back(result);
     }
-    // for(auto &arr:QueryResult)
-    // {
-    //     qDebug()<<arr.getItemId()<<arr.getName()<<arr.getDetails()<<arr.getCategory();
-    // }
+
 
     return QueryResult;
 }
