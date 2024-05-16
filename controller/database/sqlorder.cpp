@@ -1,5 +1,7 @@
 #include "sqlorder.h"
-
+#include"./model/orderitem.h"
+#include"mysql.h"
+#include"sqlorderitem.h"
 
 
 QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, double mintotal, double maxtotal, int consumerid)
@@ -21,8 +23,8 @@ QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, dou
         sql +=QString(" ConsumerId = %1 ").arg(consumerid);
     }
     sql = sql.left(sql.length() - 5)+";";
-
-   QSqlQuery query = MySql::getInstance().query(sql);
+    qDebug()<<sql;
+    QSqlQuery query = MySql::getInstance().query(sql);
     QVector<Order>result;
     while(query.next()){
         QVector<OrderItem> itemlist = SqlOrderItem::Query(query.value(0).toInt());

@@ -1,6 +1,7 @@
 #include "widgetinventorymanager.h"
 #include "ui_widgetinventorymanager.h"
 #include<QMessageBox>
+#include<qdebug.h>
 WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetInventoryManager)

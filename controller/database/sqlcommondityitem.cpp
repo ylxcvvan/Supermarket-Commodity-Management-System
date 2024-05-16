@@ -24,7 +24,7 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
-    qDebug()<<sql;
+    qDebug()<<sql<<"";
     QSqlQuery query=MySql::getInstance().query(sql);
     QVector<CommodityItem> QueryResult;
 

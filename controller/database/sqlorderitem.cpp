@@ -1,8 +1,9 @@
 #include "sqlorderitem.h"
-
+#include"mysql.h"
+#include"./model/orderitem.h"
 QVector<OrderItem> SqlOrderItem::Query(int orderid)
 {
-    QString sql = QString("SELECT * FROM orderitem_table WHERE id = %1").arg(orderid);
+    QString sql = QString("SELECT * FROM orderitem_table WHERE OrderId = %1").arg(orderid);
     qDebug()<<sql;
     QSqlQuery query = MySql::getInstance().query(sql);
 

@@ -7,17 +7,17 @@ class Vip
 private:
     QString Name;
     QString PhoneNumber;
-    QString Id;
+    int Id;
     double Point;
     int Level;
     QDate RegisterDate;
 
 public:
-    Vip();
+    Vip(int id,QString name,QString phone,double p,int l,QDate Reg);
 
     const QString& getName();
     const QString& getPhoneNumber();
-    const QString& GetId();
+    const int& GetId();
     double getPoint();
     int getLevel();
     const QDate& getRegisterDate();

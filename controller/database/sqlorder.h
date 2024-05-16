@@ -4,9 +4,8 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include"./model/order.h"
-#include"./model/orderitem.h"
-#include"mysql.h"
-#include"sqlorderitem.h"
+
+#include<QDebug>
 
 namespace SqlOrder
 {

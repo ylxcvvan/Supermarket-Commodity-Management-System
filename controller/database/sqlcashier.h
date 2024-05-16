@@ -5,7 +5,7 @@
 #include"mysql.h"4
 namespace SqlCashier
 {
-bool login(QString account,QString password);
+    bool login(QString account,QString password);
 };
 
 #endif // SQLCASHIER_H

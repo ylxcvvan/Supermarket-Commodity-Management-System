@@ -4,8 +4,7 @@
 #include <QVariant>
 #include<QVector>
 #include"./model/orderitem.h"
-#include"mysql.h"
-#include"./model/orderitem.h"
+
 namespace SqlOrderItem
 {
     QVector<OrderItem> Query(int orderid);

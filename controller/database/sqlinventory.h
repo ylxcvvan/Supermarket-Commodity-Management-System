@@ -1,6 +1,6 @@
 #ifndef SQLINVENTORY_H
 #define SQLINVENTORY_H
-#include"mysql.h"
+
 #include <QSqlQuery>
 #include <QVariant>
 #include<QDate>
@@ -19,6 +19,8 @@ QVector<QVector<QVariant>> Query(int id=-1,int cid=-1
     bool Insert(int condyamount=-1,
                 QString name="",double price=-1,double costprice=-1,QDate sbt=QDate(),
                 QString details="",QString category="");
+
+    bool sell(int comdyid,int amount);
 };
 
 #endif // SQLINVENTORY_H

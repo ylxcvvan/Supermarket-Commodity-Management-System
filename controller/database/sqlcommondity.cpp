@@ -88,3 +88,5 @@ bool SqlCommondity::Insert(QString name, double price, double costprice, QDate s
     return MySql::getInstance().modify(sql);
 
 }
+
+

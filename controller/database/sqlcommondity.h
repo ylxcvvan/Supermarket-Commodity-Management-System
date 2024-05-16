@@ -22,6 +22,7 @@ namespace SqlCommondity
     //插入商品
     bool Insert(QString name,double price=-1,double costprice=-1,QDate sbt=QDate(),
                 QString details="",QString category=""  );
+
 };
 
 #endif // SQLCOMMONDITY_H

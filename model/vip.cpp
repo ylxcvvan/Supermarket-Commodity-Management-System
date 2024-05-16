@@ -1,6 +1,7 @@
 #include "vip.h"
 
-Vip::Vip() {}
+Vip::Vip(int id, QString name, QString phone, double p, int l, QDate Reg):
+    Name(name),PhoneNumber(phone),Id(id),Point(p),Level(l),RegisterDate(Reg){}
 
 const QString &Vip::getName()
 {
@@ -12,7 +13,7 @@ const QString &Vip::getPhoneNumber()
     return this->PhoneNumber;
 }
 
-const QString &Vip::GetId()
+const int &Vip::GetId()
 {
     return this->Id;
 }
