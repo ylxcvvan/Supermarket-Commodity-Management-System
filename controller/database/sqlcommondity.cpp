@@ -42,3 +42,49 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     // }
     return QueryResult;
 }
+
+bool SqlCommondity::Modify(QString name, double price, double costprice, QDate sbt,
+                           QString details, QString category)
+{
+    //查询商品名为name的itemid；
+    QVector<CommodityItem> res = SqlCommondityItem::Query(-1,name,"","");
+    int itemid = res[0].getItemId();
+
+    //修改commodityitem表
+    SqlCommondityItem::Modify(itemid,"",details,category);
+    //修改itemid的信息
+    QString sql = "UPDATE commodity_table SET ";
+    QStringList updates;
+
+    if (price != -1) {
+        updates.append(QString("Price = %1").arg(price));
+    }
+
+    if (costprice!=-1) {
+        updates.append(QString("Costprice = %1 ").arg(costprice));
+    }
+    if(!sbt.isNull()){
+         updates.append(QString("SellByTime = '%1' ").arg(sbt.toString("yyyy-MM-dd")));
+    }
+    sql += updates.join(", ");
+    sql += QString(" WHERE Item = %1").arg(itemid);
+
+    return MySql::getInstance().modify(sql);
+}
+
+bool SqlCommondity::Insert(QString name, double price, double costprice, QDate sbt,
+                           QString details, QString category)
+{
+    QVector<CommodityItem> res = SqlCommondityItem::Query(-1,name,"","");
+    if(!res.size()){
+        SqlCommondityItem::Insert(name,details,category);
+        res = SqlCommondityItem::Query(-1,name,"","");
+    }
+    int itemid = res[0].getItemId();
+    QString sql =QString ("INSERT into commodity_table (INSERT INTO commodity_table "
+                          "(ItemId, Price, CostPrice, SellByTime) VALUES(%1,%2,%3,'%4')" )
+                            .arg(itemid).arg(price).arg(costprice).arg(sbt.toString("yyyy-MM-dd"));
+
+    return MySql::getInstance().modify(sql);
+
+}

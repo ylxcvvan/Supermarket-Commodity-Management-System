@@ -7,8 +7,10 @@
 class Order
 {
     using Glist=QVector<OrderItem>;
+public:
+    enum class state {Pending=0,cancelled=1,Completed=2};
 private:
-    enum state{Pending=0,cancelled=1,Completed=2};
+
     int OrderId;
     //商品，商品数量，总价格计算可得
     Glist GoodsList;
@@ -18,6 +20,7 @@ private:
     QDateTime OrderTime;
 
 public:
+
     Order(int oid,Glist gl,double tp,int uid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
 
     const int& getOrderId();

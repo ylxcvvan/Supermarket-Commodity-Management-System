@@ -10,9 +10,9 @@ namespace SqlCommondityItem{
     QVector<CommodityItem> Query(int id=-1,QString name="",QString details="",QString category="");
 
     //TODO
-    bool Del();
-    bool Modify();
-    bool Insert();
+    bool Del(int id);
+    bool Modify(int id , QString newn="", QString newdts="",QString newcate="");//修改id为id 的条目
+    bool Insert(QString name="",QString details="",QString category="");
 };
 
 

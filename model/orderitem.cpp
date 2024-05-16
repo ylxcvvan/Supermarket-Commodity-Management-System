@@ -1,6 +1,6 @@
 #include "orderitem.h"
 
-OrderItem::OrderItem(int &id, int &oid, int &cid, double &camount, double tp)
+OrderItem::OrderItem(int id, int oid, int cid, double camount, double tp)
     :Id(id),OrderId(oid),CommodityId(cid),CommodityAmount(camount),TotalPrice(tp)
 {}
 
