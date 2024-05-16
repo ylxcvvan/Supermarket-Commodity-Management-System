@@ -24,7 +24,7 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
-    qDebug()<<sql;
+    qDebug()<<sql<<"";
     QSqlQuery query=MySql::getInstance().query(sql);
     QVector<CommodityItem> QueryResult;
 
@@ -40,4 +40,52 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
 
 
     return QueryResult;
+}
+
+
+
+bool SqlCommondityItem::Del(int id)
+{
+    QString sql = QString("DELETE FROM commodityitem_table WHERE Id = %1 ;").arg(id);
+        qDebug()<<sql;
+    return MySql::getInstance().modify(sql);
+}
+
+bool SqlCommondityItem::Insert(QString name, QString details, QString category)
+{
+    QString sql = QString("INSERT INTO commodityItem_table (Name,Details,Category)"
+                          " VALUES ('%1','%2','3');").arg(name).arg(details).arg(category);
+        qDebug()<<sql;
+
+    return MySql::getInstance().modify(sql);
+}
+
+
+bool SqlCommondityItem::Modify(int id, QString newn, QString newdts, QString newcate)
+{
+    QString sql = "UPDATE commodityitem_table SET ";
+    QStringList updates;
+
+    if (!newn.isEmpty()) {
+        updates.append(QString("Name = '%1'").arg(newn));
+    }
+
+    if (!newdts.isEmpty()) {
+        updates.append(QString("Details = '%1'").arg(newdts));
+    }
+
+    if (!newcate.isEmpty()) {
+        updates.append(QString("Category = '%1'").arg(newcate));
+    }
+
+    if (updates.isEmpty()) {
+        // 如果没有需要更新的字段，则直接返回
+        qDebug()<<"商品信息不需要更新";
+        return false;
+    }
+
+    sql += updates.join(", ");
+    sql += QString(" WHERE id = %1").arg(id);
+        qDebug()<<sql;
+    return MySql::getInstance().modify(sql);
 }

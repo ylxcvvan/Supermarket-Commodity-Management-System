@@ -10,7 +10,7 @@ private:
     double CommodityAmount;
     double TotalPrice;
 public:
-    OrderItem(int& id,int& oid,int& cid,double&camount,double tp);
+    OrderItem(int id,int oid,int cid,double camount,double tp);
 
     int getId() const;
     int getOrderId() const;

@@ -1,6 +1,6 @@
 #include "sqlinventory.h"
 #include "controller/database/sqlcommondity.h"
-
+#include"mysql.h"
 
 //库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
 QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname ,QString category,QString details,QDate sellbytime
@@ -41,4 +41,24 @@ QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname ,
     }
 
     return QueryResult;
+}
+
+bool SqlInventory::Insert(int condyamount, QString name, double price, double costprice, QDate sbt, QString details, QString category)
+{
+    SqlCommondity::Insert(name,price,costprice,sbt,details,category);
+    int comdyid = MySql::getInstance().query("SELECT * FROM inventory_table ORDER BY Id DESC LIMIT 1;").value(0).toInt();
+
+    QString sql = QString("INSERT INTO inventory_table (CommodityId,CommodityAmount) "
+                          "VALUES(%1,%2);").arg(comdyid).arg(condyamount);
+    qDebug()<<sql;
+     return MySql::getInstance().modify(sql);
+}
+
+bool SqlInventory::sell(int comdyid, int amount)
+{
+    QString sql = QString(" UPDATE inventory_table "
+                          "SET CommodityAmount = CommodityAmount - %1"
+                          "WHERE CommodityId = %2 ;").arg(amount).arg(comdyid);
+
+    return MySql::getInstance().modify(sql);
 }

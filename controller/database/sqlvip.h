@@ -2,9 +2,10 @@
 #define SQLVIP_H
 #include <QSqlQuery>
 #include <QVariant>
+#include"model/vip.h"
 namespace SqlVip
 {
-    bool Query();
+    Vip Query(QString number);
     bool insert();
     bool modify();
     bool del();
