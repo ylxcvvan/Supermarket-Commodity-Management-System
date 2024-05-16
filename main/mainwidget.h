@@ -26,11 +26,12 @@ private:
     void paintEvent(QPaintEvent *event);
     void FrameLessInit();
 private slots:
-    void on_toolButtonMain_clicked();
 
-    void on_toolButtontConfig_clicked();
+    void on_toolButtonHelp_clicked(bool checked);
 
-    void on_toolButtonHelp_clicked();
+    void on_toolButtonConfig_clicked(bool checked);
+
+    void on_toolButtonMain_clicked(bool checked);
 
     void on_pushButtonMinmize_clicked();
 
@@ -49,8 +50,12 @@ private:
     bool isAdmin;
     bool isFullSceen;
     bool isMoveAllowed;
-    QPoint  originalPos;
-
+    bool isResizeAllowed; // 标志是否允许调整窗口大小
+    QSize originalSize; // 用于记录调整窗口大小前的原始窗口大小
+    QPoint resizeRightBottomPoint;
+    QPoint  BeginMovePos;
+    QPoint resizeMinLeftTopPoint;
+    static constexpr int RESIZE_BORDER_WIDTH = 8;
 
     Ui::MainWidget *ui;
     PageMain *p_pagemain;

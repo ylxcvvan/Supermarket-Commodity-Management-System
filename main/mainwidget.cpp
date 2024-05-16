@@ -59,21 +59,27 @@ void MainWidget::FrameLessInit()
     isFullSceen=false;
 }
 
-
-void MainWidget::on_toolButtonMain_clicked()
+void MainWidget::on_toolButtonMain_clicked(bool checked)
 {
     ui->stackedWidget->setCurrentIndex(0);
+    ui->toolButtonConfig->setChecked(false);
+    ui->toolButtonHelp->setChecked(false);
+
 }
 
-void MainWidget::on_toolButtontConfig_clicked()
+void MainWidget::on_toolButtonHelp_clicked(bool checked)
 {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->toolButtonMain->setChecked(false);
+    ui->toolButtonConfig->setChecked(false);
 }
 
 
-void MainWidget::on_toolButtonHelp_clicked()
+void MainWidget::on_toolButtonConfig_clicked(bool checked)
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->toolButtonHelp->setChecked(false);
+    ui->toolButtonMain->setChecked(false);
 }
 
 
@@ -103,30 +109,75 @@ void MainWidget::on_pushButtonExit_clicked()
 
 void MainWidget::mousePressEvent(QMouseEvent *e)
 {
+    // 如果鼠标位于窗口边框附近，则允许调整窗口大小
+    if (e->x() >= width() - RESIZE_BORDER_WIDTH || e->y() >= height() - RESIZE_BORDER_WIDTH) {
+        isResizeAllowed = true;
+        setCursor(Qt::CrossCursor);
+        originalSize = size();
+        resizeRightBottomPoint = e->pos();
+        return;
+    }
+    else if(e->x()<=RESIZE_BORDER_WIDTH||e->y()<=RESIZE_BORDER_WIDTH)
+    {
+        if (ui->pushButtonMaxmize->isChecked())
+            return;
+        isResizeAllowed = true;
+        setCursor(Qt::CrossCursor);
+        originalSize = size();
+        resizeRightBottomPoint = QPoint(pos().x()+size().width(),pos().y()+size().height());
+        isMoveAllowed=true;
+        BeginMovePos = e->pos();
+        resizeMinLeftTopPoint=QPoint(resizeRightBottomPoint.x()-this->minimumWidth(),resizeRightBottomPoint.y()-this->minimumHeight());
+        return;
+    }
     if(e->y() <= ui->widgetTitle->height()+ui->verticalLayout->margin()*1.5){
         isMoveAllowed = true;
-        originalPos = e->pos();
+        BeginMovePos = e->pos();
     }
 }
 
 void MainWidget::mouseMoveEvent(QMouseEvent *e)
 {
-    if(isMoveAllowed == true){
+    if(isMoveAllowed&&isResizeAllowed)
+    {
+        auto LeftTopPoint=e->globalPos()- BeginMovePos;
+        if(LeftTopPoint.x()>resizeMinLeftTopPoint.x()||LeftTopPoint.y()>resizeMinLeftTopPoint.y())
+            return;
+        this->move(LeftTopPoint);
+        int deltaX = resizeRightBottomPoint.x()-LeftTopPoint.x();
+        int deltaY = resizeRightBottomPoint.y()-LeftTopPoint.y();
+        resize(deltaX, deltaY);
+        return;
+    }
+    else if(isMoveAllowed == true)
+    {
         if(ui->pushButtonMaxmize->isChecked()){
             on_pushButtonMaxmize_clicked(false);
             ui->pushButtonMaxmize->setChecked(false);
             //TODO
             //Bug：拖动全屏窗口时的不匹配问题
-
-            this->move(e->globalPos());
+            BeginMovePos.setX(e->globalX()/2);
         } //如果程序被最大化，先恢复正常大小的窗口，然后再继续
-
-        this->move(e->globalPos() - originalPos); //e->globalPos()为鼠标相对于窗口的位置
+        this->move(e->globalPos() - BeginMovePos); //e->globalPos()为鼠标相对于窗口的位置
+    }
+    else if (isResizeAllowed)
+    {
+        if (ui->pushButtonMaxmize->isChecked()) {
+            on_pushButtonMaxmize_clicked(false);
+            ui->pushButtonMaxmize->setChecked(false);
+        }
+        int deltaX = e->pos().x() - resizeRightBottomPoint.x();
+        int deltaY = e->pos().y() - resizeRightBottomPoint.y();
+        resize(originalSize.width() + deltaX, originalSize.height() + deltaY);
     }
 }
 
 void MainWidget::mouseReleaseEvent(QMouseEvent *e)
 {
     isMoveAllowed = false; //禁止窗体移动
+    isResizeAllowed = false;
+    setCursor(Qt::ArrowCursor);
 }
+
+
 
