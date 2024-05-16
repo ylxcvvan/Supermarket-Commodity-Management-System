@@ -42,7 +42,7 @@ WidgetInventoryManager::~WidgetInventoryManager()
 void WidgetInventoryManager::loadModel()
 {
     //进行查询
-    int id=-1;
+    int id=SearchInventoryId?ui->lineEditInventoryId->text().toInt():-1;
     int cid=SearchCommodityId?ui->LineEditCommodityId->text().toInt():-1;
     QString cname=SearchName?ui->LineEditCommodityName->text():"";
     QString category=SearchCategory?ui->comboBoxCategory->currentText():"";
@@ -60,13 +60,16 @@ void WidgetInventoryManager::loadModel()
     }
     double minprice=SearchPrice?ui->lineEditMinPrice->text().toDouble():-1;
     double maxprice=SearchPrice?ui->lineEditMaxPrice->text().toDouble():1e10;
+
     double mincostprice=SearchCostPrice?ui->lineEditMinCostPrice->text().toDouble():-1;
     double maxcostprice=SearchCostPrice?ui->lineEditMaxCostPrice->text().toDouble():1e10;
+
     double minamount=SearchAmount?ui->lineEditMinAmount->text().toDouble():-1;
     double maxamount=SearchAmount?ui->lineEditMaxAmount->text().toDouble():1e10;
     p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,cname,category,details,sellbytime
                                                                 ,minprice,maxprice,mincostprice,maxcostprice
                                                                 ,minamount,maxamount));
+
 
     //设置当前模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
@@ -126,12 +129,12 @@ void WidgetInventoryManager::on_pushButtonDetails_clicked(bool checked)
 
 void WidgetInventoryManager::on_pushButtonCostPrice_clicked(bool checked)
 {
-    SearchPrice=checked;
+    SearchCostPrice=checked;
 }
 
 void WidgetInventoryManager::on_pushButtonPrice_clicked(bool checked)
 {
-    SearchCostPrice=checked;
+    SearchPrice=checked;
 }
 
 void WidgetInventoryManager::on_pushButtonAmount_clicked(bool checked)
