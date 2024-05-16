@@ -1,12 +1,15 @@
 #include "mainwidget.h"
+#include "qpainter.h"
 #include "ui_mainwidget.h"
 #include<QDebug>
+
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
     ,p_pagemain(new PageMain(this))
     ,p_pageconfig(new PageConfig(this))
     ,p_pagehelp(new PageHelp(this))
+
 {
     ui->setupUi(this);
     //设定是否是管理员
@@ -28,12 +31,34 @@ MainWidget::~MainWidget()
     delete ui;
 }
 
+void MainWidget::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+    QPainter painter(this);
+
+    // 设置边框颜色和宽度
+    painter.setPen(QPen(Qt::black, 4));
+
+    // 计算内部矩形的边界
+    int borderWidth = 0;
+    QRect innerRect(borderWidth, borderWidth, width() - 2 * borderWidth, height() - 2 * borderWidth);
+
+    // 绘制圆润边角的内部矩形
+    int radius = 10; // 圆角半径
+    painter.drawRoundedRect(innerRect, radius, radius);
+}
+
+
+
+
 void MainWidget::FrameLessInit()
 {
-    setWindowFlags(Qt::FramelessWindowHint);
+    setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
+
     isMoveAllowed=false;
     isFullSceen=false;
 }
+
 
 void MainWidget::on_toolButtonMain_clicked()
 {

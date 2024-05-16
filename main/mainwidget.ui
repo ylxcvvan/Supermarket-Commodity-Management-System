@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>超市商品管理系统</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#MainWidget {
+    border-radius: 10px; /* 设置边框的圆润程度为10像素 */
+    border: 2px solid black; /* 设置边框为黑色，宽度为2像素 */
+}
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="widgetTitle" native="true">
@@ -21,6 +28,9 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <property name="spacing">
@@ -64,11 +74,41 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>OCR A Extended</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">#toolButtonMain {
+    border-radius: 10px;
+    	border:none;
+background:none;
+    background-color: rgb(250, 250, 250);
+}
+
+#toolButtonMain:hover {
+    background-color:  rgb(220, 220, 220);
+}
+</string>
+           </property>
            <property name="text">
             <string>管理界面</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/home.png</normaloff>:/Images/icons/home.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -83,11 +123,132 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>250</red>
+                 <green>250</green>
+                 <blue>250</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="font">
+            <font>
+             <family>OCR A Extended</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">#toolButtontConfig {
+    border-radius: 10px;
+    background-color: rgb(250, 250, 250);
+}
+#toolButtontConfig:hover {
+    background-color: rgb(220, 220, 220);
+}
+</string>
+           </property>
            <property name="text">
             <string>系统设置</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/setting.png</normaloff>:/Images/icons/setting.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -102,14 +263,39 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>OCR A Extended</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">#toolButtonHelp {
+    border-radius: 10px;
+    background-color: rgb(250, 250, 250);
+}
+#toolButtonHelp:hover {
+    background-color:  rgb(220, 220, 220);
+}
+</string>
            </property>
            <property name="text">
             <string>调试帮助</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/Images/icons/information.png</normaloff>:/Images/icons/information.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -156,7 +342,7 @@
         </property>
         <property name="styleSheet">
          <string notr="true">border:none;
-backgrond:none;
+background:none;
 </string>
         </property>
         <property name="text">
@@ -203,7 +389,7 @@ backgrond:none;
            </property>
            <property name="styleSheet">
             <string notr="true">border:none;
-backgrond:none;</string>
+background:none;</string>
            </property>
            <property name="text">
             <string/>
@@ -227,7 +413,7 @@ backgrond:none;</string>
            </property>
            <property name="styleSheet">
             <string notr="true">border:none;
-backgrond:none;
+background:none;
 </string>
            </property>
            <property name="text">
@@ -262,7 +448,7 @@ backgrond:none;
            </property>
            <property name="styleSheet">
             <string notr="true">border:none;
-backgrond:none;</string>
+background:none;</string>
            </property>
            <property name="text">
             <string/>

@@ -8,6 +8,7 @@
 #include"../controller/database/mysql.h"
 #include<QDebug>
 #include<QMouseEvent>
+#include<QPaintEvent>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWidget;
@@ -21,7 +22,8 @@ class MainWidget : public QWidget
 public:
     MainWidget(QWidget *parent = nullptr,bool isadmin=false);
     ~MainWidget();
-
+private:
+    void paintEvent(QPaintEvent *event);
     void FrameLessInit();
 private slots:
     void on_toolButtonMain_clicked();
@@ -42,11 +44,14 @@ private slots:
 
     void mouseReleaseEvent(QMouseEvent * e);
 
+
 private:
     bool isAdmin;
     bool isFullSceen;
     bool isMoveAllowed;
     QPoint  originalPos;
+
+
     Ui::MainWidget *ui;
     PageMain *p_pagemain;
     PageConfig *p_pageconfig;
