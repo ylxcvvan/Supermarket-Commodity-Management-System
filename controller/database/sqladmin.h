@@ -6,7 +6,7 @@
 #include"mysql.h"
 namespace SqlAdmin
 {
-    bool loginin(QString account,QString password);
+    bool login(QString account,QString password);
 
 };
 

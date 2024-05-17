@@ -16,12 +16,14 @@ private:
     Glist GoodsList;
     state OrderStage;
     double TotalPrice;
+    double PaidPrice;
     int UserId;
+    int CashierId;
     QDateTime OrderTime;
 
 public:
 
-    Order(int oid,Glist gl,double tp,int uid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
+    Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
 
     const int& getOrderId();
     const Glist& getGoodsList();
