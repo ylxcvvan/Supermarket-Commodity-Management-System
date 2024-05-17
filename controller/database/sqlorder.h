@@ -9,7 +9,8 @@
 
 namespace SqlOrder
 {
-    QVector<Order> Query(int orderid=-1,QDate orderdate=QDate(),int orderstate=-1,double mintotal=-1,double maxtotal = 1e10,int consumerid=-1);
+    QVector<Order> Query(int orderid=-1,QDate orderdate=QDate(),int orderstate=-1,
+                     double mintotal=-1,double maxtotal = 1e10,int consumerid=-1);
     bool insert(Order order);
     bool modify();
     bool del();
