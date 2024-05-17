@@ -1,7 +1,7 @@
 #include "user.h"
 
-User::User(QString n, QString pwd):
-    Name(n),Password(pwd){}
+User::User(int id, QString name, QString account, QString password):
+    Name(id),Password(name){}
 
 const QString &User::getName()
 {
@@ -11,4 +11,14 @@ const QString &User::getName()
 const QString &User::getPassword()
 {
     return this->Password;
+}
+
+const int &User::getId()
+{
+    return this->id;
+}
+
+const QString &User::getAccount()
+{
+    return this->Account;
 }

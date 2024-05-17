@@ -1,13 +1,14 @@
 #include "order.h"
 
-Order::Order(int oid, Glist gl, double tp, int uid, state st, QDateTime ti):
+Order::Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st,QDateTime ti):
     OrderId(oid),
     GoodsList(gl),
     OrderStage(st),
     TotalPrice(tp),
+    PaidPrice(pp),
     UserId(uid),
-    OrderTime(ti)
-{}
+    CashierId(cid),
+    OrderTime(ti){}
 
 const int &Order::getOrderId()
 {

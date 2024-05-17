@@ -42,11 +42,13 @@ QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, dou
         }
 
 
-        //Order(int oid,Glist gl,double tp,int uid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
+      //Order::Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st,QDateTime ti):
         Order order(query.value(0).toInt(),
                     itemlist,
                     query.value(3).toDouble(),
-                    query.value(4).toInt(),
+                    query.value(4).toDouble(),
+                    query.value(5).toInt(),
+                    query.value(6).toInt(),
                     it,
                     time);
 
