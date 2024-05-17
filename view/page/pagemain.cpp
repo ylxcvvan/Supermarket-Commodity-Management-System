@@ -12,6 +12,7 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TOD
 {
     ui->setupUi(this);
 
+
     widgetVec.push_back(p_widgetCashier);
     widgetVec.push_back(p_widgetInventory);
     widgetVec.push_back(p_widgetOrder);

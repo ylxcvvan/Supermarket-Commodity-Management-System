@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "qtoolbutton.h"
+#include"resizableiconbutton.h"
 #include"view/manager/widgetcashiermanager.h"
 #include"view/manager/widgetinventorymanager.h"
 #include"view/manager/widgetordermanager.h"
