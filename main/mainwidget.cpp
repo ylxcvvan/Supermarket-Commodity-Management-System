@@ -47,7 +47,7 @@ void MainWidget::FrameLessInit()
     shadowEffect->setBlurRadius(20); // 阴影模糊半径
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
     // 将阴影效果应用到整个窗口
-    setGraphicsEffect(shadowEffect);
+    ui->frame->setGraphicsEffect(shadowEffect);
 
     shadowEffect_2 = new QGraphicsDropShadowEffect(this);
     shadowEffect_2->setOffset(0, 0);
@@ -55,15 +55,18 @@ void MainWidget::FrameLessInit()
     shadowEffect_2->setBlurRadius(20); // 阴影模糊半径
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
     // 将阴影效果应用到整个窗口
-    ui->stackedWidget->setGraphicsEffect(shadowEffect_2);
+    ui->frame_2->setGraphicsEffect(shadowEffect_2);
 }
 
 void MainWidget::on_toolButtonMain_clicked(bool checked)
 {
-    if(ui->stackedWidget->currentIndex()==0)
-    {
-        ui->toolButtonMain->setChecked(true);
-        return;
+    if(ui->stackedWidget->isHidden()) {
+        ui->stackedWidget->show();
+        update(); // 刷新窗口绘图
+    } else if(ui->stackedWidget->currentIndex() == 0) {
+        ui->stackedWidget->hide();
+        ui->toolButtonMain->setChecked(false);
+        update(); // 刷新窗口绘图
     }
     ui->stackedWidget->setCurrentIndex(0);
     ui->toolButtonConfig->setChecked(false);
@@ -73,10 +76,13 @@ void MainWidget::on_toolButtonMain_clicked(bool checked)
 
 void MainWidget::on_toolButtonConfig_clicked(bool checked)
 {
-    if(ui->stackedWidget->currentIndex()==1)
-    {
-        ui->toolButtonConfig->setChecked(true);
-        return;
+    if(ui->stackedWidget->isHidden()) {
+        ui->stackedWidget->show();
+        update(); // 刷新窗口绘图
+    } else if(ui->stackedWidget->currentIndex() == 1) {
+        ui->stackedWidget->hide();
+        ui->toolButtonConfig->setChecked(false);
+        update(); // 刷新窗口绘图
     }
     ui->stackedWidget->setCurrentIndex(1);
     ui->toolButtonHelp->setChecked(false);
@@ -85,10 +91,13 @@ void MainWidget::on_toolButtonConfig_clicked(bool checked)
 
 void MainWidget::on_toolButtonHelp_clicked(bool checked)
 {
-    if(ui->stackedWidget->currentIndex()==2)
-    {
-        ui->toolButtonHelp->setChecked(true);
-        return;
+    if(ui->stackedWidget->isHidden()) {
+        ui->stackedWidget->show();
+        update(); // 刷新窗口绘图
+    } else if(ui->stackedWidget->currentIndex() == 2) {
+        ui->stackedWidget->hide();
+        ui->toolButtonHelp->setChecked(false);
+        update(); // 刷新窗口绘图
     }
     ui->stackedWidget->setCurrentIndex(2);
     ui->toolButtonMain->setChecked(false);
@@ -139,8 +148,8 @@ void MainWidget::mousePressEvent(QMouseEvent *e)
     //获取鼠标所在的位置是在窗口的哪个边界
     bool e_rightborder=e->x() >= width() - RESIZE_BORDER_WIDTH;
     bool e_bottomborder=e->y() >= height() - RESIZE_BORDER_WIDTH;
-    bool e_leftborder=e->x()<=RESIZE_BORDER_WIDTH+10;
-    bool e_topborder=e->y()<=RESIZE_BORDER_WIDTH+10;
+    bool e_leftborder=e->x()<=RESIZE_BORDER_WIDTH;
+    bool e_topborder=e->y()<=RESIZE_BORDER_WIDTH-5;
     setCursor(getResizeCursor(e_rightborder,e_bottomborder,e_leftborder,e_topborder));
 
     if (e_rightborder || e_bottomborder) {

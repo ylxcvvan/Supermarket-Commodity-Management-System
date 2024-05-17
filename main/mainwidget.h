@@ -55,7 +55,7 @@ private:
     QPoint resizeRightBottomPoint;
     QPoint  BeginMovePos;
     QPoint resizeMinLeftTopPoint;
-    static constexpr int RESIZE_BORDER_WIDTH = 8;
+    static constexpr int RESIZE_BORDER_WIDTH = 50;
 
     Ui::MainWidget *ui;
     PageMain *p_pagemain;
