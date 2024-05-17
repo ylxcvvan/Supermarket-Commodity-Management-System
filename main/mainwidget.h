@@ -63,6 +63,7 @@ private:
     PageHelp *p_pagehelp;
 
     QGraphicsDropShadowEffect *shadowEffect;
+    QGraphicsDropShadowEffect *shadowEffect_2;
     static constexpr int layoutmargin=12;
 
     Qt::CursorShape getResizeCursor(bool r, bool b, bool l, bool t);

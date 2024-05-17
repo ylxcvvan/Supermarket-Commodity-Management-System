@@ -49,6 +49,13 @@ void MainWidget::FrameLessInit()
     // 将阴影效果应用到整个窗口
     setGraphicsEffect(shadowEffect);
 
+    shadowEffect_2 = new QGraphicsDropShadowEffect(this);
+    shadowEffect_2->setOffset(0, 0);
+    shadowEffect_2->setColor(QColor(0, 0, 0, 160)); // 黑色阴影，透明度为160
+    shadowEffect_2->setBlurRadius(20); // 阴影模糊半径
+    this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
+    // 将阴影效果应用到整个窗口
+    ui->stackedWidget->setGraphicsEffect(shadowEffect_2);
 }
 
 void MainWidget::on_toolButtonMain_clicked(bool checked)
