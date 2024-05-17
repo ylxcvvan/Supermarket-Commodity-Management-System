@@ -9,6 +9,7 @@
 #include<QDebug>
 #include<QMouseEvent>
 #include<QPaintEvent>
+#include<QGraphicsDropShadowEffect>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWidget;
@@ -61,5 +62,9 @@ private:
     PageConfig *p_pageconfig;
     PageHelp *p_pagehelp;
 
+    QGraphicsDropShadowEffect *shadowEffect;
+    static constexpr int layoutmargin=12;
+
+    Qt::CursorShape getResizeCursor(bool r, bool b, bool l, bool t);
 };
 #endif // MAINWIDGET_H
