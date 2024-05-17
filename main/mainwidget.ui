@@ -16,24 +16,12 @@
   <property name="styleSheet">
    <string notr="true">QWidget#MainWidget {
 	   
-	background-color: rgb(196, 198, 198);
+	background-color: rgb(248, 248, 248);
 
 }
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>6</number>
-   </property>
    <item>
     <widget class="QWidget" name="widgetTitle" native="true">
      <property name="sizePolicy">
@@ -46,6 +34,7 @@
       <string notr="true">#widgetTitle {
     background-color: rgb(255, 255, 255);
     border-top: 7px solid rgb(64, 65, 66);
+	border-bottom: 4px solid rgb(178, 178, 178);
 }
 </string>
      </property>
@@ -137,6 +126,9 @@
             </size>
            </property>
            <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
             <bool>true</bool>
            </property>
            <property name="toolButtonStyle">
@@ -628,7 +620,7 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -653,13 +645,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
    <item>

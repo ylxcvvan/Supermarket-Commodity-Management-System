@@ -18,5 +18,6 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
 
 WidgetCashierManager::~WidgetCashierManager()
 {
+    delete p_GoodsListService;
     delete ui;
 }

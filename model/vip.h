@@ -5,9 +5,9 @@
 class Vip
 {
 private:
+    int Id;
     QString Name;
     QString PhoneNumber;
-    int Id;
     double Point;
     int Level;
     QDate RegisterDate;

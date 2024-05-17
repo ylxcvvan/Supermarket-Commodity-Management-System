@@ -23,7 +23,6 @@ public:
     MainWidget(QWidget *parent = nullptr,bool isadmin=false);
     ~MainWidget();
 private:
-    void paintEvent(QPaintEvent *event);
     void FrameLessInit();
 private slots:
 

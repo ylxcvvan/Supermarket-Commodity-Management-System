@@ -37,6 +37,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 }
 WidgetInventoryManager::~WidgetInventoryManager()
 {
+    delete p_InventoryTableService;
     delete ui;
 }
 
