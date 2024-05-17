@@ -18,8 +18,8 @@ public:
     const QString& getName();
     const QString& getPhoneNumber();
     const int& GetId();
-    double getPoint();
-    int getLevel();
+    double& getPoint();
+    int& getLevel();
     const QDate& getRegisterDate();
 
     void setLevel(const int& newLevel);

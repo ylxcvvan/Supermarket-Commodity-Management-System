@@ -2,6 +2,7 @@
 #include "qpainter.h"
 #include "ui_mainwidget.h"
 #include<QDebug>
+#include"view/animate/animatetoolbutton.h"
 
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
@@ -22,6 +23,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
+
 
     FrameLessInit();
 }

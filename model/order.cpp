@@ -26,14 +26,24 @@ Order::state Order::getOrderStage()
     return OrderStage;
 }
 
-double Order::getTotalPrice()
+double& Order::getTotalPrice()
 {
     return TotalPrice;
+}
+
+double& Order::getPaidPrice()
+{
+    return PaidPrice;
 }
 
 const int &Order::getUserId()
 {
     return UserId;
+}
+
+const int &Order::getCashierId()
+{
+    return CashierId;
 }
 
 const QDateTime &Order::getOrderTime()

@@ -23,13 +23,16 @@ private:
 
 public:
 
-    Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st=state::Pending,QDateTime ti=QDateTime::currentDateTime());
+    Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st=state::Pending,
+          QDateTime ti=QDateTime::currentDateTime());
 
     const int& getOrderId();
     const Glist& getGoodsList();
     state getOrderStage();
-    double getTotalPrice();
+    double& getTotalPrice();
+    double& getPaidPrice();
     const int& getUserId();
+    const int& getCashierId();
     const QDateTime& getOrderTime();
 
     void setOrderStage(Order::state newOrderStage);

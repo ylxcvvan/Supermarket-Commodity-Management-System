@@ -73,7 +73,7 @@
           <number>8</number>
          </property>
          <item>
-          <widget class="QToolButton" name="toolButtonMain">
+          <widget class="AnimateToolButton" name="toolButtonMain">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -95,19 +95,6 @@
     border-radius: 10px;
     background-color: rgb(248, 248, 248);
 }
-
-#toolButtonMain:hover {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
-}
-
-/* 设置被选中时的样式 */
-#toolButtonMain:checked {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
-}
 </string>
            </property>
            <property name="text">
@@ -127,7 +114,7 @@
             <bool>true</bool>
            </property>
            <property name="checked">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -251,19 +238,6 @@
     border-radius: 10px;
     background-color: rgb(248, 248, 248);
 }
-
-#toolButtonConfig:hover {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
-}
-
-/* 设置被选中时的样式 */
-#toolButtonConfig:checked {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
-}
 </string>
            </property>
            <property name="text">
@@ -310,19 +284,6 @@
             <string notr="true">#toolButtonHelp {
     border-radius: 10px;
     background-color: rgb(248, 248, 248);
-}
-
-#toolButtonHelp:hover {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
-}
-
-/* 设置被选中时的样式 */
-#toolButtonHelp:checked {
-    background-color: rgb(248, 248, 248);
-    border-bottom: 6px solid;
-	 border-bottom-color: rgb(103, 118, 255)
 }
 </string>
            </property>
@@ -653,6 +614,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AnimateToolButton</class>
+   <extends>QToolButton</extends>
+   <header>view/animate/animatetoolbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../images.qrc"/>
  </resources>
