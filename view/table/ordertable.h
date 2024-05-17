@@ -1,26 +1,26 @@
-#ifndef GOODSLIST_H
-#define GOODSLIST_H
+#ifndef ORDERTABLE_H
+#define ORDERTABLE_H
 
-#include <QAbstractItemModel>
-#include<QVariant>
+#include <QAbstractTableModel>
 
-class GoodsList : public QAbstractTableModel
+class OrderTable : public QAbstractTableModel
 {
     Q_OBJECT
-
 private:
-    QVector<QString>titles;
-    //glist[0]=name,1=sellbytime,2=price,3=amount,4=totalprice,5=物品的id
-    QVector<QVector<QVariant>>glist;
 
+    QVector<QString>titles;
+    //
+    QVector<QVector<QVariant>>ordList;
 
 public:
-    explicit GoodsList(QObject *parent = nullptr);
+    explicit OrderTable(QObject *parent = nullptr);
 
     // Header:
     QVariant headerData(int section,
                         Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const override;
+
+
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -38,15 +38,7 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    int getSize();
-
-
-
 private:
-    bool CanConvert(const QVariant& value,int col);
-    QVariant TypeConvert(const QVariant& value,int col);
-    void Debug();//测试
-
 };
 
-#endif // GOODSLIST_H
+#endif // ORDERTABLE_H

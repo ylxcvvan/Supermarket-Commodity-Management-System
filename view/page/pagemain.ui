@@ -31,6 +31,9 @@
          <height>60</height>
         </size>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
@@ -57,6 +60,9 @@
          <height>60</height>
         </size>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
@@ -77,6 +83,9 @@
          <height>60</height>
         </size>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
@@ -96,6 +105,9 @@
          <width>60</width>
          <height>60</height>
         </size>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextUnderIcon</enum>

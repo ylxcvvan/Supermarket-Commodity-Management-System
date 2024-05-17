@@ -1,7 +1,9 @@
 HEADERS += \
-    $$PWD/goodslist.h \
-    $$PWD/inventorytable.h
+    $$PWD/goodstable.h \
+    $$PWD/inventorytable.h \
+    $$PWD/ordertable.h
 
 SOURCES += \
-    $$PWD/goodslist.cpp \
-    $$PWD/inventorytable.cpp
+    $$PWD/goodstable.cpp \
+    $$PWD/inventorytable.cpp \
+    $$PWD/ordertable.cpp

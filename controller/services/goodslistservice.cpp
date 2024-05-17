@@ -1,7 +1,7 @@
 #include "goodslistservice.h"
 
 GoodsListService::GoodsListService():
-    glist(new GoodsList)
+    glist(new GoodsTable)
 {}
 
 GoodsListService::~GoodsListService()
@@ -9,7 +9,7 @@ GoodsListService::~GoodsListService()
     delete glist;
 }
 
-GoodsList* GoodsListService::getGlist()
+GoodsTable* GoodsListService::getGlist()
 {
     return glist;
 }

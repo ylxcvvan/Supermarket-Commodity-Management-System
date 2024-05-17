@@ -1,16 +1,16 @@
 #ifndef GOODSLISTSERVICE_H
 #define GOODSLISTSERVICE_H
-#include "view/table/goodslist.h"
+#include "view/table/goodstable.h"
 #include "model/commodity.h"
 class GoodsListService
 {
 public:
     GoodsListService();
     ~GoodsListService();
-    GoodsList* getGlist();
+    GoodsTable* getGlist();
 
 private:
-    GoodsList *glist;
+    GoodsTable *glist;
 
 public slots:
     //提交订单

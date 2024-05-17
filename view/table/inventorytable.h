@@ -12,7 +12,7 @@ private:
 
     QVector<QString>titles;
     //库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
-    QVector<QVector<QVariant>>itable;
+    QVector<QVector<QVariant>>inveList;
 
 public:
     explicit InventoryTable(QObject *parent = nullptr);
@@ -44,14 +44,10 @@ public:
 
 
     //传入新的itable参数构造新的itablei
-    void setITable(QVector<QVector<QVariant>>&& newtable);
+    void setInveList(QVector<QVector<QVariant>>&& newlist);
 private:
     //setdata时，检查输入是否合理
     bool CanConvert(const QVariant& value,int col);
-    //给出更改后的结果
-    QVariant TypeConvert(const QVariant& value,int col);
-
-
 };
 
 

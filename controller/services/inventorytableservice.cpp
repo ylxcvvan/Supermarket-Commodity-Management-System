@@ -24,7 +24,7 @@ ComboBoxDelegate *InventoryTableService::getComboBoxDelegate()
 
 void InventoryTableService::setITableArray(QVector<QVector<QVariant>>&& newitable)
 {
-    this->itable->setITable(std::forward<QVector<QVector<QVariant>>&&>(newitable));
+    this->itable->setInveList(std::forward<QVector<QVector<QVariant>>&&>(newitable));
 }
 
 void InventoryTableService::sortByColumn(int column, Qt::SortOrder order)
