@@ -37,6 +37,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 }
 WidgetInventoryManager::~WidgetInventoryManager()
 {
+    delete p_InventoryTableService;
     delete ui;
 }
 
@@ -61,13 +62,16 @@ void WidgetInventoryManager::loadModel()
     }
     double minprice=SearchPrice?ui->lineEditMinPrice->text().toDouble():-1;
     double maxprice=SearchPrice?ui->lineEditMaxPrice->text().toDouble():1e10;
+
     double mincostprice=SearchCostPrice?ui->lineEditMinCostPrice->text().toDouble():-1;
     double maxcostprice=SearchCostPrice?ui->lineEditMaxCostPrice->text().toDouble():1e10;
+
     double minamount=SearchAmount?ui->lineEditMinAmount->text().toDouble():-1;
     double maxamount=SearchAmount?ui->lineEditMaxAmount->text().toDouble():1e10;
     p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,cname,category,details,sellbytime
                                                                 ,minprice,maxprice,mincostprice,maxcostprice
                                                                 ,minamount,maxamount));
+
 
     //设置当前模型
     ui->tableView->setModel(p_InventoryTableService->getITable());

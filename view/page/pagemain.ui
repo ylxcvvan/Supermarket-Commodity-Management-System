@@ -21,12 +21,44 @@
        <property name="text">
         <string>收银结账</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../images.qrc">
+         <normaloff>:/Images/icons/cash-machine.png</normaloff>:/Images/icons/cash-machine.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+       <property name="autoRaise">
+        <bool>false</bool>
+       </property>
+       <property name="arrowType">
+        <enum>Qt::NoArrow</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonInventory">
        <property name="text">
         <string>库存管理</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../images.qrc">
+         <normaloff>:/Images/icons/inventory.png</normaloff>:/Images/icons/inventory.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -35,12 +67,38 @@
        <property name="text">
         <string>订单管理</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../images.qrc">
+         <normaloff>:/Images/icons/order.png</normaloff>:/Images/icons/order.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="toolButtonVip">
        <property name="text">
         <string>会员管理</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../images.qrc">
+         <normaloff>:/Images/icons/vip.png</normaloff>:/Images/icons/vip.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -71,6 +129,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../images.qrc"/>
+ </resources>
  <connections/>
 </ui>
