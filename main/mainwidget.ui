@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>905</width>
-    <height>702</height>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,6 +53,12 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>115</height>
+         </size>
         </property>
         <property name="styleSheet">
          <string notr="true">#widgetTitle {
@@ -105,7 +111,7 @@
             <item>
              <widget class="AnimateToolButton" name="toolButtonMain">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -127,7 +133,7 @@
                <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">toolButtonMain { outline: none; }</string>
               </property>
               <property name="text">
                <string>管理界面</string>
@@ -156,7 +162,7 @@
             <item>
              <widget class="AnimateToolButton" name="toolButtonConfig">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -301,7 +307,7 @@
             <item>
              <widget class="AnimateToolButton" name="toolButtonHelp">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>

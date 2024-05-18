@@ -49,7 +49,7 @@ void MainWidget::FrameLessInit()
     shadowEffect->setBlurRadius(20); // 阴影模糊半径
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
     // 将阴影效果应用到整个窗口
-    ui->frame->setGraphicsEffect(shadowEffect);
+    // ui->frame->setGraphicsEffect(shadowEffect);
 
     shadowEffect_2 = new QGraphicsDropShadowEffect(this);
     shadowEffect_2->setOffset(0, 0);
@@ -57,7 +57,7 @@ void MainWidget::FrameLessInit()
     shadowEffect_2->setBlurRadius(20); // 阴影模糊半径
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
     // 将阴影效果应用到整个窗口
-    ui->frame_2->setGraphicsEffect(shadowEffect_2);
+    // ui->frame_2->setGraphicsEffect(shadowEffect_2);
 }
 
 void MainWidget::on_toolButtonMain_clicked(bool checked)
