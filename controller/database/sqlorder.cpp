@@ -4,7 +4,8 @@
 #include"sqlorderitem.h"
 
 
-QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, double mintotal, double maxtotal, int consumerid)
+QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, double mintotal, double maxtotal,
+                               double minpaid, double maxpaid, int consumerid, int cashierid)
 {
     QString sql = "SELECT * FROM order_table WHERE";
     if(orderid != -1){
@@ -19,10 +20,18 @@ QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, dou
     if(mintotal < maxtotal){
         sql +=QString(" TotalPrice BETWEEN %1 AND %2 AND ").arg(mintotal).arg(maxtotal);
     }
+    if(minpaid < maxpaid){
+        sql +=QString(" PaidPrice BETWEEN %1 AND %2 AND ").arg(minpaid).arg(maxpaid);
+    }
     if(consumerid != -1){
         sql +=QString(" ConsumerId = %1 ").arg(consumerid);
     }
+    if(cashierid != -1){
+        sql +=QString(" CashierId = %1 ").arg(cashierid);
+    }
+
     sql = sql.left(sql.length() - 5)+";";
+
     qDebug()<<sql;
     QSqlQuery query = MySql::getInstance().query(sql);
     QVector<Order>result;
@@ -73,14 +82,15 @@ bool SqlOrder::insert(Order order)
         }
     }
 
-    QString sql = QString("insert into order_table (OrderId,OrderDate,OrderState,TotalPrice,ConsumerId) "
-                   "values(%1,'%2',%3,%4,%5)")
+    QString sql = QString("insert into order_table (OrderId,OrderDate,OrderState,TotalPrice,PaidPrice,ConsumerId,CashierId) "
+                   "values(%1,'%2',%3,%4,%5,%6,%7)")
                         .arg(order.getOrderId())
                         .arg(order.getOrderTime().toString("yyyy-MM-dd HH:mm:ss"))
-                      .arg(state)
-                      .arg(order.getTotalPrice())
-                      .arg(order.getTotalPrice())
-                      .arg(order.getUserId());
+                        .arg(state)
+                        .arg(order.getTotalPrice())
+                        .arg(order.getPaidPrice())
+                        .arg(order.getUserId())
+                        .arg(order.getCashierId());
     qDebug()<<sql;
     bool insertorder = MySql::getInstance().modify(sql);
     bool insertorderitem ;

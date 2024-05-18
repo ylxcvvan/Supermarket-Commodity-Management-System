@@ -2,7 +2,9 @@
 #include "qpainter.h"
 #include "ui_mainwidget.h"
 #include<QDebug>
+#include"view/animate/animatetoolbutton.h"
 #include <cmath>
+
 
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
@@ -24,6 +26,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
 
+
     FrameLessInit();
 }
 
@@ -39,6 +42,7 @@ void MainWidget::FrameLessInit()
     isMoveAllowed=false;
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
     setAttribute(Qt::WA_TranslucentBackground);
+
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
 }
 
@@ -236,4 +240,16 @@ void MainWidget::paintEvent(QPaintEvent *event)
     }
 }
 
+
+
+void MainWidget::on_toolButtonMain_triggered(QAction *arg1)
+{
+
+}
+
+
+void MainWidget::on_toolButtonMain_clicked()
+{
+
+}
 

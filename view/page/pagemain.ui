@@ -44,7 +44,7 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonCashier">
+      <widget class="AnimateToolButton" name="toolButtonCashier">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -117,7 +117,7 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonInventory">
+      <widget class="AnimateToolButton" name="toolButtonInventory">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -182,7 +182,7 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonOrder">
+      <widget class="AnimateToolButton" name="toolButtonOrder">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -247,7 +247,7 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonVip">
+      <widget class="AnimateToolButton" name="toolButtonVip">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -349,9 +349,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ResizableIconButton</class>
+   <class>AnimateToolButton</class>
    <extends>QToolButton</extends>
-   <header>view/page/resizableiconbutton.h</header>
+   <header>view/animate/animatetoolbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

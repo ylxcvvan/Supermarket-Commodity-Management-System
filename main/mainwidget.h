@@ -47,6 +47,10 @@ private slots:
 
     void paintEvent(QPaintEvent *event);
 
+    void on_toolButtonMain_triggered(QAction *arg1);
+
+    void on_toolButtonMain_clicked();
+
 private:
     bool isAdmin;
     bool isMoveAllowed;

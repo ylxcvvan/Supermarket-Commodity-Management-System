@@ -18,12 +18,12 @@ const int &Vip::GetId()
     return this->Id;
 }
 
-double Vip::getPoint()
+double& Vip::getPoint()
 {
     return this->Point;
 }
 
-int Vip::getLevel()
+int &Vip::getLevel()
 {
     return this->Level;
 }

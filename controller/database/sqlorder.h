@@ -10,7 +10,9 @@
 namespace SqlOrder
 {
     QVector<Order> Query(int orderid=-1,QDate orderdate=QDate(),int orderstate=-1,
-                     double mintotal=-1,double maxtotal = 1e10,int consumerid=-1);
+                            double mintotal=-1,double maxtotal = 1e10,
+                            double minpaid=-1,double maxpaid = 1e10,
+                            int consumerid=-1,int cashierid=-1);
     bool insert(Order order);
     bool modify();
     bool del();
