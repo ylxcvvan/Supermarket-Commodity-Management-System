@@ -45,25 +45,27 @@ private slots:
 
     void mouseReleaseEvent(QMouseEvent * e);
 
+    void paintEvent(QPaintEvent *event);
+
+    void on_toolButtonMain_triggered(QAction *arg1);
+
+    void on_toolButtonMain_clicked();
 
 private:
     bool isAdmin;
-    bool isFullSceen;
     bool isMoveAllowed;
     bool isResizeAllowed; // 标志是否允许调整窗口大小
     QSize originalSize; // 用于记录调整窗口大小前的原始窗口大小
     QPoint resizeRightBottomPoint;
     QPoint  BeginMovePos;
     QPoint resizeMinLeftTopPoint;
-    static constexpr int RESIZE_BORDER_WIDTH = 50;
+    static constexpr int RESIZE_BORDER_WIDTH = 25;
 
     Ui::MainWidget *ui;
     PageMain *p_pagemain;
     PageConfig *p_pageconfig;
     PageHelp *p_pagehelp;
 
-    QGraphicsDropShadowEffect *shadowEffect;
-    QGraphicsDropShadowEffect *shadowEffect_2;
     static constexpr int layoutmargin=12;
 
     Qt::CursorShape getResizeCursor(bool r, bool b, bool l, bool t);

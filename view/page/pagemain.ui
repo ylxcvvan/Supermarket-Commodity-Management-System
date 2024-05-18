@@ -133,7 +133,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>13</pointsize>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -198,6 +198,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -262,6 +263,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>905</width>
-    <height>745</height>
+    <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">QWidget#MainWidget {
 	   
-	background-color: rgb(248, 248, 248);
+	background-color: rgba(255,255,255,0);
 
 }
 </string>
@@ -46,6 +46,18 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
        <widget class="QWidget" name="widgetTitle" native="true">
         <property name="sizePolicy">
@@ -64,7 +76,7 @@
          <string notr="true">#widgetTitle {
     background-color: rgb(255, 255, 255);
     border-top: 7px solid rgb(64, 65, 66);
-	border-bottom: 4px solid rgb(178, 178, 178);
+
 }
 </string>
         </property>
@@ -73,7 +85,7 @@
           <number>0</number>
          </property>
          <property name="leftMargin">
-          <number>2</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
           <number>0</number>
@@ -109,7 +121,7 @@
              <number>8</number>
             </property>
             <item>
-             <widget class="AnimateToolButton" name="toolButtonMain">
+             <widget class="QToolButton" name="toolButtonMain">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -160,7 +172,7 @@
              </widget>
             </item>
             <item>
-             <widget class="AnimateToolButton" name="toolButtonConfig">
+             <widget class="QToolButton" name="toolButtonConfig">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -305,7 +317,7 @@
              </widget>
             </item>
             <item>
-             <widget class="AnimateToolButton" name="toolButtonHelp">
+             <widget class="QToolButton" name="toolButtonHelp">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -698,13 +710,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>AnimateToolButton</class>
-   <extends>QToolButton</extends>
-   <header>view/animate/animatetoolbutton.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../images.qrc"/>
  </resources>

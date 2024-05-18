@@ -23,6 +23,8 @@ public:
 private:
     void setOtherWidgetUnchecked(int index);
 
+    void InitWidgetInventorySetting();
+
 private slots:
 
     void on_toolButtonCashier_clicked();
@@ -42,6 +44,8 @@ private:
     WidgetInventoryManager *p_widgetInventory;
     WidgetOrderManager *p_widgetOrder;
     WidgetVipManager *p_widgetVip;
+
+    int InventorySearchDateAddDays=10;
 
 };
 

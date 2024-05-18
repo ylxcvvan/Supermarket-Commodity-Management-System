@@ -3,6 +3,8 @@
 #include "ui_mainwidget.h"
 #include<QDebug>
 #include"view/animate/animatetoolbutton.h"
+#include <cmath>
+
 
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
@@ -38,26 +40,10 @@ void MainWidget::FrameLessInit()
     setWindowFlags(Qt::FramelessWindowHint);
 
     isMoveAllowed=false;
-    isFullSceen=false;
-
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    // 创建一个QGraphicsDropShadowEffect对象
-    shadowEffect = new QGraphicsDropShadowEffect(this);
-    shadowEffect->setOffset(0, 0);
-    shadowEffect->setColor(QColor(0, 0, 0, 160)); // 黑色阴影，透明度为160
-    shadowEffect->setBlurRadius(20); // 阴影模糊半径
-    this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
-    // 将阴影效果应用到整个窗口
-    // ui->frame->setGraphicsEffect(shadowEffect);
 
-    shadowEffect_2 = new QGraphicsDropShadowEffect(this);
-    shadowEffect_2->setOffset(0, 0);
-    shadowEffect_2->setColor(QColor(0, 0, 0, 160)); // 黑色阴影，透明度为160
-    shadowEffect_2->setBlurRadius(20); // 阴影模糊半径
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
-    // 将阴影效果应用到整个窗口
-    // ui->frame_2->setGraphicsEffect(shadowEffect_2);
 }
 
 void MainWidget::on_toolButtonMain_clicked(bool checked)
@@ -225,5 +211,45 @@ void MainWidget::mouseReleaseEvent(QMouseEvent *e)
     setCursor(Qt::ArrowCursor);
 }
 
+void MainWidget::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
 
+    int SHADOW_WIDTH=10;
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
+    // 绘制透明背景
+    painter.fillRect(rect(), Qt::transparent);
+
+    QColor color(50, 50, 50, 30);
+    for (int i = 0; i < SHADOW_WIDTH; i++)
+    {
+        color.setAlpha(120 - std::sqrt(i) * 40);
+        painter.setPen(color);
+
+        painter.drawRoundedRect(ui->frame_2->pos().x()+12+SHADOW_WIDTH + 1 - i,
+                                ui->frame_2->pos().y()+12+SHADOW_WIDTH + 1 - i,
+                                ui->frame_2->width() - (SHADOW_WIDTH - i) * 2,
+                                ui->frame_2->height() - (SHADOW_WIDTH - i) * 2, 4, 4);
+
+        // 方角阴影边框;
+        //   painter.drawRect(SHADOW_WIDTH - i, SHADOW_WIDTH - i, this->width() - (SHADOW_WIDTH - i) * 2, this->height() - (SHADOW_WIDTH - i) * 2);
+        // 圆角阴影边框;
+        painter.drawRoundedRect(SHADOW_WIDTH+1 - i, SHADOW_WIDTH+1 - i, this->width() - (SHADOW_WIDTH - i) * 2,
+                                ui->widgetTitle->height()+ layoutmargin+((ui->pushButtonMaxmize->isChecked())?0:12)- (SHADOW_WIDTH - i) * 2, 4, 4);
+    }
+}
+
+
+
+void MainWidget::on_toolButtonMain_triggered(QAction *arg1)
+{
+
+}
+
+
+void MainWidget::on_toolButtonMain_clicked()
+{
+
+}
 
