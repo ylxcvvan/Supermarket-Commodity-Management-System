@@ -1,31 +1,36 @@
-// #ifndef BUTTONANIMATEHELPER_H
-// #define BUTTONANIMATEHELPER_H
+#ifndef BUTTONANIMATEHELPER_H
+#define BUTTONANIMATEHELPER_H
 
-// #include "qpushbutton.h"
-// #include <QApplication>
-// #include <QToolButton>
-// #include <QPropertyAnimation>
-// #include <QEvent>
-// #include <QPainter>
-// #include <QWidget>
+#include "qpushbutton.h"
+#include <QApplication>
+#include <QToolButton>
+#include <QPropertyAnimation>
+#include <QEvent>
+#include <QPainter>
+#include <QWidget>
 
-// class AnimateToolButton:  public QToolButton
-// {
-//     Q_OBJECT
+class AnimateToolButton:  public QToolButton
+{
+    Q_OBJECT
+    Q_PROPERTY(qreal fillRatio READ fillRatio WRITE setFillRatio)
+public:
+    AnimateToolButton(QWidget *parent = nullptr);
 
-// public:
-//     AnimateToolButton(QWidget *parent = nullptr);
+    qreal fillRatio() const;
+    void setFillRatio(qreal ratio);
 
-// protected:
-//     void nextCheckState() override;
+protected:
+    void enterEvent(QEvent* event) override;
+    void leaveEvent(QEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
-// private slots:
-//     void startAnimation();
-//     void onAnimationFinished();
+private slots:
+    void onAnimationFinished();
+private:
+    QPropertyAnimation m_animation;
+    qreal m_fillRatio;
 
-// private:
-//     QPropertyAnimation m_animation;
-//     QSize m_previousSize;
-// };
+    void startAnimate(double endvalue);
+};
 
-// #endif // BUTTONANIMATEHELPER_H
+#endif // BUTTONANIMATEHELPER_H
