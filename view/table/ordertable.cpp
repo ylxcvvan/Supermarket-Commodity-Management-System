@@ -32,8 +32,11 @@ QVariant OrderTable::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
+    if(role==Qt::DisplayRole)
+    {
+        return ordList[index.row()][index.column()];
+    }
 
-    // FIXME: Implement me!
     return QVariant();
 }
 
@@ -52,7 +55,9 @@ Qt::ItemFlags OrderTable::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    return QAbstractItemModel::flags(index) | Qt::ItemIsEditable; // FIXME: Implement me!
+    Qt::ItemFlags flags = QAbstractItemModel::flags(index);
+    flags &= ~Qt::ItemIsEditable; // 移除编辑标志
+    return flags;
 }
 
 bool OrderTable::insertRows(int row, int count, const QModelIndex &parent)
@@ -68,5 +73,12 @@ bool OrderTable::removeRows(int row, int count, const QModelIndex &parent)
     // FIXME: Implement me!
     endRemoveRows();
     return true;
+}
+
+void OrderTable::setOrdList(QVector<QVector<QVariant>> &&newlist)
+{
+    beginResetModel(); // 开始重置模型，通知视图整体更新
+    ordList=std::move(newlist);
+    endResetModel();
 }
 

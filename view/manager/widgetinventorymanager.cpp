@@ -13,6 +13,9 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     ui->tableView->setCornerButtonEnabled(false);
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    //设置可以编辑
+    ui->tableView->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
     //设置“商品类别”下拉框
     for(auto &s:p_InventoryTableService->getComboBoxDelegate()->getComBoBoxCategory())
@@ -25,11 +28,6 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 
     //设置商品类型的comboBox
     ui->tableView->setItemDelegateForColumn(3,p_InventoryTableService->getComboBoxDelegate());
-
-    //设置可以编辑
-    ui->tableView->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
     InitBoolSearchState();
     InitLineEditInputMode();
@@ -68,10 +66,10 @@ void WidgetInventoryManager::loadModel()
 
     double minamount=SearchAmount?ui->lineEditMinAmount->text().toDouble():-1;
     double maxamount=SearchAmount?ui->lineEditMaxAmount->text().toDouble():1e10;
-    p_InventoryTableService->setITableArray(SqlInventory::Query(id,cid,cname,category,details,sellbytime
+
+    p_InventoryTableService->setIList(SqlInventory::Query(id,cid,cname,category,details,sellbytime
                                                                 ,minprice,maxprice,mincostprice,maxcostprice
                                                                 ,minamount,maxamount));
-
 
     //设置当前模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
@@ -79,12 +77,9 @@ void WidgetInventoryManager::loadModel()
     for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
         ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }
-
     // 设置商品描述的表头为自适应内容长度，确保内容完全展现
     ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
 }
-
-
 
 void WidgetInventoryManager::sortByColumn(int column)
 {

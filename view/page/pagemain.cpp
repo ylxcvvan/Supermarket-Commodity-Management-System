@@ -62,8 +62,6 @@ void PageMain::on_toolButtonOrder_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
     setOtherWidgetUnchecked(2);
-
-    SqlOrder::Query();
 }
 
 
