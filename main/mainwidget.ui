@@ -56,6 +56,12 @@
       </property>
       <item>
        <widget class="QWidget" name="widgetAppOptions" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>150</height>
+         </size>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <property name="spacing">
           <number>2</number>
@@ -79,6 +85,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>85</height>
+            </size>
            </property>
            <property name="font">
             <font>
@@ -128,6 +140,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>85</height>
+            </size>
            </property>
            <property name="palette">
             <palette>
@@ -268,6 +286,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>85</height>
+            </size>
            </property>
            <property name="font">
             <font>
