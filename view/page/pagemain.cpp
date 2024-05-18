@@ -66,6 +66,7 @@ void PageMain::on_toolButtonInventory_clicked()
 void PageMain::on_toolButtonOrder_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    p_widgetOrder->loadModelOrder();
     setOtherWidgetUnchecked(2);
 }
 

@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include"controller/services/ordertableservice.h"
+#include"controller/database/sqlorder.h"
+#include"controller/database/sqlorderitem.h"
 namespace Ui {
 class WidgetOrderManager;
 }
@@ -31,6 +33,8 @@ private slots:
     void on_pushButtonOrderTime_clicked(bool checked);
 
     void on_pushButtonTotalPrice_clicked(bool checked);
+
+    void on_pushButtonSelect_clicked();
 
 private:
     Ui::WidgetOrderManager *ui;

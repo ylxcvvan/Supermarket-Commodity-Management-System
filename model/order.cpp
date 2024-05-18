@@ -1,6 +1,6 @@
 #include "order.h"
 
-Order::Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st,QDateTime ti):
+Order::Order(int oid,Glist gl,double tp,double pp,int uid, int cid,stage st,QDateTime ti):
     OrderId(oid),
     GoodsList(gl),
     OrderStage(st),
@@ -10,48 +10,48 @@ Order::Order(int oid,Glist gl,double tp,double pp,int uid, int cid,state st,QDat
     CashierId(cid),
     OrderTime(ti){}
 
-const int &Order::getOrderId()
+const int &Order::getOrderId() const
 {
     return this->OrderId;
 }
 
-const Order::Glist &Order::getGoodsList()
+const Order::Glist &Order::getGoodsList() const
 {
     return GoodsList;
 }
 
 
-Order::state Order::getOrderStage()
+Order::stage Order::getOrderStage() const
 {
     return OrderStage;
 }
 
-double& Order::getTotalPrice()
+const double& Order::getTotalPrice() const
 {
     return TotalPrice;
 }
 
-double& Order::getPaidPrice()
+const double& Order::getPaidPrice() const
 {
     return PaidPrice;
 }
 
-const int &Order::getUserId()
+const int &Order::getUserId() const
 {
     return UserId;
 }
 
-const int &Order::getCashierId()
+const int &Order::getCashierId() const
 {
     return CashierId;
 }
 
-const QDateTime &Order::getOrderTime()
+const QDateTime &Order::getOrderTime() const
 {
     return OrderTime;
 }
 
-void Order::setOrderStage(state newOrderStage)
+void Order::setOrderStage(stage newOrderStage)
 {
 
     this->OrderStage=newOrderStage;

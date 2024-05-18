@@ -25,7 +25,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
-
+    isShowedOnTop=true;
 
     FrameLessInit();
 }
@@ -41,6 +41,8 @@ void MainWidget::FrameLessInit()
 
     isMoveAllowed=false;
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
+    if(isShowedOnTop)
+        setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
@@ -100,7 +102,7 @@ void MainWidget::on_pushButtonMinmize_clicked()
 void MainWidget::on_pushButtonMaxmize_clicked(bool checked)
 {
     if (checked) {
-        qDebug()<< this->layout()->contentsMargins();
+        // qDebug()<< this->layout()->contentsMargins();
         this->layout()->QLayout::setContentsMargins(0,0,0,0);
         this->showMaximized();
     } else {
@@ -204,6 +206,8 @@ void MainWidget::mouseMoveEvent(QMouseEvent *e)
     }
 }
 
+
+
 void MainWidget::mouseReleaseEvent(QMouseEvent *e)
 {
     isMoveAllowed = false; //禁止窗体移动
@@ -221,13 +225,14 @@ void MainWidget::paintEvent(QPaintEvent *event)
     // 绘制透明背景
     painter.fillRect(rect(), Qt::transparent);
 
+    bool drawMainPage=ui->toolButtonMain->isChecked()||ui->toolButtonConfig->isChecked()||ui->toolButtonHelp->isChecked();
     QColor color(50, 50, 50, 30);
     for (int i = 0; i < SHADOW_WIDTH; i++)
     {
         color.setAlpha(120 - std::sqrt(i) * 40);
         painter.setPen(color);
-
-        painter.drawRoundedRect(ui->frame_2->pos().x()+12+SHADOW_WIDTH + 1 - i,
+        if(drawMainPage)
+            painter.drawRoundedRect(ui->frame_2->pos().x()+12+SHADOW_WIDTH + 1 - i,
                                 ui->frame_2->pos().y()+12+SHADOW_WIDTH + 1 - i,
                                 ui->frame_2->width() - (SHADOW_WIDTH - i) * 2,
                                 ui->frame_2->height() - (SHADOW_WIDTH - i) * 2, 4, 4);
@@ -238,18 +243,5 @@ void MainWidget::paintEvent(QPaintEvent *event)
         painter.drawRoundedRect(SHADOW_WIDTH+1 - i, SHADOW_WIDTH+1 - i, this->width() - (SHADOW_WIDTH - i) * 2,
                                 ui->widgetTitle->height()+ layoutmargin+((ui->pushButtonMaxmize->isChecked())?0:12)- (SHADOW_WIDTH - i) * 2, 4, 4);
     }
-}
-
-
-
-void MainWidget::on_toolButtonMain_triggered(QAction *arg1)
-{
-
-}
-
-
-void MainWidget::on_toolButtonMain_clicked()
-{
-
 }
 

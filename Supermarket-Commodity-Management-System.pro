@@ -13,9 +13,10 @@ include($$PWD/model/model.pri)
 include($$PWD/view/manager/manager.pri)
 include($$PWD/view/page/page.pri)
 include($$PWD/view/table/table.pri)
+include($$PWD/view/animate/animate.pri)
 include($$PWD/controller/database/database.pri)
 include($$PWD/controller/services/services.pri)
-include($$PWD/view/animate/animate.pri)
+
 
 SOURCES += \
 

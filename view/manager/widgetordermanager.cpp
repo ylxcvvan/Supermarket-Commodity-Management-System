@@ -26,7 +26,21 @@ void WidgetOrderManager::loadModelOrder()
 {
     int OrderId=searchOrderId?ui->lineEditOrderId->text().toInt():-1;
     int CashierId=searchCashierId?ui->lineEditCashierId->text().toInt():-1;
+    int consumerid=searchUserId?ui->lineEditUserId->text().toInt():-1;
+    QDateTime begindt=searchOrderTime?ui->dateTimeEditBegin->dateTime():QDateTime();
+    QDateTime enddt=searchOrderTime?ui->dateTimeEditEnd->dateTime():QDateTime();
+    double minTotalPrice=searchTotalPrice?ui->doubleSpinBoxMinTotalPrice->value():-1;
+    double maxTotalPrice=searchTotalPrice?ui->doubleSpinBoxMaxTotalPrice->value():1e10;
+    int orderstage=searchOrderStage?ui->comboBoxOrderStage->currentIndex():-1;
+    p_OrderTableService->setOList(SqlOrder::Query(OrderId,begindt,enddt,orderstage,
+                                                  minTotalPrice,maxTotalPrice,-1,1e10,consumerid,CashierId));
+    ui->tableViewOrder->setModel(p_OrderTableService->getOTable());
 
+    for (int i = 0; i < ui->tableViewOrder->horizontalHeader()->count(); ++i) {
+        ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    // 设置商品描述的表头为自适应内容长度，确保内容完全展现
+    ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 }
 
 void WidgetOrderManager::InitLineEditInputMode()
@@ -69,5 +83,11 @@ void WidgetOrderManager::on_pushButtonOrderTime_clicked(bool checked)
 void WidgetOrderManager::on_pushButtonTotalPrice_clicked(bool checked)
 {
     searchTotalPrice=checked;
+}
+
+
+void WidgetOrderManager::on_pushButtonSelect_clicked()
+{
+    loadModelOrder();
 }
 

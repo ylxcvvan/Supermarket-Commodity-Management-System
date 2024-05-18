@@ -123,7 +123,7 @@
             <item>
              <widget class="QToolButton" name="toolButtonMain">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -145,7 +145,23 @@
                <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">toolButtonMain { outline: none; }</string>
+               <string notr="true">#toolButtonMain{
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+}
+
+#toolButtonMain:hover {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(196, 198, 198)
+}
+
+/* 设置被选中时的样式 */
+#toolButtonMain:checked {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(103, 118, 255)
+}</string>
               </property>
               <property name="text">
                <string>管理界面</string>
@@ -164,7 +180,7 @@
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="toolButtonStyle">
                <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -174,7 +190,7 @@
             <item>
              <widget class="QToolButton" name="toolButtonConfig">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -290,7 +306,23 @@
                <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">#toolButtonConfig{
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+}
+
+#toolButtonConfig:hover {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(196, 198, 198)
+}
+
+/* 设置被选中时的样式 */
+#toolButtonConfig:checked {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(103, 118, 255)
+}</string>
               </property>
               <property name="text">
                <string>系统设置</string>
@@ -319,7 +351,7 @@
             <item>
              <widget class="QToolButton" name="toolButtonHelp">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -342,7 +374,23 @@
                <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">#toolButtonHelp{
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+}
+
+#toolButtonHelp:hover {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(196, 198, 198)
+}
+
+/* 设置被选中时的样式 */
+#toolButtonHelp:checked {
+    background-color: rgb(248, 248, 248);
+    border-bottom: 6px solid;
+	 border-bottom-color: rgb(103, 118, 255)
+}</string>
               </property>
               <property name="text">
                <string>调试帮助</string>
