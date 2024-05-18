@@ -34,9 +34,33 @@ QVariant OrderTable::data(const QModelIndex &index, int role) const
         return QVariant();
     if(role==Qt::DisplayRole)
     {
-        return ordList[index.row()][index.column()];
+        int colomn=index.column();
+        auto &order=ordList[index.row()];
+        if(colomn==0)
+            return order.getOrderId();
+        else if(colomn==1)
+            return order.getOrderTime().toString();
+        else if(colomn==2)
+            return order.getCashierId();
+        else if(colomn==3)
+            return order.getUserId();
+        else if(colomn==4)
+            return order.getTotalPrice();
+        else if(colomn==5)
+            return order.getPaidPrice();
+        else if(colomn==6)
+        {
+            switch (order.getOrderStage()) {
+            case Order::stage::cancelled:
+                return "已取消×";
+            case Order::stage::Completed:
+                return "已完成√";
+            case Order::stage::Pending:
+                return "待付款-";
+                break;
+            }
+        }
     }
-
     return QVariant();
 }
 
@@ -75,7 +99,7 @@ bool OrderTable::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-void OrderTable::setOrdList(QVector<QVector<QVariant>> &&newlist)
+void OrderTable::setOrdList(QVector<Order> &&newlist)
 {
     beginResetModel(); // 开始重置模型，通知视图整体更新
     ordList=std::move(newlist);

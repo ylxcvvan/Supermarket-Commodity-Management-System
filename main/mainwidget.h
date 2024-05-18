@@ -43,15 +43,15 @@ private slots:
 
     void mouseMoveEvent(QMouseEvent * e);
 
+    //TODO:双击标题栏放大事件
+    // void mouseDoubleClickEvent(QMouseEvent * e);
+
     void mouseReleaseEvent(QMouseEvent * e);
 
     void paintEvent(QPaintEvent *event);
 
-    void on_toolButtonMain_triggered(QAction *arg1);
-
-    void on_toolButtonMain_clicked();
-
 private:
+    bool isShowedOnTop;//TODO
     bool isAdmin;
     bool isMoveAllowed;
     bool isResizeAllowed; // 标志是否允许调整窗口大小

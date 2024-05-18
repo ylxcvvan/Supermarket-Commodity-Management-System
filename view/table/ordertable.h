@@ -2,7 +2,7 @@
 #define ORDERTABLE_H
 
 #include <QAbstractTableModel>
-
+#include"model/order.h"
 class OrderTable : public QAbstractTableModel
 {
     Q_OBJECT
@@ -10,7 +10,7 @@ private:
 
     QVector<QString>titles;
     //
-    QVector<QVector<QVariant>>ordList;
+    QVector<Order>ordList;
 
 public:
     explicit OrderTable(QObject *parent = nullptr);
@@ -38,7 +38,7 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    void setOrdList(QVector<QVector<QVariant>>&& newlist);
+    void setOrdList(QVector<Order>&& newlist);
 private:
 };
 

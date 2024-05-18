@@ -4,15 +4,15 @@
 #include"sqlorderitem.h"
 
 
-QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, double mintotal, double maxtotal,
+QVector<Order> SqlOrder::Query(int orderid, QDateTime orderdatebegin,QDateTime orderdateend, int orderstate, double mintotal, double maxtotal,
                                double minpaid, double maxpaid, int consumerid, int cashierid)
 {
     QString sql = "SELECT * FROM order_table WHERE";
     if(orderid != -1){
         sql += QString(" OrderId = %1 AND ").arg(orderid);
     }
-    if(!orderdate.isNull()){
-        sql += QString(" OrderDate <'%1' AND ").arg(orderdate.toString("yyyy-MM-dd HH:mm:ss"));
+    if(orderdatebegin<orderdateend){
+        sql += QString(" OrderDate BETWEEN '%1' AND '%2' AND ").arg(orderdatebegin.toString("yyyy-MM-dd HH:mm:ss")).arg(orderdateend.toString("yyyy-MM-dd HH:mm:ss"));
     }
     if(orderstate != -1){
         sql += QString(" OrderState = %1 AND ").arg(orderstate);
@@ -24,10 +24,10 @@ QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, dou
         sql +=QString(" PaidPrice BETWEEN %1 AND %2 AND ").arg(minpaid).arg(maxpaid);
     }
     if(consumerid != -1){
-        sql +=QString(" ConsumerId = %1 ").arg(consumerid);
+        sql +=QString(" ConsumerId = %1 AND ").arg(consumerid);
     }
     if(cashierid != -1){
-        sql +=QString(" CashierId = %1 ").arg(cashierid);
+        sql +=QString(" CashierId = %1 AND ").arg(cashierid);
     }
 
     sql = sql.left(sql.length() - 5)+";";
@@ -37,16 +37,18 @@ QVector<Order> SqlOrder::Query(int orderid, QDate orderdate, int orderstate, dou
     QVector<Order>result;
     while(query.next()){
         QVector<OrderItem> itemlist = SqlOrderItem::Query(query.value(0).toInt());
-        auto time = QDateTime::fromString(query.value(1).toString());
-        auto it=Order::state::Completed;
+        auto time = QDateTime::fromString(query.value(1).toString(), "yyyy-MM-ddTHH:mm:ss.000");
+
+        qDebug()<<"订单时间："<<query.value(1).toString();
+        auto it=Order::stage::Completed;
         switch(query.value(2).toInt())
         {
         case 0:{
-            it = Order::state::Pending;
+            it = Order::stage::Pending;
             break;
         }
         case 1:{
-            it= Order::state::cancelled;}
+            it= Order::stage::cancelled;}
         break;
         }
 
@@ -70,16 +72,18 @@ bool SqlOrder::insert(Order order)
 {
     //Pending=0,cancelled=1,Completed=2
     int state = 2;
-    Order::state s = order.getOrderStage();
+    Order::stage s = order.getOrderStage();
     switch(s){
-        case Order::state::Pending :{
+    case Order::stage::Pending :{
             state = 0;
             break;
         }
-        case Order::state::cancelled : {
+    case Order::stage::cancelled : {
             state = 1;
             break;
         }
+    default:
+            break;
     }
 
     QString sql = QString("insert into order_table (OrderId,OrderDate,OrderState,TotalPrice,PaidPrice,ConsumerId,CashierId) "
