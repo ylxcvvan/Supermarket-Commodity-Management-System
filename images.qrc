@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Images/icons/close.png</file>
+        <file>Images/icons/logout.png</file>
+        <file>Images/icons/maxmize_false.png</file>
+        <file>Images/icons/maxmize_true.png</file>
+        <file>Images/icons/minmize.png</file>
+        <file>Images/icons/home.png</file>
+        <file>Images/icons/information.png</file>
+        <file>Images/icons/setting.png</file>
+        <file>Images/icons/cash-machine.png</file>
+        <file>Images/icons/inventory.png</file>
+        <file>Images/icons/order.png</file>
+        <file>Images/icons/vip.png</file>
+    </qresource>
+</RCC>

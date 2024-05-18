@@ -8,14 +8,14 @@ AnimateToolButton::AnimateToolButton(QWidget *parent) :
     QToolButton(parent),
     m_fillAnimation(this,"fillRatio"),
     m_scaleAnimation(this,"buttonSize"),
-    m_fillRatio(0.0),
-    m_buttonSize(size())
+    m_fillRatio(0.1),
+    m_buttonSize(QSize(120,90))
 {
     setMouseTracking(true);
     m_fillAnimation.setTargetObject(this);
     m_fillAnimation.setDuration(200); // 持续时间
 
-
+    qDebug()<<m_buttonSize;
     m_scaleAnimation.setDuration(200); // 持续时间
 
 
@@ -40,15 +40,14 @@ QSize AnimateToolButton::buttonSize() const {
 
 void AnimateToolButton::setButtonSize(const QSize &size)
 {
-    m_buttonSize = size;
+
     setFixedSize(size);
 }
 
 void AnimateToolButton::enterEvent(QEvent *event)
 {
 
-    startFillAnimate(1.0);
-    startScaleAnimate(size()*10/9);
+    startAnimate(1.0,size() * 1.02);
 
     QToolButton::enterEvent(event);
 }
@@ -56,8 +55,8 @@ void AnimateToolButton::enterEvent(QEvent *event)
 void AnimateToolButton::leaveEvent(QEvent *event)
 {
 
-    startFillAnimate(0.0);
-    startScaleAnimate(size()*9/10);
+    startAnimate(0.1,m_buttonSize);
+
     QToolButton::leaveEvent(event);
 }
 
@@ -88,21 +87,16 @@ void AnimateToolButton::onAnimationFinished()
     }
 }
 
-void AnimateToolButton::startFillAnimate(qreal endvalue)
+void AnimateToolButton::startAnimate(qreal endvalue,QSize endsize)
 {
     m_fillAnimation.stop();
+    m_scaleAnimation.stop(); // 停止之前的动画
     m_fillAnimation.setStartValue(m_fillRatio);
     m_fillAnimation.setEndValue(endvalue);
-    m_fillAnimation.start();
-}
-
-void AnimateToolButton::startScaleAnimate(QSize endsize)
-{
-    qDebug()<<endsize;
-    // 设置大小动画
-    m_scaleAnimation.stop(); // 停止之前的动画
     m_scaleAnimation.setStartValue(size());
     m_scaleAnimation.setEndValue(endsize);
     m_scaleAnimation.start();
+    m_fillAnimation.start();
+
 }
 

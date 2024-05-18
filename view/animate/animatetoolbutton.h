@@ -37,8 +37,7 @@ private:
     QPropertyAnimation m_scaleAnimation;
     qreal m_fillRatio;
     QSize m_buttonSize;
-    void startFillAnimate(qreal endvalue);
-    void startScaleAnimate(QSize endsize);
+    void startAnimate(qreal endvalue,QSize endsize);
 };
 
 #endif // BUTTONANIMATEHELPER_H

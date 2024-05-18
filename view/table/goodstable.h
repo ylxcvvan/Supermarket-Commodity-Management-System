@@ -1,10 +1,10 @@
-#ifndef GOODSLIST_H
-#define GOODSLIST_H
+#ifndef GOODSTABLE_H
+#define GOODSTABLE_H
 
 #include <QAbstractItemModel>
 #include<QVariant>
 
-class GoodsList : public QAbstractTableModel
+class GoodsTable : public QAbstractTableModel
 {
     Q_OBJECT
 
@@ -15,7 +15,7 @@ private:
 
 
 public:
-    explicit GoodsList(QObject *parent = nullptr);
+    explicit GoodsTable(QObject *parent = nullptr);
 
     // Header:
     QVariant headerData(int section,
@@ -49,4 +49,4 @@ private:
 
 };
 
-#endif // GOODSLIST_H
+#endif // GOODSTABLE_H

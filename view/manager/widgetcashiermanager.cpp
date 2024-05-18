@@ -4,12 +4,12 @@
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetCashierManager)
-    ,p_GoodsListService(new GoodsListService)
+    ,p_GoodsListService(new GoodsTableService)
 {
     ui->setupUi(this);
 
     // 创建 QTableView
-    ui->tableView->setModel(p_GoodsListService->getGlist());
+    ui->tableView->setModel(p_GoodsListService->getGTable());
 
 
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);

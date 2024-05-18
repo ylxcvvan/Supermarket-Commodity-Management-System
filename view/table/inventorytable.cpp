@@ -20,7 +20,7 @@ QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, in
 
 int InventoryTable::rowCount(const QModelIndex &parent) const
 {
-    return itable.size();
+    return inveList.size();
 }
 
 int InventoryTable::columnCount(const QModelIndex &parent) const
@@ -35,7 +35,7 @@ QVariant InventoryTable::data(const QModelIndex &index, int role) const
         return QVariant();
     if(role==Qt::DisplayRole)
     {
-        return itable[index.row()][index.column()];
+        return inveList[index.row()][index.column()];
     }
 
     return QVariant();
@@ -46,13 +46,13 @@ bool InventoryTable::setData(const QModelIndex &index, const QVariant &value, in
     if (!index.isValid())
         return false;
 
-    if (role == Qt::EditRole) {
-        // 判断新值与旧值是否相同
-        if (CanConvert(value,index.column()))
+    if (data(index, role) != value) {
+        int row=index.row();
+        int column=index.column();
+        if (!CanConvert(value, column) || value.toString() =="")
             return false;
-
         // 修改底层数组中的数据
-        itable[index.row()][index.column()] = value;
+        inveList[row][column] = value;
 
         // 发出数据变化信号，通知视图更新
         emit dataChanged(index, index, {role});
@@ -70,7 +70,15 @@ Qt::ItemFlags InventoryTable::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return Qt::NoItemFlags;
-    return QAbstractItemModel::flags(index) | Qt::ItemIsEditable; // FIXME: Implement me!
+
+    Qt::ItemFlags flags = QAbstractItemModel::flags(index);
+    if (index.column() >=2&&index.column() <=6) {
+        flags |= Qt::ItemIsEditable; // 添加编辑标志
+    } else {
+        flags &= ~Qt::ItemIsEditable; // 移除编辑标志
+    }
+
+    return flags;
 }
 
 bool InventoryTable::insertRows(int row, int count, const QModelIndex &parent)
@@ -89,19 +97,28 @@ bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-void InventoryTable::setITable(QVector<QVector<QVariant>> &&newtable)
+void InventoryTable::setInveList(QVector<QVector<QVariant>> &&newlist)
 {
     beginResetModel(); // 开始重置模型，通知视图整体更新
-    itable=std::move(newtable);
+    inveList=std::move(newlist);
     endResetModel();
-
 }
 
 bool InventoryTable::CanConvert(const QVariant &value, int col)
 {
-    if(col==0||col==1)
-        return false;
-    return true;
+
+    if(col==5||col==6)
+    {
+        bool *ok=new bool;
+        *ok=false;
+        value.toDouble(ok);
+        bool res=*ok;
+        delete ok;
+        return res;
+    }
+    if(col<5)
+        return true;
+    return false;
 }
 
 

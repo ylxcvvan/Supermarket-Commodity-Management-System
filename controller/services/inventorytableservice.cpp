@@ -22,9 +22,9 @@ ComboBoxDelegate *InventoryTableService::getComboBoxDelegate()
     return combodelegate;
 }
 
-void InventoryTableService::setITableArray(QVector<QVector<QVariant>>&& newitable)
+void InventoryTableService::setIList(QVector<QVector<QVariant>>&& newilist)
 {
-    this->itable->setITable(std::forward<QVector<QVector<QVariant>>&&>(newitable));
+    this->itable->setInveList(std::forward<QVector<QVector<QVariant>>&&>(newilist));
 }
 
 void InventoryTableService::sortByColumn(int column, Qt::SortOrder order)

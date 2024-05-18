@@ -55,7 +55,7 @@ private:
     QPoint resizeRightBottomPoint;
     QPoint  BeginMovePos;
     QPoint resizeMinLeftTopPoint;
-    static constexpr int RESIZE_BORDER_WIDTH = 8;
+    static constexpr int RESIZE_BORDER_WIDTH = 50;
 
     Ui::MainWidget *ui;
     PageMain *p_pagemain;
@@ -63,6 +63,7 @@ private:
     PageHelp *p_pagehelp;
 
     QGraphicsDropShadowEffect *shadowEffect;
+    QGraphicsDropShadowEffect *shadowEffect_2;
     static constexpr int layoutmargin=12;
 
     Qt::CursorShape getResizeCursor(bool r, bool b, bool l, bool t);

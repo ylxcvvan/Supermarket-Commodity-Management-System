@@ -3,7 +3,7 @@
 #include"mysql.h"
 
 //库存单号","商品编号","商品名称","商品类别","商品描述",商品数量","商品售价","商品进价","商品保质期",
-QVector<QVector<QVariant> > SqlInventory::Query(int id, int cid, QString cname ,QString category,QString details,QDate sellbytime
+QVector<QVector<QVariant>> SqlInventory::Query(int id, int cid, QString cname ,QString category,QString details,QDate sellbytime
                                                , double minprice, double maxprice, double mincostprice, double maxcostprice
                                                , double minamount,double maxamount)
 {
