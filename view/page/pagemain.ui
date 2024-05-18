@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,8">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,8">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -44,9 +44,9 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonCashier">
+      <widget class="QToolButton" name="toolButtonCashier">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -117,9 +117,9 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonInventory">
+      <widget class="QToolButton" name="toolButtonInventory">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -133,7 +133,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>13</pointsize>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -182,9 +182,9 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonOrder">
+      <widget class="QToolButton" name="toolButtonOrder">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -198,6 +198,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -246,9 +247,9 @@
       </widget>
      </item>
      <item>
-      <widget class="ResizableIconButton" name="toolButtonVip">
+      <widget class="QToolButton" name="toolButtonVip">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -262,6 +263,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
+         <pointsize>12</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -345,13 +347,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>ResizableIconButton</class>
-   <extends>QToolButton</extends>
-   <header>view/page/resizableiconbutton.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../images.qrc"/>
  </resources>

@@ -12,7 +12,6 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TOD
 {
     ui->setupUi(this);
 
-
     widgetVec.push_back(p_widgetCashier);
     widgetVec.push_back(p_widgetInventory);
     widgetVec.push_back(p_widgetOrder);
@@ -28,6 +27,7 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TOD
         ui->stackedWidget->addWidget(widget);
     }
 
+    InitWidgetInventorySetting();
 }
 
 PageMain::~PageMain()
@@ -42,6 +42,11 @@ void PageMain::setOtherWidgetUnchecked(int index)
         btn->setChecked(false);
     }
     toolbtnVec[index]->setChecked(true);
+}
+
+void PageMain::InitWidgetInventorySetting()
+{
+    p_widgetInventory->InitSetTheSearchSellByTimeAddDays(InventorySearchDateAddDays);
 }
 
 void PageMain::on_toolButtonCashier_clicked()

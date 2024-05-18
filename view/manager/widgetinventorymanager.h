@@ -19,6 +19,7 @@ public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
     void loadModel();
+    void InitSetTheSearchSellByTimeAddDays(int addDays);
 private:
     void InitLineEditInputMode();
     void InitBoolSearchState();
@@ -49,6 +50,7 @@ private:
     Ui::WidgetInventoryManager *ui;
 
     InventoryTableService *p_InventoryTableService;
+
 
     //搜索时的勾选项
     bool SearchName;

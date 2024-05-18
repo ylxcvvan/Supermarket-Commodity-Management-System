@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_12">
+    <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="2,2,1,0,1">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -35,11 +35,20 @@
          </item>
          <item>
           <widget class="QLineEdit" name="LineEditCommodityName">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>130</width>
+             <width>80</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -60,14 +69,14 @@
          <item>
           <widget class="QComboBox" name="comboBoxCategory">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>130</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -92,9 +101,15 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditInventoryId">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>130</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -120,9 +135,15 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditDetails">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>130</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -149,24 +170,25 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditSellByTime">
-           <property name="minimumSize">
-            <size>
-             <width>130</width>
-             <height>0</height>
-            </size>
+          <widget class="QDateEdit" name="dateEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <property name="statusTip">
-            <string/>
+           <property name="dateTime">
+            <datetime>
+             <hour>0</hour>
+             <minute>0</minute>
+             <second>0</second>
+             <year>2025</year>
+             <month>10</month>
+             <day>10</day>
+            </datetime>
            </property>
-           <property name="inputMask">
-            <string/>
-           </property>
-           <property name="text">
-            <string>2099-12-31</string>
-           </property>
-           <property name="placeholderText">
-            <string>yyyy-MM-dd</string>
+           <property name="calendarPopup">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -186,9 +208,15 @@
          </item>
          <item>
           <widget class="QLineEdit" name="LineEditCommodityId">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>130</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -213,7 +241,23 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMinCostPrice"/>
+          <widget class="QDoubleSpinBox" name="lineEditMinCostPrice">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
@@ -223,7 +267,29 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMaxCostPrice"/>
+          <widget class="QDoubleSpinBox" name="lineEditMaxCostPrice">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="wrapping">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="correctionMode">
+            <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -240,7 +306,23 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMinPrice"/>
+          <widget class="QDoubleSpinBox" name="lineEditMinPrice">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_4">
@@ -250,7 +332,23 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMaxPrice"/>
+          <widget class="QDoubleSpinBox" name="lineEditMaxPrice">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -267,7 +365,23 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMinAmount"/>
+          <widget class="QDoubleSpinBox" name="lineEditMinAmount">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_9">
@@ -277,7 +391,23 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMaxAmount"/>
+          <widget class="QDoubleSpinBox" name="lineEditMaxAmount">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>元</string>
+           </property>
+           <property name="maximum">
+            <double>999999.989999999990687</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
