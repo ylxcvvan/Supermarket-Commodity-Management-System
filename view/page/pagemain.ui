@@ -91,7 +91,7 @@
        </property>
        <property name="icon">
         <iconset resource="../../images.qrc">
-         <normaloff>:/Images/icons/cash-machine.png</normaloff>:/Images/icons/cash-machine.png</iconset>
+         <normaloff>:/resource/Images/icons/cash-machine.png</normaloff>:/resource/Images/icons/cash-machine.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -165,7 +165,7 @@
        </property>
        <property name="icon">
         <iconset resource="../../images.qrc">
-         <normaloff>:/Images/icons/inventory.png</normaloff>:/Images/icons/inventory.png</iconset>
+         <normaloff>:/resource/Images/icons/inventory.png</normaloff>:/resource/Images/icons/inventory.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -230,7 +230,7 @@
        </property>
        <property name="icon">
         <iconset resource="../../images.qrc">
-         <normaloff>:/Images/icons/order.png</normaloff>:/Images/icons/order.png</iconset>
+         <normaloff>:/resource/Images/icons/order.png</normaloff>:/resource/Images/icons/order.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -295,7 +295,7 @@
        </property>
        <property name="icon">
         <iconset resource="../../images.qrc">
-         <normaloff>:/Images/icons/vip.png</normaloff>:/Images/icons/vip.png</iconset>
+         <normaloff>:/resource/Images/icons/vip.png</normaloff>:/resource/Images/icons/vip.png</iconset>
        </property>
        <property name="iconSize">
         <size>

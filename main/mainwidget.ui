@@ -121,7 +121,7 @@
              <number>8</number>
             </property>
             <item>
-             <widget class="QToolButton" name="toolButtonMain">
+             <widget class="AnimateToolButton" name="toolButtonMain">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -149,10 +149,6 @@
               </property>
               <property name="text">
                <string>管理界面</string>
-              </property>
-              <property name="icon">
-               <iconset resource="../images.qrc">
-                <normaloff>:/Images/icons/home.png</normaloff>:/Images/icons/home.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -297,7 +293,7 @@
               </property>
               <property name="icon">
                <iconset resource="../images.qrc">
-                <normaloff>:/Images/icons/setting.png</normaloff>:/Images/icons/setting.png</iconset>
+                <normaloff>:/resource/Images/icons/setting.png</normaloff>:/resource/Images/icons/setting.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -349,7 +345,7 @@
               </property>
               <property name="icon">
                <iconset resource="../images.qrc">
-                <normaloff>:/Images/icons/information.png</normaloff>:/Images/icons/information.png</iconset>
+                <normaloff>:/resource/Images/icons/information.png</normaloff>:/resource/Images/icons/information.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -442,7 +438,7 @@
                <string>admin  </string>
               </property>
               <property name="icon">
-               <iconset resource="../images.qrc">
+               <iconset>
                 <normaloff>:/Images/icons/logout.png</normaloff>:/Images/icons/logout.png</iconset>
               </property>
               <property name="iconSize">
@@ -525,7 +521,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../images.qrc">
-                 <normaloff>:/Images/icons/minmize.png</normaloff>:/Images/icons/minmize.png</iconset>
+                 <normaloff>:/resource/Images/icons/minmize.png</normaloff>:/resource/Images/icons/minmize.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -569,8 +565,8 @@
                </property>
                <property name="icon">
                 <iconset resource="../images.qrc">
-                 <normaloff>:/Images/icons/maxmize_false.png</normaloff>
-                 <normalon>:/Images/icons/maxmize_true.png</normalon>:/Images/icons/maxmize_false.png</iconset>
+                 <normaloff>:/resource/Images/icons/maxmize_false.png</normaloff>
+                 <normalon>:/resource/Images/icons/maxmize_true.png</normalon>:/resource/Images/icons/maxmize_false.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -617,7 +613,7 @@
                </property>
                <property name="icon">
                 <iconset resource="../images.qrc">
-                 <normaloff>:/Images/icons/close.png</normaloff>:/Images/icons/close.png</iconset>
+                 <normaloff>:/resource/Images/icons/close.png</normaloff>:/resource/Images/icons/close.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -710,6 +706,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>AnimateToolButton</class>
+   <extends>QToolButton</extends>
+   <header>view/animate/animatetoolbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../images.qrc"/>
  </resources>

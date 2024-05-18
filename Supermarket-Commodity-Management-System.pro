@@ -36,4 +36,5 @@ DISTFILES += \
     README.md
 
 RESOURCES += \
-    images.qrc
+    images.qrc \
+    qss.qrc
