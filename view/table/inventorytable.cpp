@@ -102,7 +102,6 @@ void InventoryTable::setInveList(QVector<QVector<QVariant>> &&newlist)
     beginResetModel(); // 开始重置模型，通知视图整体更新
     inveList=std::move(newlist);
     endResetModel();
-
 }
 
 bool InventoryTable::CanConvert(const QVariant &value, int col)

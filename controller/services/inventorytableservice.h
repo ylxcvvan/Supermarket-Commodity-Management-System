@@ -9,7 +9,7 @@ public:
     ~InventoryTableService();
     InventoryTable* getITable();
     ComboBoxDelegate* getComboBoxDelegate();
-    void setITableArray(QVector<QVector<QVariant>>&& newitable);
+    void setIList(QVector<QVector<QVariant>>&& newilist);
     void sortByColumn(int column,Qt::SortOrder order);
 
 private:

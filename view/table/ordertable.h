@@ -38,6 +38,7 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    void setOrdList(QVector<QVector<QVariant>>&& newlist);
 private:
 };
 

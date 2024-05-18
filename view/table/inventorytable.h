@@ -40,9 +40,6 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-
-
-
     //传入新的itable参数构造新的itablei
     void setInveList(QVector<QVector<QVariant>>&& newlist);
 private:
