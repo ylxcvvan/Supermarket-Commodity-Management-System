@@ -39,6 +39,10 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
     void setOrdList(QVector<Order>&& newlist);
+
+    Order getInveListOrder(const QModelIndex &index);
+
+
 private:
 };
 

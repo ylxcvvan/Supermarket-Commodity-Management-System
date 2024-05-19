@@ -38,11 +38,14 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    void setGoodsList(QVector<QVector<QVariant>>&& newlist);
+
     int getSize();
 
-
+    void setEditableFalse();
 
 private:
+    bool isEditable=true;
     bool CanConvert(const QVariant& value,int col);
     QVariant TypeConvert(const QVariant& value,int col);
     void Debug();//测试

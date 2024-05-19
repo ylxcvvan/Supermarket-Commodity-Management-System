@@ -5,7 +5,9 @@
 
 QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint, double maxpoint, int minlevel, int maxlevel, QDate minrdate, QDate maxrdate)
 {
+
     QString sql = QString("SELECT * from vip_table WHERE");
+
 
     if(id != -1){
         sql += QString("Id = %1 AND ").arg(id);
@@ -26,6 +28,7 @@ QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint
         sql += QString("RegisterDate between '%1' and '%2' and ").arg(minrdate.toString("yyyy-MM-dd")).arg(maxrdate.toString("yyyy-MM-dd"));
     }
 
+   
     sql = sql.left(sql.length() - 5)+";";
 
     QSqlQuery query = MySql::getInstance().query(sql);

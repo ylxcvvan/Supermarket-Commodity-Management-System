@@ -6,7 +6,6 @@ GoodsTable::GoodsTable(QObject *parent)
     : QAbstractTableModel(parent)
 {
     titles={"商品编号","商品名称","商品保质期","商品单价","商品数量","商品总价"};
-    Debug();
 }
 
 QVariant GoodsTable::headerData(int section, Qt::Orientation orientation, int role) const
@@ -19,7 +18,6 @@ QVariant GoodsTable::headerData(int section, Qt::Orientation orientation, int ro
     }
     return QVariant();
 }
-
 
 int GoodsTable::rowCount(const QModelIndex &parent) const
 {
@@ -70,8 +68,8 @@ Qt::ItemFlags GoodsTable::flags(const QModelIndex &index) const
 
     Qt::ItemFlags flags = QAbstractItemModel::flags(index);
 
-    // 仅允许第二列可编辑
-    if (index.column() == 4) { // 第二列的索引为1（索引从0开始）
+    // 仅允许第4列可编辑
+    if (isEditable&&index.column() == 4) {
         flags |= Qt::ItemIsEditable; // 添加编辑标志
     } else {
         flags &= ~Qt::ItemIsEditable; // 移除编辑标志
@@ -79,7 +77,6 @@ Qt::ItemFlags GoodsTable::flags(const QModelIndex &index) const
 
     return flags;
 }
-
 
 bool GoodsTable::insertRows(int row, int count, const QModelIndex &parent)
 {
@@ -97,9 +94,21 @@ bool GoodsTable::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
+void GoodsTable::setGoodsList(QVector<QVector<QVariant> > &&newlist)
+{
+    beginResetModel();
+    glist=std::move(newlist);
+    endResetModel();
+}
+
 int GoodsTable::getSize()
 {
     return glist.size();
+}
+
+void GoodsTable::setEditableFalse()
+{
+    isEditable=false;
 }
 
 bool GoodsTable::CanConvert(const QVariant &value, int col)
@@ -127,10 +136,6 @@ QVariant GoodsTable::TypeConvert(const QVariant &value, int col)
         return value.toDouble();
 
 }
-
-
-
-
 
 void GoodsTable::Debug()
 {

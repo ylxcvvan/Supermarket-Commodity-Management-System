@@ -8,6 +8,7 @@ public:
     ~OrderTableService();
     OrderTable* getOTable();
     void setOList(QVector<Order> &&newotable);
+
 private:
     OrderTable *otable;
 };
