@@ -385,7 +385,14 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="spinBoxPageJump"/>
+                <widget class="QSpinBox" name="spinBoxPageJump">
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>999</number>
+                 </property>
+                </widget>
                </item>
                <item>
                 <widget class="QLabel" name="label_12">

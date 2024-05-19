@@ -9,8 +9,10 @@ class OrderTable : public QAbstractTableModel
 private:
 
     QVector<QString>titles;
-    //
     QVector<Order>ordList;
+
+    int currentPage=0;
+    int pageSize=10;
 
 public:
     explicit OrderTable(QObject *parent = nullptr);
@@ -38,11 +40,18 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    //排序
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
+
     void setOrdList(QVector<Order>&& newlist);
 
     Order getInveListOrder(const QModelIndex &index);
 
 
+    void setCurrentPage(int page);
+    void setPageSize(int size);
+    int pageCount() const;
+    int currentPageNumber() const;
 private:
 };
 

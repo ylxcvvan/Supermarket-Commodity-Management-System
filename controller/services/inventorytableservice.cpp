@@ -29,5 +29,5 @@ void InventoryTableService::setIList(QVector<QVector<QVariant>>&& newilist)
 
 void InventoryTableService::sortByColumn(int column, Qt::SortOrder order)
 {
-    //TODO
+    this->itable->sort(column,order);
 }

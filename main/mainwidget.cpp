@@ -10,7 +10,6 @@
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
-    ,p_pagemain(new PageMain(this))
     ,p_pageconfig(new PageConfig(this))
     ,p_pagehelp(new PageHelp(this))
 
@@ -19,6 +18,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     //设定是否是管理员
     isAdmin=isadmin;
 
+    p_pagemain=new PageMain(this);
     //连接数据库
     auto db =MySql::getInstance().getDatabase();
 
@@ -27,6 +27,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
     isShowedOnTop=true;
+
 
     FrameLessInit();
 

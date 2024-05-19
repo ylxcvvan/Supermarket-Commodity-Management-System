@@ -2,6 +2,8 @@
 #define WIDGETORDERMANAGER_H
 
 #include <QWidget>
+
+#include"view/page/pageconfig.h"
 #include"controller/services/ordertableservice.h"
 #include"controller/services/goodstableservice.h"
 #include"controller/database/sqlorder.h"
@@ -24,6 +26,8 @@ private:
     void InitLineEditInputMode();
 
 private slots:
+    void sortByColumn(int column);
+
     void on_pushButtonOrderId_clicked(bool checked);
 
     void on_pushButtonOrderStage_clicked(bool checked);

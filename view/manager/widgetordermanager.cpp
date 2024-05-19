@@ -2,6 +2,7 @@
 #include "controller/database/sqlcommondity.h"
 #include "ui_widgetordermanager.h"
 
+
 WidgetOrderManager::WidgetOrderManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetOrderManager)
@@ -22,7 +23,11 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
     //设置orderitem表样式
     ui->tableViewOrderItem->setCornerButtonEnabled(false);
     ui->tableViewOrderItem->setAlternatingRowColors(true);
-     ui->tableViewOrderItem->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableViewOrderItem->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    //设置单击表头排序
+    ui->tableViewOrder->setSortingEnabled(true);
+    connect(ui->tableViewOrder->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
     InitLineEditInputMode();
 }
@@ -53,6 +58,12 @@ void WidgetOrderManager::loadModelOrder()
     if(ui->tableViewOrder->horizontalHeader()->count()>=1)
         ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
+    //更改页数与最大数量
+    p_OrderTableService->getOTable()->setPageSize(PageConfig::getOrdTableMaxRow());
+     on_spinBoxPageJump_valueChanged(1);
+     ui->spinBoxPageJump->setValue(1);
+     ui->LabelTotalPages->setText(tr("%1").arg(p_OrderTableService->getOTable()->pageCount()));
+
 
 
 }
@@ -65,6 +76,12 @@ void WidgetOrderManager::InitLineEditInputMode()
     ui->lineEditOrderId->setValidator(validatorId);
     ui->lineEditCashierId->setValidator(validatorId);
     ui->lineEditUserId->setValidator(validatorId);
+}
+
+void WidgetOrderManager::sortByColumn(int column)
+{
+    Qt::SortOrder order = ui->tableViewOrder->horizontalHeader()->sortIndicatorOrder();
+    p_OrderTableService->sortByColumn(column,order);
 }
 
 void WidgetOrderManager::on_pushButtonOrderId_clicked(bool checked)
@@ -161,30 +178,41 @@ void WidgetOrderManager::on_tableViewOrder_doubleClicked(const QModelIndex &inde
 
 void WidgetOrderManager::on_pushButtonFrontPage_clicked()
 {
-
+    p_OrderTableService->getOTable()->setCurrentPage(0);
+    ui->spinBoxPageJump->setValue(1);
 }
 
 
 void WidgetOrderManager::on_pushButtonPrevPage_clicked()
 {
-
+    int currentPage = p_OrderTableService->getOTable()->currentPageNumber();
+    if (currentPage > 0) {
+        p_OrderTableService->getOTable()->setCurrentPage(currentPage - 1);
+        ui->spinBoxPageJump->setValue(currentPage);
+    }
 }
 
 
 void WidgetOrderManager::on_spinBoxPageJump_valueChanged(int arg1)
 {
-
+     p_OrderTableService->getOTable()->setCurrentPage(arg1- 1);
 }
 
 
 void WidgetOrderManager::on_pushButtonNextPage_clicked()
 {
-
+    int currentPage = p_OrderTableService->getOTable()->currentPageNumber();
+    if (currentPage <p_OrderTableService->getOTable()->pageCount() - 1) {
+        p_OrderTableService->getOTable()->setCurrentPage(currentPage + 1);
+        ui->spinBoxPageJump->setValue(currentPage + 2);
+    }
 }
 
 
 void WidgetOrderManager::on_pushButtonBackPage_clicked()
 {
-
+    int lastPage = p_OrderTableService->getOTable()->pageCount() - 1;
+    p_OrderTableService->getOTable()->setCurrentPage(lastPage);
+    ui->spinBoxPageJump->setValue(lastPage + 1);
 }
 

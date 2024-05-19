@@ -1,7 +1,10 @@
 #include "pageconfig.h"
+#include "qdebug.h"
 #include "ui_pageconfig.h"
-int PageConfig::TableMaxRow = 10;
+
+int PageConfig::InveTableMaxRow = 10;
 int PageConfig::AddDays=10;
+int PageConfig:: OrdTableMaxRow=10;
 PageConfig::PageConfig(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PageConfig)
@@ -13,24 +16,27 @@ PageConfig::PageConfig(QWidget *parent)
     QString settingsFilePath = dir.filePath("app_settings.ini");
     setting=new QSettings(settingsFilePath,QSettings::IniFormat);
 
-    //TableMaxRow
-    TableMaxRow=loadSettings(TableMaxRowName).toInt();
-    if(TableMaxRow==0)
+    //InveTableMaxRow
+    InveTableMaxRow=loadSettings(InveTableMaxRowName).toInt();
+    if(InveTableMaxRow==0)
     {
-        TableMaxRow=10;
-        saveSettings(TableMaxRowName, TableMaxRow);
+        InveTableMaxRow=10;
+        saveSettings(InveTableMaxRowName, InveTableMaxRow);
     }
-    ui->spinBoxMaxShowRow->setValue(TableMaxRow);
+    ui->spinBoxInveMaxShowRow->setValue(InveTableMaxRow);
 
     //AddDays
     AddDays=loadSettings(AddDaysName).toInt();
-    if(AddDays==0)
-    {
-        AddDays=10;
-        saveSettings(AddDaysName,AddDays);
-    }
     ui->spinBoxAddDays->setValue(AddDays);
 
+    //OrdTableMaxRow
+    OrdTableMaxRow=loadSettings(OrdTableMaxRowName).toInt();
+    if(OrdTableMaxRow==0)
+    {
+        OrdTableMaxRow=10;
+        saveSettings(OrdTableMaxRowName,OrdTableMaxRow);
+    }
+    ui->spinBoxOrdMaxShowRow->setValue(OrdTableMaxRow);
 }
 
 PageConfig::~PageConfig()
@@ -49,11 +55,18 @@ QVariant PageConfig::loadSettings(const QString &key)
     return setting->value(key);
 }
 
-void PageConfig::on_spinBoxMaxShowRow_valueChanged(int arg1)
+void PageConfig::on_spinBoxInveMaxShowRow_valueChanged(int arg1)
 {
-    TableMaxRow=arg1;
-    saveSettings(TableMaxRowName, TableMaxRow);
+    InveTableMaxRow=arg1;
+    saveSettings(InveTableMaxRowName, InveTableMaxRow);
 }
+
+void PageConfig::on_spinBoxOrdMaxShowRow_valueChanged(int arg1)
+{
+    OrdTableMaxRow=arg1;
+    saveSettings(OrdTableMaxRowName, OrdTableMaxRow);
+}
+
 
 void PageConfig::on_spinBoxAddDays_valueChanged(int arg1)
 {
@@ -62,9 +75,9 @@ void PageConfig::on_spinBoxAddDays_valueChanged(int arg1)
 }
 
 //static方法
-int PageConfig::getTableMaxRow()
+int PageConfig::getInveTableMaxRow()
 {
-    return TableMaxRow;
+    return InveTableMaxRow;
 }
 
 int PageConfig::getAddDays()
@@ -72,5 +85,9 @@ int PageConfig::getAddDays()
     return AddDays;
 }
 
+int PageConfig::getOrdTableMaxRow()
+{
+    return  OrdTableMaxRow;
+}
 
 

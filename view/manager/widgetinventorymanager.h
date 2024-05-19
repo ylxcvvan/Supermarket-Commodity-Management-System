@@ -20,7 +20,7 @@ public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
     void loadModel();
-    void InitSetTheSearchSellByTimeAddDays();
+
 private:
     void InitLineEditInputMode();
     void InitBoolSearchState();
@@ -28,6 +28,7 @@ private:
 private slots:
 
     void sortByColumn(int column);
+
     void on_pushButtonSelect_clicked();
 
     void on_pushButtonCommodityName_clicked(bool checked);

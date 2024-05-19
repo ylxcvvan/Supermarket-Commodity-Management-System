@@ -15,15 +15,18 @@ class PageConfig : public QWidget
 public:
     explicit PageConfig(QWidget *parent = nullptr);
     ~PageConfig();
-    static int getTableMaxRow();
+    static int getInveTableMaxRow();
     static int getAddDays();
+    static int getOrdTableMaxRow();
 private:
     void saveSettings(const QString &key, const QVariant &value);
     QVariant loadSettings(const QString &key);
 private slots:
-    void on_spinBoxMaxShowRow_valueChanged(int arg1);
+    void on_spinBoxInveMaxShowRow_valueChanged(int arg1);
 
     void on_spinBoxAddDays_valueChanged(int arg1);
+
+    void on_spinBoxOrdMaxShowRow_valueChanged(int arg1);
 
 private:
     Ui::PageConfig *ui;
@@ -36,8 +39,12 @@ private:
     static int AddDays;
     QString AddDaysName="AddDays";
     //库存管理表格每页的最大行数
-    static int TableMaxRow;
-    QString TableMaxRowName="TableMaxRow";
+    static int InveTableMaxRow;
+    QString InveTableMaxRowName="InveTableMaxRow";
+
+    //订单管理界面:
+    static int OrdTableMaxRow;
+    QString OrdTableMaxRowName=" OrdTableMaxRow";
 
 };
 
