@@ -27,6 +27,10 @@ HEADERS += \
 
 FORMS += \
 
+#SDK
+LIBS += $$PWD/resource/MaterialSDK/staticlib/libcomponents.a
+INCLUDEPATH += $$PWD/resource/MaterialSDK/components
+PRE_TARGETDEPS += $$PWD/resource/MaterialSDK/staticlib/libcomponents.a
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

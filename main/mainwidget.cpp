@@ -4,7 +4,8 @@
 #include<QDebug>
 #include"view/animate/animatetoolbutton.h"
 #include <cmath>
-
+#include<qtmaterialraisedbutton.h>
+#include<qtmaterialraisedbutton_p.h>
 
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)

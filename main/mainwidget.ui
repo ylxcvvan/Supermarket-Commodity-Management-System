@@ -121,7 +121,7 @@
              <number>8</number>
             </property>
             <item>
-             <widget class="AnimateToolButton" name="toolButtonMain">
+             <widget class="QtMaterialFlatButton" name="toolButtonMain">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -756,9 +756,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>AnimateToolButton</class>
+   <class>QtMaterialFlatButton</class>
    <extends>QToolButton</extends>
-   <header>view/animate/animatetoolbutton.h</header>
+   <header location="global">qtmaterialflatbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
