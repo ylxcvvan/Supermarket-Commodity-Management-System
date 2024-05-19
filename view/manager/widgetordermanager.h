@@ -3,8 +3,10 @@
 
 #include <QWidget>
 #include"controller/services/ordertableservice.h"
+#include"controller/services/goodstableservice.h"
 #include"controller/database/sqlorder.h"
 #include"controller/database/sqlorderitem.h"
+#include"controller/database/sqlvip.h"
 namespace Ui {
 class WidgetOrderManager;
 }
@@ -36,9 +38,12 @@ private slots:
 
     void on_pushButtonSelect_clicked();
 
+    void on_tableViewOrder_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::WidgetOrderManager *ui;
     OrderTableService *p_OrderTableService;
+    GoodsTableService *p_GoodsTableService;
 
     bool searchOrderId=false;
     bool searchOrderTime=false;

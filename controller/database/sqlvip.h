@@ -5,7 +5,8 @@
 #include"model/vip.h"
 namespace SqlVip
 {
-    Vip Query(QString number);
+    //TODO,查询参数待修改
+    Vip Query(int id=-1);
     bool insert();
     bool modify();
     bool del();

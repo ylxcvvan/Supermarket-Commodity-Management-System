@@ -106,3 +106,8 @@ void OrderTable::setOrdList(QVector<Order> &&newlist)
     endResetModel();
 }
 
+Order OrderTable::getInveListOrder(const QModelIndex &index)
+{
+    return ordList[index.row()];
+}
+

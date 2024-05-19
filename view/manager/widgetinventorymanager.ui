@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
+    <width>814</width>
     <height>497</height>
    </rect>
   </property>
@@ -76,7 +76,7 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -179,12 +179,12 @@
            </property>
            <property name="dateTime">
             <datetime>
-             <hour>0</hour>
+             <hour>16</hour>
              <minute>0</minute>
              <second>0</second>
              <year>2025</year>
              <month>10</month>
-             <day>10</day>
+             <day>9</day>
             </datetime>
            </property>
            <property name="calendarPopup">

@@ -1,9 +1,9 @@
 #include "sqlvip.h"
 #include"mysql.h"
 
-Vip SqlVip::Query(QString number)
+Vip SqlVip::Query(int id)
 {
-    QString sql =QString("SELECT * FROM vip_table WHERE PhoneNumber = '%1'").arg(number);
+    QString sql =QString("SELECT * FROM vip_table WHERE Id = '%1';").arg(id);
 
     auto res = MySql::getInstance().query(sql);
 

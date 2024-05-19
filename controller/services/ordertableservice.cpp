@@ -20,3 +20,4 @@ void OrderTableService::setOList(QVector<Order > &&newotable)
 {
     this->otable->setOrdList(std::forward<QVector<Order>&&>(newotable));
 }
+

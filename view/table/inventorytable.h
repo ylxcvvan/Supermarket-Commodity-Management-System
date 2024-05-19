@@ -42,6 +42,8 @@ public:
 
     //传入新的itable参数构造新的itablei
     void setInveList(QVector<QVector<QVariant>>&& newlist);
+
+
 private:
     //setdata时，检查输入是否合理
     bool CanConvert(const QVariant& value,int col);

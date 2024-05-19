@@ -30,6 +30,8 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     //设置商品类型的comboBox
     ui->tableView->setItemDelegateForColumn(3,p_InventoryTableService->getComboBoxDelegate());
 
+    //设置当前表模型
+    ui->tableView->setModel(p_InventoryTableService->getITable());
     InitBoolSearchState();
     InitLineEditInputMode();
 }
@@ -58,18 +60,20 @@ void WidgetInventoryManager::loadModel()
     double minamount=SearchAmount?ui->lineEditMinAmount->value():-1;
     double maxamount=SearchAmount?ui->lineEditMaxAmount->value():1e10;
 
+
     p_InventoryTableService->setIList(SqlInventory::Query(id,cid,cname,category,details,sellbytime
                                                                 ,minprice,maxprice,mincostprice,maxcostprice
                                                                 ,minamount,maxamount));
 
-    //设置当前模型
-    ui->tableView->setModel(p_InventoryTableService->getITable());
+    //设置当前模型_OLD版本是这样更新的，新版本不需要，注释掉了
+    // ui->tableView->setModel(p_InventoryTableService->getITable());
     ui->tableView->update();
     for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
         ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }
     // 设置商品描述的表头为自适应内容长度，确保内容完全展现
-    ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+    if(ui->tableView->horizontalHeader()->count()>=4)
+        ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
 }
 
 void WidgetInventoryManager::InitSetTheSearchSellByTimeAddDays(int addDays)
