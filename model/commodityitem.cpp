@@ -1,6 +1,11 @@
 #include "commodityitem.h"
 
 
+CommodityItem::CommodityItem()
+{
+
+}
+
 CommodityItem::CommodityItem(int iid, QString na, QString de,QString ca)
     :ItemId(iid),Name(na),Details(de),Category(ca)
 {

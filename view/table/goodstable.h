@@ -3,7 +3,7 @@
 
 #include <QAbstractItemModel>
 #include<QVariant>
-
+#include <QStyledItemDelegate>
 class GoodsTable : public QAbstractTableModel
 {
     Q_OBJECT

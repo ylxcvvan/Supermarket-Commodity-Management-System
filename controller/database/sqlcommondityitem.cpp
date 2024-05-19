@@ -38,7 +38,7 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
         QueryResult.push_back(result);
     }
 
-
+    // qDebug()<<QueryResult.front().getName();
     return QueryResult;
 }
 
