@@ -29,6 +29,8 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     isShowedOnTop=true;
 
     FrameLessInit();
+
+    WidgetTitleBtnInit();
 }
 
 MainWidget::~MainWidget()
@@ -47,6 +49,27 @@ void MainWidget::FrameLessInit()
     setAttribute(Qt::WA_TranslucentBackground);
 
     this->layout()->QLayout::setContentsMargins(layoutmargin,layoutmargin,layoutmargin,layoutmargin);
+}
+
+void MainWidget::WidgetTitleBtnInit()
+{
+    ui->toolButtonMain->setRole(Material::Primary);
+    ui->toolButtonMain->setCornerRadius(8);
+    ui->toolButtonMain->setIconSize(QSize(72,72));
+    ui->toolButtonMain->setOverlayStyle(Material::TintedOverlay);
+
+
+    ui->toolButtonConfig->setRole(Material::Primary);
+    ui->toolButtonConfig->setCornerRadius(8);
+    ui->toolButtonConfig->setIconSize(QSize(72,72));
+    ui->toolButtonConfig->setOverlayStyle(Material::TintedOverlay);
+
+
+    ui->toolButtonHelp->setRole(Material::Primary);
+    ui->toolButtonHelp->setCornerRadius(8);
+    ui->toolButtonHelp->setIconSize(QSize(72,72));
+    ui->toolButtonHelp->setOverlayStyle(Material::TintedOverlay);
+
 }
 
 void MainWidget::on_toolButtonMain_clicked(bool checked)

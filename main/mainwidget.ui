@@ -123,7 +123,7 @@
             <item>
              <widget class="QtMaterialFlatButton" name="toolButtonMain">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -166,6 +166,10 @@
               <property name="text">
                <string>管理界面</string>
               </property>
+              <property name="icon">
+               <iconset resource="../images.qrc">
+                <normaloff>:/resource/Images/icons/home.png</normaloff>:/resource/Images/icons/home.png</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>50</width>
@@ -178,15 +182,12 @@
               <property name="checked">
                <bool>true</bool>
               </property>
-              <property name="toolButtonStyle">
-               <enum>Qt::ToolButtonTextUnderIcon</enum>
-              </property>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="toolButtonConfig">
+             <widget class="QtMaterialFlatButton" name="toolButtonConfig">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -339,15 +340,12 @@
               <property name="checked">
                <bool>false</bool>
               </property>
-              <property name="toolButtonStyle">
-               <enum>Qt::ToolButtonTextUnderIcon</enum>
-              </property>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="toolButtonHelp">
+             <widget class="QtMaterialFlatButton" name="toolButtonHelp">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -403,9 +401,6 @@
               </property>
               <property name="checkable">
                <bool>true</bool>
-              </property>
-              <property name="toolButtonStyle">
-               <enum>Qt::ToolButtonTextUnderIcon</enum>
               </property>
              </widget>
             </item>

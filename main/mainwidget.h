@@ -10,6 +10,7 @@
 #include<QMouseEvent>
 #include<QPaintEvent>
 #include<QGraphicsDropShadowEffect>
+#include<qtmaterialflatbutton.h>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWidget;
@@ -25,6 +26,8 @@ public:
     ~MainWidget();
 private:
     void FrameLessInit();
+
+    void WidgetTitleBtnInit();
 private slots:
 
     void on_toolButtonHelp_clicked(bool checked);
@@ -65,6 +68,8 @@ private:
     PageMain *p_pagemain;
     PageConfig *p_pageconfig;
     PageHelp *p_pagehelp;
+
+
 
     static constexpr int layoutmargin=12;
 
