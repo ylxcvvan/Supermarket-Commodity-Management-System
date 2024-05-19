@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
+    <width>814</width>
     <height>497</height>
    </rect>
   </property>
@@ -21,7 +21,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
          <item>
-          <widget class="QPushButton" name="pushButtonCommodityName">
+          <widget class="QtMaterialRaisedButton" name="pushButtonCommodityName">
+           <property name="font">
+            <font>
+             <family>幼圆</family>
+             <bold>true</bold>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
            <property name="text">
             <string>商品名称：</string>
            </property>
@@ -57,7 +64,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="QPushButton" name="pushButtonCategory">
+          <widget class="QtMaterialRaisedButton" name="pushButtonCategory">
            <property name="text">
             <string>商品类别：</string>
            </property>
@@ -90,7 +97,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QPushButton" name="pushButtonInventoryId">
+          <widget class="QtMaterialRaisedButton" name="pushButtonInventoryId">
            <property name="text">
             <string>库存单号：</string>
            </property>
@@ -124,7 +131,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
-          <widget class="QPushButton" name="pushButtonDetails">
+          <widget class="QtMaterialRaisedButton" name="pushButtonDetails">
            <property name="text">
             <string>商品描述：</string>
            </property>
@@ -160,7 +167,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QPushButton" name="pushButtonSellByTime">
+          <widget class="QtMaterialRaisedButton" name="pushButtonSellByTime">
            <property name="text">
             <string>商品保质期:</string>
            </property>
@@ -179,12 +186,12 @@
            </property>
            <property name="dateTime">
             <datetime>
-             <hour>0</hour>
+             <hour>16</hour>
              <minute>0</minute>
              <second>0</second>
              <year>2025</year>
              <month>10</month>
-             <day>10</day>
+             <day>9</day>
             </datetime>
            </property>
            <property name="calendarPopup">
@@ -197,7 +204,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QPushButton" name="pushButtonCommodityId">
+          <widget class="QtMaterialRaisedButton" name="pushButtonCommodityId">
            <property name="text">
             <string>商品编号：</string>
            </property>
@@ -231,7 +238,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QPushButton" name="pushButtonCostPrice">
+          <widget class="QtMaterialRaisedButton" name="pushButtonCostPrice">
            <property name="text">
             <string>商品进价：</string>
            </property>
@@ -296,7 +303,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QPushButton" name="pushButtonPrice">
+          <widget class="QtMaterialRaisedButton" name="pushButtonPrice">
            <property name="text">
             <string>商品售价：</string>
            </property>
@@ -355,7 +362,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
-          <widget class="QPushButton" name="pushButtonAmount">
+          <widget class="QtMaterialRaisedButton" name="pushButtonAmount">
            <property name="text">
             <string>商品数量：</string>
            </property>
@@ -432,14 +439,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButtonInPutExcel">
+          <widget class="QtMaterialRaisedButton" name="pushButtonInPutExcel">
            <property name="text">
             <string>导入</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButtonOutPutExcel">
+          <widget class="QtMaterialRaisedButton" name="pushButtonOutPutExcel">
            <property name="text">
             <string>导出</string>
            </property>
@@ -448,7 +455,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonSelect">
+        <widget class="QtMaterialRaisedButton" name="pushButtonSelect">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -592,6 +599,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QtMaterialRaisedButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

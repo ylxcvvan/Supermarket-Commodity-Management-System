@@ -8,6 +8,7 @@
 #include"view/manager/widgetinventorymanager.h"
 #include"view/manager/widgetordermanager.h"
 #include"view/manager/widgetvipmanager.h"
+#include<qtmaterialflatbutton.h>
 namespace Ui {
 class PageMain;
 }

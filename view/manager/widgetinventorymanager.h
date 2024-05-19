@@ -23,6 +23,7 @@ public:
 private:
     void InitLineEditInputMode();
     void InitBoolSearchState();
+    void PushButtonInit();
 private slots:
 
     void sortByColumn(int column);

@@ -32,6 +32,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 
     InitBoolSearchState();
     InitLineEditInputMode();
+    PushButtonInit();
 }
 WidgetInventoryManager::~WidgetInventoryManager()
 {
@@ -193,5 +194,22 @@ void WidgetInventoryManager::InitBoolSearchState()
     SearchAmount=checked;
     SearchInventoryId=checked;
     SearchCategory=checked;
+}
+
+void WidgetInventoryManager::PushButtonInit()
+{
+    const QList<QWidget *> children = this->findChildren<QWidget *>();
+
+    for(QWidget *child : children){
+         QtMaterialFlatButton *FlatButton = qobject_cast<QtMaterialFlatButton *>(child);
+
+        if(FlatButton){
+             FlatButton->setHaloVisible(false);
+             FlatButton->setTextAlignment(Qt::AlignCenter);
+             FlatButton->setBackgroundColor(QColor("#feffef"));
+             FlatButton->setForegroundColor(QColor("#fd8f01"));
+             FlatButton->setOverlayColor(QColor("#ffffff"));
+         }
+    }
 }
 

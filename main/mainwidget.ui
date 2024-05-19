@@ -753,7 +753,7 @@
   <customwidget>
    <class>QtMaterialFlatButton</class>
    <extends>QToolButton</extends>
-   <header location="global">qtmaterialflatbutton.h</header>
+   <header>qtmaterialflatbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
