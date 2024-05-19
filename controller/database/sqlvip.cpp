@@ -10,27 +10,27 @@ QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint
 
 
     if(id != -1){
-        sql += QString("Id = %1 AND ").arg(id);
+        sql += QString(" Id = %1 AND ").arg(id);
     }
     if(name != ""){
-        sql += QString("Name = %1 AND").arg(name);
+        sql += QString(" Name = %1 AND ").arg(name);
     }
     if(number !=""){
-        sql +=QString("PhoneNumber LIKE '%1' AND ").arg(number);
+        sql +=QString(" PhoneNumber LIKE '%1' AND ").arg(number);
     }
     if(minpoint < maxpoint){
-        sql += QString("Point between %1 and %2 AND").arg(minpoint).arg(maxpoint);
+        sql += QString(" Point between %1 and %2 AND ").arg(minpoint).arg(maxpoint);
     }
     if(minlevel < maxlevel){
-        sql += QString("Level between %1 and %2 AND").arg(minlevel).arg(maxlevel);
+        sql += QString(" Level between %1 and %2 AND ").arg(minlevel).arg(maxlevel);
     }
     if(!minrdate.isNull() && !maxrdate.isNull()){
-        sql += QString("RegisterDate between '%1' and '%2' and ").arg(minrdate.toString("yyyy-MM-dd")).arg(maxrdate.toString("yyyy-MM-dd"));
+        sql += QString(" RegisterDate between '%1' and '%2' AND ").arg(minrdate.toString("yyyy-MM-dd")).arg(maxrdate.toString("yyyy-MM-dd"));
     }
 
    
     sql = sql.left(sql.length() - 5)+";";
-
+    qDebug()<<sql;
     QSqlQuery query = MySql::getInstance().query(sql);
     QVector<Vip> result;
     while(query.next()){

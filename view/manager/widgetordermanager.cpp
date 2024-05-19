@@ -120,13 +120,25 @@ void WidgetOrderManager::on_tableViewOrder_doubleClicked(const QModelIndex &inde
         newmodel.push_back(res);
     }
 
-    Vip vip=SqlVip::Query(order.getUserId()).front();
+    auto viplist=SqlVip::Query(order.getUserId());
 
+    if(!viplist.isEmpty())
+    {
+        Vip vip=viplist.front();
+        ui->labelUserName->setText(vip.getName());
+        ui->labelUserLevel->setText(tr("等级 %1").arg(vip.getLevel()));
+        ui->labelPhoneNumber->setText(vip.getPhoneNumber());
+        ui->labelUserPoint->setText(tr("%1 分").arg(vip.getPoint()));
+    }
     //设置右下角的属性
-    ui->labelUserName->setText(vip.getName());
-    ui->labelUserLevel->setText(tr("等级 %1").arg(vip.getLevel()));
-    ui->labelPhoneNumber->setText(vip.getPhoneNumber());
-    ui->labelUserPoint->setText(tr("%1 分").arg(vip.getPoint()));
+    else
+    {
+        ui->labelUserName->setText("无");
+        ui->labelUserLevel->setText(tr("%1").arg("无"));
+        ui->labelPhoneNumber->setText("无");
+        ui->labelUserPoint->setText(tr("%1").arg("无"));
+    }
+
     ui->labelOrderDate->setText(order.getOrderTime().toString("yyyy-MM-dd"));
     ui->labelItemCount->setText(tr("%1 件").arg(newmodel.size()));
     ui->labelTotalPrice->setText(tr("%1 元").arg(order.getTotalPrice()));
