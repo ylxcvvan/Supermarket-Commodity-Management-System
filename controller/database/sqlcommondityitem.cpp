@@ -16,11 +16,11 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
     }
     if (!details.isEmpty()) {
 
-        sql += QString("Details LIKE '%%1%' AND ").arg(details);
+        sql += QString(" Details LIKE '%%1%' AND ").arg(details);
     }
     if(!category.isEmpty()){
 
-        sql+=QString("Category LIKE '%%1%' AND ").arg(category);
+        sql+=QString(" Category LIKE '%%1%' AND ").arg(category);
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
@@ -46,14 +46,14 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
 
 bool SqlCommondityItem::Del(int id)
 {
-    QString sql = QString("DELETE FROM commodityitem_table WHERE Id = %1 ;").arg(id);
+    QString sql = QString(" DELETE FROM commodityitem_table WHERE Id = %1 ;").arg(id);
         qDebug()<<sql;
     return MySql::getInstance().modify(sql);
 }
 
 bool SqlCommondityItem::Insert(QString name, QString details, QString category)
 {
-    QString sql = QString("INSERT INTO commodityItem_table (Name,Details,Category)"
+    QString sql = QString(" INSERT INTO commodityItem_table (Name,Details,Category) "
                           " VALUES ('%1','%2','3');").arg(name).arg(details).arg(category);
         qDebug()<<sql;
 

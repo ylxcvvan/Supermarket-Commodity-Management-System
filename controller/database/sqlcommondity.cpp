@@ -18,8 +18,7 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
     if(!sbt.isNull()){
         sql+=QString(" SellByTime <'%1' AND ").arg(sbt.toString("yyyy-MM-dd"));
     }
-    //在这里增加double minprice, double maxprice, double mincostprice, double maxcostprice的范围查询
-    //TODO
+
     sql = sql.left(sql.length() - 5)+";";
     qDebug()<<sql;
     //**
