@@ -27,7 +27,6 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TOD
         ui->stackedWidget->addWidget(widget);
     }
 
-    InitWidgetInventorySetting();
 }
 
 PageMain::~PageMain()
@@ -44,10 +43,6 @@ void PageMain::setOtherWidgetUnchecked(int index)
     toolbtnVec[index]->setChecked(true);
 }
 
-void PageMain::InitWidgetInventorySetting()
-{
-    p_widgetInventory->InitSetTheSearchSellByTimeAddDays();
-}
 
 void PageMain::on_toolButtonCashier_clicked()
 {

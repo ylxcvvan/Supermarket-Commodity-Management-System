@@ -24,7 +24,7 @@ public:
 private:
     void setOtherWidgetUnchecked(int index);
 
-    void InitWidgetInventorySetting();
+
 
 private slots:
 

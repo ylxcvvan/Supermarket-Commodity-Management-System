@@ -23,8 +23,8 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
         ui->comboBoxCategory->addItem(s);
     }
 
-
     //设置单击表头排序
+    ui->tableView->setSortingEnabled(true);
     connect(ui->tableView->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
     //设置商品类型的comboBox
@@ -32,6 +32,8 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 
     //设置当前表模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
+
+    ui->dateEdit->setDate(QDate::currentDate().addDays(PageConfig::getAddDays()));
     InitBoolSearchState();
     InitLineEditInputMode();
     PushButtonInit();
@@ -77,35 +79,21 @@ void WidgetInventoryManager::loadModel()
         ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
 
     //更改页数与最大数量
-    p_InventoryTableService->getITable()->setPageSize(PageConfig::getTableMaxRow());
+    p_InventoryTableService->getITable()->setPageSize(PageConfig::getInveTableMaxRow());
     on_spinBoxPageJump_valueChanged(1);
     ui->spinBoxPageJump->setValue(1);
     ui->LabelTotalPages->setText(tr("%1").arg(p_InventoryTableService->getITable()->pageCount()));
 
+
+
+
 }
 
-void WidgetInventoryManager::InitSetTheSearchSellByTimeAddDays()
-{
-    //设置过期时间的默认值为10天后
-    ui->dateEdit->setDate(QDate::currentDate().addDays(PageConfig::getAddDays()));
-}
 
 void WidgetInventoryManager::sortByColumn(int column)
 {
-    //排序函数
-    //TODO
-    int sortedColumn = ui->tableView->horizontalHeader()->sortIndicatorSection();
     Qt::SortOrder order = ui->tableView->horizontalHeader()->sortIndicatorOrder();
-
-    // 如果 sortedColumn 为 -1，表示没有按照任何表头排序
-    if (sortedColumn != -1) {
-        qDebug() << "当前按照第" << sortedColumn << "列排序，排序顺序为" << (order == Qt::AscendingOrder ? "升序" : "降序");
-    } else {
-        qDebug() << "当前没有按照任何表头排序";
-    }
-
     p_InventoryTableService->sortByColumn(column,order);
-
 }
 
 void WidgetInventoryManager::on_pushButtonSelect_clicked()
@@ -172,25 +160,6 @@ void WidgetInventoryManager::InitLineEditInputMode()
     // 设置商品详情的最大长度
     ui->lineEditDetails->setMaxLength(35565); // 最大长度
 
-    // // 设置销售时间的格式
-    // ui->lineEditSellByTime->setInputMask("9999-99-99"); // YYYY-MM-DD
-
-    // // 设置价格和成本价的浮点数范围
-    // QDoubleValidator *validatorPrice = new QDoubleValidator(this);
-    // validatorPrice->setRange(0, 1e10, 2); // 价格范围
-    // ui->lineEditMinPrice->setValidator(validatorPrice);
-    // ui->lineEditMaxPrice->setValidator(validatorPrice);
-
-    // QDoubleValidator *validatorCostPrice = new QDoubleValidator(this);
-    // validatorCostPrice->setRange(0, 1e10, 2); // 成本价范围
-    // ui->lineEditMinCostPrice->setValidator(validatorCostPrice);
-    // ui->lineEditMaxCostPrice->setValidator(validatorCostPrice);
-
-    // // 设置数量的整数范围
-    // QIntValidator *validatorAmount = new QIntValidator(this);
-    // validatorAmount->setRange(0, 1e9); // 数量范围
-    // ui->lineEditMinAmount->setValidator(validatorAmount);
-    // ui->lineEditMaxAmount->setValidator(validatorAmount);
 }
 
 void WidgetInventoryManager::InitBoolSearchState()

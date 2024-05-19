@@ -8,7 +8,7 @@ public:
     ~OrderTableService();
     OrderTable* getOTable();
     void setOList(QVector<Order> &&newotable);
-
+    void sortByColumn(int column,Qt::SortOrder order);
 private:
     OrderTable *otable;
 };

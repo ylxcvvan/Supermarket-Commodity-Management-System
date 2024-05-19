@@ -42,7 +42,8 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-
+    //排序
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
 
 
     //传入新的itable参数构造新的itablei
@@ -50,7 +51,6 @@ public:
 
 
     int currentPageNumber() const;
-public slots:
     void setPageSize(int size);
     void setCurrentPage(int page);
     int pageCount() const;

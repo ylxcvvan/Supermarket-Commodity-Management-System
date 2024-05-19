@@ -97,6 +97,17 @@ bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
+void InventoryTable::sort(int column, Qt::SortOrder order)
+{
+    std::sort(inveList.begin(), inveList.end(), [column, order](const QVector<QVariant> &a, const QVector<QVariant> &b) {
+        if (order == Qt::AscendingOrder)
+            return a[column] < b[column];
+        else
+            return a[column] > b[column];
+    });
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+}
+
 void InventoryTable::setPageSize(int size)
 {
     pageSize = size;
