@@ -3,7 +3,7 @@
 #include"./model/orderitem.h"
 QVector<OrderItem> SqlOrderItem::Query(int orderid)
 {
-    QString sql = QString("SELECT * FROM orderitem_table WHERE OrderId = %1").arg(orderid);
+    QString sql = QString(" SELECT * FROM orderitem_table WHERE OrderId = %1 ").arg(orderid);
     qDebug()<<sql;
     QSqlQuery query = MySql::getInstance().query(sql);
 
@@ -20,8 +20,8 @@ QVector<OrderItem> SqlOrderItem::Query(int orderid)
 
 bool SqlOrderItem::insert(int orderid, int comdyid, int amount, double total)
 {
-    QString sql = QString("INSERT INTO orderitem_table(OrderId,CommodityId,CommodityAmount,TotalPrice) VALUES"
-                          "(%1,%2,%3,%4)").arg(orderid).arg(comdyid).arg(amount).arg(total);
+    QString sql = QString(" INSERT INTO orderitem_table(OrderId,CommodityId,CommodityAmount,TotalPrice) VALUES "
+                          "(%1,%2,%3,%4) ").arg(orderid).arg(comdyid).arg(amount).arg(total);
 
     qDebug()<<sql;
 

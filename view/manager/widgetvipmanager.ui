@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
+    <width>714</width>
     <height>367</height>
    </rect>
   </property>
@@ -23,28 +23,48 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QtMaterialRaisedButton" name="pushButtonName">
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>姓名：</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QtMaterialTextField" name="lineEditName"/>
            </item>
           </layout>
          </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QtMaterialRaisedButton" name="pushButtonPhoneNum">
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>手机号：</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QtMaterialTextField" name="lineEditPhoneNum"/>
            </item>
           </layout>
          </item>
@@ -53,7 +73,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QtMaterialRaisedButton" name="pushButtonOrderTime">
+          <widget class="QtMaterialRaisedButton" name="pushButtonRegTime">
            <property name="font">
             <font>
              <family>微软雅黑</family>
@@ -126,14 +146,28 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QtMaterialRaisedButton" name="pushButtonPoint">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>积分</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxMinP">
+           <property name="maximum">
+            <double>99999999999999.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_3">
@@ -143,10 +177,21 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_6"/>
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxMaxp">
+           <property name="maximum">
+            <double>99999999999999.984375000000000</double>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QtMaterialRaisedButton" name="pushButtonSearch">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>查询会员</string>
            </property>
@@ -157,27 +202,64 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QtMaterialRaisedButton" name="pushButtonLevel">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>等级：</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QSpinBox" name="spinBoxMinL">
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>10</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>~</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QSpinBox" name="spinBoxMaxL">
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QtMaterialRaisedButton" name="pushButtonAdd">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>添加会员</string>
            </property>
@@ -195,12 +277,12 @@
       <layout class="QVBoxLayout" name="verticalLayout_4"/>
      </item>
      <item>
-      <widget class="QListView" name="listView"/>
+      <widget class="QTableView" name="tableview"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_10">
        <item>
-        <widget class="QPushButton" name="fontpage_2">
+        <widget class="QtMaterialRaisedButton" name="fontpage">
          <property name="text">
           <string>首页</string>
          </property>
@@ -220,7 +302,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="prepage_2">
+        <widget class="QtMaterialRaisedButton" name="prepage">
          <property name="text">
           <string>上一页</string>
          </property>
@@ -244,14 +326,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="currentpage_2">
-         <property name="maximumSize">
-          <size>
-           <width>30</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
+        <widget class="QSpinBox" name="currentPage"/>
        </item>
        <item>
         <widget class="QLabel" name="label_12">
@@ -278,7 +353,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="totalpages_2">
+        <widget class="QLabel" name="totalpages">
          <property name="text">
           <string>0</string>
          </property>
@@ -292,7 +367,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="nextpage_2">
+        <widget class="QtMaterialRaisedButton" name="nextpage">
          <property name="text">
           <string>下一页</string>
          </property>
@@ -312,7 +387,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="tailpage_2">
+        <widget class="QtMaterialRaisedButton" name="tailpage">
          <property name="text">
           <string>尾页</string>
          </property>
@@ -332,6 +407,11 @@
    <class>QtMaterialRaisedButton</class>
    <extends>QPushButton</extends>
    <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QtMaterialTextField</class>
+   <extends>QLineEdit</extends>
+   <header location="global">qtmaterialtextfield.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

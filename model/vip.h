@@ -17,7 +17,7 @@ public:
 
     const QString& getName();
     const QString& getPhoneNumber();
-    const int& GetId();
+    const int& getId();
     double& getPoint();
     int& getLevel();
     const QDate& getRegisterDate();

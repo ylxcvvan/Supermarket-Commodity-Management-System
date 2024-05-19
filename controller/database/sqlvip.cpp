@@ -13,10 +13,10 @@ QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint
         sql += QString(" Id = %1 AND ").arg(id);
     }
     if(name != ""){
-        sql += QString(" Name = %1 AND ").arg(name);
+        sql += QString(" Name Like '%%1%' AND ").arg(name);
     }
     if(number !=""){
-        sql +=QString(" PhoneNumber LIKE '%1' AND ").arg(number);
+        sql +=QString(" PhoneNumber LIKE '%%1%' AND ").arg(number);
     }
     if(minpoint < maxpoint){
         sql += QString(" Point between %1 and %2 AND ").arg(minpoint).arg(maxpoint);

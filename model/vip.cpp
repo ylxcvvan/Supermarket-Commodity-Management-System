@@ -13,7 +13,7 @@ const QString &Vip::getPhoneNumber()
     return this->PhoneNumber;
 }
 
-const int &Vip::GetId()
+const int &Vip::getId()
 {
     return this->Id;
 }

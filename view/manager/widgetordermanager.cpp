@@ -63,7 +63,7 @@ void WidgetOrderManager::loadModelOrder()
         ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
     //更改页数与最大数量
-    p_OrderTableService->getOTable()->setPageSize(PageConfig::getOrdTableMaxRow());
+     p_OrderTableService->getOTable()->setPageSize(PageConfig::getOrdTableMaxRow());
      on_spinBoxPageJump_valueChanged(1);
      ui->spinBoxPageJump->setValue(1);
      ui->LabelTotalPages->setText(tr("%1").arg(p_OrderTableService->getOTable()->pageCount()));

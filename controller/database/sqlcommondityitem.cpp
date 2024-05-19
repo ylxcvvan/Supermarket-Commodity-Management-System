@@ -46,14 +46,14 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
 
 bool SqlCommondityItem::Del(int id)
 {
-    QString sql = QString("DELETE FROM commodityitem_table WHERE Id = %1 ;").arg(id);
+    QString sql = QString(" DELETE FROM commodityitem_table WHERE Id = %1 ;").arg(id);
         qDebug()<<sql;
     return MySql::getInstance().modify(sql);
 }
 
 bool SqlCommondityItem::Insert(QString name, QString details, QString category)
 {
-    QString sql = QString("INSERT INTO commodityItem_table (Name,Details,Category)"
+    QString sql = QString(" INSERT INTO commodityItem_table (Name,Details,Category) "
                           " VALUES ('%1','%2','3');").arg(name).arg(details).arg(category);
         qDebug()<<sql;
 
