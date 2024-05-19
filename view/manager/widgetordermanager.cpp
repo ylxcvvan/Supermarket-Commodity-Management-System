@@ -25,6 +25,7 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
      ui->tableViewOrderItem->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     InitLineEditInputMode();
+     PushButtonInit();
 }
 
 WidgetOrderManager::~WidgetOrderManager()
@@ -55,6 +56,37 @@ void WidgetOrderManager::loadModelOrder()
 
 
 
+}
+
+void WidgetOrderManager::PushButtonInit()
+{
+    const QList<QWidget *> children = this->findChildren<QWidget *>();
+
+    for(QWidget *child : children){
+        QtMaterialFlatButton *FlatButton = qobject_cast<QtMaterialFlatButton *>(child);
+
+        if(FlatButton){
+            FlatButton->setHaloVisible(false);
+            FlatButton->setTextAlignment(Qt::AlignCenter);
+
+            FlatButton->setBackgroundColor(QColor("#feffef"));
+            FlatButton->setForegroundColor(QColor("#fd8f01"));
+            FlatButton->setOverlayColor(QColor("#ffffff"));
+        }
+    }
+
+    QList<QtMaterialFlatButton*> buttons = {ui->pushButtonFrontPage,ui->pushButtonBackPage,
+                                             ui->pushButtonNextPage,ui->pushButtonPrevPage};
+
+    for(auto i:buttons){
+        i->setOverlayStyle(Material::TintedOverlay);
+        i->setUseThemeColors(false);
+        i->setBackgroundColor(QColor("#00bcd4"));
+        i->setForegroundColor(QColor("ffffff"));
+        i->setOverlayColor(QColor("00bcd4"));
+        i->setRole(Material::Primary);
+        i->setTextAlignment(Qt::AlignCenter);
+    }
 }
 
 void WidgetOrderManager::InitLineEditInputMode()

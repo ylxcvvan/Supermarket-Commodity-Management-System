@@ -20,6 +20,7 @@ public:
     ~WidgetOrderManager();
     void InitBoolSearchState();
     void loadModelOrder();
+    void PushButtonInit();
 private:
     void InitLineEditInputMode();
 

@@ -2,10 +2,13 @@
 #define SQLCASHIER_H
 #include <QSqlQuery>
 #include <QVariant>
+#include<model/user.h>
 #include"mysql.h"
 namespace SqlCashier
 {
     bool login(QString account,QString password);
+    User query(int id);
+
 };
 
 #endif // SQLCASHIER_H

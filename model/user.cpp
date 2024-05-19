@@ -1,7 +1,11 @@
 #include "user.h"
 
-User::User(int id, QString name, QString account, QString password):
-    Name(id),Password(name){}
+User::User(int id, QString name, QString account, QString password, QDateTime time):
+    Id(id),
+    Name(name),
+    Account(account),
+    Password(password),
+    LastLoginTime(time){}
 
 const QString &User::getName()
 {
@@ -15,10 +19,15 @@ const QString &User::getPassword()
 
 const int &User::getId()
 {
-    return this->id;
+    return this->Id;
 }
 
 const QString &User::getAccount()
 {
     return this->Account;
+}
+
+const QString &User::getDateTime()
+{
+    return this->getDateTime();
 }

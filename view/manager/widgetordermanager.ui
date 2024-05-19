@@ -39,6 +39,13 @@
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>微软雅黑</family>
+                     <pointsize>10</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>订单时间：</string>
                    </property>
@@ -121,6 +128,13 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <pointsize>10</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>订单总价：</string>
                  </property>
@@ -174,6 +188,19 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>12</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>查询</string>
              </property>
@@ -193,6 +220,13 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <pointsize>10</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>订单编号：</string>
                </property>
@@ -202,7 +236,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditOrderId">
+              <widget class="QtMaterialTextField" name="lineEditOrderId">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -222,6 +256,13 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <pointsize>10</pointsize>
+                 <bold>true</bold>
+                </font>
                </property>
                <property name="text">
                 <string>订单状态：</string>
@@ -268,6 +309,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>收银员编号:</string>
                </property>
@@ -277,7 +324,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditCashierId">
+              <widget class="QtMaterialTextField" name="lineEditCashierId">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -298,6 +345,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>顾客编号：</string>
                </property>
@@ -307,7 +360,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditUserId">
+              <widget class="QtMaterialTextField" name="lineEditUserId">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -341,7 +394,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_10">
                <item>
-                <widget class="QPushButton" name="pushButtonFrontPage">
+                <widget class="QtMaterialRaisedButton" name="pushButtonFrontPage">
                  <property name="text">
                   <string>首页</string>
                  </property>
@@ -361,7 +414,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButtonPrevPage">
+                <widget class="QtMaterialRaisedButton" name="pushButtonPrevPage">
                  <property name="text">
                   <string>上一页</string>
                  </property>
@@ -426,7 +479,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButtonNextPage">
+                <widget class="QtMaterialRaisedButton" name="pushButtonNextPage">
                  <property name="text">
                   <string>下一页</string>
                  </property>
@@ -446,7 +499,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButtonBackPage">
+                <widget class="QtMaterialRaisedButton" name="pushButtonBackPage">
                  <property name="text">
                   <string>尾页</string>
                  </property>
@@ -697,6 +750,11 @@
    <class>QtMaterialRaisedButton</class>
    <extends>QPushButton</extends>
    <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QtMaterialTextField</class>
+   <extends>QLineEdit</extends>
+   <header location="global">qtmaterialtextfield.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
