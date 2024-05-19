@@ -1,4 +1,5 @@
 #include "widgetordermanager.h"
+#include "controller/database/sqlcashier.h"
 #include "controller/database/sqlcommondity.h"
 #include "ui_widgetordermanager.h"
 
@@ -29,8 +30,10 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
     ui->tableViewOrder->setSortingEnabled(true);
     connect(ui->tableViewOrder->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
+    ui->dateTimeEditBegin->setDateTime(QDateTime::currentDateTime().addDays(-1));
+    ui->dateTimeEditEnd->setDateTime(QDateTime::currentDateTime());
     InitLineEditInputMode();
-     PushButtonInit();
+    PushButtonInit();
 }
 
 WidgetOrderManager::~WidgetOrderManager()
@@ -193,7 +196,7 @@ void WidgetOrderManager::on_tableViewOrder_doubleClicked(const QModelIndex &inde
     ui->labelTotalPrice->setText(tr("%1 元").arg(order.getTotalPrice()));
     ui->labelPaidPrice->setText(tr("%1 元").arg(order.getPaidPrice()));
     //收银员姓名TODO
-    //ui->labelCashierName->setText();
+    ui->labelCashierName->setText(SqlCashier::query(order.getCashierId()).getName());
     ui->labelOrderStage->setText(ui->comboBoxOrderStage->itemText(static_cast<int>(order.getOrderStage())));
 
     //装载底层数据，更新表样式

@@ -1,6 +1,7 @@
 #ifndef COMMODITYITEM_H
 #define COMMODITYITEM_H
 #include<QString>
+#include <QMetaType>
 
 /*
     食品类：包括各种食品和饮料，如谷物、肉类、水果、蔬菜、饮料等。
@@ -14,8 +15,10 @@
     图书音像类：包括图书、音乐CD、电影DVD等。
     礼品类：包括各种礼品、鲜花、卡片等。
 */
+
 class CommodityItem
 {
+
 private:
     int ItemId;
     QString Name;
@@ -23,6 +26,7 @@ private:
     QString Category;
 
 public:
+    CommodityItem();
     CommodityItem(int iid,QString na,QString de="该商品没有描述",QString ca="未分类");
     int getItemId() const;
     QString getName() const;
@@ -33,5 +37,6 @@ public:
     void setDetails(const QString& newdetails);
     void setCategory(const QString& newcategory);
 };
+Q_DECLARE_METATYPE(CommodityItem)
 
 #endif // COMMODITYITEM_H

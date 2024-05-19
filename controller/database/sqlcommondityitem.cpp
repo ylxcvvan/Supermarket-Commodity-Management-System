@@ -16,11 +16,11 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
     }
     if (!details.isEmpty()) {
 
-        sql += QString("Details LIKE '%%1%' AND ").arg(details);
+        sql += QString(" Details LIKE '%%1%' AND ").arg(details);
     }
     if(!category.isEmpty()){
 
-        sql+=QString("Category LIKE '%%1%' AND ").arg(category);
+        sql+=QString(" Category LIKE '%%1%' AND ").arg(category);
     }
     // 移除最后的 AND
     sql = sql.left(sql.length() - 5)+";";
@@ -38,7 +38,7 @@ QVector<CommodityItem> SqlCommondityItem::Query(int id, QString name, QString de
         QueryResult.push_back(result);
     }
 
-
+    // qDebug()<<QueryResult.front().getName();
     return QueryResult;
 }
 

@@ -378,13 +378,6 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>选择订单：</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QTableView" name="tableViewOrder"/>
          </item>
          <item>
