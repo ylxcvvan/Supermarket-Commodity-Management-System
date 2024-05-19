@@ -12,3 +12,9 @@ PageHelp::~PageHelp()
 {
     delete ui;
 }
+
+void PageHelp::on_pushButton_clicked()
+{
+    QMessageBox::aboutQt(this, tr("关于 Qt"));
+}
+

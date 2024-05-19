@@ -45,8 +45,6 @@ private:
     WidgetOrderManager *p_widgetOrder;
     WidgetVipManager *p_widgetVip;
 
-    int InventorySearchDateAddDays=10;
-
 };
 
 #endif // PAGEMAIN_H

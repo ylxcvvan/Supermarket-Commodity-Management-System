@@ -29,14 +29,14 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>180</y>
+     <x>100</x>
+     <y>160</y>
      <width>221</width>
      <height>81</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>关于Qt版本</string>
    </property>
   </widget>
  </widget>

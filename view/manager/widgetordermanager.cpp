@@ -146,3 +146,33 @@ void WidgetOrderManager::on_tableViewOrder_doubleClicked(const QModelIndex &inde
 
 }
 
+
+void WidgetOrderManager::on_pushButtonFrontPage_clicked()
+{
+
+}
+
+
+void WidgetOrderManager::on_pushButtonPrevPage_clicked()
+{
+
+}
+
+
+void WidgetOrderManager::on_spinBoxPageJump_valueChanged(int arg1)
+{
+
+}
+
+
+void WidgetOrderManager::on_pushButtonNextPage_clicked()
+{
+
+}
+
+
+void WidgetOrderManager::on_pushButtonBackPage_clicked()
+{
+
+}
+

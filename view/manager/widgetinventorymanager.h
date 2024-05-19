@@ -6,6 +6,7 @@
 #include<QTableView>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include"view/page/pageconfig.h"
 #include"controller/services/inventorytableservice.h"
 namespace Ui {
 class WidgetInventoryManager;
@@ -19,7 +20,7 @@ public:
     explicit WidgetInventoryManager(QWidget *parent = nullptr);
     ~WidgetInventoryManager();
     void loadModel();
-    void InitSetTheSearchSellByTimeAddDays(int addDays);
+    void InitSetTheSearchSellByTimeAddDays();
 private:
     void InitLineEditInputMode();
     void InitBoolSearchState();
@@ -45,6 +46,16 @@ private slots:
     void on_pushButtonInventoryId_clicked(bool checked);
 
     void on_pushButtonCategory_clicked(bool checked);
+
+    void on_pushButtonFrontPage_clicked();
+
+    void on_pushButtonPrevPage_clicked();
+
+    void on_spinBoxPageJump_valueChanged(int arg1);
+
+    void on_pushButtonNextPage_clicked();
+
+    void on_pushButtonBackPage_clicked();
 
 private:
     Ui::WidgetInventoryManager *ui;

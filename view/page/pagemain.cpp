@@ -46,7 +46,7 @@ void PageMain::setOtherWidgetUnchecked(int index)
 
 void PageMain::InitWidgetInventorySetting()
 {
-    p_widgetInventory->InitSetTheSearchSellByTimeAddDays(InventorySearchDateAddDays);
+    p_widgetInventory->InitSetTheSearchSellByTimeAddDays();
 }
 
 void PageMain::on_toolButtonCashier_clicked()

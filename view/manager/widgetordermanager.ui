@@ -341,7 +341,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_10">
                <item>
-                <widget class="QPushButton" name="fontpage_2">
+                <widget class="QPushButton" name="pushButtonFrontPage">
                  <property name="text">
                   <string>首页</string>
                  </property>
@@ -361,7 +361,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="prepage_2">
+                <widget class="QPushButton" name="pushButtonPrevPage">
                  <property name="text">
                   <string>上一页</string>
                  </property>
@@ -385,14 +385,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="currentpage_2">
-                 <property name="maximumSize">
-                  <size>
-                   <width>30</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                </widget>
+                <widget class="QSpinBox" name="spinBoxPageJump"/>
                </item>
                <item>
                 <widget class="QLabel" name="label_12">
@@ -419,7 +412,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="totalpages_2">
+                <widget class="QLabel" name="LabelTotalPages">
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -433,7 +426,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="nextpage_2">
+                <widget class="QPushButton" name="pushButtonNextPage">
                  <property name="text">
                   <string>下一页</string>
                  </property>
@@ -453,7 +446,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="tailpage_2">
+                <widget class="QPushButton" name="pushButtonBackPage">
                  <property name="text">
                   <string>尾页</string>
                  </property>

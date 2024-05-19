@@ -20,7 +20,7 @@ QVariant InventoryTable::headerData(int section, Qt::Orientation orientation, in
 
 int InventoryTable::rowCount(const QModelIndex &parent) const
 {
-    return inveList.size();
+    return std::min(pageSize, inveList.size() - currentPage * pageSize);
 }
 
 int InventoryTable::columnCount(const QModelIndex &parent) const
@@ -33,9 +33,9 @@ QVariant InventoryTable::data(const QModelIndex &index, int role) const
 
     if (!index.isValid())
         return QVariant();
-    if(role==Qt::DisplayRole)
-    {
-        return inveList[index.row()][index.column()];
+    int row = index.row() + currentPage * pageSize;
+    if (role == Qt::DisplayRole && row < inveList.size() && index.column() < titles.size()) {
+        return inveList[row][index.column()];
     }
 
     return QVariant();
@@ -95,6 +95,30 @@ bool InventoryTable::removeRows(int row, int count, const QModelIndex &parent)
     //TODO
     endRemoveRows();
     return true;
+}
+
+void InventoryTable::setPageSize(int size)
+{
+    pageSize = size;
+    emit layoutChanged();
+}
+
+void InventoryTable::setCurrentPage(int page)
+{
+    if (page >= 0 && page < pageCount()) {
+        currentPage = page;
+        emit layoutChanged();
+    }
+}
+
+int InventoryTable::pageCount() const
+{
+    return (inveList.size() + pageSize - 1) / pageSize;
+}
+
+int InventoryTable::currentPageNumber() const
+{
+    return currentPage;
 }
 
 void InventoryTable::setInveList(QVector<QVector<QVariant>> &&newlist)

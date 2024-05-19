@@ -40,6 +40,16 @@ private slots:
 
     void on_tableViewOrder_doubleClicked(const QModelIndex &index);
 
+    void on_pushButtonFrontPage_clicked();
+
+    void on_pushButtonPrevPage_clicked();
+
+    void on_spinBoxPageJump_valueChanged(int arg1);
+
+    void on_pushButtonNextPage_clicked();
+
+    void on_pushButtonBackPage_clicked();
+
 private:
     Ui::WidgetOrderManager *ui;
     OrderTableService *p_OrderTableService;

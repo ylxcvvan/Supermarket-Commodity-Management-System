@@ -74,12 +74,19 @@ void WidgetInventoryManager::loadModel()
     // 设置商品描述的表头为自适应内容长度，确保内容完全展现
     if(ui->tableView->horizontalHeader()->count()>=4)
         ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+
+    //更改页数与最大数量
+    p_InventoryTableService->getITable()->setPageSize(PageConfig::getTableMaxRow());
+    on_spinBoxPageJump_valueChanged(1);
+    ui->spinBoxPageJump->setValue(1);
+    ui->LabelTotalPages->setText(tr("%1").arg(p_InventoryTableService->getITable()->pageCount()));
+
 }
 
-void WidgetInventoryManager::InitSetTheSearchSellByTimeAddDays(int addDays)
+void WidgetInventoryManager::InitSetTheSearchSellByTimeAddDays()
 {
     //设置过期时间的默认值为10天后
-    ui->dateEdit->setDate(QDate::currentDate().addDays(addDays));
+    ui->dateEdit->setDate(QDate::currentDate().addDays(PageConfig::getAddDays()));
 }
 
 void WidgetInventoryManager::sortByColumn(int column)
@@ -197,5 +204,46 @@ void WidgetInventoryManager::InitBoolSearchState()
     SearchAmount=checked;
     SearchInventoryId=checked;
     SearchCategory=checked;
+}
+
+
+void WidgetInventoryManager::on_pushButtonFrontPage_clicked()
+{
+    p_InventoryTableService->getITable()->setCurrentPage(0);
+    ui->spinBoxPageJump->setValue(1);
+}
+
+
+void WidgetInventoryManager::on_pushButtonPrevPage_clicked()
+{
+    int currentPage = p_InventoryTableService->getITable()->currentPageNumber();
+    if (currentPage > 0) {
+        p_InventoryTableService->getITable()->setCurrentPage(currentPage - 1);
+        ui->spinBoxPageJump->setValue(currentPage);
+    }
+}
+
+
+void WidgetInventoryManager::on_spinBoxPageJump_valueChanged(int arg1)
+{
+    p_InventoryTableService->getITable()->setCurrentPage(arg1- 1);
+}
+
+
+void WidgetInventoryManager::on_pushButtonNextPage_clicked()
+{
+    int currentPage = p_InventoryTableService->getITable()->currentPageNumber();
+    if (currentPage < p_InventoryTableService->getITable()->pageCount() - 1) {
+        p_InventoryTableService->getITable()->setCurrentPage(currentPage + 1);
+         ui->spinBoxPageJump->setValue(currentPage + 2);
+    }
+}
+
+
+void WidgetInventoryManager::on_pushButtonBackPage_clicked()
+{
+    int lastPage = p_InventoryTableService->getITable()->pageCount() - 1;
+    p_InventoryTableService->getITable()->setCurrentPage(lastPage);
+     ui->spinBoxPageJump->setValue(lastPage + 1);
 }
 
