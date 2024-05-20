@@ -4,7 +4,7 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
 {
     QString sql="SELECT * FROM commodity_table WHERE ";
     if(id!=-1){
-        sql += QString(" Id = %1 AND ").arg(id);
+        sql += QString(" Id LIKE %1 AND ").arg(id);
     }
     if(iid !=-1){
         sql+=QString(" ItemId = %1 AND ").arg(iid);

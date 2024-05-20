@@ -1,5 +1,6 @@
 #include "widgetcashiermanager.h"
 #include "controller/database/sqlcommondity.h"
+#include "controller/database/sqlinventory.h"
 #include "ui_widgetcashiermanager.h"
 
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
@@ -7,6 +8,9 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     , ui(new Ui::WidgetCashierManager)
     ,p_GoodsListService(new GoodsTableService)
     ,p_ComItemService(new ComItemTableService)
+    ,goodsTableRow(0)
+    ,totalPrice(0)
+    ,totalAmount(0)
 {
     ui->setupUi(this);
 
@@ -93,6 +97,38 @@ void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index
     comList=SqlCommondity::Query(-1,itemid);
     for(auto &com:comList)
     {
-        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString())));
+        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-MM-dd"))));
     }
 }
+
+void WidgetCashierManager::on_lineEditCommodityId_textChanged(const QString &arg1)
+{
+    ui->comboBox->clear();
+    comList = SqlCommondity::Query(arg1.toInt());
+    for(auto &com:comList)
+    {
+        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-ddMM-dd"))));
+    }
+}
+
+
+void WidgetCashierManager::on_pushButtonAdd_clicked()
+{
+    int cid = comList[ui->comboBox->currentIndex()].getId();
+    qDebug()<<cid;
+    auto item =SqlCommondity::Query(cid).front();
+    double amount = ui->spinBoxAmount->value();
+    double price = amount * item.getPrice();
+    QVector<QVector<QVariant>>lists{
+                                     {item.getId(),item.getName(),item.getSellByTime(),item.getPrice(),
+                                      amount,price}
+                                    };
+    p_GoodsListService->getGTable()->insertRows(goodsTableRow++,1,lists);
+
+    totalPrice += price;
+    totalAmount += amount;
+
+
+
+}
+

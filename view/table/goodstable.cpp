@@ -78,13 +78,33 @@ Qt::ItemFlags GoodsTable::flags(const QModelIndex &index) const
     return flags;
 }
 
-bool GoodsTable::insertRows(int row, int count, const QModelIndex &parent)
+bool GoodsTable::insertRows(int row, int count,QVector<QVector<QVariant>> newrow,const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
+    for (int i = 0; i < count; ++i) {
+        if (i < newrow.size()) {
+            glist.insert(row, newrow[i]); // 插入新数据
+        } else {
+            QVector<QVariant> newRow(titles.size()); // 初始化空行
+            glist.insert(row, newRow);
+        }
+    }
     endInsertRows();
     return true;
 }
+
+// bool GoodsTable::insertRows(int row, int count, const QModelIndex &parent)
+// {
+//     beginInsertRows(parent, row, row + count - 1);
+
+//     for (int i = 0; i < count; ++i) {
+//         QVector<QVariant> newRow(titles.size()); // 初始化一行，包含与列数相同数量的默认值
+
+//         glist.insert(row, newRow);
+//     }
+//     endInsertRows();
+//     return true;
+// }
 
 bool GoodsTable::removeRows(int row, int count, const QModelIndex &parent)
 {
@@ -139,7 +159,5 @@ QVariant GoodsTable::TypeConvert(const QVariant &value, int col)
 
 void GoodsTable::Debug()
 {
-    glist << QVector<QVariant>{1001,"雪碧", "2024-12-31", 2.5, 10, 25.0}
-          << QVector<QVariant>{1002,"可乐", "2024-12-31", 2.0, 20, 40.0}
-          << QVector<QVariant>{1003,"芬达", "2024-12-31", 3.0, 15, 45.0};
+
 }
