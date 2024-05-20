@@ -23,6 +23,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
         ui->comboBoxCategory->addItem(s);
     }
 
+
     //设置单击表头排序
     ui->tableView->setSortingEnabled(true);
     connect(ui->tableView->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
@@ -82,6 +83,7 @@ void WidgetInventoryManager::loadModel()
     p_InventoryTableService->getITable()->setPageSize(PageConfig::getInveTableMaxRow());
     on_spinBoxPageJump_valueChanged(1);
     ui->spinBoxPageJump->setValue(1);
+    ui->spinBoxPageJump->setMaximum(p_InventoryTableService->getITable()->pageCount());
     ui->LabelTotalPages->setText(tr("%1").arg(p_InventoryTableService->getITable()->pageCount()));
 
 

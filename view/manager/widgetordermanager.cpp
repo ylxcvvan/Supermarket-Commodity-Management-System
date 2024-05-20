@@ -12,6 +12,7 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
 {
     ui->setupUi(this);
 
+    loadModelOrder();
     //装载order表
     ui->tableViewOrder->setModel(p_OrderTableService->getOTable());
     //设置order表的样式
@@ -24,6 +25,7 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
     //设置orderitem表样式
     ui->tableViewOrderItem->setCornerButtonEnabled(false);
     ui->tableViewOrderItem->setAlternatingRowColors(true);
+    ui->tableViewOrderItem->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableViewOrderItem->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     //设置单击表头排序
@@ -62,10 +64,12 @@ void WidgetOrderManager::loadModelOrder()
     if(ui->tableViewOrder->horizontalHeader()->count()>=1)
         ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
+
     //更改页数与最大数量
      p_OrderTableService->getOTable()->setPageSize(PageConfig::getOrdTableMaxRow());
      on_spinBoxPageJump_valueChanged(1);
      ui->spinBoxPageJump->setValue(1);
+     ui->spinBoxPageJump->setMaximum(p_OrderTableService->getOTable()->pageCount());
      ui->LabelTotalPages->setText(tr("%1").arg(p_OrderTableService->getOTable()->pageCount()));
 
 
@@ -251,3 +255,64 @@ void WidgetOrderManager::on_pushButtonBackPage_clicked()
     ui->spinBoxPageJump->setValue(lastPage + 1);
 }
 
+
+#include <QFileDialog>
+#include <QCoreApplication>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QVariant>
+
+void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
+{
+    // 获取文件保存路径
+    QString filePath = QFileDialog::getSaveFileName(this, "保存订单", QCoreApplication::applicationDirPath(), "Text Files (*.txt)");
+    if (filePath.isEmpty()) {
+        return;  // 用户取消操作
+    }
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(nullptr, "Warning", "Failed to open file");
+        return;
+    }
+
+    QTextStream out(&file);
+    out.setCodec("UTF-8"); // 设置文本流编码为UTF-8
+
+    QVector<QVector<QVariant>> comlist = p_GoodsTableService->getGTable()->getGoodsList();
+    // 写入商品信息
+    out << "| " << qSetFieldWidth(10) << tr("商品编号") << qSetFieldWidth(0)
+        << "| " << qSetFieldWidth(10) << tr("商品名称") << qSetFieldWidth(0)
+        << "| " << qSetFieldWidth(20) << tr("商品保质期") << qSetFieldWidth(0)
+        << "| " << qSetFieldWidth(10) << tr("商品单价") << qSetFieldWidth(0)
+        << "| " << qSetFieldWidth(10) << tr("商品数量") << qSetFieldWidth(0)
+        << "| " << qSetFieldWidth(10) << tr("商品总价") << qSetFieldWidth(0) << "|\n";
+
+    for (const auto& commodity : comlist) {
+        out << "| " << qSetFieldWidth(10) << commodity[0].toString() << qSetFieldWidth(0)
+            << "| " << qSetFieldWidth(10) << commodity[1].toString() << qSetFieldWidth(0)
+            << "| " << qSetFieldWidth(20) << commodity[2].toString() << qSetFieldWidth(0)
+            << "| " << qSetFieldWidth(10) << commodity[3].toString() << qSetFieldWidth(0)
+            << "| " << qSetFieldWidth(10) << commodity[4].toString() << qSetFieldWidth(0)
+            << "| " << qSetFieldWidth(10) << commodity[5].toString() << qSetFieldWidth(0) << "|\n";
+    }
+
+    // 假设你有一个 Order 对象 order，包含订单的详细信息
+    out << "| " << qSetFieldWidth(0) << tr("顾客姓名:") << qSetFieldWidth(0) << " " << ui->labelUserName->text()
+        << " | " << qSetFieldWidth(0) << tr("顾客等级:") << qSetFieldWidth(0) << " " << ui->labelUserLevel->text() << " |\n"
+        << "| " << qSetFieldWidth(0) << tr("手机号码:") << qSetFieldWidth(0) << " " << ui->labelPhoneNumber->text()
+        << " | " << qSetFieldWidth(0) << tr("顾客积分:") << qSetFieldWidth(0) << " " << ui->labelUserPoint->text() << " " << tr("分") << " |\n"
+        << "| " << qSetFieldWidth(0) << tr("订单日期:") << qSetFieldWidth(0) << " " << ui->labelOrderDate->text()
+        << " | " << qSetFieldWidth(0) << tr("商品件数:") << qSetFieldWidth(0) << " " << ui->labelItemCount->text() << " " << tr("件") << " |\n"
+        << "| " << qSetFieldWidth(0) << tr("应付:") << qSetFieldWidth(0) << " " << ui->labelTotalPrice->text()
+        << " | " << qSetFieldWidth(0) << tr("实付:") << qSetFieldWidth(0) << " " << ui->labelPaidPrice->text() << " |\n"
+        << "| " << qSetFieldWidth(0) << tr("收银员姓名:") << qSetFieldWidth(0) << " " << ui->labelCashierName->text()
+        << " | " << qSetFieldWidth(0) << tr("订单状态:") << qSetFieldWidth(0) << " " << ui->labelOrderStage->text() << " |\n";
+
+
+
+
+
+    file.close();
+}

@@ -92,6 +92,10 @@ void WidgetCashierManager::findAllTableViews(QObject *parent, QVector<QTableView
 
 void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index)
 {
+    //修复了双击空白数组导致的程序崩溃问题
+    if(!index.data().isValid())
+        return;
+
     int itemid=p_ComItemService->getTable(ui->tabWidget->currentIndex())->getCListId(index);
     ui->comboBox->clear();
     comList=SqlCommondity::Query(-1,itemid);

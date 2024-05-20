@@ -9,6 +9,8 @@
 #include"controller/database/sqlorder.h"
 #include"controller/database/sqlorderitem.h"
 #include"controller/database/sqlvip.h"
+#include<QMessageBox>
+#include<QFileDialog>
 namespace Ui {
 class WidgetOrderManager;
 }
@@ -54,6 +56,8 @@ private slots:
     void on_pushButtonNextPage_clicked();
 
     void on_pushButtonBackPage_clicked();
+
+    void on_pushButtonOutPutOrder_clicked();
 
 private:
     Ui::WidgetOrderManager *ui;
