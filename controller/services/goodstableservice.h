@@ -7,6 +7,7 @@ class GoodsTableService
 public:
     GoodsTableService();
     ~GoodsTableService();
+
     GoodsTable* getGTable();
     void setGList(QVector<QVector<QVariant>>&& newglist);
 private:
