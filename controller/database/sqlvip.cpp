@@ -18,10 +18,10 @@ QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint
     if(number !=""){
         sql +=QString(" PhoneNumber LIKE '%%1%' AND ").arg(number);
     }
-    if(minpoint < maxpoint){
+    if(minpoint <= maxpoint){
         sql += QString(" Point between %1 and %2 AND ").arg(minpoint).arg(maxpoint);
     }
-    if(minlevel < maxlevel){
+    if(minlevel <= maxlevel){
         sql += QString(" Level between %1 and %2 AND ").arg(minlevel).arg(maxlevel);
     }
     if(!minrdate.isNull() && !maxrdate.isNull()){

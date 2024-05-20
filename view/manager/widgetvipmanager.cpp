@@ -15,13 +15,11 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
     ui->tableview->setAlternatingRowColors(true);
     ui->tableview->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-
+    ui->dateTimeEditBegin->setDateTime(QDateTime::currentDateTime());
+     ui->dateTimeEditEnd->setDateTime(QDateTime::currentDateTime());
     // //设置单击表头排序TODO
-    // ui->tableview->setSortingEnabled(true);
-    // connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
-
-
-
+    ui->tableview->setSortingEnabled(true);
+     connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
     loadModelVip();
     pushButtonInit();
@@ -38,9 +36,9 @@ void WidgetVipManager::loadModelVip()
     QString name = SearchName? ui->lineEditName->text():"";
     QString phonum = SearchPhoNum? ui->lineEditPhoneNum->text():"";
     double minpoint = SearchPoint? ui->doubleSpinBoxMinP->value():-1;
-    double maxpoint = SearchPoint? ui->doubleSpinBoxMaxp->value():-1;
+    double maxpoint = SearchPoint? ui->doubleSpinBoxMaxp->value():1e10;
     int minl = SearchLev? ui->spinBoxMinL->value():-1;
-    int maxl = SearchLev? ui->spinBoxMaxL->value():-1;
+    int maxl = SearchLev? ui->spinBoxMaxL->value():1e9;
     QDate minD = SearchDate? ui->dateTimeEditBegin->date():QDate();
     QDate maxD = SearchDate? ui->dateTimeEditEnd->date():QDate();
 
@@ -90,6 +88,12 @@ void WidgetVipManager::pushButtonInit()
         i->setRole(Material::Primary);
         i->setTextAlignment(Qt::AlignCenter);
     }
+}
+
+void WidgetVipManager::sortByColumn(int column)
+{
+    Qt::SortOrder order = ui->tableview->horizontalHeader()->sortIndicatorOrder();
+    p_viptableservice->sortByColumn(column,order);
 }
 
 void WidgetVipManager::on_pushButtonName_clicked(bool checked)

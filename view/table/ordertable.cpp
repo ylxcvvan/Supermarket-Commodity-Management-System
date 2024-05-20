@@ -137,7 +137,7 @@ void OrderTable::sort(int column, Qt::SortOrder order)
             else if(column==6)
                 return static_cast<int>(a.getOrderStage())>static_cast<int>(b.getOrderStage());
         }
-
+        return true;
     });
     emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
 }

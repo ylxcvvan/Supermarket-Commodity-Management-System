@@ -274,6 +274,12 @@ QString WidgetOrderManager::fillSpace(const QString &str, int width) {
 }
 void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
 {
+    if(ui->tableViewOrder->currentIndex().row()==-1)
+    {
+
+        QMessageBox::warning(this,"导出失败","请选中订单后再导出!");
+        return;
+    }
     // 获取文件保存路径
     QString filePath = QFileDialog::getSaveFileName(this, tr("保存订单"),
                                                     tr("订单编号%1详情页.html")
