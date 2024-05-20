@@ -99,6 +99,13 @@ void ComItemTable::setCItemList(QVector<CommodityItem> &&newcilist)
     cilist = std::move(newcilist);
     endResetModel();
 }
+
+int ComItemTable::getCListId(const QModelIndex &index)
+{
+    if (!index.isValid())
+        return -1;
+    return cilist[index.row() * ColumnShowNum + index.column()].getItemId();
+}
 void ComItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (index.isValid()) {
