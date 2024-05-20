@@ -6,6 +6,7 @@ int PageConfig::InveTableMaxRow = 10;
 int PageConfig::AddDays=10;
 int PageConfig::OrdTableMaxRow=10;
 int PageConfig::VipTableMaxRow=10;
+QString PageConfig::SupermarketName="XX超市(请于设置中更改超市姓名!)";
 PageConfig::PageConfig(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PageConfig)
@@ -46,6 +47,15 @@ PageConfig::PageConfig(QWidget *parent)
         saveSettings(VipTableMaxRowName,VipTableMaxRow);
     }
     ui->spinBoxVipMaxShowRow->setValue(VipTableMaxRow);
+
+    //超市名称
+    SupermarketName=loadSettings(SupermarketNameName).toString();
+    if(SupermarketName=="")
+    {
+        SupermarketName="XX超市(请于设置中更改超市姓名!)";
+        saveSettings(SupermarketNameName,SupermarketName);
+    }
+    ui->lineEditSupermarketName->setText(SupermarketName);
 }
 
 PageConfig::~PageConfig()
@@ -89,6 +99,12 @@ void PageConfig::on_spinBoxVipMaxShowRow_valueChanged(int arg1)
     saveSettings(VipTableMaxRowName,VipTableMaxRow);
 }
 
+void PageConfig::on_lineEditSupermarketName_editingFinished()
+{
+    SupermarketName=ui->lineEditSupermarketName->text();
+     saveSettings(SupermarketNameName,SupermarketName);
+}
+
 
 //static方法
 int PageConfig::getInveTableMaxRow()
@@ -109,6 +125,11 @@ int PageConfig::getOrdTableMaxRow()
 int PageConfig::getVipTableMaxRow()
 {
     return VipTableMaxRow;
+}
+
+QString PageConfig::getSupermarketName()
+{
+    return SupermarketName;
 }
 
 

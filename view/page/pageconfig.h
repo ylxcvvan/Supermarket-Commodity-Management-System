@@ -19,6 +19,7 @@ public:
     static int getAddDays();
     static int getOrdTableMaxRow();
     static int getVipTableMaxRow();
+    static QString getSupermarketName();
 private:
     void saveSettings(const QString &key, const QVariant &value);
     QVariant loadSettings(const QString &key);
@@ -31,11 +32,15 @@ private slots:
 
     void on_spinBoxVipMaxShowRow_valueChanged(int arg1);
 
+    void on_lineEditSupermarketName_editingFinished();
+
 private:
     Ui::PageConfig *ui;
     QSettings *setting;
 
     //settings
+    static QString SupermarketName;
+    QString SupermarketNameName="SupermarketName";
 
     //库存管理界面：
     //查询商品保质期时，默认查找days天内过期的：
