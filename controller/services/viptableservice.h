@@ -9,7 +9,7 @@ public:
 
     VipTable* getTable();
     void setTable(QVector<Vip> viptable);
-
+    void sortByColumn(int column,Qt::SortOrder order);
 private:
     VipTable* viptable;
 };

@@ -23,3 +23,8 @@ void VipTableService::setTable(QVector<Vip> viptable)
     this->viptable->setVipList(std::forward<QVector<Vip>&&>(viptable));
 }
 
+void VipTableService::sortByColumn(int column, Qt::SortOrder order)
+{
+    this->viptable->sort(column,order);
+}
+

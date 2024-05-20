@@ -23,7 +23,7 @@ int VipTable::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return std::min(pageSize, Vips.size() - currentPage * pageSize);
+    return std::min(pageSize, vipList.size() - currentPage * pageSize);
     // FIXME: Implement me!
 }
 
@@ -42,10 +42,10 @@ QVariant VipTable::data(const QModelIndex &index, int role) const
         return QVariant();
 
     int row = index.row() + currentPage * pageSize;
-    if(role==Qt::DisplayRole && row < Vips.size() && index.column() < titles.size())
+    if(role==Qt::DisplayRole && row < vipList.size() && index.column() < titles.size())
     {
         int column=index.column();
-        auto vip=Vips[row];
+        auto vip=vipList[row];
         if(column==0)
             return vip.getId();
         else if(column==1)
@@ -117,6 +117,45 @@ bool VipTable::removeColumns(int column, int count, const QModelIndex &parent)
     return true;
 }
 
+void VipTable::sort(int column, Qt::SortOrder order)
+{
+    std::sort(vipList.begin(), vipList.end(), [column, order](const Vip &a, const Vip &b) {
+        if (order == Qt::AscendingOrder)
+        {
+            if(column==0)
+                return a.getId()<b.getId();
+            else if(column==1)
+                return a.getName()<b.getName();
+            else if(column==2)
+                return a.getPhoneNumber()<b.getPhoneNumber();
+            else if(column==3)
+                return a.getPoint()<b.getPoint();
+            else if(column==4)
+                return a.getLevel()<b.getLevel();
+            else if(column==5)
+                return a.getRegisterDate()<b.getRegisterDate();
+
+        }
+        else
+        {
+            if(column==0)
+                return a.getId()>b.getId();
+            else if(column==1)
+                return a.getName()>b.getName();
+            else if(column==2)
+                return a.getPhoneNumber()>b.getPhoneNumber();
+            else if(column==3)
+                return a.getPoint()>b.getPoint();
+            else if(column==4)
+                return a.getLevel()>b.getLevel();
+            else if(column==5)
+                return a.getRegisterDate()>b.getRegisterDate();
+        }
+        return true;
+    });
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+}
+
 void VipTable::setPageSize(int size)
 {
     pageSize = size;
@@ -133,7 +172,7 @@ void VipTable::setCurrentPage(int page)
 
 int VipTable::pageCount() const
 {
-    return (Vips.size() + pageSize - 1) / pageSize;
+    return (vipList.size() + pageSize - 1) / pageSize;
 }
 
 int VipTable::currentPageNumber() const
@@ -144,6 +183,6 @@ int VipTable::currentPageNumber() const
 void VipTable::setVipList(QVector<Vip> &&newlist)
 {
     beginResetModel(); // 开始重置模型，通知视图整体更新
-    Vips=std::move(newlist);
+    vipList=std::move(newlist);
     endResetModel();
 }

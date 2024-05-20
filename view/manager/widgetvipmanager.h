@@ -20,6 +20,8 @@ public:
     void pushButtonInit();
 
 private slots:
+    void sortByColumn(int column);
+
     void on_pushButtonName_clicked(bool checked);
 
     void on_pushButtonSearch_clicked();

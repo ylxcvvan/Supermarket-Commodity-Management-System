@@ -15,12 +15,12 @@ private:
 public:
     Vip(int id,QString name,QString phone,double p,int l,QDate Reg);
 
-    const QString& getName();
-    const QString& getPhoneNumber();
-    const int& getId();
-    double& getPoint();
-    int& getLevel();
-    const QDate& getRegisterDate();
+    const QString& getName() const;
+    const QString& getPhoneNumber() const;
+    const int& getId() const;
+    const double& getPoint()const ;
+    const int& getLevel() const;
+    const QDate& getRegisterDate()const;
 
     void setLevel(const int& newLevel);
     void setPoint(const double& newPoint);

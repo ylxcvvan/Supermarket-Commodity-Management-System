@@ -8,6 +8,12 @@
 class VipTable : public QAbstractTableModel
 {
     Q_OBJECT
+private:
+    QVector<QString> titles;
+    QVector<Vip> vipList;
+
+    int currentPage=0;
+    int pageSize=2;
 
 public:
     explicit VipTable(QObject *parent = nullptr);
@@ -35,6 +41,9 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     bool removeColumns(int column, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    //排序
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
+
     Vip getInveVipOrder(const QModelIndex &index);
 
     void setPageSize(int size);
@@ -46,12 +55,7 @@ public:
     int currentPageNumber() const;
 
     void setVipList(QVector<Vip> &&newlist);
-private:
-    QVector<QString> titles;
-    QVector<Vip> Vips;
 
-    int currentPage=0;
-    int pageSize=2;
 };
 
 #endif // VIPTABLE_H
