@@ -18,6 +18,7 @@ public:
     static int getInveTableMaxRow();
     static int getAddDays();
     static int getOrdTableMaxRow();
+    static int getVipTableMaxRow();
 private:
     void saveSettings(const QString &key, const QVariant &value);
     QVariant loadSettings(const QString &key);
@@ -27,6 +28,8 @@ private slots:
     void on_spinBoxAddDays_valueChanged(int arg1);
 
     void on_spinBoxOrdMaxShowRow_valueChanged(int arg1);
+
+    void on_spinBoxVipMaxShowRow_valueChanged(int arg1);
 
 private:
     Ui::PageConfig *ui;
@@ -44,7 +47,11 @@ private:
 
     //订单管理界面:
     static int OrdTableMaxRow;
-    QString OrdTableMaxRowName=" OrdTableMaxRow";
+    QString OrdTableMaxRowName="OrdTableMaxRow";
+
+    //会员管理界面：
+    static int VipTableMaxRow;
+    QString VipTableMaxRowName="VipTableMaxRow";
 
 };
 

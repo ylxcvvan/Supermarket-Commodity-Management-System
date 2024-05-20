@@ -34,9 +34,17 @@ private slots:
 
     void on_currentPage_valueChanged(int arg1);
 
+    void on_fontpage_clicked();
+
+    void on_prepage_clicked();
+
+    void on_nextpage_clicked();
+
+    void on_tailpage_clicked();
+
 private:
     Ui::WidgetVipManager *ui;
-    VipTableService * viptableservice;
+    VipTableService * p_viptableservice;
 
     bool SearchName=false;
     bool SearchPhoNum=false;

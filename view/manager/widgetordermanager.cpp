@@ -66,6 +66,7 @@ void WidgetOrderManager::loadModelOrder()
      p_OrderTableService->getOTable()->setPageSize(PageConfig::getOrdTableMaxRow());
      on_spinBoxPageJump_valueChanged(1);
      ui->spinBoxPageJump->setValue(1);
+     ui->spinBoxPageJump->setMaximum(p_OrderTableService->getOTable()->pageCount());
      ui->LabelTotalPages->setText(tr("%1").arg(p_OrderTableService->getOTable()->pageCount()));
 
 

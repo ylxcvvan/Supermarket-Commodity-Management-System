@@ -51,7 +51,7 @@ private:
     QVector<Vip> Vips;
 
     int currentPage=0;
-    int pageSize=1;
+    int pageSize=2;
 };
 
 #endif // VIPTABLE_H

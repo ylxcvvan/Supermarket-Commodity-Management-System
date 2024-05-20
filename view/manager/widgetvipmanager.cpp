@@ -5,33 +5,22 @@
 WidgetVipManager::WidgetVipManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetVipManager)
-    , viptableservice(new VipTableService())
+    , p_viptableservice(new VipTableService())
 {
     ui->setupUi(this);
 
-    ui->tableview->setModel(viptableservice->getTable());
+    ui->tableview->setModel(p_viptableservice->getTable());
     //设置order表的样式
     ui->tableview->setCornerButtonEnabled(false);
     ui->tableview->setAlternatingRowColors(true);
     ui->tableview->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 
-    //设置单击表头排序
-    ui->tableview->setSortingEnabled(true);
-    connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
+    // //设置单击表头排序TODO
+    // ui->tableview->setSortingEnabled(true);
+    // connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
 
-    for (int i = 0; i < ui->tableview->horizontalHeader()->count(); ++i) {
-        ui->tableview->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
-    }
-    if(ui->tableview->horizontalHeader()->count()>=1)
-        ui->tableview->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
-
-    //更改页数与最大数量
-    viptableservice->getTable()->setPageSize(PageConfig::getOrdTableMaxRow());
-    on_currentPage_valueChanged(1);
-    ui->currentPage->setValue(1);
-    ui->totalpages->setText(tr("%1").arg(viptableservice->getTable()->pageCount()));
 
 
     loadModelVip();
@@ -40,7 +29,7 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
 
 WidgetVipManager::~WidgetVipManager()
 {
-    delete viptableservice;
+    delete p_viptableservice;
     delete ui;
 }
 
@@ -56,7 +45,21 @@ void WidgetVipManager::loadModelVip()
     QDate maxD = SearchDate? ui->dateTimeEditEnd->date():QDate();
 
 
-    viptableservice->setTable(SqlVip::Query(-1,name,phonum,minpoint,maxpoint,minl,maxl,minD,maxD));
+    p_viptableservice->setTable(SqlVip::Query(-1,name,phonum,minpoint,maxpoint,minl,maxl,minD,maxD));
+
+    for (int i = 0; i < ui->tableview->horizontalHeader()->count(); ++i) {
+        ui->tableview->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    if(ui->tableview->horizontalHeader()->count()>=1)
+        ui->tableview->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+
+    //更改页数与最大数量
+    p_viptableservice->getTable()->setPageSize(PageConfig::getVipTableMaxRow());
+    on_currentPage_valueChanged(1);
+    ui->currentPage->setValue(1);
+    ui->currentPage->setMaximum(p_viptableservice->getTable()->pageCount());
+    ui->totalpages->setText(tr("%1").arg(p_viptableservice->getTable()->pageCount()));
+
 }
 
 void WidgetVipManager::pushButtonInit()
@@ -122,9 +125,42 @@ void WidgetVipManager::on_pushButtonLevel_clicked(bool checked)
     SearchLev = checked;
 }
 
+void WidgetVipManager::on_fontpage_clicked()
+{
+    p_viptableservice->getTable()->setCurrentPage(0);
+    ui->currentPage->setValue(1);
+}
+
+
+void WidgetVipManager::on_prepage_clicked()
+{
+    int currentPage = p_viptableservice->getTable()->currentPageNumber();
+    if (currentPage > 0) {
+        p_viptableservice->getTable()->setCurrentPage(currentPage - 1);
+        ui->currentPage->setValue(currentPage);
+    }
+}
 
 void WidgetVipManager::on_currentPage_valueChanged(int arg1)
 {
-    viptableservice->getTable()->setCurrentPage(arg1-1);
+    p_viptableservice->getTable()->setCurrentPage(arg1-1);
 }
+
+void WidgetVipManager::on_nextpage_clicked()
+{
+    int currentPage = p_viptableservice->getTable()->currentPageNumber();
+    if (currentPage <p_viptableservice->getTable()->pageCount() - 1) {
+       p_viptableservice->getTable()->setCurrentPage(currentPage + 1);
+        ui->currentPage->setValue(currentPage + 2);
+    }
+}
+
+void WidgetVipManager::on_tailpage_clicked()
+{
+
+    int lastPage = p_viptableservice->getTable()->pageCount() - 1;
+    p_viptableservice->getTable()->setCurrentPage(lastPage);
+    ui->currentPage->setValue(lastPage + 1);
+}
+
 

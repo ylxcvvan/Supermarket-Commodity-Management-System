@@ -4,7 +4,8 @@
 
 int PageConfig::InveTableMaxRow = 10;
 int PageConfig::AddDays=10;
-int PageConfig:: OrdTableMaxRow=10;
+int PageConfig::OrdTableMaxRow=10;
+int PageConfig::VipTableMaxRow=10;
 PageConfig::PageConfig(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PageConfig)
@@ -37,6 +38,14 @@ PageConfig::PageConfig(QWidget *parent)
         saveSettings(OrdTableMaxRowName,OrdTableMaxRow);
     }
     ui->spinBoxOrdMaxShowRow->setValue(OrdTableMaxRow);
+
+    VipTableMaxRow=loadSettings(VipTableMaxRowName).toInt();
+    if(VipTableMaxRow==0)
+    {
+        VipTableMaxRow=10;
+        saveSettings(VipTableMaxRowName,VipTableMaxRow);
+    }
+    ui->spinBoxVipMaxShowRow->setValue(VipTableMaxRow);
 }
 
 PageConfig::~PageConfig()
@@ -74,6 +83,13 @@ void PageConfig::on_spinBoxAddDays_valueChanged(int arg1)
     saveSettings(AddDaysName,AddDays);
 }
 
+void PageConfig::on_spinBoxVipMaxShowRow_valueChanged(int arg1)
+{
+    VipTableMaxRow=arg1;
+    saveSettings(VipTableMaxRowName,VipTableMaxRow);
+}
+
+
 //static方法
 int PageConfig::getInveTableMaxRow()
 {
@@ -88,6 +104,11 @@ int PageConfig::getAddDays()
 int PageConfig::getOrdTableMaxRow()
 {
     return  OrdTableMaxRow;
+}
+
+int PageConfig::getVipTableMaxRow()
+{
+    return VipTableMaxRow;
 }
 
 
