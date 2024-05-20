@@ -38,6 +38,8 @@ public:
 
     void setCItemList(QVector<CommodityItem>&&newcilist);
 
+    int getCListId(const QModelIndex &index);
+
 private:
 };
 

@@ -24,11 +24,17 @@ public:
 private:
     void findAllTableViews(QObject *parent, QVector<QTableView*> &viewList);
 
+private slots:
+    void getCommodityinRightTableView(const QModelIndex &index);
+
 
 private:
     Ui::WidgetCashierManager *ui;
     GoodsTableService *p_GoodsListService;
     ComItemTableService *p_ComItemService;
+
+    QVector<QTableView*>viewList;
+    QVector<Commodity> comList;
 
 };
 

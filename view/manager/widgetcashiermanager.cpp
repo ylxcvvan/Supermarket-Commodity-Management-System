@@ -1,4 +1,5 @@
 #include "widgetcashiermanager.h"
+#include "controller/database/sqlcommondity.h"
 #include "ui_widgetcashiermanager.h"
 
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
@@ -15,7 +16,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
 
     //设置右侧所有的tableview
 
-    QVector<QTableView*>viewList;
+
     findAllTableViews(this, viewList);
 
     std::sort(viewList.begin(), viewList.end(), [](const QTableView *a, const QTableView *b) {
@@ -37,6 +38,10 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
         view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         view->resizeColumnsToContents();
         view->resizeRowsToContents();
+        //连接槽函数
+        connect(view,&QTableView::doubleClicked,this,[this](const QModelIndex &index)
+                {this->getCommodityinRightTableView(index);
+        });
     }
     // 表格视图设置
 
@@ -78,5 +83,16 @@ void WidgetCashierManager::findAllTableViews(QObject *parent, QVector<QTableView
 
         // 递归查找子组件
         findAllTableViews(child, viewList);
+    }
+}
+
+void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index)
+{
+    int itemid=p_ComItemService->getTable(ui->tabWidget->currentIndex())->getCListId(index);
+    ui->comboBox->clear();
+    comList=SqlCommondity::Query(-1,itemid);
+    for(auto &com:comList)
+    {
+        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString())));
     }
 }
