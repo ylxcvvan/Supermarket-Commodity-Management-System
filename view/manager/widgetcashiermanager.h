@@ -23,6 +23,7 @@ public:
     void loadModel();
 private:
     void findAllTableViews(QObject *parent, QVector<QTableView*> &viewList);
+    void updateTotalPrice_TotalCounts();
 
 private slots:
     void getCommodityinRightTableView(const QModelIndex &index);
@@ -41,8 +42,7 @@ private:
     QVector<Commodity> comList;
 
     double totalPrice;
-    int totalAmount;
-
+    double totalCount;
 };
 
 #endif // WIDGETCASHIERMANAGER_H

@@ -86,9 +86,6 @@ void WidgetInventoryManager::loadModel()
     ui->spinBoxPageJump->setMaximum(p_InventoryTableService->getITable()->pageCount());
     ui->LabelTotalPages->setText(tr("%1").arg(p_InventoryTableService->getITable()->pageCount()));
 
-
-
-
 }
 
 

@@ -28,7 +28,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditCommodityId"/>
+          <widget class="QtMaterialTextField" name="lineEditCommodityId"/>
          </item>
         </layout>
        </item>
@@ -63,7 +63,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButtonAdd">
+          <widget class="QtMaterialRaisedButton" name="pushButtonAdd">
            <property name="text">
             <string>添加</string>
            </property>
@@ -292,7 +292,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_9">
+        <widget class="QLabel" name="labelTotalAmount">
          <property name="font">
           <font>
            <pointsize>13</pointsize>
@@ -387,14 +387,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonVipPay">
+        <widget class="QtMaterialRaisedButton" name="pushButtonVipPay">
          <property name="text">
           <string>会员</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonPay">
+        <widget class="QtMaterialRaisedButton" name="pushButtonPay">
          <property name="text">
           <string>结账</string>
          </property>
@@ -406,6 +406,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QtMaterialRaisedButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QtMaterialTextField</class>
+   <extends>QLineEdit</extends>
+   <header location="global">qtmaterialtextfield.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

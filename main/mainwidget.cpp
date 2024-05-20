@@ -2,7 +2,7 @@
 #include "qpainter.h"
 #include "ui_mainwidget.h"
 #include<QDebug>
-#include"view/animate/animatetoolbutton.h"
+
 #include <cmath>
 #include<qtmaterialraisedbutton.h>
 #include<qtmaterialraisedbutton_p.h>

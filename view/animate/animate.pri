@@ -1,10 +1,6 @@
 
-SOURCES += \
-    $$PWD/animatetoolbutton.cpp \
-    $$PWD/pushbuttonanimate.cpp
+SOURCES +=
 
-HEADERS += \
-    $$PWD/animatetoolbutton.h \
-    $$PWD/pushbuttonanimate.h
+HEADERS +=
 
 RESOURCES +=

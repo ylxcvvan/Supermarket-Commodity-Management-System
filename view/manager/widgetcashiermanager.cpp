@@ -10,7 +10,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     ,p_ComItemService(new ComItemTableService)
     ,goodsTableRow(0)
     ,totalPrice(0)
-    ,totalAmount(0)
+    ,totalCount(0)
 {
     ui->setupUi(this);
 
@@ -29,6 +29,10 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     });
 
     loadModel();
+    //将tableview的数量改变的信号与updateTotalPrice_TotalCounts（）函数连接；
+
+    connect(p_GoodsListService->getGTable(),&QAbstractTableModel::dataChanged,this,&WidgetCashierManager::updateTotalPrice_TotalCounts);
+
     for(int i=0;i<viewList.size();++i)
     {
         auto &view=viewList[i];
@@ -90,6 +94,19 @@ void WidgetCashierManager::findAllTableViews(QObject *parent, QVector<QTableView
     }
 }
 
+void WidgetCashierManager::updateTotalPrice_TotalCounts()
+{
+    auto glist = p_GoodsListService->getGTable()->getGoodsList();
+    totalPrice = 0;
+    totalCount = 0;
+    for(auto i : glist){
+        totalPrice += i.back().toDouble();
+        totalCount += i.at(4).toDouble();
+    }
+    ui->labelTotalPrice->setText(tr("%1").arg(totalPrice));
+    ui->labelTotalAmount->setText(tr("%1").arg(totalCount));
+}
+
 void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index)
 {
     //修复了双击空白数组导致的程序崩溃问题
@@ -101,7 +118,7 @@ void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index
     comList=SqlCommondity::Query(-1,itemid);
     for(auto &com:comList)
     {
-        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-MM-dd"))));
+        ui->comboBox->addItem((tr("名称：%1 价格：%2元 过期时间：%3 ").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-MM-dd"))));
     }
 }
 
@@ -111,28 +128,34 @@ void WidgetCashierManager::on_lineEditCommodityId_textChanged(const QString &arg
     comList = SqlCommondity::Query(arg1.toInt());
     for(auto &com:comList)
     {
-        ui->comboBox->addItem((tr("名称：%1 价格：%2过期时间：%3").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-ddMM-dd"))));
+        ui->comboBox->addItem((tr("名称：%1 价格：%2元  过期时间：%3 ").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-ddMM-dd"))));
     }
 }
 
 
 void WidgetCashierManager::on_pushButtonAdd_clicked()
 {
+    if(!ui->comboBox->count())
+        return;
+
     int cid = comList[ui->comboBox->currentIndex()].getId();
     qDebug()<<cid;
-    auto item =SqlCommondity::Query(cid).front();
+    auto query = SqlCommondity::Query(cid);
+    if(!query.size())
+        return;
+
+
+    auto item =query.front();
     double amount = ui->spinBoxAmount->value();
     double price = amount * item.getPrice();
     QVector<QVector<QVariant>>lists{
                                      {item.getId(),item.getName(),item.getSellByTime(),item.getPrice(),
                                       amount,price}
                                     };
+
     p_GoodsListService->getGTable()->insertRows(goodsTableRow++,1,lists);
 
-    totalPrice += price;
-    totalAmount += amount;
 
-
-
+    updateTotalPrice_TotalCounts();
 }
 

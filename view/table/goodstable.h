@@ -1,9 +1,14 @@
 #ifndef GOODSTABLE_H
 #define GOODSTABLE_H
 
+#include "qabstractitemview.h"
+#include "qcoreevent.h"
+#include "qdebug.h"
+#include "qevent.h"
 #include <QAbstractItemModel>
 #include<QVariant>
 #include <QStyledItemDelegate>
+#include<QMenu>
 class GoodsTable : public QAbstractTableModel
 {
     Q_OBJECT
@@ -13,7 +18,10 @@ private:
     //glist[0]=name,1=sellbytime,2=price,3=amount,4=totalprice,5=物品的id
     QVector<QVector<QVariant>>glist;
 
+    void showContextMenu(const QPoint &globalPos);
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
 public:
     explicit GoodsTable(QObject *parent = nullptr);
 
