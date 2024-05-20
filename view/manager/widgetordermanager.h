@@ -11,6 +11,11 @@
 #include"controller/database/sqlvip.h"
 #include<QMessageBox>
 #include<QFileDialog>
+#include <QFileDialog>
+#include <QCoreApplication>
+#include <QFile>
+#include <QTextStream>
+#include <QVariant>
 namespace Ui {
 class WidgetOrderManager;
 }
@@ -70,6 +75,7 @@ private:
     bool searchUserId=false;
     bool searchOrderStage=false;
     bool searchTotalPrice=false;
+    QString fillSpace(const QString &str, int width);
 };
 
 #endif // WIDGETORDERMANAGER_H

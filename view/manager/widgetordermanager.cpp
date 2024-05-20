@@ -12,8 +12,7 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
 {
     ui->setupUi(this);
 
-    loadModelOrder();
-    //装载order表
+
     ui->tableViewOrder->setModel(p_OrderTableService->getOTable());
     //设置order表的样式
     ui->tableViewOrder->setCornerButtonEnabled(false);
@@ -256,24 +255,37 @@ void WidgetOrderManager::on_pushButtonBackPage_clicked()
 }
 
 
-#include <QFileDialog>
-#include <QCoreApplication>
-#include <QFile>
-#include <QTextStream>
-#include <QMessageBox>
-#include <QVariant>
+QString WidgetOrderManager::fillSpace(const QString &str, int width) {
+    int len = 0;
+    for (const QChar &c : str) {
+        if (c.unicode() >= 0x4E00 && c.unicode() <= 0x9FA5) { // 判断是否为汉字
+            len += 2; // 汉字长度为2
+        } else {
+            len += 1; // 其他字符长度为1
+        }
+    }
+    QString result = str;
+    while (len < width) {
+        result.append(' ');
+        len += 1;
+    }
 
+    return result;
+}
 void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
 {
     // 获取文件保存路径
-    QString filePath = QFileDialog::getSaveFileName(this, "保存订单", QCoreApplication::applicationDirPath(), "Text Files (*.txt)");
+    QString filePath = QFileDialog::getSaveFileName(this, tr("保存订单"),
+                                                    tr("订单编号%1详情页.html")
+                                                .arg(p_OrderTableService->getOTable()->getInveListOrder(ui->tableViewOrder->currentIndex()).getOrderId()),
+                        tr("HTML Files (*.html)"));
     if (filePath.isEmpty()) {
         return;  // 用户取消操作
     }
 
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(nullptr, "Warning", "Failed to open file");
+        QMessageBox::warning(nullptr, tr("警告"), tr("无法打开文件"));
         return;
     }
 
@@ -281,38 +293,49 @@ void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
     out.setCodec("UTF-8"); // 设置文本流编码为UTF-8
 
     QVector<QVector<QVariant>> comlist = p_GoodsTableService->getGTable()->getGoodsList();
-    // 写入商品信息
-    out << "| " << qSetFieldWidth(10) << tr("商品编号") << qSetFieldWidth(0)
-        << "| " << qSetFieldWidth(10) << tr("商品名称") << qSetFieldWidth(0)
-        << "| " << qSetFieldWidth(20) << tr("商品保质期") << qSetFieldWidth(0)
-        << "| " << qSetFieldWidth(10) << tr("商品单价") << qSetFieldWidth(0)
-        << "| " << qSetFieldWidth(10) << tr("商品数量") << qSetFieldWidth(0)
-        << "| " << qSetFieldWidth(10) << tr("商品总价") << qSetFieldWidth(0) << "|\n";
+
+    // HTML开头
+    out << "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<title>" << tr("订单详情") << "</title>\n</head>\n<body>\n";
+    out<<"<h1>"<<tr("%1").arg(PageConfig::getSupermarketName())<<"</h2>\n";
+    out << "<h2>" << tr("订单详情") << "</h2>\n";
+    out << "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\">\n";
+    out << "<tr>\n"
+        << "<th>" << tr("商品编号") << "</th>"
+        << "<th>" << tr("商品名称") << "</th>"
+        << "<th>" << tr("商品保质期") << "</th>"
+        << "<th>" << tr("商品单价") << "</th>"
+        << "<th>" << tr("商品数量") << "</th>"
+        << "<th>" << tr("商品总价") << "</th>"
+        << "</tr>\n";
 
     for (const auto& commodity : comlist) {
-        out << "| " << qSetFieldWidth(10) << commodity[0].toString() << qSetFieldWidth(0)
-            << "| " << qSetFieldWidth(10) << commodity[1].toString() << qSetFieldWidth(0)
-            << "| " << qSetFieldWidth(20) << commodity[2].toString() << qSetFieldWidth(0)
-            << "| " << qSetFieldWidth(10) << commodity[3].toString() << qSetFieldWidth(0)
-            << "| " << qSetFieldWidth(10) << commodity[4].toString() << qSetFieldWidth(0)
-            << "| " << qSetFieldWidth(10) << commodity[5].toString() << qSetFieldWidth(0) << "|\n";
+        out << "<tr>\n"
+            << "<td>" << commodity[0].toString() << "</td>"
+            << "<td>" << commodity[1].toString() << "</td>"
+            << "<td>" << commodity[2].toString() << "</td>"
+            << "<td>" << commodity[3].toString() << "</td>"
+            << "<td>" << commodity[4].toString() << "</td>"
+            << "<td>" << commodity[5].toString() << "</td>"
+            << "</tr>\n";
     }
 
-    // 假设你有一个 Order 对象 order，包含订单的详细信息
-    out << "| " << qSetFieldWidth(0) << tr("顾客姓名:") << qSetFieldWidth(0) << " " << ui->labelUserName->text()
-        << " | " << qSetFieldWidth(0) << tr("顾客等级:") << qSetFieldWidth(0) << " " << ui->labelUserLevel->text() << " |\n"
-        << "| " << qSetFieldWidth(0) << tr("手机号码:") << qSetFieldWidth(0) << " " << ui->labelPhoneNumber->text()
-        << " | " << qSetFieldWidth(0) << tr("顾客积分:") << qSetFieldWidth(0) << " " << ui->labelUserPoint->text() << " " << tr("分") << " |\n"
-        << "| " << qSetFieldWidth(0) << tr("订单日期:") << qSetFieldWidth(0) << " " << ui->labelOrderDate->text()
-        << " | " << qSetFieldWidth(0) << tr("商品件数:") << qSetFieldWidth(0) << " " << ui->labelItemCount->text() << " " << tr("件") << " |\n"
-        << "| " << qSetFieldWidth(0) << tr("应付:") << qSetFieldWidth(0) << " " << ui->labelTotalPrice->text()
-        << " | " << qSetFieldWidth(0) << tr("实付:") << qSetFieldWidth(0) << " " << ui->labelPaidPrice->text() << " |\n"
-        << "| " << qSetFieldWidth(0) << tr("收银员姓名:") << qSetFieldWidth(0) << " " << ui->labelCashierName->text()
-        << " | " << qSetFieldWidth(0) << tr("订单状态:") << qSetFieldWidth(0) << " " << ui->labelOrderStage->text() << " |\n";
+    out << "</table>\n";
 
+    // 打印订单信息
+    out << "<h3>" << tr("订单信息") << "</h3>\n";
+    out << "<p>" << tr("<b>顾客姓名:   </b>") << ui->labelUserName->text() << "</p>\n"
+        << "<p>" << tr("<b>顾客等级:   </b>") << ui->labelUserLevel->text() << "</p>\n"
+        << "<p>" << tr("<b>手机号码:   </b>") << ui->labelPhoneNumber->text() << "</p>\n"
+        << "<p>" << tr("<b>顾客积分:   </b>") << ui->labelUserPoint->text() << "</p>\n"
+        << "<p>" << tr("<b>订单日期:   </b>") << ui->labelOrderDate->text() << "</p>\n"
+        << "<p>" << tr("<b>商品件数:   </b>") << ui->labelItemCount->text() << "</p>\n"
+        << "<p>" << tr("<b>应付:       </b>") << ui->labelTotalPrice->text() << "</p>\n"
+        << "<p>" << tr("<b>实付:       </b>") << ui->labelPaidPrice->text()  << "</p>\n"
+        << "<p>" << tr("<b>收银员姓名: </b>") << ui->labelCashierName->text() << "</p>\n"
+        << "<p>" << tr("<b>订单状态:   </b>") << ui->labelOrderStage->text() << "</p>\n";
 
-
-
+    // HTML结尾
+    out << "</body>\n</html>\n";
 
     file.close();
 }
