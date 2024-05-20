@@ -23,6 +23,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
         ui->comboBoxCategory->addItem(s);
     }
 
+
     //设置单击表头排序
     ui->tableView->setSortingEnabled(true);
     connect(ui->tableView->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));

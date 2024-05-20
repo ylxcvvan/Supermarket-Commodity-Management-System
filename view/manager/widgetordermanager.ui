@@ -802,7 +802,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButtonOutPutOrder">
          <property name="text">
           <string>导出该订单</string>
          </property>

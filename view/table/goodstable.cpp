@@ -101,6 +101,11 @@ void GoodsTable::setGoodsList(QVector<QVector<QVariant> > &&newlist)
     endResetModel();
 }
 
+QVector<QVector<QVariant> > GoodsTable::getGoodsList()
+{
+    return glist;
+}
+
 int GoodsTable::getSize()
 {
     return glist.size();

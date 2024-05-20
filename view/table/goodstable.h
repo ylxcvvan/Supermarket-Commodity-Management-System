@@ -40,6 +40,7 @@ public:
 
     void setGoodsList(QVector<QVector<QVariant>>&& newlist);
 
+    QVector<QVector<QVariant>> getGoodsList();
     int getSize();
 
     void setEditableFalse();

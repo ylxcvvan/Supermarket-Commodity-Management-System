@@ -53,7 +53,7 @@ void PageMain::on_toolButtonCashier_clicked()
 void PageMain::on_toolButtonInventory_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    p_widgetInventory->loadModel();
+
     setOtherWidgetUnchecked(1);
 }
 
@@ -61,7 +61,6 @@ void PageMain::on_toolButtonInventory_clicked()
 void PageMain::on_toolButtonOrder_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
-    p_widgetOrder->loadModelOrder();
     setOtherWidgetUnchecked(2);
 }
 
