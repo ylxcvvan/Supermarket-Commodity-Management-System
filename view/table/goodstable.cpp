@@ -199,3 +199,11 @@ void GoodsTable::Debug()
 {
 
 }
+
+void GoodsTable::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
+    Q_UNUSED(deselected);
+    QModelIndexList selectedRows = selected.indexes();
+    for (const QModelIndex &index : selectedRows) {
+        qDebug() << "Selected row index:" << index.row();
+    }
+}

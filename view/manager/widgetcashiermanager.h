@@ -39,7 +39,6 @@ private:
     Ui::WidgetCashierManager *ui;
     GoodsTableService *p_GoodsListService;
     ComItemTableService *p_ComItemService;
-    int goodsTableRow;
     QVector<QTableView*>viewList;
     QVector<Commodity> comList;
 

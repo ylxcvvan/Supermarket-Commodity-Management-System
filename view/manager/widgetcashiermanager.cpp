@@ -9,7 +9,6 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     , ui(new Ui::WidgetCashierManager)
     ,p_GoodsListService(new GoodsTableService)
     ,p_ComItemService(new ComItemTableService)
-    ,goodsTableRow(0)
     ,totalPrice(0)
     ,totalCount(0)
 {
@@ -154,7 +153,7 @@ void WidgetCashierManager::on_pushButtonAdd_clicked()
                                       amount,price}
                                     };
 
-    p_GoodsListService->getGTable()->insertRows(goodsTableRow++,1,lists);
+    p_GoodsListService->getGTable()->insertRows(p_GoodsListService->getGTable()->rowCount(),1,lists);
 
 
     updateTotalPrice_TotalCounts();
@@ -163,6 +162,10 @@ void WidgetCashierManager::on_pushButtonAdd_clicked()
 
 void WidgetCashierManager::on_pushButtonDel_clicked()
 {
+    QModelIndex index = ui->tableView->currentIndex();
+        if(index.row()==-1) return;
 
+
+        p_GoodsListService->getGTable()->removeRows(index.row(),1);
 }
 
