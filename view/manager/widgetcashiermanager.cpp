@@ -2,7 +2,8 @@
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
 #include "ui_widgetcashiermanager.h"
-
+#include <QStandardItemModel>
+#include <QItemSelectionModel>
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetCashierManager)
@@ -157,5 +158,11 @@ void WidgetCashierManager::on_pushButtonAdd_clicked()
 
 
     updateTotalPrice_TotalCounts();
+}
+
+
+void WidgetCashierManager::on_pushButtonDel_clicked()
+{
+
 }
 

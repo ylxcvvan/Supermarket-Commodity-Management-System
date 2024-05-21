@@ -89,6 +89,7 @@ void WidgetOrderManager::PushButtonInit()
             FlatButton->setBackgroundColor(QColor("#feffef"));
             FlatButton->setForegroundColor(QColor("#fd8f01"));
             FlatButton->setOverlayColor(QColor("#ffffff"));
+            FlatButton->setOverlayStyle(Material::TintedOverlay);
         }
     }
 
@@ -99,8 +100,8 @@ void WidgetOrderManager::PushButtonInit()
         i->setOverlayStyle(Material::TintedOverlay);
         i->setUseThemeColors(false);
         i->setBackgroundColor(QColor("#00bcd4"));
-        i->setForegroundColor(QColor("ffffff"));
-        i->setOverlayColor(QColor("00bcd4"));
+        i->setForegroundColor(QColor("#ffffff"));
+        i->setOverlayColor(QColor("#00bcd4"));
         i->setRole(Material::Primary);
         i->setTextAlignment(Qt::AlignCenter);
     }

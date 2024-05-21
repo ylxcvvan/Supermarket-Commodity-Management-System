@@ -55,9 +55,6 @@
              <height>0</height>
             </size>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
           </widget>
          </item>
         </layout>
@@ -215,12 +212,12 @@
            </property>
            <property name="dateTime">
             <datetime>
-             <hour>0</hour>
+             <hour>16</hour>
              <minute>0</minute>
              <second>0</second>
              <year>2025</year>
              <month>10</month>
-             <day>9</day>
+             <day>8</day>
             </datetime>
            </property>
            <property name="calendarPopup">

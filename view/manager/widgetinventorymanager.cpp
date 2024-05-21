@@ -203,6 +203,7 @@ void WidgetInventoryManager::PushButtonInit()
         i->setOverlayColor(QColor("00bcd4"));
         i->setRole(Material::Primary);
         i->setTextAlignment(Qt::AlignCenter);
+
     }
 }
 

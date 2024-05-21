@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButtonAdd_clicked();
 
+    void on_pushButtonDel_clicked();
+
 private:
     Ui::WidgetCashierManager *ui;
     GoodsTableService *p_GoodsListService;
