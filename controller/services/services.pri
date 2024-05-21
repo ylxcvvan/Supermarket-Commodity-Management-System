@@ -1,4 +1,5 @@
 HEADERS += \
+    $$PWD/allcomitemtableservice.h \
     $$PWD/comitemtableservice.h \
     $$PWD/goodstableservice.h \
     $$PWD/inventorytableservice.h \
@@ -6,6 +7,7 @@ HEADERS += \
     $$PWD/viptableservice.h
 
 SOURCES += \
+    $$PWD/allcomitemtableservice.cpp \
     $$PWD/comitemtableservice.cpp \
     $$PWD/goodstableservice.cpp \
     $$PWD/inventorytableservice.cpp \

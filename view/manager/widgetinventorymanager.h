@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 #include"view/page/pageconfig.h"
 #include"controller/services/inventorytableservice.h"
-
+#include"controller/services/allcomitemtableservice.h"
 namespace Ui {
 class WidgetInventoryManager;
 }
@@ -63,11 +63,17 @@ private slots:
 
     void on_pushButtonInPutExcel_clicked(bool checked);
 
+
+
+    void on_pushButtonSearchItem_clicked();
+
+    void on_tableView_2_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::WidgetInventoryManager *ui;
 
     InventoryTableService *p_InventoryTableService;
-
+    AllComItemTableService *p_AllComItemTableService;
 
     //搜索时的勾选项
     bool SearchName;
