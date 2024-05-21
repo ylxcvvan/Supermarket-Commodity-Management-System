@@ -6,6 +6,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetInventoryManager)
     ,p_InventoryTableService(new InventoryTableService)
+    ,p_ComItemTableService(new ComItemTableService)
 {
     ui->setupUi(this);
 
@@ -33,8 +34,10 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
 
     //设置当前表模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
-
+    ui->tableView_2->setModel(p_ComItemTableService-)
     ui->dateEdit->setDate(QDate::currentDate().addDays(PageConfig::getAddDays()));
+    ui->WidgetPutIn->hide();
+
     InitBoolSearchState();
     InitLineEditInputMode();
     PushButtonInit();
@@ -245,3 +248,14 @@ void WidgetInventoryManager::on_pushButtonBackPage_clicked()
     p_InventoryTableService->getITable()->setCurrentPage(lastPage);
      ui->spinBoxPageJump->setValue(lastPage + 1);
 }
+
+void WidgetInventoryManager::on_pushButtonInPutExcel_clicked(bool checked)
+{
+    if(!checked)
+    {
+        ui->WidgetPutIn->hide();
+    }
+    else
+        ui->WidgetPutIn->show();
+}
+

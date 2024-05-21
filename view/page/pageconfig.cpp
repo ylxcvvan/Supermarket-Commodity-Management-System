@@ -6,6 +6,7 @@ int PageConfig::InveTableMaxRow = 10;
 int PageConfig::AddDays=10;
 int PageConfig::OrdTableMaxRow=10;
 int PageConfig::VipTableMaxRow=10;
+int PageConfig::IsShowedOnTop=2;
 QString PageConfig::SupermarketName="XX超市(请于设置中更改超市姓名!)";
 PageConfig::PageConfig(QWidget *parent)
     : QWidget(parent)
@@ -56,6 +57,14 @@ PageConfig::PageConfig(QWidget *parent)
         saveSettings(SupermarketNameName,SupermarketName);
     }
     ui->lineEditSupermarketName->setText(SupermarketName);
+
+    //显示在窗口最上方
+    IsShowedOnTop=loadSettings(IsShowedOnTopName).toInt();
+    if(IsShowedOnTop==0)
+        ui->checkBoxIsShowedOnTop->setCheckState(Qt::Unchecked);
+    else
+        ui->checkBoxIsShowedOnTop->setCheckState(Qt::Checked);
+
 }
 
 PageConfig::~PageConfig()
@@ -127,9 +136,21 @@ int PageConfig::getVipTableMaxRow()
     return VipTableMaxRow;
 }
 
+int PageConfig::getIsShowedOnTop()
+{
+    return IsShowedOnTop;
+}
+
 QString PageConfig::getSupermarketName()
 {
     return SupermarketName;
 }
 
+
+
+void PageConfig::on_checkBoxIsShowedOnTop_stateChanged(int arg1)
+{
+
+    saveSettings(IsShowedOnTopName,arg1);
+}
 

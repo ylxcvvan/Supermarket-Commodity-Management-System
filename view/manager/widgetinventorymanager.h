@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include"view/page/pageconfig.h"
 #include"controller/services/inventorytableservice.h"
+
 namespace Ui {
 class WidgetInventoryManager;
 }
@@ -58,6 +59,9 @@ private slots:
     void on_pushButtonNextPage_clicked();
 
     void on_pushButtonBackPage_clicked();
+
+
+    void on_pushButtonInPutExcel_clicked(bool checked);
 
 private:
     Ui::WidgetInventoryManager *ui;

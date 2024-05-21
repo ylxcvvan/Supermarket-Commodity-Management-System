@@ -26,7 +26,6 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
-    isShowedOnTop=true;
 
 
     FrameLessInit();
@@ -45,7 +44,7 @@ void MainWidget::FrameLessInit()
 
     isMoveAllowed=false;
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
-    if(isShowedOnTop)
+    if(PageConfig::getIsShowedOnTop())
         setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground);
 

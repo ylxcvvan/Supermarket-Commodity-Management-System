@@ -19,6 +19,7 @@ public:
     static int getAddDays();
     static int getOrdTableMaxRow();
     static int getVipTableMaxRow();
+    static int getIsShowedOnTop();
     static QString getSupermarketName();
 private:
     void saveSettings(const QString &key, const QVariant &value);
@@ -34,6 +35,8 @@ private slots:
 
     void on_lineEditSupermarketName_editingFinished();
 
+    void on_checkBoxIsShowedOnTop_stateChanged(int arg1);
+
 private:
     Ui::PageConfig *ui;
     QSettings *setting;
@@ -41,6 +44,8 @@ private:
     //settings
     static QString SupermarketName;
     QString SupermarketNameName="SupermarketName";
+    static int IsShowedOnTop;
+    QString IsShowedOnTopName="IsShowedOnTop";
 
     //库存管理界面：
     //查询商品保质期时，默认查找days天内过期的：
