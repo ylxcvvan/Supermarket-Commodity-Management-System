@@ -228,7 +228,7 @@
                </property>
                <property name="dateTime">
                 <datetime>
-                 <hour>8</hour>
+                 <hour>0</hour>
                  <minute>0</minute>
                  <second>0</second>
                  <year>2025</year>
@@ -771,6 +771,12 @@
      </widget>
      <widget class="QWidget" name="WidgetPutIn" native="true">
       <layout class="QVBoxLayout" name="widgetlayoutright" stretch="1,0,0,0">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_24">
          <item>
@@ -954,12 +960,12 @@
              </property>
              <property name="dateTime">
               <datetime>
-               <hour>0</hour>
+               <hour>16</hour>
                <minute>0</minute>
                <second>0</second>
                <year>2025</year>
                <month>10</month>
-               <day>7</day>
+               <day>6</day>
               </datetime>
              </property>
              <property name="calendarPopup">
@@ -1093,6 +1099,13 @@
        </item>
        <item>
         <widget class="QtMaterialRaisedButton" name="pushButton_2">
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>添加</string>
          </property>
