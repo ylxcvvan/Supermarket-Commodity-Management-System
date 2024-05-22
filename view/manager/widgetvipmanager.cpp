@@ -23,11 +23,6 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
 
     ui->widgetAddVip->hide();
 
-    //设置手机号遮罩
-    QRegExp regExp("^1[3-9]\\d{9}$");
-    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
-    ui->lineEditAddPhoneNumber->setValidator(validator);
-
     loadModelVip();
     pushButtonInit();
 }
@@ -191,5 +186,17 @@ void WidgetVipManager::on_pushButtonAdd_clicked(bool checked)
         ui->WidgetLevel_Point->show();
         ui->WidgetVipDetails->show();
     }
+}
+
+
+void WidgetVipManager::on_pushButton_clicked()
+{
+    QString name = ui->lineEditAddVipName->text();
+    QString phone = ui->lineEditAddPhoneNumber->text();
+    if(name=="" || phone=="") return;
+    SqlVip::insert(name,phone,0,1);
+
+    loadModelVip();
+
 }
 

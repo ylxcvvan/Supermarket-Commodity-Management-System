@@ -46,6 +46,8 @@ private slots:
 
     void on_pushButtonAdd_clicked(bool checked);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::WidgetVipManager *ui;
     VipTableService * p_viptableservice;

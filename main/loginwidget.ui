@@ -32,25 +32,14 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>80</width>
+            <width>40</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <widget class="QtMaterialRaisedButton" name="pushButton_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <bold>true</bold>
-           </font>
-          </property>
+         <widget class="QPushButton" name="pushButton_3">
           <property name="text">
            <string>退出</string>
           </property>
@@ -330,11 +319,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>QtMaterialRaisedButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">qtmaterialraisedbutton.h</header>
-  </customwidget>
   <customwidget>
    <class>QtMaterialAutoComplete</class>
    <extends>QLineEdit</extends>

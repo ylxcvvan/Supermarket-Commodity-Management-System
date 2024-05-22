@@ -1,6 +1,8 @@
 #include "widgetcashiermanager.h"
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
+#include "controller/database/sqlorder.h"
+#include "qmessagebox.h"
 #include "ui_widgetcashiermanager.h"
 #include <QStandardItemModel>
 #include <QItemSelectionModel>
@@ -30,7 +32,6 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     //将tableview的数量改变的信号与updateTotalPrice_TotalCounts（）函数连接；
 
     connect(p_GoodsListService->getGTable(),&QAbstractTableModel::dataChanged,this,&WidgetCashierManager::updateTotalPrice_TotalCounts);
-
     // 表格视图设置
     for(int i=0;i<viewList.size();++i)
     {
@@ -54,13 +55,13 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
                 {this->getCommodityinRightTableView(index);
         });
     }
+    //初始化按钮样式
+    PushButtonInit();
 
     QRegExp regExp("^1[3-9]\\d{9}$");
     QRegExpValidator *validator = new QRegExpValidator(regExp, this);
     ui->lineEditVipPhoneNumber->setValidator(validator);
     ui->lineEditVipPhoneNumber->hide();
-
-
 }
 
 WidgetCashierManager::~WidgetCashierManager()
@@ -111,6 +112,24 @@ void WidgetCashierManager::updateTotalPrice_TotalCounts()
     }
     ui->labelTotalPrice->setText(tr("%1").arg(totalPrice));
     ui->labelTotalAmount->setText(tr("%1").arg(totalCount));
+}
+
+void WidgetCashierManager::PushButtonInit()
+{
+    const QList<QWidget *> children = this->findChildren<QWidget *>();
+
+    for(QWidget *child : children){
+        QtMaterialFlatButton *FlatButton = qobject_cast<QtMaterialFlatButton *>(child);
+
+        if(FlatButton){
+            FlatButton->setHaloVisible(false);
+            FlatButton->setTextAlignment(Qt::AlignCenter);
+
+            FlatButton->setBackgroundColor(QColor("#feffef"));
+            FlatButton->setForegroundColor(QColor("#fd8f01"));
+            FlatButton->setOverlayColor(QColor("#ffffff"));
+        }
+    }
 }
 
 void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index)
@@ -194,6 +213,47 @@ void WidgetCashierManager::on_pushButtonVipPay_clicked(bool checked)
     else
     {
         ui->lineEditVipPhoneNumber->hide();
+    }
+}
+void WidgetCashierManager::on_pushButtonPay_clicked()
+{
+    auto table = p_GoodsListService->getGTable();
+    QVector<OrderItem> orderitem = *new QVector<OrderItem>();
+    if(table->rowCount()==0)
+    {
+        QMessageBox::warning(this,"警告","订单为空");
+        return;
+    }
+
+
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setInformativeText("支付界面");
+    msgBox.setWindowTitle("询问");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    int ret = msgBox.exec();
+
+    if (ret == QMessageBox::Yes)
+    {
+        for(int row = 0 ; row < table->rowCount();row++)
+        {
+            QVector<QVariant> temp = QVector<QVariant>();
+            for(int colum = 0; colum < table->columnCount();colum++)
+            {
+                QModelIndex index = table->index(row,colum);
+                temp.push_back(table->data(index));
+            }
+            OrderItem item(-1,-1,temp.at(0).toInt(),temp.at(4).toDouble(),temp.at(5).toDouble());
+            orderitem.push_back(item);
+        }
+
+        Order order(-1,orderitem,totalPrice,totalPrice,-1,10001,Order::stage::Completed,QDateTime::currentDateTime());
+        SqlOrder::insert(order);
+        // 用户选择了“是”
+    }
+    else
+    {
+
     }
 }
 

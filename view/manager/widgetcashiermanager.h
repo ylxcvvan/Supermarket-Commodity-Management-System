@@ -9,6 +9,8 @@
 #include "controller/services/goodstableservice.h"
 #include"controller/services/comitemtableservice.h"
 #include"controller/database/sqlcommondityitem.h"
+#include"model/orderitem.h"
+#include"model/order.h"
 namespace Ui {
 class WidgetCashierManager;
 }
@@ -24,6 +26,7 @@ public:
 private:
     void findAllTableViews(QObject *parent, QVector<QTableView*> &viewList);
     void updateTotalPrice_TotalCounts();
+    void PushButtonInit();
 
 private slots:
     void getCommodityinRightTableView(const QModelIndex &index);
@@ -36,6 +39,8 @@ private slots:
 
     void on_lineEditCommodityId_textEdited(const QString &arg1);
 
+    void on_pushButtonPay_clicked();
+
     void on_pushButtonVipPay_clicked(bool checked);
 
 private:
@@ -46,6 +51,7 @@ private:
     QVector<Commodity> comList;
 
     double totalPrice;
+
     double totalCount;
 };
 

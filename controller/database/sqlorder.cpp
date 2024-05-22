@@ -86,9 +86,8 @@ bool SqlOrder::insert(Order order)
             break;
     }
 
-    QString sql = QString("insert into order_table (OrderId,OrderDate,OrderState,TotalPrice,PaidPrice,ConsumerId,CashierId) "
-                   "values(%1,'%2',%3,%4,%5,%6,%7)")
-                        .arg(order.getOrderId())
+    QString sql = QString("insert into order_table (OrderDate,OrderState,TotalPrice,PaidPrice,ConsumerId,CashierId) "
+                   "values('%1',%2,%3,%4,%5,%6)")
                         .arg(order.getOrderTime().toString("yyyy-MM-dd HH:mm:ss"))
                         .arg(state)
                         .arg(order.getTotalPrice())
@@ -97,13 +96,19 @@ bool SqlOrder::insert(Order order)
                         .arg(order.getCashierId());
     qDebug()<<sql;
     bool insertorder = MySql::getInstance().modify(sql);
+
+    auto query = MySql::getInstance().query("SELECT *FROM order_table ORDER BY OrderId DESC LIMIT 1;");
+    query.next();
+    int orderid = query.value("OrderId").toInt();
+    qDebug()<<orderid;
+
     bool insertorderitem ;
     auto googlist = order.getGoodsList();
     for(auto i : googlist){
         QString Sql = QString("insert into orderitem_table(OrderId,CommodityId,CommodityAmount,TotalPrice) "
-                              "values(%1,%2,%3<%4)")
-                          .arg(order.getOrderId())
-                          .arg(i.getCommodityId())
+                              "values(%1,%2,%3,%4)")
+                        .arg(orderid)
+                        .arg(i.getCommodityId())
                         .arg(i.getCommodityAmount())
                         .arg(i.getTotalPrice());
         qDebug()<<Sql;
