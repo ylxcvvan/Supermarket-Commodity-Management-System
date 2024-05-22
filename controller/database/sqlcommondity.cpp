@@ -35,10 +35,10 @@ QVector<Commodity> SqlCommondity::Query(int id, int iid, QDate sbt, QString name
         Commodity com(query.value(0).toInt(),res.front(),query.value(2).toDouble(),query.value(3).toDouble(),query.value(4).toDate());
         QueryResult.push_back(com);
     }
-    // for(auto &arr:QueryResult)
-    // {
-    //     qDebug()<<arr.getId()<<" "<<arr.getName();
-    // }
+    for(auto &arr:QueryResult)
+    {
+        qDebug()<<arr.getId()<<" "<<arr.getName();
+    }
     return QueryResult;
 }
 

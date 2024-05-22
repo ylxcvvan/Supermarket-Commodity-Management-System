@@ -171,7 +171,8 @@ void WidgetCashierManager::on_pushButtonDel_clicked()
 
 void WidgetCashierManager::on_comboBox_currentIndexChanged(int index)
 {
-    if(comList.isEmpty())
+    //||index<0:修复了 双击右侧商品列表的闪退bug
+    if(comList.isEmpty()||index<0)
         return;
     ui->lineEditCommodityId->setText(tr("%1").arg(comList[index].getId()));
 }
