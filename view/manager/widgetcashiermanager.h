@@ -50,6 +50,8 @@ private:
     QVector<QTableView*>viewList;
     QVector<Commodity> comList;
 
+    int CashierId;
+
     double totalPrice;
 
     double totalCount;

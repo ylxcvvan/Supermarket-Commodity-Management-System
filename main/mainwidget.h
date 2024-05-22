@@ -26,6 +26,7 @@ public:
     MainWidget(QWidget *parent = nullptr,bool isadmin=false);
     ~MainWidget();
     void setUserName(const QString& name);
+    static int getCashierId();
 private:
     void FrameLessInit();
 
@@ -72,7 +73,7 @@ private:
     PageConfig *p_pageconfig;
     PageHelp *p_pagehelp;
 
-
+    static int CashierId;
 
     static constexpr int layoutmargin=12;
 

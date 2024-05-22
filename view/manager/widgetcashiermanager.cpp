@@ -2,6 +2,7 @@
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
 #include "controller/database/sqlorder.h"
+#include "main/mainwidget.h"
 #include "qmessagebox.h"
 #include "ui_widgetcashiermanager.h"
 #include <QStandardItemModel>
@@ -58,10 +59,15 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     //初始化按钮样式
     PushButtonInit();
 
+    //为会员手机号输入设置正则表达式遮罩
     QRegExp regExp("^1[3-9]\\d{9}$");
     QRegExpValidator *validator = new QRegExpValidator(regExp, this);
     ui->lineEditVipPhoneNumber->setValidator(validator);
     ui->lineEditVipPhoneNumber->hide();
+
+    //设置该界面的cashierid
+    CashierId=MainWidget::getCashierId();
+    qDebug()<<"CASHIERID:::"<<CashierId;
 }
 
 WidgetCashierManager::~WidgetCashierManager()

@@ -8,7 +8,7 @@ namespace SqlCashier
 {
     bool login(QString account,QString password);
     User query(int id);
-
+    int queryAccount(QString account);
 };
 
 #endif // SQLCASHIER_H
