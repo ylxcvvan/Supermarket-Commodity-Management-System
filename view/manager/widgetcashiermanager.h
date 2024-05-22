@@ -9,6 +9,8 @@
 #include "controller/services/goodstableservice.h"
 #include"controller/services/comitemtableservice.h"
 #include"controller/database/sqlcommondityitem.h"
+#include"model/orderitem.h"
+#include"model/order.h"
 namespace Ui {
 class WidgetCashierManager;
 }
@@ -46,6 +48,7 @@ private:
     QVector<Commodity> comList;
 
     double totalPrice;
+
     double totalCount;
 };
 

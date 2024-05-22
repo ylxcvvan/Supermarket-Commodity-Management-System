@@ -1,6 +1,8 @@
 #include "widgetcashiermanager.h"
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
+#include "controller/database/sqlorder.h"
+#include "qmessagebox.h"
 #include "ui_widgetcashiermanager.h"
 #include <QStandardItemModel>
 #include <QItemSelectionModel>
@@ -181,6 +183,46 @@ void WidgetCashierManager::on_comboBox_currentIndexChanged(int index)
 
 void WidgetCashierManager::on_pushButtonPay_clicked()
 {
+    auto table = p_GoodsListService->getGTable();
+    QVector<OrderItem> orderitem = *new QVector<OrderItem>();
+    if(table->rowCount()==0)
+    {
+        QMessageBox::warning(this,"警告","订单为空");
+        return;
+    }
+
+
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setInformativeText("支付界面");
+    msgBox.setWindowTitle("询问");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    int ret = msgBox.exec();
+
+
+    if (ret == QMessageBox::Yes)
+    {
+        for(int row = 0 ; row < table->rowCount();row++)
+        {
+            QVector<QVariant> temp = QVector<QVariant>();
+            for(int colum = 0; colum < table->columnCount();colum++)
+            {
+                QModelIndex index = table->index(row,colum);
+                temp.push_back(table->data(index));
+            }
+            OrderItem item(-1,-1,temp.at(0).toInt(),temp.at(4).toDouble(),temp.at(5).toDouble());
+            orderitem.push_back(item);
+        }
+
+        Order order(-1,orderitem,totalPrice,totalPrice,-1,10001,Order::stage::Completed,QDateTime::currentDateTime());
+        SqlOrder::insert(order);
+        // 用户选择了“是”
+    }
+    else
+    {
+
+    }
+
 
 }
 
