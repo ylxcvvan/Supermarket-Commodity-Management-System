@@ -7,6 +7,8 @@
 #include<qtmaterialraisedbutton.h>
 #include<qtmaterialraisedbutton_p.h>
 #include"main/loginwidget.h"
+int MainWidget::CashierId=0;
+
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
@@ -26,7 +28,8 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
-
+    if(!isadmin)
+        CashierId=SqlCashier::queryAccount(ui->pushButtonLogout->text());
 
     FrameLessInit();
 
@@ -41,6 +44,11 @@ MainWidget::~MainWidget()
 void MainWidget::setUserName(const QString &name)
 {
     ui->pushButtonLogout->setText(name);
+}
+
+int MainWidget::getCashierId()
+{
+    return CashierId;
 }
 
 void MainWidget::FrameLessInit()

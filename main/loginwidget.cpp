@@ -78,7 +78,7 @@ void LoginWidget::on_pushButtonCshierLogin_clicked()
         bool isOk=SqlCashier::login(ui->lineEdit_username->text(),ui->lineEdit_password->text());
         if(isOk)
         {
-            MainWidget *w=new MainWidget;
+            MainWidget *w=new MainWidget(nullptr,false);
             w->setUserName(ui->lineEdit_username->text());
             w->show();
             this->close();
@@ -117,7 +117,7 @@ void LoginWidget::on_pushButtonAdminLogin_clicked()
         bool isOk=SqlAdmin::login(ui->lineEdit_username->text(),ui->lineEdit_password->text());
         if(isOk)
         {
-            MainWidget *w=new MainWidget;
+            MainWidget *w=new MainWidget(nullptr,true);
             w->setUserName(ui->lineEdit_username->text());
             w->show();
             this->close();

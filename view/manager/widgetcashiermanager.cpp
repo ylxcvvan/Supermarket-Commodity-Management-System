@@ -2,6 +2,7 @@
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
 #include "controller/database/sqlorder.h"
+#include "main/mainwidget.h"
 #include "controller/database/sqlvip.h"
 #include "qmessagebox.h"
 #include "ui_widgetcashiermanager.h"
@@ -59,10 +60,15 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     //初始化按钮样式
     PushButtonInit();
 
+    //为会员手机号输入设置正则表达式遮罩
     QRegExp regExp("^1[3-9]\\d{9}$");
     QRegExpValidator *validator = new QRegExpValidator(regExp, this);
     ui->lineEditVipPhoneNumber->setValidator(validator);
     ui->lineEditVipPhoneNumber->hide();
+
+    //设置该界面的cashierid
+    CashierId=MainWidget::getCashierId();
+    qDebug()<<"CASHIERID:::"<<CashierId;
 }
 
 WidgetCashierManager::~WidgetCashierManager()
@@ -247,18 +253,24 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
             OrderItem item(-1,-1,temp.at(0).toInt(),temp.at(4).toDouble(),temp.at(5).toDouble());
             orderitem.push_back(item);
         }
-        auto query = SqlVip::Query(ui->lineEditVipPhoneNumber->text());
-        int userid;
-        if(query.isEmpty())
+                int userid;
+        if(ui->pushButtonVipPay->isChecked())
         {
-            userid = 10000;
+            auto query = SqlVip::Query(ui->lineEditVipPhoneNumber->text());
+            if(query.isEmpty())
+            {
+                QMessageBox::warning(this,"警告","未查到手机号或者手机号输入错误");
+                return;
+            }
+            userid = query.front().getId();
         }
         else
         {
-            userid = query.front().getId();
+            userid = 10000;
         }
 
-        Order order(-1,orderitem,totalPrice,totalPrice,userid,10001,Order::stage::Completed,QDateTime::currentDateTime());
+
+        Order order(-1,orderitem,totalPrice,totalPrice,userid,CashierId,Order::stage::Completed,QDateTime::currentDateTime());
         SqlOrder::insert(order);
         // 用户选择了“是”
     }
