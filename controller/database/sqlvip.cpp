@@ -5,7 +5,6 @@
 
 QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint, double maxpoint, int minlevel, int maxlevel, QDate minrdate, QDate maxrdate)
 {
-    if(id == -1 || name == "" || number=="")return QVector<Vip>();
 
     QString sql = QString("SELECT * from vip_table WHERE");
 
@@ -49,4 +48,18 @@ bool SqlVip::insert(QString name, QString phone,double point,int level)
 
     qDebug()<<sql;
     MySql::getInstance().modify(sql);
+}
+
+QVector<Vip> SqlVip::Query(QString number)
+{
+    QString sql = QString("SELECT * from vip_table WHERE PhoneNumber = '%1';").arg(number);
+    qDebug()<<sql;
+    QSqlQuery query = MySql::getInstance().query(sql);
+    QVector<Vip> result;
+    while(query.next()){
+        result.push_back(Vip(query.value(0).toInt(),query.value(1).toString(),
+                             query.value(2).toString(),query.value(3).toDouble(),
+                             query.value(4).toInt(),query.value(5).toDate()));
+    }
+    return result;
 }

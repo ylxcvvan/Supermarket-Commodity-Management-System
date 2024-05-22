@@ -2,6 +2,7 @@
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
 #include "controller/database/sqlorder.h"
+#include "controller/database/sqlvip.h"
 #include "qmessagebox.h"
 #include "ui_widgetcashiermanager.h"
 #include <QStandardItemModel>
@@ -246,8 +247,18 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
             OrderItem item(-1,-1,temp.at(0).toInt(),temp.at(4).toDouble(),temp.at(5).toDouble());
             orderitem.push_back(item);
         }
+        auto query = SqlVip::Query(ui->lineEditVipPhoneNumber->text());
+        int userid;
+        if(query.isEmpty())
+        {
+            userid = 10000;
+        }
+        else
+        {
+            userid = query.front().getId();
+        }
 
-        Order order(-1,orderitem,totalPrice,totalPrice,-1,10001,Order::stage::Completed,QDateTime::currentDateTime());
+        Order order(-1,orderitem,totalPrice,totalPrice,userid,10001,Order::stage::Completed,QDateTime::currentDateTime());
         SqlOrder::insert(order);
         // 用户选择了“是”
     }
