@@ -188,3 +188,15 @@ void WidgetVipManager::on_pushButtonAdd_clicked(bool checked)
     }
 }
 
+
+void WidgetVipManager::on_pushButton_clicked()
+{
+    QString name = ui->lineEditAddVipName->text();
+    QString phone = ui->lineEditAddPhoneNumber->text();
+    if(name=="" || phone=="") return;
+    SqlVip::insert(name,phone,0,1);
+
+    loadModelVip();
+
+}
+

@@ -168,8 +168,13 @@
     <layout class="QVBoxLayout" name="verticalLayoutRight" stretch="0,0">
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+        </font>
+       </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>7</number>
        </property>
        <property name="usesScrollButtons">
         <bool>true</bool>
@@ -419,6 +424,11 @@
        </item>
        <item>
         <widget class="QtMaterialRaisedButton" name="pushButtonVipPay">
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+          </font>
+         </property>
          <property name="text">
           <string>会员</string>
          </property>
@@ -426,6 +436,11 @@
        </item>
        <item>
         <widget class="QtMaterialRaisedButton" name="pushButtonPay">
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+          </font>
+         </property>
          <property name="text">
           <string>结账</string>
          </property>

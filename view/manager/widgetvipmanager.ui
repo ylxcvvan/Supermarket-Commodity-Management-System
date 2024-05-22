@@ -392,20 +392,20 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
-               <widget class="QLabel" name="label_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+               <widget class="QtMaterialRaisedButton" name="pushButton_2">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <bold>true</bold>
+                 </font>
                 </property>
                 <property name="text">
-                 <string>会员姓名:</string>
+                 <string>姓名</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEditAddVipName">
+               <widget class="QtMaterialTextField" name="lineEditAddVipName">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -419,20 +419,20 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
               <item>
-               <widget class="QLabel" name="label_5">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+               <widget class="QtMaterialRaisedButton" name="pushButton_4">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <bold>true</bold>
+                 </font>
                 </property>
                 <property name="text">
-                 <string>手机号：</string>
+                 <string>手机号</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEditAddPhoneNumber">
+               <widget class="QtMaterialTextField" name="lineEditAddPhoneNumber">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -446,12 +446,19 @@
            </layout>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QtMaterialRaisedButton" name="pushButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+             </font>
             </property>
             <property name="text">
              <string>确定添加</string>

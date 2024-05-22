@@ -40,3 +40,12 @@ QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint
     }
     return result;
 }
+
+bool SqlVip::insert(QString name, QString phone,double point,int level)
+{
+    QString sql = QString("INSERT INTO vip_table (Name,PhoneNumber,Point,Level,RegisterDate) VALUES"
+                          "('%1','%2',%3,%4,'%5');").arg(name).arg(phone).arg(point).arg(level).arg(QDate::currentDate().toString("yyyy-MM-dd"));
+
+    qDebug()<<sql;
+    MySql::getInstance().modify(sql);
+}

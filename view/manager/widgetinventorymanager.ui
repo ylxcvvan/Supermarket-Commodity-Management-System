@@ -222,12 +222,12 @@
                </property>
                <property name="dateTime">
                 <datetime>
-                 <hour>0</hour>
+                 <hour>16</hour>
                  <minute>0</minute>
                  <second>0</second>
                  <year>2025</year>
                  <month>10</month>
-                 <day>8</day>
+                 <day>7</day>
                 </datetime>
                </property>
                <property name="calendarPopup">
@@ -855,7 +855,12 @@
             </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButtonSearchItem">
+            <widget class="QtMaterialRaisedButton" name="pushButtonSearchItem">
+             <property name="font">
+              <font>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>查找已有商品</string>
              </property>
@@ -892,7 +897,7 @@
               <string>商品保质期:</string>
              </property>
              <property name="checkable">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -906,7 +911,7 @@
              </property>
              <property name="dateTime">
               <datetime>
-               <hour>16</hour>
+               <hour>8</hour>
                <minute>0</minute>
                <second>0</second>
                <year>2025</year>
@@ -936,7 +941,7 @@
               <string>商品进价：</string>
              </property>
              <property name="checkable">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -975,9 +980,6 @@
              <property name="text">
               <string>商品售价：</string>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
             </widget>
            </item>
            <item>
@@ -1015,9 +1017,6 @@
              <property name="text">
               <string>商品数量：</string>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
             </widget>
            </item>
            <item>
@@ -1045,6 +1044,13 @@
        </item>
        <item>
         <widget class="QtMaterialRaisedButton" name="pushButton_2">
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>添加</string>
          </property>

@@ -178,3 +178,9 @@ void WidgetCashierManager::on_comboBox_currentIndexChanged(int index)
 }
 
 
+
+void WidgetCashierManager::on_pushButtonPay_clicked()
+{
+
+}
+
