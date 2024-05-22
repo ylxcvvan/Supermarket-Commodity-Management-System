@@ -1,9 +1,10 @@
 #include "mainwidget.h"
-
+#include"loginwidget.h"
 #include <QApplication>
 #include<qfile.h>
 #include<qtextstream.h>
 
+// #define TEST
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -13,7 +14,13 @@ int main(int argc, char *argv[])
     //     qApp->setStyleSheet(styleSheet);
     //     file.close();
     // }
+#ifdef TEST
+    LoginWidget l;
+    l.show();
+#else
     MainWidget w;
     w.show();
+
+#endif
     return a.exec();
 }

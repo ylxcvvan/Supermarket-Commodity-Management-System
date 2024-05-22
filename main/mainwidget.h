@@ -24,6 +24,7 @@ class MainWidget : public QWidget
 public:
     MainWidget(QWidget *parent = nullptr,bool isadmin=false);
     ~MainWidget();
+    void setUserName(const QString& name);
 private:
     void FrameLessInit();
 
@@ -52,6 +53,8 @@ private slots:
     void mouseReleaseEvent(QMouseEvent * e);
 
     void paintEvent(QPaintEvent *event);
+
+    void on_pushButtonLogout_clicked();
 
 private:
     bool isAdmin;

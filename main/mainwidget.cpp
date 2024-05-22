@@ -6,7 +6,7 @@
 #include <cmath>
 #include<qtmaterialraisedbutton.h>
 #include<qtmaterialraisedbutton_p.h>
-
+#include"main/loginwidget.h"
 MainWidget::MainWidget(QWidget *parent,bool isadmin)
     : QWidget(parent)
     , ui(new Ui::MainWidget)
@@ -36,6 +36,11 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
 MainWidget::~MainWidget()
 {
     delete ui;
+}
+
+void MainWidget::setUserName(const QString &name)
+{
+    ui->pushButtonLogout->setText(name);
 }
 
 void MainWidget::FrameLessInit()
@@ -267,5 +272,15 @@ void MainWidget::paintEvent(QPaintEvent *event)
         painter.drawRoundedRect(SHADOW_WIDTH+1 - i, SHADOW_WIDTH+1 - i, this->width() - (SHADOW_WIDTH - i) * 2,
                                 ui->widgetTitle->height()+ layoutmargin+((ui->pushButtonMaxmize->isChecked())?0:12)- (SHADOW_WIDTH - i) * 2, 4, 4);
     }
+}
+
+
+void MainWidget::on_pushButtonLogout_clicked()
+{
+
+    LoginWidget *l=new LoginWidget;
+    l->show();
+    this->close();
+
 }
 
