@@ -31,6 +31,9 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="handleWidth">
+      <number>5</number>
+     </property>
      <widget class="QWidget" name="layoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
        <item>
@@ -329,6 +332,7 @@
                </property>
                <property name="font">
                 <font>
+                 <family>微软雅黑</family>
                  <pointsize>10</pointsize>
                  <bold>true</bold>
                 </font>
@@ -371,6 +375,7 @@
                </property>
                <property name="font">
                 <font>
+                 <family>微软雅黑</family>
                  <pointsize>10</pointsize>
                  <bold>true</bold>
                 </font>
@@ -449,7 +454,7 @@
                   <font>
                    <family>微软雅黑</family>
                    <pointsize>10</pointsize>
-                   <bold>false</bold>
+                   <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
@@ -471,6 +476,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_11">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>第</string>
                  </property>
@@ -484,6 +494,7 @@
                  <property name="font">
                   <font>
                    <family>微软雅黑</family>
+                   <bold>true</bold>
                   </font>
                  </property>
                  <property name="minimum">
@@ -511,6 +522,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_13">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>/</string>
                  </property>
@@ -530,6 +546,12 @@
                </item>
                <item>
                 <widget class="QLabel" name="LabelTotalPages">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -551,6 +573,7 @@
                 <widget class="QtMaterialRaisedButton" name="pushButtonNextPage">
                  <property name="font">
                   <font>
+                   <family>微软雅黑</family>
                    <pointsize>10</pointsize>
                    <bold>true</bold>
                   </font>
@@ -577,6 +600,7 @@
                 <widget class="QtMaterialRaisedButton" name="pushButtonBackPage">
                  <property name="font">
                   <font>
+                   <family>微软雅黑</family>
                    <pointsize>10</pointsize>
                    <bold>true</bold>
                   </font>
@@ -602,6 +626,13 @@
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>12</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>订单详情：</string>
            </property>
@@ -630,6 +661,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
               <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>顾客姓名：</string>
                </property>
@@ -651,6 +688,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
               <widget class="QLabel" name="label_7">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>手机号：</string>
                </property>
@@ -678,6 +721,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
               <widget class="QLabel" name="label_16">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>订单日期</string>
                </property>
@@ -699,6 +748,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
               <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>应付：</string>
                </property>
@@ -720,6 +775,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
               <widget class="QLabel" name="label_17">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>收银员姓名：</string>
                </property>
@@ -752,6 +813,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
               <widget class="QLabel" name="label_8">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>顾客等级：</string>
                </property>
@@ -773,6 +840,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_9">
              <item>
               <widget class="QLabel" name="label_26">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>顾客积分：</string>
                </property>
@@ -794,6 +867,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
               <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>商品件数：</string>
                </property>
@@ -815,6 +894,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
               <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>实付：</string>
                </property>
@@ -839,6 +924,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
               <widget class="QLabel" name="label_28">
+               <property name="font">
+                <font>
+                 <family>微软雅黑</family>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>订单状态：</string>
                </property>
@@ -871,6 +962,7 @@
         <widget class="QtMaterialRaisedButton" name="pushButtonOutPutOrder">
          <property name="font">
           <font>
+           <family>微软雅黑</family>
            <pointsize>12</pointsize>
            <bold>true</bold>
           </font>

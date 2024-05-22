@@ -481,7 +481,7 @@
 </string>
               </property>
               <property name="text">
-               <string>admin  </string>
+               <string>admin</string>
               </property>
               <property name="icon">
                <iconset resource="../images.qrc">

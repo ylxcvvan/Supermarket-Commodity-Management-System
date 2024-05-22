@@ -47,6 +47,10 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
         view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         view->resizeColumnsToContents();
         view->resizeRowsToContents();
+        QFont font;
+        font.setFamily("微软雅黑");
+        font.setPointSize(10);
+        view->setFont(font);
         //连接槽函数
         connect(view,&QTableView::doubleClicked,this,[this](const QModelIndex &index)
                 {this->getCommodityinRightTableView(index);

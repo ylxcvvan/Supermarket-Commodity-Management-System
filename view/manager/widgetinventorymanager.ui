@@ -14,10 +14,16 @@
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_18">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="handleWidth">
+      <number>5</number>
      </property>
      <widget class="QWidget" name="layoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
@@ -222,12 +228,12 @@
                </property>
                <property name="dateTime">
                 <datetime>
-                 <hour>0</hour>
+                 <hour>8</hour>
                  <minute>0</minute>
                  <second>0</second>
                  <year>2025</year>
                  <month>10</month>
-                 <day>8</day>
+                 <day>7</day>
                 </datetime>
                </property>
                <property name="calendarPopup">
@@ -613,6 +619,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>当前页：</string>
            </property>
@@ -620,6 +631,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_7">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>第</string>
            </property>
@@ -630,6 +646,12 @@
          </item>
          <item>
           <widget class="QSpinBox" name="spinBoxPageJump">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="minimum">
             <number>1</number>
            </property>
@@ -640,6 +662,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_8">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>页</string>
            </property>
@@ -650,6 +677,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_2">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>/</string>
            </property>
@@ -657,6 +689,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>共</string>
            </property>
@@ -664,6 +701,12 @@
          </item>
          <item>
           <widget class="QLabel" name="LabelTotalPages">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>0</string>
            </property>
@@ -671,6 +714,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>页</string>
            </property>
@@ -906,7 +954,7 @@
              </property>
              <property name="dateTime">
               <datetime>
-               <hour>16</hour>
+               <hour>0</hour>
                <minute>0</minute>
                <second>0</second>
                <year>2025</year>

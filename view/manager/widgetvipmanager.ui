@@ -399,6 +399,13 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
                  <string>会员姓名:</string>
                 </property>
@@ -425,6 +432,13 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                  <bold>true</bold>
+                 </font>
                 </property>
                 <property name="text">
                  <string>手机号：</string>
@@ -455,6 +469,7 @@
             </property>
             <property name="font">
              <font>
+              <family>微软雅黑</family>
               <pointsize>12</pointsize>
               <bold>true</bold>
              </font>
@@ -537,6 +552,7 @@
           <widget class="QtMaterialRaisedButton" name="fontpage">
            <property name="font">
             <font>
+             <family>微软雅黑</family>
              <pointsize>10</pointsize>
              <bold>true</bold>
             </font>
@@ -563,6 +579,7 @@
           <widget class="QtMaterialRaisedButton" name="prepage">
            <property name="font">
             <font>
+             <family>微软雅黑</family>
              <pointsize>10</pointsize>
              <bold>true</bold>
             </font>
@@ -574,6 +591,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_10">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>当前页：</string>
            </property>
@@ -581,6 +603,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_11">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>第</string>
            </property>
@@ -591,6 +618,11 @@
          </item>
          <item>
           <widget class="QSpinBox" name="currentPage">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="minimum">
             <number>1</number>
            </property>
@@ -601,6 +633,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_12">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>页</string>
            </property>
@@ -611,6 +648,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_13">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>/</string>
            </property>
@@ -618,6 +660,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_14">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>共</string>
            </property>
@@ -625,6 +672,12 @@
          </item>
          <item>
           <widget class="QLabel" name="totalpages">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>0</string>
            </property>
@@ -632,6 +685,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_15">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
            <property name="text">
             <string>页</string>
            </property>
@@ -641,6 +699,7 @@
           <widget class="QtMaterialRaisedButton" name="nextpage">
            <property name="font">
             <font>
+             <family>微软雅黑</family>
              <pointsize>10</pointsize>
              <bold>true</bold>
             </font>
@@ -667,6 +726,7 @@
           <widget class="QtMaterialRaisedButton" name="tailpage">
            <property name="font">
             <font>
+             <family>微软雅黑</family>
              <pointsize>10</pointsize>
              <bold>true</bold>
             </font>
