@@ -19,8 +19,6 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     //设置右侧所有的tableview
-
-
     findAllTableViews(this, viewList);
 
     std::sort(viewList.begin(), viewList.end(), [](const QTableView *a, const QTableView *b) {
@@ -57,7 +55,9 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
         });
     }
 
-
+    QRegExp regExp("^1[3-9]\\d{9}$");
+    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
+    ui->lineEditVipPhoneNumber->setValidator(validator);
     ui->lineEditVipPhoneNumber->hide();
 
 
