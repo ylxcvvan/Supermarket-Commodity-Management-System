@@ -484,8 +484,8 @@
                <string>admin  </string>
               </property>
               <property name="icon">
-               <iconset>
-                <normaloff>:/Images/icons/logout.png</normaloff>:/Images/icons/logout.png</iconset>
+               <iconset resource="../images.qrc">
+                <normaloff>:/resource/Images/icons/logout.png</normaloff>:/resource/Images/icons/logout.png</iconset>
               </property>
               <property name="iconSize">
                <size>

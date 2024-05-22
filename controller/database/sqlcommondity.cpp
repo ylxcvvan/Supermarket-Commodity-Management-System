@@ -74,16 +74,18 @@ bool SqlCommondity::Modify(QString name, double price, double costprice, QDate s
 bool SqlCommondity::Insert(QString name, double price, double costprice, QDate sbt,
                            QString details, QString category)
 {
-    QVector<CommodityItem> res = SqlCommondityItem::Query(-1,name,"","");
+    QVector<CommodityItem> res = SqlCommondityItem::Query(-1,name,details,category);
     if(!res.size()){
         SqlCommondityItem::Insert(name,details,category);
-        res = SqlCommondityItem::Query(-1,name,"","");
+        res = SqlCommondityItem::Query(-1,name,details,category);
     }
     int itemid = res[0].getItemId();
-    QString sql =QString ("INSERT into commodity_table (INSERT INTO commodity_table "
+    QString sql =QString ("INSERT INTO commodity_table "
                           "(ItemId, Price, CostPrice, SellByTime) VALUES(%1,%2,%3,'%4')" )
                             .arg(itemid).arg(price).arg(costprice).arg(sbt.toString("yyyy-MM-dd"));
 
+
+    qDebug()<<sql;
     return MySql::getInstance().modify(sql);
 
 }

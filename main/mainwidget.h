@@ -54,7 +54,6 @@ private slots:
     void paintEvent(QPaintEvent *event);
 
 private:
-    bool isShowedOnTop;//TODO设置选项
     bool isAdmin;
     bool isMoveAllowed;
     bool isResizeAllowed; // 标志是否允许调整窗口大小

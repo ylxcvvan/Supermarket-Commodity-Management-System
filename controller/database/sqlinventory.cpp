@@ -46,8 +46,10 @@ QVector<QVector<QVariant>> SqlInventory::Query(int id, int cid, QString cname ,Q
 bool SqlInventory::Insert(int condyamount, QString name, double price, double costprice, QDate sbt, QString details, QString category)
 {
     SqlCommondity::Insert(name,price,costprice,sbt,details,category);
-    int comdyid = MySql::getInstance().query("SELECT * FROM inventory_table ORDER BY Id DESC LIMIT 1;").value(0).toInt();
-
+    auto query =MySql::getInstance().query("SELECT * FROM commodity_table ORDER BY Id DESC LIMIT 1;");
+    query.next();
+    int comdyid = query.value(0).toInt();
+    qDebug()<<comdyid;
     QString sql = QString("INSERT INTO inventory_table (CommodityId,CommodityAmount) "
                           "VALUES(%1,%2);").arg(comdyid).arg(condyamount);
     qDebug()<<sql;

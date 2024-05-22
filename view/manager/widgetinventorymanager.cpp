@@ -1,4 +1,5 @@
 #include "widgetinventorymanager.h"
+#include "controller/database/sqlcommondityitem.h"
 #include "ui_widgetinventorymanager.h"
 #include<QMessageBox>
 #include<qdebug.h>
@@ -6,6 +7,8 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetInventoryManager)
     ,p_InventoryTableService(new InventoryTableService)
+    ,p_AllComItemTableService(new AllComItemTableService)
+
 {
     ui->setupUi(this);
 
@@ -21,6 +24,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     for(auto &s:p_InventoryTableService->getComboBoxDelegate()->getComBoBoxCategory())
     {
         ui->comboBoxCategory->addItem(s);
+        ui->comboBoxCategory_2->addItem(s);
     }
 
 
@@ -31,10 +35,29 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     //设置商品类型的comboBox
     ui->tableView->setItemDelegateForColumn(3,p_InventoryTableService->getComboBoxDelegate());
 
+
     //设置当前表模型
     ui->tableView->setModel(p_InventoryTableService->getITable());
-
     ui->dateEdit->setDate(QDate::currentDate().addDays(PageConfig::getAddDays()));
+    ui->WidgetPutIn->hide();
+
+    for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
+        ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    // 设置商品描述的表头为自适应内容长度，确保内容完全展现
+    if(ui->tableView->horizontalHeader()->count()>=4)
+        ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+
+    ui->tableView_2->setModel(p_AllComItemTableService->getTable());
+
+    for (int i = 0; i < ui->tableView_2->horizontalHeader()->count(); ++i) {
+        ui->tableView_2->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    // 设置商品描述的表头为自适应内容长度，确保内容完全展现
+    if(ui->tableView_2->horizontalHeader()->count()>=1)
+        ui->tableView_2->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+
+
     InitBoolSearchState();
     InitLineEditInputMode();
     PushButtonInit();
@@ -72,12 +95,7 @@ void WidgetInventoryManager::loadModel()
     //设置当前模型_OLD版本是这样更新的，新版本不需要，注释掉了
     // ui->tableView->setModel(p_InventoryTableService->getITable());
     ui->tableView->update();
-    for (int i = 0; i < ui->tableView->horizontalHeader()->count(); ++i) {
-        ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
-    }
-    // 设置商品描述的表头为自适应内容长度，确保内容完全展现
-    if(ui->tableView->horizontalHeader()->count()>=4)
-        ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+
 
     //更改页数与最大数量
     p_InventoryTableService->getITable()->setPageSize(PageConfig::getInveTableMaxRow());
@@ -246,3 +264,55 @@ void WidgetInventoryManager::on_pushButtonBackPage_clicked()
     p_InventoryTableService->getITable()->setCurrentPage(lastPage);
      ui->spinBoxPageJump->setValue(lastPage + 1);
 }
+
+void WidgetInventoryManager::on_pushButtonInPutExcel_clicked(bool checked)
+{
+    if(!checked)
+    {
+        ui->WidgetPutIn->hide();
+    }
+    else
+        ui->WidgetPutIn->show();
+}
+
+
+void WidgetInventoryManager::on_pushButtonSearchItem_clicked()
+{
+    QString name=ui->pushButtonCommodityName_2->isChecked()?ui->LineEditCommodityName_2->text():"";
+    QString details=ui->pushButtonDetails_2->isChecked()?ui->lineEditDetails_2->text():"";
+    QString category=ui->pushButtonCategory_2->isChecked()?ui->comboBoxCategory_2->currentText():"";
+    p_AllComItemTableService->setAllComItemTable(SqlCommondityItem::Query(-1,name,details,category));
+}
+
+
+void WidgetInventoryManager::on_tableView_2_doubleClicked(const QModelIndex &index)
+{
+    CommodityItem item=p_AllComItemTableService->getTable()->getCListId(index);
+    ui->LineEditCommodityName_2->setText(item.getName());
+    ui->lineEditDetails_2->setText(item.getDetails());
+    ui->comboBoxCategory_2->setCurrentText(item.getCategory());
+}
+
+
+void WidgetInventoryManager::on_pushButton_2_clicked()
+{
+    QString name = ui->LineEditCommodityName_2->text();
+    QString details = ui->lineEditDetails_2->text();
+    QString cate = ui->comboBoxCategory_2->currentText();
+
+    QDate date = ui->dateEdit_2->date();
+    double price = ui->lineEditMinPrice_2->value();
+    double costprice = ui->lineEditMinCostPrice_2->value();
+    double amount = ui->lineEditAmount_2->value();
+    qDebug()<<cate;
+    qDebug()<<price;
+
+
+    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0) return;
+
+    SqlInventory::Insert(amount,name,price,costprice,date,details,cate);
+
+
+    loadModel();
+}
+
