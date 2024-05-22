@@ -16,10 +16,12 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
     ui->tableview->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     ui->dateTimeEditBegin->setDateTime(QDateTime::currentDateTime());
-     ui->dateTimeEditEnd->setDateTime(QDateTime::currentDateTime());
-    // //设置单击表头排序TODO
+    ui->dateTimeEditEnd->setDateTime(QDateTime::currentDateTime());
+    //设置单击表头排序
     ui->tableview->setSortingEnabled(true);
-     connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
+    connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
+
+    ui->widgetAddVip->hide();
 
     loadModelVip();
     pushButtonInit();
@@ -167,4 +169,22 @@ void WidgetVipManager::on_tailpage_clicked()
     ui->currentPage->setValue(lastPage + 1);
 }
 
+
+
+void WidgetVipManager::on_pushButtonAdd_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->WidgetLevel_Point->hide();
+        ui->WidgetVipDetails->hide();
+        ui->widgetAddVip->show();
+
+    }
+    else
+    {
+        ui->widgetAddVip->hide();
+        ui->WidgetLevel_Point->show();
+        ui->WidgetVipDetails->show();
+    }
+}
 

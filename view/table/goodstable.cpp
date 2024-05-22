@@ -132,8 +132,17 @@ bool GoodsTable::insertRows(int row, int count,QVector<QVector<QVariant>> newrow
 
 bool GoodsTable::removeRows(int row, int count, const QModelIndex &parent)
 {
+    if (row < 0 || count <= 0 || row + count > glist.size()) {
+        return false;  // 检查参数是否有效
+    }
+
     beginRemoveRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
+
+    // 从数据模型中删除指定行
+    for (int i = 0; i < count; ++i) {
+        glist.removeAt(row);
+    }
+
     endRemoveRows();
     return true;
 }
@@ -189,4 +198,12 @@ QVariant GoodsTable::TypeConvert(const QVariant &value, int col)
 void GoodsTable::Debug()
 {
 
+}
+
+void GoodsTable::onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
+    Q_UNUSED(deselected);
+    QModelIndexList selectedRows = selected.indexes();
+    for (const QModelIndex &index : selectedRows) {
+        qDebug() << "Selected row index:" << index.row();
+    }
 }

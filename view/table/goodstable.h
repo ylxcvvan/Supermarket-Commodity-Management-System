@@ -59,6 +59,8 @@ private:
     QVariant TypeConvert(const QVariant& value,int col);
     void Debug();//测试
 
+public slots:
+    void onSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 };
 
 #endif // GOODSTABLE_H

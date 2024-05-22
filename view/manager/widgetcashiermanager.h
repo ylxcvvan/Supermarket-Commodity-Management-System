@@ -28,16 +28,18 @@ private:
 private slots:
     void getCommodityinRightTableView(const QModelIndex &index);
 
-
-    void on_lineEditCommodityId_textChanged(const QString &arg1);
-
     void on_pushButtonAdd_clicked();
+
+    void on_pushButtonDel_clicked();
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_lineEditCommodityId_textEdited(const QString &arg1);
 
 private:
     Ui::WidgetCashierManager *ui;
     GoodsTableService *p_GoodsListService;
     ComItemTableService *p_ComItemService;
-    int goodsTableRow;
     QVector<QTableView*>viewList;
     QVector<Commodity> comList;
 

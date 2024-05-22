@@ -14,6 +14,18 @@
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_22">
+   <property name="leftMargin">
+    <number>4</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>4</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
+   </property>
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
@@ -558,6 +570,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,0,1">
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>

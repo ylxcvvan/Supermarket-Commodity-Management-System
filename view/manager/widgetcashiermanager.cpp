@@ -2,13 +2,13 @@
 #include "controller/database/sqlcommondity.h"
 #include "controller/database/sqlinventory.h"
 #include "ui_widgetcashiermanager.h"
-
+#include <QStandardItemModel>
+#include <QItemSelectionModel>
 WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::WidgetCashierManager)
     ,p_GoodsListService(new GoodsTableService)
     ,p_ComItemService(new ComItemTableService)
-    ,goodsTableRow(0)
     ,totalPrice(0)
     ,totalCount(0)
 {
@@ -122,7 +122,7 @@ void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index
     }
 }
 
-void WidgetCashierManager::on_lineEditCommodityId_textChanged(const QString &arg1)
+void WidgetCashierManager::on_lineEditCommodityId_textEdited(const QString &arg1)
 {
     ui->comboBox->clear();
     comList = SqlCommondity::Query(arg1.toInt());
@@ -131,7 +131,6 @@ void WidgetCashierManager::on_lineEditCommodityId_textChanged(const QString &arg
         ui->comboBox->addItem((tr("名称：%1 价格：%2元  过期时间：%3 ").arg(com.getName()).arg(com.getPrice()).arg(com.getSellByTime().toString("yyyy-ddMM-dd"))));
     }
 }
-
 
 void WidgetCashierManager::on_pushButtonAdd_clicked()
 {
@@ -153,9 +152,28 @@ void WidgetCashierManager::on_pushButtonAdd_clicked()
                                       amount,price}
                                     };
 
-    p_GoodsListService->getGTable()->insertRows(goodsTableRow++,1,lists);
+    p_GoodsListService->getGTable()->insertRows(p_GoodsListService->getGTable()->rowCount(),1,lists);
 
 
     updateTotalPrice_TotalCounts();
 }
+
+
+void WidgetCashierManager::on_pushButtonDel_clicked()
+{
+    QModelIndex index = ui->tableView->currentIndex();
+        if(index.row()==-1) return;
+
+
+        p_GoodsListService->getGTable()->removeRows(index.row(),1);
+}
+
+
+void WidgetCashierManager::on_comboBox_currentIndexChanged(int index)
+{
+    if(comList.isEmpty())
+        return;
+    ui->lineEditCommodityId->setText(tr("%1").arg(comList[index].getId()));
+}
+
 
