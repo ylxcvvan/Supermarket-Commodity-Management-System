@@ -309,8 +309,11 @@ void WidgetInventoryManager::on_pushButton_2_clicked()
     qDebug()<<price;
 
 
-    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0) return;
-
+    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0)
+    {
+        QMessageBox::warning(this,"警告","请输入完整的信息");
+        return;
+    }
     SqlInventory::Insert(amount,name,price,costprice,date,details,cate);
 
 
