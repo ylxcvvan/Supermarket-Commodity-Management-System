@@ -277,8 +277,12 @@ void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
 {
     if(ui->tableViewOrder->currentIndex().row()==-1)
     {
-
-        QMessageBox::warning(this,"导出失败","请选中订单后再导出!");
+        QMessageBox msgBox(QMessageBox::Warning, "导出失败", "请选中订单后再导出!", QMessageBox::Ok, this);
+        if(PageConfig::getIsShowedOnTop() == 2)
+        {
+            msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        msgBox.exec();
         return;
     }
     // 获取文件保存路径
@@ -292,7 +296,12 @@ void WidgetOrderManager::on_pushButtonOutPutOrder_clicked()
 
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(nullptr, tr("警告"), tr("无法打开文件"));
+        QMessageBox msgBox(QMessageBox::Warning, "警告", "无法打开文件", QMessageBox::Ok, this);
+        if(PageConfig::getIsShowedOnTop() == 2)
+        {
+            msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        msgBox.exec();
         return;
     }
 

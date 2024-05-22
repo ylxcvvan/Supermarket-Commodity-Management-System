@@ -226,11 +226,16 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
 {
     auto table = p_GoodsListService->getGTable();
     QVector<OrderItem> orderitem = *new QVector<OrderItem>();
-    if(table->rowCount()==0)
+    if(table->rowCount() == 0)
     {
-        QMessageBox::warning(this,"警告","订单为空");
+        QMessageBox msgBox(QMessageBox::Warning, "警告", "订单为空", QMessageBox::Ok, nullptr);
+        msgBox.setWindowTitle("警告");
+        if(PageConfig::getIsShowedOnTop()==2)
+            msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+        msgBox.exec();
         return;
     }
+
 
 
     QMessageBox msgBox;
@@ -238,6 +243,10 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
     msgBox.setInformativeText("支付界面");
     msgBox.setWindowTitle("询问");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    if(PageConfig::getIsShowedOnTop() == 2)
+    {
+        msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+    }
     int ret = msgBox.exec();
 
     if (ret == QMessageBox::Yes)
@@ -259,7 +268,16 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
             auto query = SqlVip::Query(ui->lineEditVipPhoneNumber->text());
             if(query.isEmpty())
             {
-                QMessageBox::warning(this,"警告","未查到手机号或者手机号输入错误");
+                QMessageBox msgBox(QMessageBox::Warning, "警告", "未查到手机号或者手机号输入错误", QMessageBox::Ok, this);
+                msgBox.setWindowTitle("警告");
+
+                if(PageConfig::getIsShowedOnTop() == 2)
+                {
+                    msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+                }
+
+                msgBox.exec();
+
                 return;
             }
             userid = query.front().getId();
