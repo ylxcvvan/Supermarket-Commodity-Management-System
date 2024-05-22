@@ -36,6 +36,8 @@ private slots:
 
     void on_lineEditCommodityId_textEdited(const QString &arg1);
 
+    void on_pushButtonVipPay_clicked(bool checked);
+
 private:
     Ui::WidgetCashierManager *ui;
     GoodsTableService *p_GoodsListService;

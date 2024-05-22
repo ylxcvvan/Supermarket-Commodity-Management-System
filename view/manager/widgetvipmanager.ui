@@ -453,6 +453,12 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>确定添加</string>
             </property>
@@ -529,6 +535,12 @@
         <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
           <widget class="QtMaterialRaisedButton" name="fontpage">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>首页</string>
            </property>
@@ -549,6 +561,12 @@
          </item>
          <item>
           <widget class="QtMaterialRaisedButton" name="prepage">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>上一页</string>
            </property>
@@ -621,6 +639,12 @@
          </item>
          <item>
           <widget class="QtMaterialRaisedButton" name="nextpage">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>下一页</string>
            </property>
@@ -641,6 +665,12 @@
          </item>
          <item>
           <widget class="QtMaterialRaisedButton" name="tailpage">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="text">
             <string>尾页</string>
            </property>

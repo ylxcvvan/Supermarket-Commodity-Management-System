@@ -418,6 +418,13 @@
               <layout class="QHBoxLayout" name="horizontalLayout_10">
                <item>
                 <widget class="QtMaterialRaisedButton" name="pushButtonFrontPage">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <pointsize>10</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>首页</string>
                  </property>
@@ -438,6 +445,13 @@
                </item>
                <item>
                 <widget class="QtMaterialRaisedButton" name="pushButtonPrevPage">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <pointsize>10</pointsize>
+                   <bold>false</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>上一页</string>
                  </property>
@@ -445,6 +459,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_10">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>当前页：</string>
                  </property>
@@ -462,6 +481,11 @@
                </item>
                <item>
                 <widget class="QSpinBox" name="spinBoxPageJump">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="minimum">
                   <number>1</number>
                  </property>
@@ -472,6 +496,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_12">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>页</string>
                  </property>
@@ -489,6 +518,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_14">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>共</string>
                  </property>
@@ -503,6 +537,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="label_15">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>页</string>
                  </property>
@@ -510,6 +549,12 @@
                </item>
                <item>
                 <widget class="QtMaterialRaisedButton" name="pushButtonNextPage">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>下一页</string>
                  </property>
@@ -530,6 +575,12 @@
                </item>
                <item>
                 <widget class="QtMaterialRaisedButton" name="pushButtonBackPage">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>尾页</string>
                  </property>
@@ -817,7 +868,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonOutPutOrder">
+        <widget class="QtMaterialRaisedButton" name="pushButtonOutPutOrder">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>导出该订单</string>
          </property>

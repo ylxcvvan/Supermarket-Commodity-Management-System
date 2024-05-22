@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_16">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_7">
+    <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
@@ -69,14 +69,14 @@
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+            <widget class="QComboBox" name="comboBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
             </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="comboBox"/>
            </item>
           </layout>
          </item>
@@ -168,6 +168,12 @@
     <layout class="QVBoxLayout" name="verticalLayoutRight" stretch="0,0">
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -314,7 +320,7 @@
           <font>
            <family>Microsoft PhagsPa</family>
            <pointsize>13</pointsize>
-           <bold>false</bold>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -332,6 +338,20 @@
          </property>
          <property name="text">
           <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>件</string>
          </property>
         </widget>
        </item>
@@ -367,6 +387,7 @@
           <font>
            <family>Microsoft PhagsPa</family>
            <pointsize>13</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="lineWidth">
@@ -397,6 +418,8 @@
          <property name="font">
           <font>
            <pointsize>13</pointsize>
+           <italic>true</italic>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -418,14 +441,39 @@
         </spacer>
        </item>
        <item>
+        <widget class="QtMaterialTextField" name="lineEditVipPhoneNumber">
+         <property name="maxLength">
+          <number>11</number>
+         </property>
+         <property name="placeholderText">
+          <string>输入会员手机号</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QtMaterialRaisedButton" name="pushButtonVipPay">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>会员</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QtMaterialRaisedButton" name="pushButtonPay">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>结账</string>
          </property>

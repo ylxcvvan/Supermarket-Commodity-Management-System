@@ -23,6 +23,11 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
 
     ui->widgetAddVip->hide();
 
+    //设置手机号遮罩
+    QRegExp regExp("^1[3-9]\\d{9}$");
+    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
+    ui->lineEditAddPhoneNumber->setValidator(validator);
+
     loadModelVip();
     pushButtonInit();
 }

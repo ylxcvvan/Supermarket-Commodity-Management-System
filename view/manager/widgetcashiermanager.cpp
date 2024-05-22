@@ -33,6 +33,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
 
     connect(p_GoodsListService->getGTable(),&QAbstractTableModel::dataChanged,this,&WidgetCashierManager::updateTotalPrice_TotalCounts);
 
+    // 表格视图设置
     for(int i=0;i<viewList.size();++i)
     {
         auto &view=viewList[i];
@@ -51,8 +52,9 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
                 {this->getCommodityinRightTableView(index);
         });
     }
-    // 表格视图设置
 
+
+    ui->lineEditVipPhoneNumber->hide();
 
 
 }
@@ -177,4 +179,17 @@ void WidgetCashierManager::on_comboBox_currentIndexChanged(int index)
     ui->lineEditCommodityId->setText(tr("%1").arg(comList[index].getId()));
 }
 
+
+
+void WidgetCashierManager::on_pushButtonVipPay_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->lineEditVipPhoneNumber->show();
+    }
+    else
+    {
+        ui->lineEditVipPhoneNumber->hide();
+    }
+}
 
