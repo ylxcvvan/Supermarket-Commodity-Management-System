@@ -309,8 +309,21 @@ void WidgetInventoryManager::on_pushButton_2_clicked()
     qDebug()<<price;
 
 
-    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0) return;
+    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0)
+    {
+        QMessageBox msgBox(QMessageBox::Warning, "警告", "请输入完整的信息", QMessageBox::Ok, this);
+        msgBox.setWindowTitle("警告");
 
+        if(PageConfig::getIsShowedOnTop() == 2)
+        {
+            // 设置消息框始终保持在其他窗口之上
+            msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+
+        msgBox.exec();
+
+        return;
+    }
     SqlInventory::Insert(amount,name,price,costprice,date,details,cate);
 
 
