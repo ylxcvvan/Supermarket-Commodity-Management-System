@@ -26,6 +26,7 @@ public:
 private:
     void findAllTableViews(QObject *parent, QVector<QTableView*> &viewList);
     void updateTotalPrice_TotalCounts();
+    void PushButtonInit();
 
 private slots:
     void getCommodityinRightTableView(const QModelIndex &index);

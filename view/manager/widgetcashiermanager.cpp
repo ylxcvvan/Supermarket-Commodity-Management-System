@@ -48,6 +48,10 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
         view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         view->resizeColumnsToContents();
         view->resizeRowsToContents();
+        QFont font;
+        font.setFamily("微软雅黑");
+        font.setPointSize(10);
+        view->setFont(font);
         //连接槽函数
         connect(view,&QTableView::doubleClicked,this,[this](const QModelIndex &index)
                 {this->getCommodityinRightTableView(index);
@@ -55,7 +59,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     }
     // 表格视图设置
 
-
+    PushButtonInit();
 
 }
 
@@ -107,6 +111,24 @@ void WidgetCashierManager::updateTotalPrice_TotalCounts()
     }
     ui->labelTotalPrice->setText(tr("%1").arg(totalPrice));
     ui->labelTotalAmount->setText(tr("%1").arg(totalCount));
+}
+
+void WidgetCashierManager::PushButtonInit()
+{
+    const QList<QWidget *> children = this->findChildren<QWidget *>();
+
+    for(QWidget *child : children){
+        QtMaterialFlatButton *FlatButton = qobject_cast<QtMaterialFlatButton *>(child);
+
+        if(FlatButton){
+            FlatButton->setHaloVisible(false);
+            FlatButton->setTextAlignment(Qt::AlignCenter);
+
+            FlatButton->setBackgroundColor(QColor("#feffef"));
+            FlatButton->setForegroundColor(QColor("#fd8f01"));
+            FlatButton->setOverlayColor(QColor("#ffffff"));
+        }
+    }
 }
 
 void WidgetCashierManager::getCommodityinRightTableView(const QModelIndex &index)

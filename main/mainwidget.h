@@ -11,6 +11,7 @@
 #include<QPaintEvent>
 #include<QGraphicsDropShadowEffect>
 #include<qtmaterialflatbutton.h>
+#include"controller/database/sqlcashier.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWidget;

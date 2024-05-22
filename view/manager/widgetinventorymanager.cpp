@@ -61,6 +61,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     InitBoolSearchState();
     InitLineEditInputMode();
     PushButtonInit();
+
 }
 WidgetInventoryManager::~WidgetInventoryManager()
 {

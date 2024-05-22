@@ -61,6 +61,13 @@
            <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
             <item>
              <widget class="QLabel" name="label_title">
+              <property name="font">
+               <font>
+                <family>Microsoft YaHei</family>
+                <pointsize>-1</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">QLabel {
     font-family: &quot;Microsoft YaHei&quot;;
@@ -82,6 +89,11 @@
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
                <widget class="QtMaterialAutoComplete" name="lineEdit_username">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                 </font>
+                </property>
                 <property name="placeholderText">
                  <string>输入账号</string>
                 </property>
@@ -105,6 +117,11 @@
               </item>
               <item>
                <widget class="QtMaterialAutoComplete" name="lineEdit_password">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                 </font>
+                </property>
                 <property name="echoMode">
                  <enum>QLineEdit::Password</enum>
                 </property>

@@ -5,6 +5,7 @@
 
 QVector<Vip> SqlVip::Query(int id, QString name, QString number, double minpoint, double maxpoint, int minlevel, int maxlevel, QDate minrdate, QDate maxrdate)
 {
+    if(id == -1 || name == "" || number=="")return QVector<Vip>();
 
     QString sql = QString("SELECT * from vip_table WHERE");
 
