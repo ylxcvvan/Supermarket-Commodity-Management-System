@@ -102,7 +102,7 @@ void WidgetOrderManager::PushButtonInit()
         i->setBackgroundColor(QColor("#00bcd4"));
         i->setForegroundColor(QColor("#ffffff"));
         i->setOverlayColor(QColor("#00bcd4"));
-        i->setRole(Material::Primary);
+
         i->setTextAlignment(Qt::AlignCenter);
     }
 }

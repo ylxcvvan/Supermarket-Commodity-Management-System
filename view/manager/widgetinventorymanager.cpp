@@ -293,3 +293,26 @@ void WidgetInventoryManager::on_tableView_2_doubleClicked(const QModelIndex &ind
     ui->comboBoxCategory_2->setCurrentText(item.getCategory());
 }
 
+
+void WidgetInventoryManager::on_pushButton_2_clicked()
+{
+    QString name = ui->LineEditCommodityName_2->text();
+    QString details = ui->lineEditDetails_2->text();
+    QString cate = ui->comboBoxCategory_2->currentText();
+
+    QDate date = ui->dateEdit_2->date();
+    double price = ui->lineEditMinPrice_2->value();
+    double costprice = ui->lineEditMinCostPrice_2->value();
+    double amount = ui->lineEditAmount_2->value();
+    qDebug()<<cate;
+    qDebug()<<price;
+
+
+    if(name=="" || details=="" || cate=="" || price== 0 || costprice==0 || amount==0) return;
+
+    SqlInventory::Insert(amount,name,price,costprice,date,details,cate);
+
+
+    loadModel();
+}
+
