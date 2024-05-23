@@ -38,7 +38,7 @@ WidgetCashierManager::WidgetCashierManager(QWidget *parent)
     for(int i=0;i<viewList.size();++i)
     {
         auto &view=viewList[i];
-        qDebug()<<"view I="<<i<<"name:"<<view->objectName();
+        // qDebug()<<"view I="<<i<<"name:"<<view->objectName();
         view->setModel(p_ComItemService->getTable(i));
         view->setItemDelegate(p_ComItemService->getComItemDelegate());
         view->horizontalHeader()->setVisible(false); // 隐藏水平表头
@@ -92,7 +92,7 @@ void WidgetCashierManager::findAllTableViews(QObject *parent, QVector<QTableView
     for (QObject *child : children) {
         // 打印组件对象名
         QString str = child->objectName();
-        qDebug() << str;
+        // qDebug() << str;
 
         // 判断组件对象名是否以"tableView_"为前缀
         if (str.startsWith("tableView_")) {

@@ -2,7 +2,7 @@
 #include "ui_pagemain.h"
 #include "controller/database/sqlcommondityitem.h"
 #include "controller/database/sqlorder.h"
-PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TODO
+PageMain::PageMain(QWidget *parent,bool isAdmin)
     : QWidget(parent)
     , ui(new Ui::PageMain)
     ,p_widgetCashier(new WidgetCashierManager(this))
@@ -11,7 +11,10 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)//店员和管理员未区分TOD
     ,p_widgetVip(new WidgetVipManager(this))
 {
     ui->setupUi(this);
-
+    if(!isAdmin)
+    {
+        ui->toolButtonInventory->setDisabled(true);
+    }
     widgetVec.push_back(p_widgetCashier);
     widgetVec.push_back(p_widgetInventory);
     widgetVec.push_back(p_widgetOrder);

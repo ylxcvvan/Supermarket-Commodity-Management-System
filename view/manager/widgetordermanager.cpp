@@ -26,6 +26,17 @@ WidgetOrderManager::WidgetOrderManager(QWidget *parent)
     ui->tableViewOrderItem->setAlternatingRowColors(true);
     ui->tableViewOrderItem->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableViewOrderItem->setSelectionBehavior(QAbstractItemView::SelectRows);
+    for (int i = 0; i < ui->tableViewOrderItem->horizontalHeader()->count(); ++i) {
+        ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    if(ui->tableViewOrderItem->horizontalHeader()->count()>=2)
+        ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+
+    for (int i = 0; i < ui->tableViewOrder->horizontalHeader()->count(); ++i) {
+        ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    }
+    if(ui->tableViewOrder->horizontalHeader()->count()>=1)
+        ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
     //设置单击表头排序
     ui->tableViewOrder->setSortingEnabled(true);
@@ -56,12 +67,12 @@ void WidgetOrderManager::loadModelOrder()
     int orderstage=searchOrderStage?ui->comboBoxOrderStage->currentIndex():-1;
     p_OrderTableService->setOList(SqlOrder::Query(OrderId,begindt,enddt,orderstage,
                                                   minTotalPrice,maxTotalPrice,-1,1e10,consumerid,CashierId));
-    // 设置商品描述的表头为自适应内容长度，确保内容完全展现
-    for (int i = 0; i < ui->tableViewOrder->horizontalHeader()->count(); ++i) {
-        ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
-    }
-    if(ui->tableViewOrder->horizontalHeader()->count()>=1)
-        ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    // // 设置商品描述的表头为自适应内容长度，确保内容完全展现
+    // for (int i = 0; i < ui->tableViewOrder->horizontalHeader()->count(); ++i) {
+    //     ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    // }
+    // if(ui->tableViewOrder->horizontalHeader()->count()>=1)
+    //     ui->tableViewOrder->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
 
     //更改页数与最大数量
@@ -205,13 +216,11 @@ void WidgetOrderManager::on_tableViewOrder_doubleClicked(const QModelIndex &inde
 
     //装载底层数据，更新表样式
     p_GoodsTableService->setGList(std::move(newmodel));
-    for (int i = 0; i < ui->tableViewOrderItem->horizontalHeader()->count(); ++i) {
-        ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
-    }
-    if(ui->tableViewOrderItem->horizontalHeader()->count()>=2)
-        ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
-
-
+    // for (int i = 0; i < ui->tableViewOrderItem->horizontalHeader()->count(); ++i) {
+    //     ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(i, QHeaderView::ResizeToContents);
+    // }
+    // if(ui->tableViewOrderItem->horizontalHeader()->count()>=2)
+    //     ui->tableViewOrderItem->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
 }
 
 

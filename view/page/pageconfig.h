@@ -13,8 +13,10 @@ class PageConfig : public QWidget
     Q_OBJECT
 
 public:
-    explicit PageConfig(QWidget *parent = nullptr);
+    explicit PageConfig(QWidget *parent = nullptr,bool isad=true);
     ~PageConfig();
+    void setAccount(QString a);
+    void setLastlogintime();
     static int getInveTableMaxRow();
     static int getAddDays();
     static int getOrdTableMaxRow();
@@ -37,9 +39,14 @@ private slots:
 
     void on_checkBoxIsShowedOnTop_stateChanged(int arg1);
 
+    void on_pushButtonChangePwd_clicked();
+
 private:
     Ui::PageConfig *ui;
     QSettings *setting;
+
+    QString Account;
+    bool isadmin;
 
     //settings
     static QString SupermarketName;
