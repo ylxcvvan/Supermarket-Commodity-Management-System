@@ -20,8 +20,6 @@ private:
 
     void showContextMenu(const QPoint &globalPos);
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;
 public:
     explicit GoodsTable(QObject *parent = nullptr);
 

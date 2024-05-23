@@ -8,7 +8,7 @@ namespace SqlVip
     QVector<Vip> Query(int id=-1,QString name="" , QString number="",double minpoint=-1,double maxpoint=1e10,int minlevel=-1,int maxlevel=1e10,QDate minrdate=QDate(),QDate maxrdate=QDate());
     QVector<Vip> Query(QString number);
     bool insert(QString name, QString phone, double point, int level);
-    bool modify();
+    bool modify(int id=-1,QString num="",double point=-1,int lev=-1);
     bool del();
 };
 

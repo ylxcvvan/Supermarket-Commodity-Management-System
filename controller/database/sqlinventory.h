@@ -15,7 +15,7 @@ QVector<QVector<QVariant>> Query(int id=-1,int cid=-1
 
     //TODO
     bool Del();
-    bool Modify();
+    bool Modify(int cid,int amount);
     bool Insert(int condyamount=-1,
                 QString name="",double price=-1,double costprice=-1,QDate sbt=QDate(),
                 QString details="",QString category="");

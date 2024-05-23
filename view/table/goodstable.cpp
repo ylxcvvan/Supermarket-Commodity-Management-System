@@ -2,28 +2,6 @@
 #include "qdatetime.h"
 
 #include<QDebug>
-void GoodsTable::showContextMenu(const QPoint &globalPos) {
-    QMenu menu;
-    QAction *action1 = menu.addAction("删除");
-
-    // 处理右键菜单项点击事
-    connect(action1, &QAction::triggered, this, []() {
-        qDebug() << "Action 1 triggered";
-    });
-
-
-    menu.exec(globalPos);
-}
-
-bool GoodsTable::eventFilter(QObject *obj, QEvent *event) {
-    if (event->type() == QEvent::ContextMenu) {
-        // 在右键菜单事件中显示右键菜单
-        QContextMenuEvent *contextMenuEvent = static_cast<QContextMenuEvent*>(event);
-        showContextMenu(contextMenuEvent->globalPos());
-        return true;
-    }
-    return QAbstractTableModel::eventFilter(obj, event);
-}
 
 GoodsTable::GoodsTable(QObject *parent)
     : QAbstractTableModel(parent)

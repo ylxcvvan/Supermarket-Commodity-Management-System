@@ -4,7 +4,7 @@
 #include <QAbstractTableModel>
 #include "model/vip.h"
 #include<qvector.h>
-
+#include<QDate>
 class VipTable : public QAbstractTableModel
 {
     Q_OBJECT
@@ -14,6 +14,7 @@ private:
 
     int currentPage=0;
     int pageSize=2;
+    bool isEditable=true;
 
 public:
     explicit VipTable(QObject *parent = nullptr);
@@ -55,6 +56,8 @@ public:
     int currentPageNumber() const;
 
     void setVipList(QVector<Vip> &&newlist);
+
+    void setEditableFalse();
 
 };
 

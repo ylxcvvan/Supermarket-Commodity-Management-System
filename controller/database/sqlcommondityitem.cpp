@@ -63,7 +63,7 @@ bool SqlCommondityItem::Insert(QString name, QString details, QString category)
 
 bool SqlCommondityItem::Modify(int id, QString newn, QString newdts, QString newcate)
 {
-    QString sql = "UPDATE commodityitem_table SET ";
+    QString sql = " UPDATE commodityitem_table SET ";
     QStringList updates;
 
     if (!newn.isEmpty()) {
@@ -85,7 +85,7 @@ bool SqlCommondityItem::Modify(int id, QString newn, QString newdts, QString new
     }
 
     sql += updates.join(", ");
-    sql += QString(" WHERE id = %1").arg(id);
+    sql += QString(" WHERE Id = %1").arg(id);
         qDebug()<<sql;
     return MySql::getInstance().modify(sql);
 }
