@@ -4,7 +4,7 @@
 #include<qfile.h>
 #include<qtextstream.h>
 
-// #define TEST
+//#define TEST
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     //     qApp->setStyleSheet(styleSheet);
     //     file.close();
     // }
-#ifdef TEST
+#ifndef TEST
     LoginWidget l;
     l.show();
 #else

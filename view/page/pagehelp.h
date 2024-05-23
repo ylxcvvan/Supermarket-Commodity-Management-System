@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::PageHelp *ui;
+
 };
 
 #endif // PAGEHELP_H

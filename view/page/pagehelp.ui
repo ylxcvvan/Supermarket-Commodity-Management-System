@@ -6,39 +6,123 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>681</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>50</y>
-     <width>181</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>调试帮助//TODO</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>160</y>
-     <width>221</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>关于Qt版本</string>
-   </property>
-  </widget>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,1">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>16</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>调试帮助：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>12</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>关于Qt版本</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;p&gt;&lt;a href=&quot;https://github.com/ylxcvvan/Supermarket-Commodity-Management-System&quot;&gt;Github开源地址&lt;/a&gt;&lt;/p&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;h1&gt;致谢&lt;/h1&gt;
+        &lt;p&gt;&lt;b&gt;学校：&lt;/b&gt;成都大学&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学院：&lt;/b&gt; 计算机学院&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;课程名称：&lt;/b&gt; 软件工程&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;任课教师：&lt;/b&gt; 覃 艳&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;专业：&lt;/b&gt; 软件工程  年级：2022级  班级：1 班&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名（组长）：&lt;/b&gt; 骆智敏 学号：202210414124&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt; 完颜成煜 学号：202210414109&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt;  陈柱明 学号：202210414119&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt; 王荣 学号：202210414101&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt; 董建博 学号：202210414129&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt; 杨凯光 学号：202210414113&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;学生姓名：&lt;/b&gt; 刘英豪 学号：202210414123&lt;/p&gt;
+        &lt;p&gt;&lt;b&gt;开课时间：&lt;/b&gt; 2023 至 2024 学年第 2 学期&lt;/p&gt;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

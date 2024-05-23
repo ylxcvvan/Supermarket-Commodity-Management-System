@@ -7,6 +7,9 @@
 namespace SqlAdmin
 {
     bool login(QString account,QString password);
+    bool updatePassword(QString account, QString newPassword);
+    QDateTime queryLastLogintime(QString account);
+    bool updateLastLoginTime(QString account);
 
 };
 

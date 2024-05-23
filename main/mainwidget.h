@@ -27,6 +27,7 @@ public:
     ~MainWidget();
     void setUserName(const QString& name);
     static int getCashierId();
+
 private:
     void FrameLessInit();
 
@@ -66,7 +67,7 @@ private:
     QPoint resizeRightBottomPoint;
     QPoint  BeginMovePos;
     QPoint resizeMinLeftTopPoint;
-    static constexpr int RESIZE_BORDER_WIDTH = 25;
+    static constexpr int RESIZE_BORDER_WIDTH = 40;
 
     Ui::MainWidget *ui;
     PageMain *p_pagemain;

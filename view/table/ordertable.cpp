@@ -176,6 +176,7 @@ void OrderTable::setOrdList(QVector<Order> &&newlist)
 
 Order OrderTable::getInveListOrder(const QModelIndex &index)
 {
-    return ordList[index.row()];
+    int row = index.row() + currentPage * pageSize;
+    return ordList[row];
 }
 
