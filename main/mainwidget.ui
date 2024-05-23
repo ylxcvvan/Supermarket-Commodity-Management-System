@@ -493,9 +493,6 @@
                 <height>25</height>
                </size>
               </property>
-              <property name="flat">
-               <bool>false</bool>
-              </property>
              </widget>
             </item>
            </layout>

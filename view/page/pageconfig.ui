@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>748</width>
-    <height>473</height>
+    <height>488</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -343,7 +343,7 @@
        <item>
         <widget class="QtMaterialTextField" name="lineEditnewPwd">
          <property name="echoMode">
-          <enum>QLineEdit::PasswordEchoOnEdit</enum>
+          <enum>QLineEdit::Password</enum>
          </property>
         </widget>
        </item>

@@ -77,6 +77,9 @@
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
                    <property name="dateTime">
                     <datetime>
                      <hour>0</hour>
@@ -109,6 +112,9 @@
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
                    </property>
                    <property name="dateTime">
                     <datetime>
@@ -166,6 +172,9 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="maximum">
                   <double>999999999.000000000000000</double>
                  </property>
@@ -185,6 +194,9 @@
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
                  <property name="maximum">
                   <double>999999999.000000000000000</double>
@@ -263,6 +275,9 @@
                  <width>120</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -359,6 +374,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
               </widget>
              </item>
             </layout>
@@ -401,6 +419,9 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>

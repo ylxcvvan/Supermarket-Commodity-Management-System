@@ -32,6 +32,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagehelp);
 
 
+
     FrameLessInit();
 
     WidgetTitleBtnInit();

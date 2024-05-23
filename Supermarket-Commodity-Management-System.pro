@@ -4,6 +4,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
+RC_FILE = myapp.rc
+
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
@@ -27,6 +29,8 @@ HEADERS += \
 
 FORMS += \
 
+RC_ICONS = logo.ico
+
 #SDK
 LIBS += $$PWD/resource/MaterialSDK/staticlib/libcomponents.a
 INCLUDEPATH += $$PWD/resource/MaterialSDK/components
@@ -41,5 +45,4 @@ DISTFILES += \
     README.md
 
 RESOURCES += \
-    images.qrc \
-    qss.qrc
+    images.qrc

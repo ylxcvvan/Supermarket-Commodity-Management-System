@@ -57,6 +57,7 @@ WidgetInventoryManager::WidgetInventoryManager(QWidget *parent)
     if(ui->tableView_2->horizontalHeader()->count()>=1)
         ui->tableView_2->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
+    ui->dateEdit_2->setDateTime(QDateTime::currentDateTime().addDays(20));
 
     InitBoolSearchState();
     InitLineEditInputMode();

@@ -412,7 +412,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEditAddVipName">
+               <widget class="QtMaterialTextField" name="lineEditAddVipName">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -446,7 +446,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEditAddPhoneNumber">
+               <widget class="QtMaterialTextField" name="lineEditAddPhoneNumber">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -460,7 +460,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QtMaterialRaisedButton" name="pushButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>

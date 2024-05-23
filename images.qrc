@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-                <file>resource/Images/icons/cash-machine.png</file>
+        <file>resource/Images/icons/cash-machine.png</file>
         <file>resource/Images/icons/close.png</file>
         <file>resource/Images/icons/home.png</file>
         <file>resource/Images/icons/information.png</file>
@@ -12,5 +12,6 @@
         <file>resource/Images/icons/order.png</file>
         <file>resource/Images/icons/setting.png</file>
         <file>resource/Images/icons/vip.png</file>
+        <file>resource/Images/icons/logo.ico</file>
     </qresource>
 </RCC>

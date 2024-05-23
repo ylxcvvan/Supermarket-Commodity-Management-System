@@ -39,7 +39,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QtMaterialRaisedButton" name="pushButton_3">
           <property name="text">
            <string>退出</string>
           </property>
@@ -319,6 +319,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QtMaterialRaisedButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>QtMaterialAutoComplete</class>
    <extends>QLineEdit</extends>

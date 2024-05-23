@@ -148,7 +148,7 @@ VALUES ('admin','123456','2024-05-01 08:30:00');
 
 INSERT INTO cashier_table(Name,Account,Password,LastLoginDate)
 VALUES ('狄仁杰','wozuimei15','123456','2024-04-10 08:30:00'),
-VALUES ('动力小子','powerkid666','12345678','2024-04-10 08:30:00');
+	   ('动力小子','powerkid666','12345678','2024-04-10 08:30:00');
 
 -- 插入vip表
 INSERT INTO vip_table (Id,Name, PhoneNumber, Point, Level, RegisterDate) 
