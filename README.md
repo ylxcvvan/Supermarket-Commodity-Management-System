@@ -10,7 +10,7 @@
 
 
 ## 实验报告
-![Uploading 图片.png…]()
+![Uploading 图片.png…](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523152920649.png)
 
 
 ### 课程信息
@@ -47,13 +47,13 @@
 
 ### 软件运行图:
 
-![image-20240523153300641](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523153300641.png)
+![image-20240523153300641](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523153234798.png)
 
-![image-20240523153323957](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523153323957.png)
+![image-20240523153323957](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523153300641.png)
 
-![image-20240523153234798](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523153234798.png)
+![image-20240523153234798](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523153323957.png)
 
-![image-20240523153337738](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523153337738.png)
+![image-20240523153337738](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523153337738.png)
 
 ## 数据库：MYSQL
 
@@ -241,4 +241,4 @@ https://zhuanlan.zhihu.com/p/676716832
 
 **满足3范式标准**
 
-![image-20240523202906340](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523202906340.png)
+![image-20240523202906340](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523202906340.png)
