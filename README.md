@@ -10,8 +10,8 @@
 
 
 ## 实验报告
+![Uploading 图片.png…]()
 
-![image-20240523152920649](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240523152920649.png)
 
 ### 课程信息
 
