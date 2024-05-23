@@ -11,10 +11,7 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)
     ,p_widgetVip(new WidgetVipManager(this))
 {
     ui->setupUi(this);
-    if(!isAdmin)
-    {
-        ui->toolButtonInventory->setDisabled(true);
-    }
+
     widgetVec.push_back(p_widgetCashier);
     widgetVec.push_back(p_widgetInventory);
     widgetVec.push_back(p_widgetOrder);
@@ -29,7 +26,17 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)
     {
         ui->stackedWidget->addWidget(widget);
     }
+    if(!isAdmin)
+    {
+        ui->toolButtonInventory->setDisabled(true);
 
+    }
+    else
+    {
+        ui->toolButtonCashier->setDisabled(true);
+        ui->stackedWidget->setCurrentIndex(1);
+        on_toolButtonInventory_clicked();
+    }
 }
 
 PageMain::~PageMain()
