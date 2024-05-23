@@ -10,7 +10,7 @@
 
 
 ## 实验报告
-![Uploading 图片.png…]()
+![Uploading 图片.png…](https://github.com/ylxcvvan/Supermarket-Commodity-Management-System/blob/main/ReadmeImages/image-20240523152920649.png)
 
 
 ### 课程信息
