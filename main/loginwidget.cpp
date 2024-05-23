@@ -23,7 +23,7 @@ LoginWidget::LoginWidget(QWidget *parent)
     ui->frame->setGraphicsEffect(shadow);
     //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
     this->setContentsMargins(1,1,1,1);
-
+    ui->pushButton_3->setRole(Material::Primary);
 }
 
 LoginWidget::~LoginWidget()

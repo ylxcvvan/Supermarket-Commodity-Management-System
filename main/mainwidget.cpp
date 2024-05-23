@@ -28,6 +28,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
+    ui->pushButtonLogout->setRole(Material::Primary);
     if(!isadmin)
         CashierId=SqlCashier::queryAccount(ui->pushButtonLogout->text());
 

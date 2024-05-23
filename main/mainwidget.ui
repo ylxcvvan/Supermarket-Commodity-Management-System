@@ -454,7 +454,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButtonLogout">
+             <widget class="QtMaterialRaisedButton" name="pushButtonLogout">
               <property name="font">
                <font>
                 <family>OCR A Extended</family>
@@ -492,9 +492,6 @@
                 <width>40</width>
                 <height>25</height>
                </size>
-              </property>
-              <property name="flat">
-               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -753,6 +750,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QtMaterialRaisedButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">qtmaterialraisedbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>QtMaterialFlatButton</class>
    <extends>QToolButton</extends>
