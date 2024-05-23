@@ -20,6 +20,8 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     //设定是否是管理员
     isAdmin=isadmin;
 
+    if(!isadmin)
+        CashierId=SqlCashier::queryAccount(ui->pushButtonLogout->text());
     p_pagemain=new PageMain(this,isadmin);
     //连接数据库
     auto db =MySql::getInstance().getDatabase();
@@ -28,9 +30,7 @@ MainWidget::MainWidget(QWidget *parent,bool isadmin)
     ui->stackedWidget->addWidget(p_pagemain);
     ui->stackedWidget->addWidget(p_pageconfig);
     ui->stackedWidget->addWidget(p_pagehelp);
-    ui->pushButtonLogout->setRole(Material::Primary);
-    if(!isadmin)
-        CashierId=SqlCashier::queryAccount(ui->pushButtonLogout->text());
+
 
     FrameLessInit();
 
