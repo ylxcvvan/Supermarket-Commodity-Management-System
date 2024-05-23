@@ -235,9 +235,6 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
         msgBox.exec();
         return;
     }
-
-
-
     QMessageBox msgBox;
     msgBox.setIcon(QMessageBox::Question);
     msgBox.setInformativeText("支付界面");
@@ -262,7 +259,7 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
             OrderItem item(-1,-1,temp.at(0).toInt(),temp.at(4).toDouble(),temp.at(5).toDouble());
             orderitem.push_back(item);
         }
-                int userid;
+        int userid;
         if(ui->pushButtonVipPay->isChecked())
         {
             auto query = SqlVip::Query(ui->lineEditVipPhoneNumber->text());
@@ -290,6 +287,10 @@ void WidgetCashierManager::on_pushButtonPay_clicked()
 
         Order order(-1,orderitem,totalPrice,totalPrice,userid,CashierId,Order::stage::Completed,QDateTime::currentDateTime());
         SqlOrder::insert(order);
+        for(auto i : orderitem){
+            SqlInventory::sell(i.getCommodityId(),i.getCommodityAmount());
+        }
+        QMessageBox::information(this,"提示","支付成功");
         // 用户选择了“是”
     }
     else

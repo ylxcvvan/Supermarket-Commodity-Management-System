@@ -58,9 +58,9 @@ bool SqlInventory::Insert(int condyamount, QString name, double price, double co
 
 bool SqlInventory::sell(int comdyid, int amount)
 {
-    QString sql = QString(" UPDATE inventory_table "
-                          "SET CommodityAmount = CommodityAmount - %1"
+    QString sql = QString("UPDATE inventory_table "
+                          "SET CommodityAmount = CommodityAmount - %1 "
                           "WHERE CommodityId = %2 ;").arg(amount).arg(comdyid);
-
+    qDebug()<<sql;
     return MySql::getInstance().modify(sql);
 }

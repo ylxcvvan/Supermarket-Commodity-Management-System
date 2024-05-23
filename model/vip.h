@@ -21,7 +21,8 @@ public:
     const double& getPoint()const ;
     const int& getLevel() const;
     const QDate& getRegisterDate()const;
-
+    void setName(const QString& name);
+    void setRegisterDate(QDate date);
     void setLevel(const int& newLevel);
     void setPoint(const double& newPoint);
     void setPhoneNumber(const QString& newPhoneNumber);

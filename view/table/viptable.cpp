@@ -83,9 +83,51 @@ bool VipTable::insertColumns(int column, int count, const QModelIndex &parent)
 
 bool VipTable::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (data(index, role) != value) {
-        // FIXME: Implement me!
-        emit dataChanged(index, index, {role});
+    if (!index.isValid() || role != Qt::EditRole)
+        return false;
+
+    int row = index.row() + currentPage * pageSize;
+    if(row >= vipList.size() || index.column() >= titles.size())
+        return false;
+
+    Vip &vip = vipList[row];
+    bool dataChanged = false;
+
+    switch (index.column()) {
+    case 1:
+        if (vip.getName() != value.toString()) {
+            vip.setName(value.toString());
+            dataChanged = true;
+        }
+        break;
+    case 2:
+        if (vip.getPhoneNumber() != value.toString()) {
+            vip.setPhoneNumber(value.toString());
+            dataChanged = true;
+        }
+        break;
+    case 3:
+        if (vip.getPoint() != value.toInt()) {
+            vip.setPoint(value.toInt());
+            dataChanged = true;
+        }
+        break;
+    case 4:
+        if (vip.getLevel() != value.toInt()) {
+            vip.setLevel(value.toInt());
+            dataChanged = true;
+        }
+        break;
+    case 5:
+        if (vip.getRegisterDate() != value.toDate()) {
+            vip.setRegisterDate(value.toDate());
+            dataChanged = true;
+        }
+        break;
+    default:
+        return false;
+    }
+    if (dataChanged) {
         return true;
     }
     return false;
@@ -97,7 +139,6 @@ Qt::ItemFlags VipTable::flags(const QModelIndex &index) const
         return Qt::NoItemFlags;
 
     Qt::ItemFlags flags = QAbstractItemModel::flags(index);
-    flags &= ~Qt::ItemIsEditable; // 移除编辑标志
     return flags;
 }
 
@@ -185,4 +226,9 @@ void VipTable::setVipList(QVector<Vip> &&newlist)
     beginResetModel(); // 开始重置模型，通知视图整体更新
     vipList=std::move(newlist);
     endResetModel();
+}
+
+void VipTable::setEditableFalse()
+{
+    isEditable=false;
 }

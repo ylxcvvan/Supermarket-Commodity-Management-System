@@ -33,6 +33,14 @@ const QDate &Vip::getRegisterDate() const
     return this->RegisterDate;
 }
 
+void Vip::setName(const QString &name){
+    Name = name;
+}
+
+void Vip::setRegisterDate(QDate date){
+    RegisterDate = date;
+}
+
 void Vip::setLevel(const int &newLevel)
 {
     this->Level=newLevel;

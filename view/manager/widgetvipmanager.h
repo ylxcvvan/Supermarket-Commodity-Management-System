@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include"controller/services/viptableservice.h"
+#include "qdebug.h"
 #include<controller/database/sqlvip.h>
 namespace Ui {
 class WidgetVipManager;
@@ -18,7 +19,20 @@ public:
 
     void loadModelVip();
     void pushButtonInit();
+public slots:
+    void onDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight) {
+        qDebug() << "Cells with changed data:";
+        // QAbstractTableModel *model = p_viptableservice->getTable();
+        // for (int row = topLeft.row(); row <= bottomRight.row(); ++row) {
+        //     for (int column = topLeft.column(); column <= bottomRight.column(); ++column) {
+        //         QVariant newValue = topLeft.model()->data(topLeft, Qt::DisplayRole);
+        //         QModelIndex index = model->index(row,column);
+        //         qDebug()<<model->index(row,column);
+        //         model->setData(index,newValue);
 
+        //     }
+        // }
+    }
 private slots:
     void sortByColumn(int column);
 

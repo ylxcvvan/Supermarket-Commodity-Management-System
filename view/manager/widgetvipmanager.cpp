@@ -1,4 +1,5 @@
 #include "widgetvipmanager.h"
+#include "qdebug.h"
 #include "ui_widgetvipmanager.h"
 #include "view/page/pageconfig.h"
 
@@ -21,10 +22,14 @@ WidgetVipManager::WidgetVipManager(QWidget *parent)
     ui->tableview->setSortingEnabled(true);
     connect(ui->tableview->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortByColumn(int)));
 
+
     ui->widgetAddVip->hide();
 
     loadModelVip();
     pushButtonInit();
+
+    connect(p_viptableservice->getTable(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
+
 }
 
 WidgetVipManager::~WidgetVipManager()

@@ -63,3 +63,31 @@ QVector<Vip> SqlVip::Query(QString number)
     }
     return result;
 }
+
+bool SqlVip::modify(int id, QString num, double point, int lev)
+{
+    QString sql = " UPDATE vip_table SET ";
+    QStringList updates;
+    if(!num.isEmpty())
+    {
+        updates.append(QString("PhoneNumber = '%1'").arg(num));
+    }
+    if(point!=-1)
+    {
+        updates.append(QString("Point = %1").arg(point));
+    }
+    if(lev != -1)
+    {
+        updates.append(QString("Level = %1").arg(point));
+    }
+    if (updates.isEmpty()) {
+        // 如果没有需要更新的字段，则直接返回
+        qDebug()<<"商品信息不需要更新";
+        return false;
+    }
+
+    sql += updates.join(", ");
+    sql += QString(" WHERE Id = %1 ;").arg(id);
+    qDebug()<<sql;
+    return MySql::getInstance().modify(sql);
+}
