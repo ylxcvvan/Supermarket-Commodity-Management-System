@@ -11,7 +11,7 @@ QVector<Order> SqlOrder::Query(int orderid, QDateTime orderdatebegin,QDateTime o
     if(orderid != -1){
         sql += QString(" OrderId = %1 AND ").arg(orderid);
     }
-    if(orderdatebegin<orderdateend){
+    if(orderdatebegin < orderdateend){
         sql += QString(" OrderDate BETWEEN '%1' AND '%2' AND ").arg(orderdatebegin.toString("yyyy-MM-dd HH:mm:ss")).arg(orderdateend.toString("yyyy-MM-dd HH:mm:ss"));
     }
     if(orderstate != -1){

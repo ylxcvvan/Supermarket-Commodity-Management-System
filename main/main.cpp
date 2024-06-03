@@ -4,7 +4,7 @@
 #include<qfile.h>
 #include<qtextstream.h>
 
-//#define TEST
+#define TEST
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

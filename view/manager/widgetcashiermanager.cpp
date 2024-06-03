@@ -198,6 +198,7 @@ void WidgetCashierManager::on_pushButtonDel_clicked()
 
 
         p_GoodsListService->getGTable()->removeRows(index.row(),1);
+        updateTotalPrice_TotalCounts();
 }
 
 

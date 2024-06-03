@@ -7,6 +7,7 @@
 #include"view/manager/widgetcashiermanager.h"
 #include"view/manager/widgetinventorymanager.h"
 #include"view/manager/widgetordermanager.h"
+#include "view/manager/widgetturnover.h"
 #include"view/manager/widgetvipmanager.h"
 #include<qtmaterialflatbutton.h>
 namespace Ui {
@@ -36,6 +37,8 @@ private slots:
 
     void on_toolButtonVip_clicked();
 
+    void on_toolButtonTurnOver_clicked();
+
 private:
     Ui::PageMain *ui;
     QVector<QWidget*> widgetVec;
@@ -45,6 +48,7 @@ private:
     WidgetInventoryManager *p_widgetInventory;
     WidgetOrderManager *p_widgetOrder;
     WidgetVipManager *p_widgetVip;
+    widgetturnover *p_turnover;
 
 };
 

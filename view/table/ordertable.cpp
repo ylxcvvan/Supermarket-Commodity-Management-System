@@ -28,6 +28,11 @@ int OrderTable::columnCount(const QModelIndex &parent) const
     return titles.size();
 }
 
+QVector<Order> OrderTable::getOrderList()
+{
+    return ordList;
+}
+
 QVariant OrderTable::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())

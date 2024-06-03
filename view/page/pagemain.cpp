@@ -9,6 +9,7 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)
     ,p_widgetInventory(new WidgetInventoryManager(this))
     ,p_widgetOrder(new WidgetOrderManager(this))
     ,p_widgetVip(new WidgetVipManager(this))
+    ,p_turnover(new widgetturnover(this))
 {
     ui->setupUi(this);
 
@@ -16,11 +17,13 @@ PageMain::PageMain(QWidget *parent,bool isAdmin)
     widgetVec.push_back(p_widgetInventory);
     widgetVec.push_back(p_widgetOrder);
     widgetVec.push_back(p_widgetVip);
+    widgetVec.push_back(p_turnover);
 
     toolbtnVec.push_back(ui->toolButtonCashier);
     toolbtnVec.push_back(ui->toolButtonInventory);
     toolbtnVec.push_back(ui->toolButtonOrder);
     toolbtnVec.push_back(ui->toolButtonVip);
+    toolbtnVec.push_back(ui->toolButtonTurnOver);
 
     for(auto &widget:widgetVec)
     {
@@ -79,5 +82,11 @@ void PageMain::on_toolButtonVip_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
     setOtherWidgetUnchecked(3);
+}
+
+void PageMain::on_toolButtonTurnOver_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    setOtherWidgetUnchecked(4);
 }
 
